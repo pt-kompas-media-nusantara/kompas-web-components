@@ -26,10 +26,14 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@stencil/postcss": "^2.0.0",
+    "@types/autoprefixer": "^10.2.0",
     "@types/jest": "^26.0.21",
     "@types/puppeteer": "^5.4.3",
+    "autoprefixer": "^10.2.5",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
-    "puppeteer": "^5.5.0"
+    "puppeteer": "^5.5.0",
+    "tailwindcss": "^2.0.4"
   }
 }
