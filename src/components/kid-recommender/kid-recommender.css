@@ -1,0 +1,86 @@
+:host {
+  @apply block;
+}
+
+.container--inner {
+  @apply flex;
+  @apply no-underline;
+  @apply p-4;
+  @apply w-full;
+
+  border-left: solid 4px #FFCC00;
+}
+
+.container--outer {
+  @apply border;
+  @apply border-grey-400;
+  @apply border-solid;
+  @apply flex;
+  @apply overflow-hidden;
+  @apply rounded;
+}
+
+.container--inner__headline {
+  @apply flex;
+  @apply flex-col;
+  @apply w-full;
+}
+.container--inner__headline-label {
+  @apply mb-2;
+  @apply text-blue-500;
+  @apply text-sm;
+}
+.container--inner__headline-title {
+  @apply font-bold;
+  @apply m-0;
+  @apply overflow-ellipsis;
+  @apply overflow-hidden;
+  @apply text-base;
+  @apply text-grey-600;
+  @apply leading-tight;
+}
+
+.container--inner__thumbnail {
+  @apply border;
+  @apply border-solid;
+  @apply border-grey-200;
+  @apply bg-center;
+  @apply bg-cover;
+  @apply bg-no-repeat;
+  @apply flex;
+  @apply flex-shrink-0;
+  @apply ml-4;
+  @apply rounded;
+
+  height: calc((2/3) * 96px);
+  width: 96px;
+}
+
+@screen sm {
+  .container--inner__thumbnail {
+    height: calc((2/3) * 144px);
+    width: 144px;
+  }
+}
+
+
+/* galat */
+.error {
+  @apply bg-red-200;
+  @apply p-4;
+  @apply rounded;
+}
+
+.error--label {
+  @apply font-bold;
+  @apply mb-2;
+  @apply mt-0;
+  @apply mx-0;
+  @apply text-base;
+  @apply leading-tight;
+}
+
+.error--text {
+  @apply my-0;
+  @apply text-base;
+}

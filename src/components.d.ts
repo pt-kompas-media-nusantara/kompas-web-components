@@ -6,56 +6,72 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface KidRecommender {
         /**
-          * The first name
+          * Kunci otentikasi
          */
-        "first": string;
+        "authKey": string;
         /**
-          * The last name
+          * Label/tagar jamak artikel yang dipisahkan dengan koma
          */
-        "last": string;
+        "postTags": string;
         /**
-          * The middle name
+          * Judul artikel
          */
-        "middle": string;
+        "postTitle": string;
+        /**
+          * URL artikel tempat komponen ini disisipkan
+         */
+        "postUrl": string;
+        /**
+          * UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id
+         */
+        "utm": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLKidRecommenderElement extends Components.KidRecommender, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLKidRecommenderElement: {
+        prototype: HTMLKidRecommenderElement;
+        new (): HTMLKidRecommenderElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "kid-recommender": HTMLKidRecommenderElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface KidRecommender {
         /**
-          * The first name
+          * Kunci otentikasi
          */
-        "first"?: string;
+        "authKey": string;
         /**
-          * The last name
+          * Label/tagar jamak artikel yang dipisahkan dengan koma
          */
-        "last"?: string;
+        "postTags"?: string;
         /**
-          * The middle name
+          * Judul artikel
          */
-        "middle"?: string;
+        "postTitle": string;
+        /**
+          * URL artikel tempat komponen ini disisipkan
+         */
+        "postUrl": string;
+        /**
+          * UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id
+         */
+        "utm": string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "kid-recommender": KidRecommender;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
         }
     }
 }
