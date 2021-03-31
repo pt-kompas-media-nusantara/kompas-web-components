@@ -5,13 +5,13 @@
 
 import { Component, Prop, State, Watch, h } from '@stencil/core';
 
-// interface apiResponseData {
-//   judul: string,
-//   thumbnail: string,
-//   html_dekstop: string,
-//   html_mobile: string,
-//   url: string
-// }
+interface apiResponseData {
+  judul: string,
+  thumbnail: string,
+  html_dekstop: string,
+  html_mobile: string,
+  url: string
+}
 
 @Component({
   tag: 'kid-recommender',
@@ -34,7 +34,7 @@ export class KidRecommender {
   validateAuthKey(val: string) {
     // properti tidak boleh kosong
     if ( typeof val !== 'string' || val.trim() === '' ) {
-      throw new Error('Nilai authKey diperlukan')
+      throw new Error('Nilai auth-key diperlukan')
     }
   }
 
@@ -133,34 +133,37 @@ export class KidRecommender {
       /**
        * Ambil data secara asinkronus dari API
        * lalu ubah nilai state
-       * MASIH KENA CORSSSS
        */
-      // const queries = {
-      //   q: encodeURIComponent(this.postTitle)
-      // }
+      const queries = {
+        q: encodeURIComponent(this.postTitle)
+      }
 
-      // const params = Object
-      //   .keys(queries)
-      //   .map(key => `${key}=${queries[key]}`)
-      //   .join('&')
+      const params = Object
+        .keys(queries)
+        .map(key => `${key}=${queries[key]}`)
+        .join('&')
 
-      // const req = await fetch(
-      //   `https://apiner.kompas.id/v1/article?${params}`,
-      //   {
-      //     method: 'GET',
-      //     // mode: 'no-cors',
-      //     headers: {
-      //       'Authorization': this.authKey,
-      //       'Content-Type': 'application/json'
-      //     }
-      //   }
-      // )
-      // const reqJson: apiResponseData = await req.json()
-      // console.log(reqJson)
+      const req = await fetch(
+        `https://apiner.kompas.id/v1/article?${params}`,
+        {
+          method: 'GET',
+          // mode: 'no-cors',
+          headers: {
+            'Authorization': this.authKey,
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      const reqJson: apiResponseData = await req.json()
+      const {
+        judul = '',
+        thumbnail = '',
+        url = ''
+      } = reqJson
 
-      this.resTitle = 'Piték Cilik Mlebu Omah Mabur-mabur Omah Gedhe Omah Gedhe Pinggir Tegalan Iséh Cilék Isih Cilék Gampang Diatur Bareng Gèdhé Bareng gèdhé Ugal-ugalan';
-      this.resThumbnail = 'https://picsum.photos/150';
-      this.resPermalink = 'https://garonk.kocing.com';
+      this.resTitle = judul;
+      this.resThumbnail = thumbnail;
+      this.resPermalink = `${url}?${this.utm}`;
     } catch (error) {
       this.errorMsg = error.message
     }
