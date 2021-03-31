@@ -19,3 +19,8 @@ To run the unit tests for the components, run:
 ```bash
 npm test
 ```
+
+To publish to NPM
+```bash
+npm publish --access public --otp=<code>
+```
