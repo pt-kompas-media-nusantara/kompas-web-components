@@ -3,7 +3,7 @@
  * berdasarkan sejumlah parameter yang disediakan.
  */
 
-import { Component, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Prop, State, Watch, h } from '@stencil/core'
 
 interface apiResponseData {
   judul: string,
@@ -28,7 +28,7 @@ export class KidRecommender {
   /**
    * Kunci otentikasi
    */
-  @Prop() authKey!: string;
+  @Prop() authKey!: string
   @Watch('authKey')
   // validasi properti authKey
   validateAuthKey(val: string) {
@@ -41,12 +41,12 @@ export class KidRecommender {
   /**
    * Label/tagar jamak artikel yang dipisahkan dengan koma
    */
-  @Prop() postTags: string;
+  @Prop() postTags: string
 
   /**
    * Judul artikel
    */
-  @Prop() postTitle!: string;
+  @Prop() postTitle!: string
   @Watch('postTitle')
   // validasi properti postTitle
   validatePostTitle(val: string) {
@@ -59,7 +59,7 @@ export class KidRecommender {
   /**
    * URL artikel tempat komponen ini disisipkan
    */
-  @Prop() postUrl!: string;
+  @Prop() postUrl!: string
   @Watch('postUrl')
    // validasi properti postTitle
   validateUrl(val: string) {
@@ -72,7 +72,7 @@ export class KidRecommender {
   /**
    * UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id
    */
-  @Prop() utm!: string;
+  @Prop() utm!: string
   @Watch('utm')
    // validasi properti postTitle
   validateUtm(val: string) {
@@ -88,11 +88,11 @@ export class KidRecommender {
   /**
    * Jumlah maksimal karakter pada judul, tidak akan berubah
    */
-  titleMaxLength: number = 155;
+  titleMaxLength: number = 155
   /**
    * Label di atas judul rekomendasi, tidak akan berubah
    */
-  resLabel: string = 'Artikel Premium';
+  resLabel: string = 'Artikel Premium'
   /**
    * Pesan apabila terjadi galat, berubah ketika terjadi galat
    */
@@ -100,15 +100,15 @@ export class KidRecommender {
   /**
    * Judul artikel rekomendasi, berubah setelah fetch() berhasil
    */
-  @State() resTitle: string = '';
+  @State() resTitle: string = ''
   /**
    * Citra andalan artikel rekomendasi, berubah setelah fetch() berhasil
    */
-  @State() resThumbnail: string = '';
+  @State() resThumbnail: string = ''
   /**
    * Alamat artikel rekomendasi, berubah setelah fetch() berhasil
    */
-  @State() resPermalink: string = '';
+  @State() resPermalink: string = ''
 
   private truncateTitle():string {
     let str = this.resTitle
@@ -161,9 +161,9 @@ export class KidRecommender {
         url = ''
       } = reqJson
 
-      this.resTitle = judul;
-      this.resThumbnail = thumbnail;
-      this.resPermalink = `${url}?${this.utm}`;
+      this.resTitle = judul
+      this.resThumbnail = thumbnail
+      this.resPermalink = `${url}?${this.utm}`
     } catch (error) {
       this.errorMsg = error.message
     }
