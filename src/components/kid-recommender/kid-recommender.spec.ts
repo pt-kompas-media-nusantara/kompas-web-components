@@ -97,26 +97,26 @@ describe('KidRecommender', () => {
   })
 
 
-  it('component with all props provided is rendered', async () => {
-    const { root } = await newSpecPage({
-      components: [KidRecommender],
-      html: '<kid-recommender auth-key="ini-kunci" post-tags="was,wes,wos" post-title="judul artikel" post-url="https://test.tld" utm="ini_utm"></kid-recommender>'
-    })
+  // it('component with all props provided is rendered', async () => {
+  //   const { root } = await newSpecPage({
+  //     components: [KidRecommender],
+  //     html: '<kid-recommender auth-key="ini-kunci" post-tags="was,wes,wos" post-title="judul artikel" post-url="https://test.tld" utm="ini_utm"></kid-recommender>'
+  //   })
 
-    expect(root).toEqualHtml(`
-      <kid-recommender>
-        <mock:shadow-root>
-          <div class="container--outer">
-            <a class="container--inner" href="" target="_blank" title="">
-              <div class="container--inner__headline">
-                <span class="container--inner__headline-label"></span>
-                <h2 class="container--inner__headline-title"></h2>
-              </div>
-              <div class="container--inner__thumbnail" style="backgroundImage: url()"></div>
-            </a>
-          </div>
-        </mock:shadow-root>
-      </kid-recommender>
-    `)
-  })
+  //   expect(root).toEqualHtml(`
+  //     <kid-recommender>
+  //       <mock:shadow-root>
+  //         <div class="container--outer">
+  //           <a class="container--inner" href="" target="_blank" title="">
+  //             <div class="container--inner__headline">
+  //               <span class="container--inner__headline-label"></span>
+  //               <h2 class="container--inner__headline-title"></h2>
+  //             </div>
+  //             <div class="container--inner__thumbnail" style="backgroundImage: url()"></div>
+  //           </a>
+  //         </div>
+  //       </mock:shadow-root>
+  //     </kid-recommender>
+  //   `)
+  // })
 })
