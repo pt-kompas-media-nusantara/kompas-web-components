@@ -27,7 +27,7 @@ _Bagian ini menyusul_.
 ```javascript
 <kid-recommender 
   auth-key="pak-beja-menek-klapa-nek-tiba-dadi-janaka"
-  post-tags="brongkos,gethuk,krecek,"
+  post-tags="brongkos,gethuk,krecek"
   post-title="Wong Yen Lagi Naksir, Ra peduli Perangé Nuklir"
   post-url="https://domain.tld/wong-yen-lagi-naksir-ra-peduli-perange-nuklir"
   utm="utm_source=domain.tld&utm_kampain=wasweswos&utm_mbah_margo=tongseng"
