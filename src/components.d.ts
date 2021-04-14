@@ -12,15 +12,15 @@ export namespace Components {
          */
         "authKey": string;
         /**
-          * Label/tagar jamak artikel yang dipisahkan dengan koma
+          * Label/tagar jamak artikel yang dipisahkan dengan koma. Kalau tidak diisi, komponen akan mengambil nilai `<meta name="keyword" />`.
          */
         "postTags": string;
         /**
-          * Judul artikel
+          * Judul artikel. Kalau tidak diisi, komponen akan otomatis mengambil nilai `<meta name="og:title" />` atau `<title />`.
          */
         "postTitle": string;
         /**
-          * URL artikel tempat komponen ini disisipkan
+          * URL artikel tempat komponen ini disisipkan. Kalau tidak diisi, komponen akan otomatis mengambil nilai `<meta property="og:url" />` atau `window.location`.
          */
         "postUrl": string;
         /**
@@ -47,17 +47,17 @@ declare namespace LocalJSX {
          */
         "authKey": string;
         /**
-          * Label/tagar jamak artikel yang dipisahkan dengan koma
+          * Label/tagar jamak artikel yang dipisahkan dengan koma. Kalau tidak diisi, komponen akan mengambil nilai `<meta name="keyword" />`.
          */
         "postTags"?: string;
         /**
-          * Judul artikel
+          * Judul artikel. Kalau tidak diisi, komponen akan otomatis mengambil nilai `<meta name="og:title" />` atau `<title />`.
          */
-        "postTitle": string;
+        "postTitle"?: string;
         /**
-          * URL artikel tempat komponen ini disisipkan
+          * URL artikel tempat komponen ini disisipkan. Kalau tidak diisi, komponen akan otomatis mengambil nilai `<meta property="og:url" />` atau `window.location`.
          */
-        "postUrl": string;
+        "postUrl"?: string;
         /**
           * UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id
          */

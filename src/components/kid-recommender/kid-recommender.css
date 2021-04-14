@@ -2,6 +2,11 @@
   @apply block;
 }
 
+.container {
+  @apply w-full;
+  min-height: 126px;
+}
+
 .container--inner {
   @apply flex;
   @apply no-underline;
@@ -83,4 +88,13 @@
 .error--text {
   @apply my-0;
   @apply text-base;
+}
+
+/* pemuat */
+.loader {
+  @apply bg-grey-200;
+  @apply h-full;
+  @apply w-full;
+
+  height: 126px;
 }

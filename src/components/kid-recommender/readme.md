@@ -13,7 +13,7 @@ Selalu menggunakan versi terbaru:
 ```
 atau menggunakan versi tertentu, saat ini belum disarankan:
 ```html
-<script src="https://unpkg.com/@kompas/web-components@0.0.1-alpha-0" type="module" async defer></script>
+<script src="https://unpkg.com/@kompas/web-components@0.0.1-alpha-1" type="module" async defer></script>
 ```
 
 ### NPM
@@ -37,15 +37,15 @@ _Bagian ini menyusul_.
 <!-- Auto Generated Below -->
 
 
-### Properti Elemen
+## Properties
 
-| Property                 | Attribute    | Description                                                        | Type     | Default     |
-| ------------------------ | ------------ | ------------------------------------------------------------------ | -------- | ----------- |
-| `authKey` _(required)_   | `auth-key`   | Kunci otentikasi                                                   | `string` | `undefined` |
-| `postTags`               | `post-tags`  | Label/tagar jamak artikel yang dipisahkan dengan koma              | `string` | `undefined` |
-| `postTitle` _(required)_ | `post-title` | Judul artikel                                                      | `string` | `undefined` |
-| `postUrl` _(required)_   | `post-url`   | URL artikel tempat komponen ini disisipkan                         | `string` | `undefined` |
-| `utm` _(required)_       | `utm`        | UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id | `string` | `undefined` |
+| Property               | Attribute    | Description                                                                                                                                                | Type     | Default     |
+| ---------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `authKey` _(required)_ | `auth-key`   | Kunci otentikasi                                                                                                                                           | `string` | `undefined` |
+| `postTags`             | `post-tags`  | Label/tagar jamak artikel yang dipisahkan dengan koma. Kalau tidak diisi, komponen akan mengambil nilai `<meta name="keyword" />`.                         | `string` | `''`        |
+| `postTitle`            | `post-title` | Judul artikel. Kalau tidak diisi, komponen akan otomatis mengambil nilai `<meta name="og:title" />` atau `<title />`.                                      | `string` | `''`        |
+| `postUrl`              | `post-url`   | URL artikel tempat komponen ini disisipkan. Kalau tidak diisi, komponen akan otomatis mengambil nilai `<meta property="og:url" />` atau `window.location`. | `string` | `''`        |
+| `utm` _(required)_     | `utm`        | UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id                                                                                         | `string` | `undefined` |
 
 
 ----------------------------------------------
