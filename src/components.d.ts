@@ -12,6 +12,10 @@ export namespace Components {
          */
         "authKey": string;
         /**
+          * Lokasi penempatan komponen
+         */
+        "position": string;
+        /**
           * Label/tagar jamak artikel yang dipisahkan dengan koma. Kalau tidak diisi, komponen akan mengambil nilai `<meta name="keyword" />`.
          */
         "postTags": string;
@@ -24,9 +28,9 @@ export namespace Components {
          */
         "postUrl": string;
         /**
-          * UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
          */
-        "utm": string;
+        "section": string;
     }
 }
 declare global {
@@ -47,6 +51,10 @@ declare namespace LocalJSX {
          */
         "authKey": string;
         /**
+          * Lokasi penempatan komponen
+         */
+        "position"?: string;
+        /**
           * Label/tagar jamak artikel yang dipisahkan dengan koma. Kalau tidak diisi, komponen akan mengambil nilai `<meta name="keyword" />`.
          */
         "postTags"?: string;
@@ -59,9 +67,9 @@ declare namespace LocalJSX {
          */
         "postUrl"?: string;
         /**
-          * UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
          */
-        "utm": string;
+        "section"?: string;
     }
     interface IntrinsicElements {
         "kid-recommender": KidRecommender;

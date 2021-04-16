@@ -4,6 +4,7 @@
  */
 
 import { Component, Prop, State, Watch, h } from '@stencil/core'
+import { base64Encode } from '../../utils/hash'
 
 interface apiResponseData {
   judul: string,
@@ -57,17 +58,14 @@ export class KidRecommender {
   @Prop() postUrl: string = ''
 
   /**
-   * UTM untuk dikaitkan dengan permalink artikel rekomendasi kompas.id
+   * Lokasi penempatan komponen
    */
-  @Prop() utm!: string
-  @Watch('utm')
-   // validasi properti postTitle
-  validateUtm(val: string) {
-    // properti tidak boleh kosong
-    if ( typeof val !== 'string' || val.trim() === '' ) {
-      throw new Error('Nilai utm diperlukan')
-    }
-  }
+  @Prop() position: string = 'rekomendasi_inbody'
+
+  /**
+   * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
+   */
+  @Prop() section: string = ''
 
   /**
    * States
@@ -101,10 +99,20 @@ export class KidRecommender {
    */
   @State() resPermalink: string = ''
 
+  private getPostTags():string {
+    const keywords = document.querySelector('meta[name="keywords"]') ? document.querySelector('meta[name="keywords"]').getAttribute('content') : ''
+    return this.postTags || keywords || ''
+  }
+
   private getTitle(): string {
     const pageTitle = document.title || ''
     const ogTitle = document.querySelector('meta[property="og:title"]') ? document.querySelector('meta[property="og:title"]').getAttribute('content') : ''
     return this.postTitle || ogTitle || pageTitle || ''
+  }
+
+  private getUrl(): string {
+    const ogUrl = document.querySelector('meta[property="og:url"]') ? document.querySelector('meta[property="og:url"]').getAttribute('content') : ''
+    return ogUrl || window.location.href
   }
 
   private showError() {
@@ -161,16 +169,19 @@ export class KidRecommender {
     try {
       // jalankan validasi properti
       this.validateAuthKey(this.authKey)
-      this.validateUtm(this.utm)
 
       /**
        * Ambil data secara asinkronus dari API
        * lalu ubah nilai state
        */
       const queries = {
-        q: encodeURIComponent(this.getTitle())
+        position: encodeURIComponent(this.position),
+        'post-tags': encodeURIComponent(this.getPostTags()),
+        'post-url': base64Encode(this.getUrl()),
+        q: encodeURIComponent(this.getTitle()),
+        section: encodeURIComponent(this.section)
       }
-
+      console.log(queries)
       const params = Object
         .keys(queries)
         .map(key => `${key}=${queries[key]}`)
@@ -196,7 +207,7 @@ export class KidRecommender {
 
       this.resTitle = judul
       this.resThumbnail = thumbnail
-      this.resPermalink = `${url}?${this.utm}`
+      this.resPermalink = url
       this.isLoading = false
     } catch (error) {
       this.errorMsg = error.message
