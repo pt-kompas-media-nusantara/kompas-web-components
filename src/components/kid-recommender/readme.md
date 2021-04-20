@@ -13,7 +13,7 @@ Selalu menggunakan versi terbaru:
 ```
 atau menggunakan versi tertentu, saat ini belum disarankan:
 ```html
-<script src="https://unpkg.com/@kompas/web-components@0.0.1-alpha-2" type="module" async defer></script>
+<script src="https://unpkg.com/@kompas/web-components@0.0.1-alpha-3" type="module" async defer></script>
 ```
 
 ### NPM
@@ -27,9 +27,11 @@ _Bagian ini menyusul_.
 ```javascript
 <kid-recommender 
   auth-key="pak-beja-menek-klapa-nek-tiba-dadi-janaka"
+  position="rekomendasi_inbody"
   post-tags="brongkos,gethuk,krecek"
   post-title="Wong Yen Lagi Naksir, Ra peduli Perangé Nuklir"
   post-url="https://domain.tld/wong-yen-lagi-naksir-ra-peduli-perange-nuklir"
+  section="olahraga,arsenal"
 ></kid-recommender>
 ```
 

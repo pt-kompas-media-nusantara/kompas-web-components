@@ -73,7 +73,7 @@ export class KidRecommender {
   /**
    * Jumlah maksimal karakter pada judul, tidak akan berubah
    */
-  titleMaxLength: number = 155
+  titleMaxLength: number = 140
   /**
    * Label di atas judul rekomendasi, tidak akan berubah
    */
@@ -137,16 +137,14 @@ export class KidRecommender {
       return (
         <div class="container--outer">
           <a class="container--inner" href={this.resPermalink} target="_blank" title={this.resTitle}>
-            <div class="container--inner__headline">
-              <span class="container--inner__headline-label">{ this.resLabel }</span>
-              <h2 class="container--inner__headline-title">{ this.truncateTitle() }</h2>
-            </div>
             <div
               class="container--inner__thumbnail"
               style={{
                 backgroundImage: `url(${this.resThumbnail})`
               }}
             />
+            <span class="container--inner__headline-label">{ this.resLabel }</span><br />
+            <h2 class="container--inner__headline-title">{ this.truncateTitle() }</h2>
           </a>
         </div>
       )

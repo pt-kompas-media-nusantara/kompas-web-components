@@ -4,6 +4,7 @@ const base64Encode = (str:string): string => {
   /**
    * Ini karena di node.js belum ada btoa() sehingga bikin gagal tes
    */
+  (window as any).global = window
   if (!global.btoa) {
     global.btoa = encode;
   }
