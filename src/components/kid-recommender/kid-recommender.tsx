@@ -179,7 +179,7 @@ export class KidRecommender {
         q: encodeURIComponent(this.getTitle()),
         section: encodeURIComponent(this.section)
       }
-      console.log(queries)
+
       const params = Object
         .keys(queries)
         .map(key => `${key}=${queries[key]}`)
