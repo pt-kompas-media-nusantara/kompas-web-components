@@ -5,6 +5,8 @@
 
 import { Component, Prop, State, Watch, h } from '@stencil/core'
 import { base64Encode } from '../../utils/hash'
+import { isMobile } from '../../utils/device'
+import { truncate } from '../../utils/text'
 
 interface apiResponseData {
   judul: string,
@@ -40,6 +42,11 @@ export class KidRecommender {
   }
 
   /**
+   * Setelan untuk mengakomodasi mode terang/gelap
+   */
+  @Prop() darkMode: boolean = false
+
+  /**
    * Label/tagar jamak artikel yang dipisahkan dengan koma. Kalau
    * tidak diisi, komponen akan mengambil nilai `<meta name="keyword" />`.
    */
@@ -71,17 +78,9 @@ export class KidRecommender {
    * States
    */
   /**
-   * Jumlah maksimal karakter pada judul, tidak akan berubah
-   */
-  titleMaxLength: number = 140
-  /**
    * Label di atas judul rekomendasi, tidak akan berubah
    */
   resLabel: string = 'Artikel Premium'
-  /**
-   * Kondisi menentukan keadaan sedang muat atau selesai muat
-   */
-  @State() isLoading: boolean = true
   /**
    * Pesan apabila terjadi galat, berubah ketika terjadi galat
    */
@@ -115,55 +114,46 @@ export class KidRecommender {
     return ogUrl || window.location.href
   }
 
-  private showError() {
-    if (!this.isLoading && this.errorMsg) {
-      return (
-        <div class="error">
-          <h3 class="error--label">Galat</h3>
-          <p class="error--text">{ this.errorMsg }</p>
-        </div>
-      )
-    }
+  private templateError() {
+    return (
+      <div class="error">
+        <h3 class="error--label">Galat</h3>
+        <p class="error--text">{ this.errorMsg }</p>
+      </div>
+    )
   }
 
-  private showLoader() {
-    if (this.isLoading) {
-      return <div class="loader" />
-    }
-  }
-
-  private showResult() {
-    if (!this.isLoading && !this.errorMsg) {
-      return (
-        <div class="container--outer">
-          <a class="container--inner" href={this.resPermalink} target="_blank" title={this.resTitle}>
-            <div
-              class="container--inner__thumbnail"
-              style={{
-                backgroundImage: `url(${this.resThumbnail})`
-              }}
-            />
-            <span class="container--inner__headline-label">{ this.resLabel }</span><br />
-            <h2 class="container--inner__headline-title">{ this.truncateTitle() }</h2>
-          </a>
-        </div>
-      )
-    }
+  private templateResult() {
+    return (
+      <div class="result">
+        <a class="result--inner" href={this.resPermalink} target="_blank" title={this.resTitle}>
+          <div
+            class="result--inner__thumbnail"
+            style={{
+              backgroundImage: `url(${this.resThumbnail})`
+            }}
+          />
+          <span class="result--inner__headline-label">{ this.resLabel }</span><br />
+          <h2
+            class={{
+              'result--inner__headline-title': true,
+              'text-white': this.darkMode
+            }}
+          >{ this.truncateTitle() }</h2>
+        </a>
+      </div>
+    )
   }
 
   private truncateTitle():string {
-    let str = this.resTitle
-    if (str.length <=  this.titleMaxLength) { return str }
-
-    str = str.substr(0, this.titleMaxLength - 1)
-
-    return `${str.substr(0, str.lastIndexOf(' '))}...`
+    const len = isMobile() ? 90 : 140
+    return truncate(this.resTitle, len)
   }
 
   /**
-   * Metode ini dipanggil sekali setelah komponen terhubung dengan DOM
+   * Metode ini dipanggil sekali sebelum komponen terhubung dengan DOM
    */
-  async componentDidLoad() {
+  async componentWillLoad() {
     try {
       // jalankan validasi properti
       this.validateAuthKey(this.authKey)
@@ -206,10 +196,8 @@ export class KidRecommender {
       this.resTitle = judul
       this.resThumbnail = thumbnail
       this.resPermalink = url
-      this.isLoading = false
     } catch (error) {
       this.errorMsg = error.message
-      this.isLoading = false
     }
 
   }
@@ -217,9 +205,7 @@ export class KidRecommender {
   render() {
     return (
       <div class="container">
-        { this.showError() }
-        { this.showLoader() }
-        { this.showResult() }
+        { this.errorMsg ? this.templateError() : this.templateResult() }
       </div>
     )
   }

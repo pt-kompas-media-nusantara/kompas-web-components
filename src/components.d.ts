@@ -12,6 +12,10 @@ export namespace Components {
          */
         "authKey": string;
         /**
+          * Setelan untuk mengakomodasi mode terang/gelap
+         */
+        "darkMode": boolean;
+        /**
           * Lokasi penempatan komponen
          */
         "position": string;
@@ -50,6 +54,10 @@ declare namespace LocalJSX {
           * Kunci otentikasi
          */
         "authKey": string;
+        /**
+          * Setelan untuk mengakomodasi mode terang/gelap
+         */
+        "darkMode"?: boolean;
         /**
           * Lokasi penempatan komponen
          */
