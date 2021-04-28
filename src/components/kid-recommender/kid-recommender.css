@@ -6,10 +6,6 @@
   }
 }
 
-.text-white {
-  @apply text-grey-100 !important;
-}
-
 /* container */
 .container {
   @apply flex;
@@ -48,6 +44,10 @@
   @apply inline;
   @apply text-blue-500;
   @apply text-sm;
+
+  &.dark {
+    @apply text-blue-200;
+  }
 }
 .result--inner__headline-title {
   @apply font-bold;
@@ -56,6 +56,10 @@
   @apply text-base;
   @apply text-grey-600;
   @apply leading-tight;
+
+  &.dark {
+    @apply text-grey-100;
+  }
 }
 
 .result--inner__thumbnail {

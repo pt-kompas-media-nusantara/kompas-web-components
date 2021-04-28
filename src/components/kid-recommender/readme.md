@@ -43,6 +43,13 @@ Apabila mode gelap aplikasi diaktifkan, tambahkan properti `dark-mode` agar komp
   dark-mode
 ></kid-recommender>
 ```
+ini sama nilainya dengan
+```javascript
+<kid-recommender 
+  auth-key="pak-beja-menek-klapa-nek-tiba-dadi-janaka"
+  dark-mode="true"
+></kid-recommender>
+```
 
 <!-- Auto Generated Below -->
 

@@ -80,7 +80,7 @@ export class KidRecommender {
   /**
    * Label di atas judul rekomendasi, tidak akan berubah
    */
-  resLabel: string = 'Artikel Premium'
+  resLabel: string = 'Artikel Kompas.id'
   /**
    * Pesan apabila terjadi galat, berubah ketika terjadi galat
    */
@@ -133,11 +133,16 @@ export class KidRecommender {
               backgroundImage: `url(${this.resThumbnail})`
             }}
           />
-          <span class="result--inner__headline-label">{ this.resLabel }</span><br />
+          <span
+            class={{
+              'result--inner__headline-label': true,
+              'dark': this.darkMode
+            }}
+          >{ this.resLabel }</span><br />
           <h2
             class={{
               'result--inner__headline-title': true,
-              'text-white': this.darkMode
+              'dark': this.darkMode
             }}
           >{ this.truncateTitle() }</h2>
         </a>
