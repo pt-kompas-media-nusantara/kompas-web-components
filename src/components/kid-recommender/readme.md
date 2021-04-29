@@ -13,7 +13,7 @@ Selalu menggunakan versi terbaru:
 ```
 atau menggunakan versi tertentu, saat ini belum disarankan:
 ```html
-<script src="https://unpkg.com/@kompas/web-components@0.0.1-alpha-4" type="module" async defer></script>
+<script src="https://unpkg.com/@kompas/web-components@0.0.1-alpha-5" type="module" async defer></script>
 ```
 
 ### NPM

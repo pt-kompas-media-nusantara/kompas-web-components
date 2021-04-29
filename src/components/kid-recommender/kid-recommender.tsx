@@ -191,17 +191,31 @@ export class KidRecommender {
           }
         }
       )
+
+      /**
+       * fetch() hanya mendeteksi galat jaringan.
+       * Galat lain (40x, 50x) harus ditangani secara manual.
+       */
+      if (req.status !== 200) {
+        throw new Error(`${req.status} Ada galat saat memproses permintaan.`)
+      }
+
+      /**
+       * fetch() mendapatkan respons 200
+       */
       const reqJson: apiResponseData = await req.json()
+
       const {
         judul = '',
         thumbnail = '',
         url = ''
       } = reqJson
-
+      // console.log(reqJson)
       this.resTitle = judul
       this.resThumbnail = thumbnail
       this.resPermalink = url
     } catch (error) {
+
       this.errorMsg = error.message
     }
 
