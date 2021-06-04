@@ -1,0 +1,108 @@
+/* utils */
+:host {
+  @apply block;
+  font-size: 100%;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+/* utils */
+.flex--col {
+  @apply flex flex-col;
+}
+
+.mb4 {
+  @apply mb-4;
+}
+
+.lg\:mb0 {
+  @screen lg {
+    @apply mb-0;
+  }
+}
+
+.icon {
+  @apply h-4;
+
+  & svg {
+    @apply text-grey-500;
+    @apply block;
+    @apply h-4;
+  }
+
+  &.lg {
+    @apply h-6;
+
+    & svg {
+      @apply h-6;
+    }
+  }
+}
+
+.container {
+  @apply bg-grey-200 flex w-full;
+}
+
+.container--inner {
+  @apply gap-0 grid grid-cols-1 mx-auto text-grey-500 w-full;
+  max-width: 960px;
+
+  @screen lg {
+    @apply gap-4 grid-cols-4;
+  }
+}
+
+.about {
+  @apply bg-brand-1 p-4 text-grey-100;
+}
+
+.profile {
+  @apply p-4 text-grey-500 text-xs;
+  @screen lg {
+    @apply px-0;
+  }
+}
+
+.items {
+  @apply col-span-1 p-4;
+
+  @screen lg {
+    @apply gap-4 grid grid-cols-3 col-span-2 px-0;
+  }
+}
+
+.section--label {
+  @apply flex font-bold mb-3 text-grey-500 text-sm uppercase;
+
+  &.white {
+    @apply text-grey-100;
+  }
+}
+
+.section--link {
+  @apply no-underline text-grey-500;
+
+  &.white {
+    @apply text-grey-100;
+  }
+}
+
+.social-account {
+  @apply flex items-center leading-none mb-1 no-underline text-grey-500;
+
+  &:last-child {
+    @apply mb-0;
+  }
+
+  & span:nth-child(2) {
+    @apply bg-grey-500 leading-none ml-2 px-2 py-1 rounded-sm text-grey-100;
+  }
+}
+
+.logo {
+  @apply pt-5;
+  & svg {
+    @apply h-11;
+  }
+}

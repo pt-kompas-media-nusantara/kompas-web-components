@@ -36,6 +36,26 @@ export namespace Components {
          */
         "section": string;
     }
+    interface KompasFooter {
+    }
+    interface KompasFooterDefault {
+        /**
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
+         */
+        "menus": any;
+    }
+    interface KompasFooterProducts {
+        /**
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
+         */
+        "branding": any;
+    }
+    interface KompasFooterSupports {
+        /**
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
+         */
+        "branding": any;
+    }
 }
 declare global {
     interface HTMLKidRecommenderElement extends Components.KidRecommender, HTMLStencilElement {
@@ -44,8 +64,36 @@ declare global {
         prototype: HTMLKidRecommenderElement;
         new (): HTMLKidRecommenderElement;
     };
+    interface HTMLKompasFooterElement extends Components.KompasFooter, HTMLStencilElement {
+    }
+    var HTMLKompasFooterElement: {
+        prototype: HTMLKompasFooterElement;
+        new (): HTMLKompasFooterElement;
+    };
+    interface HTMLKompasFooterDefaultElement extends Components.KompasFooterDefault, HTMLStencilElement {
+    }
+    var HTMLKompasFooterDefaultElement: {
+        prototype: HTMLKompasFooterDefaultElement;
+        new (): HTMLKompasFooterDefaultElement;
+    };
+    interface HTMLKompasFooterProductsElement extends Components.KompasFooterProducts, HTMLStencilElement {
+    }
+    var HTMLKompasFooterProductsElement: {
+        prototype: HTMLKompasFooterProductsElement;
+        new (): HTMLKompasFooterProductsElement;
+    };
+    interface HTMLKompasFooterSupportsElement extends Components.KompasFooterSupports, HTMLStencilElement {
+    }
+    var HTMLKompasFooterSupportsElement: {
+        prototype: HTMLKompasFooterSupportsElement;
+        new (): HTMLKompasFooterSupportsElement;
+    };
     interface HTMLElementTagNameMap {
         "kid-recommender": HTMLKidRecommenderElement;
+        "kompas-footer": HTMLKompasFooterElement;
+        "kompas-footer-default": HTMLKompasFooterDefaultElement;
+        "kompas-footer-products": HTMLKompasFooterProductsElement;
+        "kompas-footer-supports": HTMLKompasFooterSupportsElement;
     }
 }
 declare namespace LocalJSX {
@@ -79,8 +127,32 @@ declare namespace LocalJSX {
          */
         "section"?: string;
     }
+    interface KompasFooter {
+    }
+    interface KompasFooterDefault {
+        /**
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
+         */
+        "menus": any;
+    }
+    interface KompasFooterProducts {
+        /**
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
+         */
+        "branding": any;
+    }
+    interface KompasFooterSupports {
+        /**
+          * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
+         */
+        "branding": any;
+    }
     interface IntrinsicElements {
         "kid-recommender": KidRecommender;
+        "kompas-footer": KompasFooter;
+        "kompas-footer-default": KompasFooterDefault;
+        "kompas-footer-products": KompasFooterProducts;
+        "kompas-footer-supports": KompasFooterSupports;
     }
 }
 export { LocalJSX as JSX };
@@ -88,6 +160,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
+            "kompas-footer": LocalJSX.KompasFooter & JSXBase.HTMLAttributes<HTMLKompasFooterElement>;
+            "kompas-footer-default": LocalJSX.KompasFooterDefault & JSXBase.HTMLAttributes<HTMLKompasFooterDefaultElement>;
+            "kompas-footer-products": LocalJSX.KompasFooterProducts & JSXBase.HTMLAttributes<HTMLKompasFooterProductsElement>;
+            "kompas-footer-supports": LocalJSX.KompasFooterSupports & JSXBase.HTMLAttributes<HTMLKompasFooterSupportsElement>;
         }
     }
 }

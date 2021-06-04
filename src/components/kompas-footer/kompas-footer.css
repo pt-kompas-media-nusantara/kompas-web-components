@@ -1,0 +1,11 @@
+/* utils */
+:host {
+  @apply block;
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.container {
+  @apply w-full;
+}

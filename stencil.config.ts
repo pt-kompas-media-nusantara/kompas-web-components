@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { postcss } from '@stencil/postcss';
+import { inlineSvg } from 'stencil-inline-svg';
 import autoprefixer from 'autoprefixer';
 import nested from 'postcss-nested';
 import tailwind from 'tailwindcss';
@@ -30,6 +31,10 @@ export const config: Config = {
         autoprefixer(),
         tailwind()
       ]
-    })
+    }),
+    inlineSvg()
+  ],
+  bundles: [
+    { components: ['kompas-footer', 'kompas-footer-default', 'kompas-footer-supports', 'kompas-footer-products'] }
   ]
 };
