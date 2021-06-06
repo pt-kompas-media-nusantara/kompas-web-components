@@ -4,6 +4,8 @@ import instagram from '../../../assets/fontawesome-free-5.15.3-web/svgs/brands/i
 import twitterSquare from '../../../assets/fontawesome-free-5.15.3-web/svgs/brands/twitter-square.svg'
 import youtubeSquare from '../../../assets/fontawesome-free-5.15.3-web/svgs/brands/youtube-square.svg'
 import logo from '../../../assets/logos/kompas-white.svg'
+import mapMarkerAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/map-marker-alt.svg'
+import telephone from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/phone.svg'
 
 @Component({
   tag: 'kompas-footer-products',
@@ -64,16 +66,21 @@ export class KompasFooterProducts {
     const { address: businessAddress = '', phones: businessPhones = [] } = business_division
     const advertorial = () => {
       const telephones = businessPhones.map(ob => {
+
         return (
-          <div>{ ob.number }</div>
+          <a class="section--link" href={ `tel:${ob.number.replace(/\s/g, '')}` }>{ ob.number }</a>
         )
       })
 
       return (
         <div class="mb4 lg:mb0">
           <div class="section--label">Kantor Iklan</div>
-          <div>
-            <div innerHTML={ businessAddress } />
+          <div class="flex--row mb2">
+            <span class="icon mr1 mt1" innerHTML={ mapMarkerAlt } />
+            <div class="mb2" innerHTML={ businessAddress } />
+          </div>
+          <div class="flex--row mb2">
+            <span class="icon mr1 mt1" innerHTML={ telephone } />
             <div class="flex--col">{ telephones }</div>
           </div>
         </div>
@@ -84,14 +91,18 @@ export class KompasFooterProducts {
     const editorial = () => {
       const telephones = editorialPhones.map(ob => {
         return (
-          <div>{ ob.number }</div>
+          <a class="section--link" href={ `tel:${ob.number.replace(/\s/g, '')}` }>{ ob.number }</a>
         )
       })
       return (
         <div class="mb4">
           <div class="section--label">Kantor Redaksi</div>
-          <div>
-            <div innerHTML={ editorialAddress } />
+          <div class="flex--row mb2">
+            <span class="icon mr1 mt1" innerHTML={ mapMarkerAlt } />
+            <div class="mb2" innerHTML={ editorialAddress } />
+          </div>
+          <div class="flex--row mb2">
+            <span class="icon mr1 mt1" innerHTML={ telephone } />
             <div class="flex--col">{ telephones }</div>
           </div>
         </div>
@@ -131,18 +142,18 @@ export class KompasFooterProducts {
     return (
       <div class="items">
         {/* start: addresses */}
-        <div class="">
+        <div>
           { editorial() }
           { advertorial() }
         </div>
         {/* end: addresses */}
         {/* start: products */}
-        <div class="">
+        <div>
           { editorialProducts() }
         </div>
         {/* start: products */}
         {/* start: business */}
-        <div class="">
+        <div>
           { businessProducts() }
         </div>
         {/* end: business */}

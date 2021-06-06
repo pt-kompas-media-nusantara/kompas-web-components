@@ -2,12 +2,13 @@
 :host {
   @apply block;
   * {
+    @apply font-sans text-left;
     box-sizing: border-box;
   }
 }
 
 .default {
-  @apply bg-grey-600 flex flex-col font-sans pb-12 pt-5 px-4 text-xs w-full;
+  @apply bg-grey-600 flex flex-col pb-12 pt-5 px-4 text-xs w-full;
 }
 
 .default--copyright {

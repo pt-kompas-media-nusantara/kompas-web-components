@@ -4,12 +4,21 @@
   font-size: 100%;
 
   * {
+    @apply font-sans text-left;
     box-sizing: border-box;
   }
 }
 /* utils */
 .flex--col {
   @apply flex flex-col;
+}
+
+.flex--row {
+  @apply flex flex-row;
+}
+
+.mb2 {
+  @apply mb-2;
 }
 
 .mb4 {
@@ -20,6 +29,14 @@
   @screen lg {
     @apply mb-0;
   }
+}
+
+.mr1 {
+  @apply mr-1
+}
+
+.mt1 {
+  @apply mt-1;
 }
 
 .icon {
