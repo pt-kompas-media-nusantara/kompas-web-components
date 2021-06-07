@@ -28,11 +28,11 @@ yarn add -D @kompas/web-components
 ## Penggunaan
 
 ### Standar
-```html
-<kompas-footer />
-```
+Anda hanya perlu meletakkan _tag_ komponen  `<kompas-footer />` secara manasuka di halaman (lebih disukai di akhir halaman).
 
 ### Vue.js
+Apabila menggunakan Vue.js sebagai kerangka kerja Javascript, Anda perlu menambahkan konfigurasi berikut di `./src/main.js`:
+
 ```javascript
 import Vue from "vue";
 import App from "./App.vue";
@@ -55,6 +55,25 @@ applyPolyfills().then(() => {
 new Vue({
   render: (h) => h(App),
 }).$mount("#app");
+```
+
+### NuxtJS
+Apabila menggunakan NuxtJS, Anda bisa menggunakan pustaka [Gomah/nuxt-stencil](https://github.com/Gomah/nuxt-stencil). Tugas selanjutnya adalah menambahkan konfigurasi berikut di `nuxt.config.js`:
+
+```javascript
+export default {
+  modules: [
+    'nuxt-stencil'
+  ],
+  stencil: {
+    lib: '@kompas/web-components',
+    prefix: 'kompas-',
+    renderOptions: {},
+    hydratePath: '@kompas/web-components/hydrate',
+    loaderPath: '@kompas/web-components/loader',
+    ignoredElements: null
+  },
+}
 ```
 
 
