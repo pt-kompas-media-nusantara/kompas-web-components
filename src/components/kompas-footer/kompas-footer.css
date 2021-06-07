@@ -167,8 +167,10 @@
   @apply mb-4;
 }
 
-.ml--auto {
-  @apply ml-auto;
+.lg\:ml--auto {
+  @screen lg {
+    @apply ml-auto;
+  }
 }
 
 .ml--1 {

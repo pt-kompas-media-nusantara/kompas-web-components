@@ -19,9 +19,6 @@ export class KompasFooterDefault {
    */
   @State() copyright: string = '© PT Kompas Media Nusantara'
 
-  @State() mnLeft: object[] = []
-  @State() mnRight: object[] = []
-
   private clean (ob) {
     let res = []
     for (const key in ob) {
@@ -41,19 +38,21 @@ export class KompasFooterDefault {
     return res
   }
 
-  componentWillLoad() {
-    // console.log(this.menus)
-    const { footer_left = '', footer_right = '' } = this.menus
+  private mnLeft() {
+    const { footer_left = '' } = this.menus
     const footerLeft = this.clean(footer_left)
-    const footerRight = this.clean(footer_right)
-
-    this.mnLeft = footerLeft.map(ob => (
+    return footerLeft.map(ob => (
       <a class="menu--separator" href={ ob.url } key={ ob.id }>
         { ob.name }
       </a>
     ))
+  }
 
-    this.mnRight = footerRight.map(ob => (
+  private mnRight() {
+    const { footer_right = '' } = this.menus
+    const footerRight = this.clean(footer_right)
+
+    return footerRight.map(ob => (
       <a class="menu--separator" href={ ob.url } key={ ob.id }>
         { ob.name }
       </a>
@@ -68,10 +67,10 @@ export class KompasFooterDefault {
           <div class="flex-- mb--2 lg:mb--0 mr--2 text--grey-100">{ this.copyright }</div>
           {/* end: copyright */}
           {/* start: first menu */}
-          <div class="flex-- flex--wrap mb--2 lg:mb--0">{ this.mnLeft }</div>
+          <div class="flex-- flex--wrap mb--2 lg:mb--0">{ this.mnLeft() }</div>
           {/* end: first menu */}
           {/* start: first menu */}
-          <div class="flex-- ml--auto">{ this.mnRight }</div>
+          <div class="flex-- lg:ml--auto">{ this.mnRight() }</div>
           {/* end: first menu */}
         </div>
       </div>
