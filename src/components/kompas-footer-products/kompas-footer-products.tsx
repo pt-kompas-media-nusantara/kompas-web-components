@@ -9,7 +9,7 @@ import telephone from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/ph
 
 @Component({
   tag: 'kompas-footer-products',
-  styleUrl: 'kompas-footer-products.css',
+  styleUrl: '../kompas-footer/kompas-footer.css',
   shadow: true,
 })
 
@@ -24,12 +24,12 @@ export class KompasFooterProducts {
     const aboutLinks = () => {
       const { links } = about
       const list = links.map(ob => {
-        return <a class="section--link white" href={ ob.url } title={ob.label} target="_blank">{ ob.label }</a>
+        return <a class="no--underline text--grey-100  text--xs" href={ ob.url } title={ob.label} target="_blank">{ ob.label }</a>
       })
       return (
-        <div class="mb4">
-          <div class="section--label white">Tentang</div>
-          <div class="flex--col">{ list }</div>
+        <div class="mb--4">
+          <div class="flex-- font--bold mb--3 text--grey-100 text--sm uppercase--">Tentang</div>
+          <div class="flex-- flex--col">{ list }</div>
         </div>
       )
     }
@@ -37,18 +37,18 @@ export class KompasFooterProducts {
     const otherLinks = () => {
       const { links } = others
       const list = links.map(ob => {
-        return <a class="section--link white" href={ ob.url } title={ob.label} target="_blank">{ ob.label }</a>
+        return <a class="no--underline text--grey-100 text--xs" href={ ob.url } title={ob.label} target="_blank">{ ob.label }</a>
       })
       return (
         <div class="mb4">
-          <div class="section--label white">Lainnya</div>
-          <div class="flex--col">{ list }</div>
+          <div class="flex-- font--bold mb--3 text--grey-100 text--sm uppercase--">Lainnya</div>
+          <div class="flex-- flex--col">{ list }</div>
         </div>
       )
     }
 
     return (
-      <div class="about">
+      <div class="bg--brand-1 p--4 text--grey-100">
         { aboutLinks() }
         { otherLinks() }
         <div class="logo" innerHTML={ logo } />
@@ -66,22 +66,21 @@ export class KompasFooterProducts {
     const { address: businessAddress = '', phones: businessPhones = [] } = business_division
     const advertorial = () => {
       const telephones = businessPhones.map(ob => {
-
         return (
-          <a class="section--link" href={ `tel:${ob.number.replace(/\s/g, '')}` }>{ ob.number }</a>
+          <a class="no--underline text--grey-500" href={ `tel:${ob.number.replace(/\s/g, '')}` }>{ ob.number }</a>
         )
       })
 
       return (
-        <div class="mb4 lg:mb0">
-          <div class="section--label">Kantor Iklan</div>
-          <div class="flex--row mb2">
-            <span class="icon mr1 mt1" innerHTML={ mapMarkerAlt } />
-            <div class="mb2" innerHTML={ businessAddress } />
+        <div class="mb--4 lg:mb--0">
+          <div class="flex-- font--bold mb--3 text--grey-500 text--sm uppercase--">Kantor Iklan</div>
+          <div class="flex-- mb--2">
+            <span class="icon mr--1 mt--1" innerHTML={ mapMarkerAlt } />
+            <div class="mb--2 text--xs" innerHTML={ businessAddress } />
           </div>
-          <div class="flex--row mb2">
-            <span class="icon mr1 mt1" innerHTML={ telephone } />
-            <div class="flex--col">{ telephones }</div>
+          <div class="flex-- mb--2">
+            <span class="icon mr--1 mt--1" innerHTML={ telephone } />
+            <div class="flex-- flex--col text--xs">{ telephones }</div>
           </div>
         </div>
       )
@@ -91,19 +90,19 @@ export class KompasFooterProducts {
     const editorial = () => {
       const telephones = editorialPhones.map(ob => {
         return (
-          <a class="section--link" href={ `tel:${ob.number.replace(/\s/g, '')}` }>{ ob.number }</a>
+          <a class="no--underline text--grey-500" href={ `tel:${ob.number.replace(/\s/g, '')}` }>{ ob.number }</a>
         )
       })
       return (
-        <div class="mb4">
-          <div class="section--label">Kantor Redaksi</div>
-          <div class="flex--row mb2">
-            <span class="icon mr1 mt1" innerHTML={ mapMarkerAlt } />
-            <div class="mb2" innerHTML={ editorialAddress } />
+        <div class="mb--4">
+          <div class="flex-- font--bold mb--3 text--grey-500 text--sm uppercase--">Kantor Redaksi</div>
+          <div class="flex-- mb--2">
+            <span class="icon mr--1 mt--1" innerHTML={ mapMarkerAlt } />
+            <div class="mb--2 text--xs" innerHTML={ editorialAddress } />
           </div>
-          <div class="flex--row mb2">
-            <span class="icon mr1 mt1" innerHTML={ telephone } />
-            <div class="flex--col">{ telephones }</div>
+          <div class="flex-- mb--2">
+            <span class="icon mr--1 mt--1" innerHTML={ telephone } />
+            <div class="flex-- flex--col text--xs">{ telephones }</div>
           </div>
         </div>
       )
@@ -113,13 +112,13 @@ export class KompasFooterProducts {
     const businessProducts = () => {
       const { business : { label = '', items=[]} } = products
       const list = items.map(ob => {
-        return <a class="section--link" href={ ob.url } title={ ob.name } target="blank">{ ob.name }</a>
+        return <a class="no--underline text--grey-500 text--xs" href={ ob.url } title={ ob.name } target="blank">{ ob.name }</a>
       })
 
       return (
         <div>
-          <div class="section--label">{ label }</div>
-          <div class="flex--col">{ list }</div>
+          <div class="flex-- font--bold mb--3 text--grey-500 text--sm uppercase--">{ label }</div>
+          <div class="flex-- flex--col">{ list }</div>
         </div>
       )
     }
@@ -127,20 +126,20 @@ export class KompasFooterProducts {
     const editorialProducts = () => {
       const { editorial : { label = '', items=[]} } = products
       const list = items.map(ob => {
-        return <a class="section--link" href={ ob.url } title={ ob.name } target="blank">{ ob.name }</a>
+        return <a class="no--underline text--grey-500 text--xs" href={ ob.url } title={ ob.name } target="blank">{ ob.name }</a>
       })
 
       return (
-        <div class="mb4 lg:mb0">
-          <div class="section--label">{ label }</div>
-          <div class="flex--col">{ list }</div>
+        <div class="mb--4 lg:mb--0">
+          <div class="flex-- font--bold mb--3 text--grey-500 text--sm uppercase--">{ label }</div>
+          <div class="flex-- flex--col">{ list }</div>
         </div>
       )
     }
 
 
     return (
-      <div class="items">
+      <div class="col--span-1 lg:col--span-2 lg:gap--4 lg:grid-- lg:grid--cols-3 p--4 lg:px--0">
         {/* start: addresses */}
         <div>
           { editorial() }
@@ -174,16 +173,16 @@ export class KompasFooterProducts {
 
     const accounts = socialAccounts.map((ob, key) => {
       return (
-        <a class="social-account" href={ob.url} title={ ob.name } rel="nofollow" target="_blank">
+        <a class="flex-- items--center leading--none mb--1 no--underline text--grey-500" href={ob.url} title={ ob.name } rel="nofollow" target="_blank">
           <span class="icon" innerHTML={ icons[key] } />
-          <span>{ ob.name }</span>
+          <span class="bg--grey-500 leading--none ml--2 px--2 py--1 rounded--sm text--grey-100">{ ob.name }</span>
         </a>
       )
     })
 
     return (
-      <div class="profile">
-        <div class="mb4" innerHTML={ profileText } />
+      <div class="p--4 lg:px--0 text--grey-500 text--xs">
+        <div class="mb--4" innerHTML={ profileText } />
         <div>
           { accounts }
         </div>
@@ -191,14 +190,10 @@ export class KompasFooterProducts {
     )
   }
 
-  componentWillLoad() {
-    console.log(this.branding)
-  }
-
   render () {
     return (
-      <div class="container">
-        <div class="container--inner">
+      <div class="bg--grey-200 flex-- w--full">
+        <div class="gap--0 grid-- grid--cols-1 mx--auto text--grey-500 w--full lg:gap--4 lg:grid--cols-4" style={{ maxWidth: '960px' }}>
           { this.profile() }
           { this.items() }
           { this.about() }

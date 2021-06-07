@@ -1,13 +1,8 @@
 import { Component, Prop, State, h } from '@stencil/core'
 
-// interface Menu {
-//   footer_left: object,
-//   footer_right: object
-// }
-
 @Component({
   tag: 'kompas-footer-default',
-  styleUrl: 'kompas-footer-default.css',
+  styleUrl: '../kompas-footer/kompas-footer.css',
   shadow: true,
 })
 
@@ -53,13 +48,13 @@ export class KompasFooterDefault {
     const footerRight = this.clean(footer_right)
 
     this.mnLeft = footerLeft.map(ob => (
-      <a class="default--menu-item" href={ ob.url } key={ ob.id }>
+      <a class="menu--separator" href={ ob.url } key={ ob.id }>
         { ob.name }
       </a>
     ))
 
     this.mnRight = footerRight.map(ob => (
-      <a class="default--menu-item" href={ ob.url } key={ ob.id }>
+      <a class="menu--separator" href={ ob.url } key={ ob.id }>
         { ob.name }
       </a>
     ))
@@ -67,16 +62,16 @@ export class KompasFooterDefault {
 
   render() {
     return (
-      <div class="default">
-        <div class="default--inner">
+      <div class="bg--grey-600 flex-- flex--col pb--12 pt--5 px--4 text--xs w--full">
+        <div class="flex-- flex--col lg:flex--row mx--auto w--full" style={{ maxWidth: '960px' }}>
           {/* start: copyright */}
-          <div class="default--copyright">{ this.copyright }</div>
+          <div class="flex-- mb--2 lg:mb--0 mr--2 text--grey-100">{ this.copyright }</div>
           {/* end: copyright */}
           {/* start: first menu */}
-          <div class="default--menu first">{ this.mnLeft }</div>
+          <div class="flex-- flex--wrap mb--2 lg:mb--0">{ this.mnLeft }</div>
           {/* end: first menu */}
           {/* start: first menu */}
-          <div class="default--menu second">{ this.mnRight }</div>
+          <div class="flex-- ml--auto">{ this.mnRight }</div>
           {/* end: first menu */}
         </div>
       </div>

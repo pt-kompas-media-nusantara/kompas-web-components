@@ -7,7 +7,7 @@ import whatsapp from '../../../assets/fontawesome-free-5.15.3-web/svgs/brands/wh
 
 @Component({
   tag: 'kompas-footer-supports',
-  styleUrl: 'kompas-footer-supports.css',
+  styleUrl: '../kompas-footer/kompas-footer.css',
   shadow: true,
 })
 
@@ -64,9 +64,9 @@ export class KompasFooterSupports {
 
     res = res.map(o => {
       return (
-        <div class="support--item">
-          <span class="icon lg mr2" innerHTML={ o.icon } />
-          <div class="support--item-label">
+        <div class="flex-- items--center mb--4 lg:mb--0">
+          <span class="icon lg mr--2" innerHTML={ o.icon } />
+          <div class="flex-- flex--col leading--tight text--sm">
             <strong>{ o.label }</strong>
             <span>{ o.sublabel }</span>
           </div>
@@ -75,7 +75,7 @@ export class KompasFooterSupports {
     })
 
     return (
-      <div class="support-items">
+      <div class="col--span-1 lg:col--span-3 flex-- flex--col lg:flex--row lg:justify--between">
         { res }
       </div>
     )
@@ -88,20 +88,20 @@ export class KompasFooterSupports {
     return (
       <div>
         <strong>{ first }</strong>
-        <span class="ml1">{ second }</span>
+        <span class="ml--1">{ second }</span>
       </div>
     )
   }
 
   render () {
     return (
-      <div class="support">
-        <div class="support--inner">
+      <div class="bg--grey-100 border--grey-700 border--t border--t-solid flex-- px--4 py--8 w--full">
+        <div class="gap--0 lg:gap--4 grid-- grid--cols-1 lg:grid--cols-4 mx--auto text--grey-500 w--full" style={{ maxWidth: '960px' }}>
 
           {/* start: label */}
-          <div class="support--label">
+          <div class="flex-- items--center justify--between mb--4 lg:mb--0 uppercase--">
             { this.label() }
-            <span class="support--label-icon icon" innerHTML={chevronRight} />
+            <span class="flex-- icon" innerHTML={chevronRight} />
           </div>
           {/* end: label */}
 

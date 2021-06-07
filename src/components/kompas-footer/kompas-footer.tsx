@@ -14,7 +14,7 @@ import { branding, menus } from './branding.json'
 export class KompasFooter {
   render () {
     return (
-      <footer class="container">
+      <footer class="w--full">
         <kompas-footer-supports branding={ branding} />
         <kompas-footer-products branding={ branding } />
         <kompas-footer-default menus={ menus } />

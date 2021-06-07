@@ -2,10 +2,302 @@
 :host {
   @apply block;
   * {
+    @apply font-sans text-left;
     box-sizing: border-box;
   }
 }
 
-.container {
-  @apply w-full;
+.bg--brand-1 {
+  @apply bg-brand-1;
 }
+
+.bg--grey-100 {
+  @apply bg-grey-100;
+}
+
+.bg--grey-200 {
+  @apply bg-grey-200;
+}
+
+.bg--grey-500 {
+  @apply bg-grey-500;
+}
+
+.bg--grey-600 {
+  @apply bg-grey-600;
+}
+
+.border--grey-700 {
+  @apply border-grey-700;
+}
+
+.border--t {
+  @apply border-t;
+}
+
+.border--t-solid {
+  border-top-style: solid;
+}
+
+.col--span-1 {
+  @apply col-span-1;
+}
+
+.lg\:col--span-2 {
+  @screen lg {
+    @apply col-span-2;
+  }
+}
+
+.lg\:col--span-3 {
+  @screen lg {
+    @apply col-span-3;
+  }
+}
+
+.lg\:flex-- {
+  @screen lg {
+    @apply flex;
+  }
+}
+
+.flex-- {
+  @apply flex;
+}
+
+.flex--col {
+  @apply flex-col;
+}
+
+.lg\:flex--row {
+  @screen lg {
+    @apply flex-row;
+  }
+}
+
+.flex--wrap {
+  @apply flex-wrap;
+}
+
+.font--bold {
+  @apply font-bold;
+}
+
+.gap--0 {
+  @apply gap-0;
+}
+
+.lg\:gap--4 {
+  @screen lg {
+    @apply gap-4;
+  }
+}
+
+.grid-- {
+  @apply grid;
+}
+
+.lg\:grid-- {
+  @screen lg {
+    @apply grid;
+  }
+}
+
+.grid--cols-1 {
+  @apply grid-cols-1;
+}
+
+.lg\:grid--cols-3 {
+  @screen lg {
+    @apply grid-cols-3;
+  }
+}
+
+.lg\:grid--cols-4 {
+  @screen lg {
+    @apply grid-cols-4;
+  }
+}
+
+.hidden-- {
+  @apply hidden;
+}
+
+.items--center {
+  @apply items-center;
+}
+
+.justify--between {
+  @apply justify-between;
+}
+
+.lg\:justify--between {
+  @screen lg {
+    @apply justify-between;
+  }
+}
+
+.leading--none {
+  @apply leading-none;
+}
+
+.leading--tight {
+  @apply leading-tight;
+}
+
+.lg\:mb--0 {
+  @screen lg {
+    @apply mb-0;
+  }
+}
+
+.mb--1 {
+  @apply mb-1;
+}
+
+.mb--2 {
+  @apply mb-2;
+}
+
+.mb--3 {
+  @apply mb-3;
+}
+
+.mb--4 {
+  @apply mb-4;
+}
+
+.ml--auto {
+  @apply ml-auto;
+}
+
+.ml--1 {
+  @apply ml-1;
+}
+
+.ml--2 {
+  @apply ml-2;
+}
+
+.mr--1 {
+  @apply mr-1;
+}
+
+.mr--2 {
+  @apply mr-2;
+}
+
+.mt--1 {
+  @apply mt-1;
+}
+
+.mx--auto {
+  @apply mx-auto;
+}
+
+.no--underline {
+  @apply no-underline;
+}
+
+.p--4 {
+  @apply p-4;
+}
+
+.pb--12 {
+  @apply pb-12;
+}
+
+.pt--5 {
+  @apply pt-5;
+}
+
+.lg\:px--0 {
+  @screen lg {
+    @apply px-0;
+  }
+}
+
+.px--2 {
+  @apply px-2;
+}
+
+.px--4 {
+  @apply px-4
+}
+
+.py--1 {
+  @apply py-1;
+}
+
+.py--8 {
+  @apply py-8;
+}
+
+.rounded--sm {
+  @apply rounded-sm;
+}
+
+.text--base {
+  @apply text-base;
+}
+
+.text--grey-100 {
+  @apply text-grey-100;
+}
+
+.text--grey-500 {
+  @apply text-grey-500;
+}
+
+.text--sm {
+  @apply text-sm;
+}
+
+.text--xs {
+  @apply text-xs;
+}
+
+.uppercase-- {
+  @apply uppercase;
+}
+
+.w--full {
+  @apply w-full
+}
+
+
+
+
+/* spesial gak pake utils */
+.icon {
+  @apply h-4 text-grey-500;
+
+  & svg {
+    @apply block h-4 fill-current;
+  }
+
+  &.lg {
+    @apply h-6;
+
+    & svg {
+      @apply h-6;
+    }
+  }
+}
+
+.logo {
+  @apply pt-5;
+  & svg {
+    @apply h-11;
+  }
+}
+
+.menu--separator {
+  @apply border-r border-grey-100 flex no-underline px-1 text-grey-100;
+  border-right-style: solid;
+
+  &:last-child {
+    border-right-style: none;
+  }
+}
+
