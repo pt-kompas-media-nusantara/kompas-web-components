@@ -38,6 +38,13 @@ export const config: Config = {
     inlineSvg()
   ],
   bundles: [
-    { components: ['kompas-footer', 'kompas-footer-default', 'kompas-footer-supports', 'kompas-footer-products'] }
+    { 
+      components: [
+        'kompas-footer',
+        'kompas-footer-default',
+        'kompas-footer-supports',
+        'kompas-footer-products'
+      ] 
+    }
   ]
 };

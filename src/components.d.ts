@@ -6,6 +6,18 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface KidPaywall {
+        /**
+          * Props
+         */
+        "isLogin": boolean;
+    }
+    interface KidPaywall2 {
+        /**
+          * Props
+         */
+        "isLogin": boolean;
+    }
     interface KidRecommender {
         /**
           * Kunci otentikasi
@@ -58,6 +70,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLKidPaywallElement extends Components.KidPaywall, HTMLStencilElement {
+    }
+    var HTMLKidPaywallElement: {
+        prototype: HTMLKidPaywallElement;
+        new (): HTMLKidPaywallElement;
+    };
+    interface HTMLKidPaywall2Element extends Components.KidPaywall2, HTMLStencilElement {
+    }
+    var HTMLKidPaywall2Element: {
+        prototype: HTMLKidPaywall2Element;
+        new (): HTMLKidPaywall2Element;
+    };
     interface HTMLKidRecommenderElement extends Components.KidRecommender, HTMLStencilElement {
     }
     var HTMLKidRecommenderElement: {
@@ -89,6 +113,8 @@ declare global {
         new (): HTMLKompasFooterSupportsElement;
     };
     interface HTMLElementTagNameMap {
+        "kid-paywall": HTMLKidPaywallElement;
+        "kid-paywall-2": HTMLKidPaywall2Element;
         "kid-recommender": HTMLKidRecommenderElement;
         "kompas-footer": HTMLKompasFooterElement;
         "kompas-footer-default": HTMLKompasFooterDefaultElement;
@@ -97,6 +123,18 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface KidPaywall {
+        /**
+          * Props
+         */
+        "isLogin"?: boolean;
+    }
+    interface KidPaywall2 {
+        /**
+          * Props
+         */
+        "isLogin"?: boolean;
+    }
     interface KidRecommender {
         /**
           * Kunci otentikasi
@@ -148,6 +186,8 @@ declare namespace LocalJSX {
         "branding": any;
     }
     interface IntrinsicElements {
+        "kid-paywall": KidPaywall;
+        "kid-paywall-2": KidPaywall2;
         "kid-recommender": KidRecommender;
         "kompas-footer": KompasFooter;
         "kompas-footer-default": KompasFooterDefault;
@@ -159,6 +199,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "kid-paywall": LocalJSX.KidPaywall & JSXBase.HTMLAttributes<HTMLKidPaywallElement>;
+            "kid-paywall-2": LocalJSX.KidPaywall2 & JSXBase.HTMLAttributes<HTMLKidPaywall2Element>;
             "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
             "kompas-footer": LocalJSX.KompasFooter & JSXBase.HTMLAttributes<HTMLKompasFooterElement>;
             "kompas-footer-default": LocalJSX.KompasFooterDefault & JSXBase.HTMLAttributes<HTMLKompasFooterDefaultElement>;

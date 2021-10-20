@@ -1,0 +1,174 @@
+.paywall {
+  relative w-full -mt-24
+}
+
+.transparent-linear {
+  background-image: -webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,0)),to(#fff))
+  background-image: linear-gradient(180deg,hsla(0,0%,100%,0),#fff)
+}
+.text-transition {
+  w-full
+  h-20
+}
+.title-container {
+  bg-grey-100 flex flex-col items-center text-center pb-8 w-full
+}
+.title {
+  flex font-serif font-bold text-4xl pb-2
+}
+.excerpt{
+  flex text-base
+}
+.header {
+  bg-grey-100 py-6 flex flex-col font-sans items-center w-full 
+  @screen lg {
+    flex-row
+    justify-between
+  }
+}
+
+.header__link {
+  font-bold text-brand-1 underline
+}
+
+.membership {
+  bg-grey-100 font-sans w-full flex flex-col pb-8 
+  @screen lg {
+    flex-row
+  }
+}
+
+.membership-container {
+  flex flex-col px-4 w-full box-border 
+  @screen lg {
+    order-none
+  }
+}
+.membership__order-first {
+  order-first
+}
+.membership-box__default {
+  border border-grey-300
+}
+.membership-box__popular {
+  bg-brand-1 text-grey-100
+}
+.membership-popular-label {
+  bg-orange-300 p-1 text-center mx-4
+}
+
+.membership-box {
+  shadow-md flex flex-grow flex-col rounded-lg w-full mb-4
+}
+
+.membership--title {
+  font-bold text-center text-2xl px-4 py-8
+}
+
+.banner-registration {
+  box-border flex flex-col w-full items-center p-4 bg-blue-100
+
+  @screen md {
+    flex-row py-0 px-8
+  }
+}
+
+.banner-registration--content {
+  flex w-full pb-3
+
+  @screen md {
+    pb-0 w-3/4 
+  }
+}
+
+.banner-registration--content--img {
+  flex-1
+}
+
+.banner-registration--content--text {
+  flex w-3/4 items-center justify-center
+}
+
+.banner-registration--content--text-wrapper {
+  font-sans text-grey-600 text-base font-bold pl-4  
+  @screen md {
+    text-xl text-center
+  }
+}
+
+.banner-registration--action {
+  w-full justify-end
+
+  @screen md {
+    w-1/4 flex
+  }
+}
+
+.banner-registration--action--button {
+  w-full font-bold shadow capitalize rounded px-4 h-8 leading-8 justify-center items-center inline-flex bg-green-400 text-grey-100
+  @screen md {
+    w-auto
+  }
+}
+
+.banner-registration--action--button--label {
+  /* font-pt-sans */
+  inline
+}
+
+/* 
+* media queries
+*/
+
+.md\:flex {
+  @screen md {
+    @apply flex;
+  }
+}
+.md\:w-1/4 {
+  @screen md {
+    @apply w-1/4;
+  }
+}
+.md\:w-3/4 {
+  @screen md {
+    @apply w-3/4;
+  }
+}
+.md\:w-auto {
+  @screen md {
+    @apply w-auto;
+  }
+}
+.md\:text-xl{
+  @screen md {
+    @apply text-xl;
+  }
+}
+.md\:text-center {
+  @screen md {
+    @apply text-center;
+  }
+}
+.md\:pb-0 {
+  @screen md {
+    @apply pb-0
+  }
+}
+.md\:py-0 {
+  @screen md {
+    @apply py-0
+  }
+}
+
+.md\:px-8 {
+  @screen md {
+    @apply px-8
+  }
+}
+
+.md\:flex-row {
+  @screen md {
+    flex-row
+  }
+}
