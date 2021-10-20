@@ -4,6 +4,7 @@
  */
 
 import { Component, State, h, Prop } from '@stencil/core'
+import fasCheck from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.svg'
 
 type membership = {
   title: string,
@@ -129,12 +130,26 @@ export class KidPaywall2 {
     )
   }
   private templateMemberships() {
+    
     const membership = () => {
+      const benefitsList = (benefits: string[], popular:boolean) => {
+        return benefits.map( (list) => {
+          return (
+            <div class="flex py-1 w-full">
+              <span class="pr-2 icon" innerHTML={ fasCheck }/>
+              <div class={`text-left text-sm ${ popular? 'text-grey-100': 'text-grey-700'}`}>{list}</div>
+            </div>
+            )
+          }
+        )
+      }
       const labelPopular = <div class="bg-orange-300 p-1 text-center mx-4">POPULER</div> 
       const items = this.items.map(item => {
         return (
         <div class={ `flex flex-col px-4 w-full box-border lg:order-none ${ item.popular ? 'order-first' : '' }` }> 
-          { item.popular ? labelPopular : '' }
+          <div class={item.popular ? 'px-4': 'p-4'}>
+            { item.popular ? labelPopular : '' }
+          </div>
           <div class={ `${item.popular ? 'bg-brand-1 text-grey-100' : 'border border-grey-300' } shadow-md flex flex-grow flex-col rounded-lg w-full mb-4`} >
             <div class="font-bold text-center text-2xl px-4 py-8">{ item.title }</div>
             <img src={item.image} alt={item.title} style={{ width:"100%", marginBottom:"1.5rem" }}/>
@@ -142,6 +157,13 @@ export class KidPaywall2 {
               <span class="font-bold text-lg">{ item.harga }</span>
               <span class="lowercase"> /{ item.satuan }</span>
             </div>
+            <div class="px-4 text-sm">
+              <a href={item.url} class="font-bold bg-green-400 capitalize text-grey-100 rounded-lg h-10 px-5 text-xl leading-7 flex justify-center items-center">BERLANGGANAN</a>
+              <div class="flex flex-col p-2 w-full">
+                { benefitsList(item.benefits, item.popular) }
+              </div>
+            </div>
+            
           </div>
           
         </div>
@@ -151,7 +173,7 @@ export class KidPaywall2 {
         <div class="bg-grey-100 font-sans w-full flex flex-col pb-8 lg:flex-row">{ items }</div>
       )
     }
-    return <div>{ membership() }</div>
+    return membership()
   }
   private templateBannerRegistration() {
     return (

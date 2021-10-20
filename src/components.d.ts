@@ -14,7 +14,7 @@ export namespace Components {
     }
     interface KidPaywall2 {
         /**
-          * Props
+          * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
         "isLogin": boolean;
     }
@@ -131,7 +131,7 @@ declare namespace LocalJSX {
     }
     interface KidPaywall2 {
         /**
-          * Props
+          * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
         "isLogin"?: boolean;
     }
