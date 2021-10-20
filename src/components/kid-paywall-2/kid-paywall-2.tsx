@@ -1,7 +1,6 @@
 /**
  * Komponen yang menampilkan paywall
  * command purge css
- * purgecss --css src/components/kid-paywall-2/minify-tailwind.css --content src/components/kid-paywall-2/paywall.html --output  src/components/kid-paywall-2/purge-style.css
  */
 
 import { Component, State, h, Prop } from '@stencil/core'
@@ -39,13 +38,16 @@ interface apiResponseData {
 
 @Component({
   tag: 'kid-paywall-2',
-  styleUrl: 'purge-style.css',
+  styleUrl: 'kid-paywall.css',
   shadow: true
 })
 
 export class KidPaywall2 {
   /**
    * Props
+   */
+  /**
+   * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
    */
   @Prop() isLogin: boolean = false
 
@@ -165,7 +167,7 @@ export class KidPaywall2 {
           </div>
         </div>
         <div class="w-full justify-end md:w-1/4 md:flex">
-          <div class="w-full font-bold shadow capitalize rounded px-4 h-8 leading-8 justify-center items-center inline-flex bg-green-400 text-grey-100 md:w-auto">
+          <div class="w-full font-bold shadow capitalize rounded px-4 h-8 leading-8 justify-center items-center inline-flex bg-green-400 text-grey-100 md:w-auto select-none">
             <span class="inline">{ this.registration.action.label }</span>
           </div>
         </div>

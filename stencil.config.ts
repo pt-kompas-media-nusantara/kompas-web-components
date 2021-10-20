@@ -4,6 +4,19 @@ import { inlineSvg } from 'stencil-inline-svg';
 import autoprefixer from 'autoprefixer';
 import nested from 'postcss-nested';
 import tailwind from 'tailwindcss';
+import tailwind2, { PluginOpts } from 'stencil-tailwind-plugin';
+import tailwindConfig from './tailwind.config';
+const opts = Object.assign(
+    {},
+    PluginOpts.DEFAULT,
+    { 
+      debug: true,
+
+      stripComments: true,
+      enablePurge: true,
+      tailwindConf: tailwindConfig
+    }
+  )
 
 export const config: Config = {
   namespace: 'kompas-web-components',
@@ -28,6 +41,7 @@ export const config: Config = {
     }
   ],
   plugins: [
+    tailwind2(opts),
     postcss({
       plugins: [
         nested(),
@@ -37,6 +51,9 @@ export const config: Config = {
     }),
     inlineSvg()
   ],
+  devServer: {
+    reloadStrategy: 'pageReload'
+  },
   bundles: [
     { 
       components: [

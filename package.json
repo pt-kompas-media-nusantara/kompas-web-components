@@ -39,6 +39,7 @@
     "postcss-nested": "^5.0.5",
     "puppeteer": "^5.5.0",
     "stencil-inline-svg": "^1.0.1",
+    "stencil-tailwind-plugin": "^0.5.0",
     "tailwindcss": "^2.1.2"
   }
 }
