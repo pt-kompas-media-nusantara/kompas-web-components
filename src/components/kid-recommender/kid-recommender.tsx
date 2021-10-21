@@ -210,15 +210,13 @@ export class KidRecommender {
         thumbnail = '',
         url = ''
       } = reqJson
-      // console.log(reqJson)
+
       this.resTitle = judul
       this.resThumbnail = thumbnail
       this.resPermalink = url
     } catch (error) {
-
       this.errorMsg = error.message
     }
-
   }
 
   render() {

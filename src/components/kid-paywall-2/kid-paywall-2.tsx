@@ -52,42 +52,74 @@ export class KidPaywall2 {
    */
   @Prop() isLogin: boolean = false
 
+  /**
+   * States
+   */
+  /**
+   * Pesan apabila terjadi galat, berubah ketika terjadi galat
+   */
   @State() errorMsg: string = ''
+  /**
+   * Teks yang tertera di bawah judul paywall
+   */
   @State() excerpt = 'Dapatkan akses tanpa batas ke seluruh artikel premium dengan berlangganan Kompas.id.'
+  /**
+   * Judul paywal
+   */
   @State() title = 'Jadilah Bagian dari Jurnalisme Berkualitas 2'
+  /**
+   * Teks dan alamat url yang ditampilkan pada section Membership
+   */
   @State() items: membership[]
+  /**
+   * Teks dan alamat url yang ditampilkan pada section Login
+   */
   @State() login: section = {
-    url: 'https://login.kompas.id/login',
+    url: 'https://account.kompas.id/login',
     text: 'Sudah punya akun?',
     label: 'Silakan Masuk'
   }
+  /**
+   * Teks dan alamat url yang ditampilkan pada section branding
+   */
   @State() branding: section = {
     url: 'https://korporasi.kompas.id/produk/kompas-id',
     text: '',
     label: 'Mengapa Kompas.id?'
   }
+  /**
+   * Teks dan alamat url yang ditampilkan pada section registration
+   */
   @State() registration: registration = {
     content: {
-      img: 'https://www-beta.kompas.id/img/backgrounds/ilustrasi-banner-registration.png',
+      img: 'https://www.kompas.id/img/backgrounds/ilustrasi-banner-registration.png',
       url: '',
       label: 'Daftar Sekarang',
       text: 'Lanjutkan baca artikel ini dan artikel lainnya dengan daftar akun Kompas.id.',
     },
     action: {
-      url: 'https://login.kompas.id/register',
+      url: 'https://account.kompas.id/register',
       label: 'Daftar Sekarang',
       text: '',
     }
   }
-
+  /**
+   * TEMPLATING
+   */
+  /**
+   * Mengelola tampilan error
+   */
   private templateError() {
     return (
-      <div class="error">
-        <h3 class="error--label">Galat</h3>
-        <p class="error--text">{ this.errorMsg }</p>
+      <div class="bg-red-200 p-4 rounded w-full">
+        <h3 class="font-bold mb-2 mt-0 mx-0 text-base leading-tight">Galat</h3>
+        <p class="my-0 text-base">{ this.errorMsg }</p>
       </div>
     )
   }
+  /**
+   * Mengelola tampilan paywall secara general
+   */
   private templateResult() {
     return (
       <div>
@@ -99,6 +131,9 @@ export class KidPaywall2 {
       </div>
     )
   }
+  /**
+   * Mengelola tampilan pada section Header
+   */
   private templateHeader() {
     return (
       <div class="bg-grey-100 py-6 flex flex-col font-sans items-center w-full lg:flex-row lg:justify-between">
@@ -121,6 +156,9 @@ export class KidPaywall2 {
         </div>
     )
   }
+  /**
+   * mengelola tampilan pada section judul
+   */
   private templateTitle() {
     return (
       <div class="bg-grey-100 flex flex-col items-center text-center pb-8 w-full">
@@ -129,8 +167,10 @@ export class KidPaywall2 {
       </div>
     )
   }
+  /**
+   * mengelola tampilan pada section Membership
+   */
   private templateMemberships() {
-    
     const membership = () => {
       const benefitsList = (benefits: string[], popular:boolean) => {
         return benefits.map( (list) => {
@@ -154,7 +194,7 @@ export class KidPaywall2 {
             <div class="font-bold text-center text-2xl px-4 py-8">{ item.title }</div>
             <img src={item.image} alt={item.title} style={{ width:"100%", marginBottom:"1.5rem" }}/>
             <div class="text-center">
-              <span class="font-bold text-lg">{ item.harga }</span>
+              <span class="font-bold text-lg">{ this.rupiahFormat(item.harga) }</span>
               <span class="lowercase"> /{ item.satuan }</span>
             </div>
             <div class="px-4 text-sm">
@@ -175,6 +215,9 @@ export class KidPaywall2 {
     }
     return membership()
   }
+  /**
+   * mengelola tampilan pada section Banner Registration
+   */
   private templateBannerRegistration() {
     return (
       <div class="box-border flex flex-col w-full items-center p-4 bg-blue-100  md:flex-row  md:py-0  md:px-8">
@@ -196,7 +239,19 @@ export class KidPaywall2 {
       </div>
     )
   }
-
+  /** 
+   * MEHTODS
+   */
+  /**
+   * Fungsi untuk mengkonversi format string (angka) ke format rupiah
+   * @param str 
+   */
+  private rupiahFormat(str:string):string {
+    return 'Rp ' + str.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+  }
+  /**
+   * Metode ini dipanggil sekali sebelum komponen terhubung dengan DOM
+   */
   async componentWillLoad() {
     try{
       const req = await fetch(
@@ -205,12 +260,18 @@ export class KidPaywall2 {
             method: 'GET'
           }
       )
-
+      /**
+       * fetch() hanya mendeteksi galat jaringan.
+       * Galat lain (40x, 50x) harus ditangani secara manual.
+       */
       if (req.status !== 200) {
         throw new Error(`${req.status} Ada galat saat memproses permintaan.`)
       }
-  
+      /**
+       * fetch() mendapatkan respons 200
+       */
       const reqJson: apiResponseData = await req.json()
+
       const {
         result: {
           title = this.title,
@@ -236,7 +297,7 @@ export class KidPaywall2 {
 
   render() {
     return (
-      <div class="relative w-full -mt-24">
+      <div class={`relative w-full ${this.errorMsg ? '' : '-mt-24'}`}>
         { this.errorMsg ? this.templateError() : this.templateResult() }
       </div>
     )
