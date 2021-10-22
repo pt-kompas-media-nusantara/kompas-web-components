@@ -38,12 +38,12 @@ interface apiResponseData {
 }
 
 @Component({
-  tag: 'kid-paywall-2',
+  tag: 'kid-paywall',
   styleUrl: 'kid-paywall.css',
   shadow: true
 })
 
-export class KidPaywall2 {
+export class KidPaywall {
   /**
    * Props
    */

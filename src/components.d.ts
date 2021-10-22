@@ -8,12 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface KidPaywall {
         /**
-          * Props
-         */
-        "isLogin": boolean;
-    }
-    interface KidPaywall2 {
-        /**
           * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
         "isLogin": boolean;
@@ -76,12 +70,6 @@ declare global {
         prototype: HTMLKidPaywallElement;
         new (): HTMLKidPaywallElement;
     };
-    interface HTMLKidPaywall2Element extends Components.KidPaywall2, HTMLStencilElement {
-    }
-    var HTMLKidPaywall2Element: {
-        prototype: HTMLKidPaywall2Element;
-        new (): HTMLKidPaywall2Element;
-    };
     interface HTMLKidRecommenderElement extends Components.KidRecommender, HTMLStencilElement {
     }
     var HTMLKidRecommenderElement: {
@@ -114,7 +102,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "kid-paywall": HTMLKidPaywallElement;
-        "kid-paywall-2": HTMLKidPaywall2Element;
         "kid-recommender": HTMLKidRecommenderElement;
         "kompas-footer": HTMLKompasFooterElement;
         "kompas-footer-default": HTMLKompasFooterDefaultElement;
@@ -124,12 +111,6 @@ declare global {
 }
 declare namespace LocalJSX {
     interface KidPaywall {
-        /**
-          * Props
-         */
-        "isLogin"?: boolean;
-    }
-    interface KidPaywall2 {
         /**
           * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
@@ -187,7 +168,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
-        "kid-paywall-2": KidPaywall2;
         "kid-recommender": KidRecommender;
         "kompas-footer": KompasFooter;
         "kompas-footer-default": KompasFooterDefault;
@@ -200,7 +180,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "kid-paywall": LocalJSX.KidPaywall & JSXBase.HTMLAttributes<HTMLKidPaywallElement>;
-            "kid-paywall-2": LocalJSX.KidPaywall2 & JSXBase.HTMLAttributes<HTMLKidPaywall2Element>;
             "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
             "kompas-footer": LocalJSX.KompasFooter & JSXBase.HTMLAttributes<HTMLKompasFooterElement>;
             "kompas-footer-default": LocalJSX.KompasFooterDefault & JSXBase.HTMLAttributes<HTMLKompasFooterDefaultElement>;

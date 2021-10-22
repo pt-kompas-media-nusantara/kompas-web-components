@@ -3,17 +3,17 @@
  * npm run test.spec -- src/components/kid-paywall/kid-paywall.spec.ts
  */
 import { newSpecPage } from '@stencil/core/testing'
-import { KidPaywall2 } from './kid-paywall-2'
+import { KidPaywall } from './kid-paywall'
 
 describe('KidRecommender', () => {
   it('component without props is rendered and throws an error', async () => {
     const { root } = await newSpecPage({
-      components: [KidPaywall2],
-      html: `<kid-paywall-2></kid-paywall-2>`
+      components: [KidPaywall],
+      html: `<kid-paywall></kid-paywall>`
     })
 
     expect(root).toEqualHtml(`
-      <kid-paywall-2>
+      <kid-paywall>
         <mock:shadow-root>
           <div class="container">
             <div class="error">
@@ -22,18 +22,18 @@ describe('KidRecommender', () => {
             </div>
           </div>
         </mock:shadow-root>
-      </kid-paywall-2>
+      </kid-paywall>
     `)
   })
 
   it('component without auth-key prop is rendered and throws an error', async() => {
     const { root } = await newSpecPage({
-      components: [KidPaywall2],
+      components: [KidPaywall],
       html: `<kid-recommender is-login="true"></kid-recommender>`
     })
 
     expect(root).toEqualHtml(`
-      <kid-paywall-2 is-login="true">
+      <kid-paywall is-login="true">
         <mock:shadow-root>
           <div class="container">
             <div class="error">
@@ -42,7 +42,7 @@ describe('KidRecommender', () => {
             </div>
           </div>
         </mock:shadow-root>
-      </kid-paywall-2>
+      </kid-paywall>
     `)
   })
 })
