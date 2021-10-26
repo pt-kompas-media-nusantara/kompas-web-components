@@ -35,9 +35,14 @@ _Bagian ini menyusul_.
 
 ## Properties
 
-| Property  | Attribute  | Description                                                                      | Type      | Default |
-| --------- | ---------- | -------------------------------------------------------------------------------- | --------- | ------- |
-| `isLogin` | `is-login` | prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis. | `boolean` | `false` |
+| Property            | Attribute             | Description                                                                                                                                        | Type      | Default |
+| ------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| `gtmBrandingMedium` | `gtm-branding-medium` | prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.                    | `string`  | `''`    |
+| `gtmLoginMedium`    | `gtm-login-medium`    | prop gtmLoginMedium mengakomodasi penambahan atribut param `track_medium` di permalink button login.                                               | `string`  | `''`    |
+| `gtmPaywallMedium`  | `gtm-paywall-medium`  | prop gtmPaywallMedium mengakomodasi penambahan atribut param `track_medium` di permalink button berlangganan pada setiap item paket berlangganan`. | `string`  | `''`    |
+| `gtmTrackContent`   | `gtm-track-content`   | prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.                                                    | `string`  | `''`    |
+| `gtmTrackSource`    | `gtm-track-source`    | prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.                                                      | `string`  | `''`    |
+| `isLogin`           | `is-login`            | prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.                                                                   | `boolean` | `false` |
 
 
 ----------------------------------------------

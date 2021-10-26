@@ -53,6 +53,30 @@ export class KidPaywall {
   @Prop() isLogin: boolean = false
 
   /**
+   * prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.
+   */
+  @Prop() gtmTrackSource: string = ''
+
+  /**
+   * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+   */
+  @Prop() gtmTrackContent: string = ''
+
+  /**
+   * prop gtmLoginMedium mengakomodasi penambahan atribut param `track_medium` di permalink button login.
+   */
+  @Prop() gtmLoginMedium: string = ''
+
+  /**
+   * prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.
+   */
+  @Prop() gtmBrandingMedium: string = ''
+
+  /**
+   * prop gtmPaywallMedium mengakomodasi penambahan atribut param `track_medium` di permalink button berlangganan pada setiap item paket berlangganan`.
+   */
+  @Prop() gtmPaywallMedium: string = ''
+  /**
    * States
    */
   /**
@@ -74,35 +98,15 @@ export class KidPaywall {
   /**
    * Teks dan alamat url yang ditampilkan pada section Login
    */
-  @State() login: section = {
-    url: 'https://account.kompas.id/login',
-    text: 'Sudah punya akun?',
-    label: 'Silakan Masuk'
-  }
+  @State() login: section
   /**
    * Teks dan alamat url yang ditampilkan pada section branding
    */
-  @State() branding: section = {
-    url: 'https://korporasi.kompas.id/produk/kompas-id',
-    text: '',
-    label: 'Mengapa Kompas.id?'
-  }
+  @State() branding: section
   /**
    * Teks dan alamat url yang ditampilkan pada section registration
    */
-  @State() registration: registration = {
-    content: {
-      img: 'https://www.kompas.id/img/backgrounds/ilustrasi-banner-registration.png',
-      url: '',
-      label: 'Daftar Sekarang',
-      text: 'Lanjutkan baca artikel ini dan artikel lainnya dengan daftar akun Kompas.id.',
-    },
-    action: {
-      url: 'https://account.kompas.id/register',
-      label: 'Daftar Sekarang',
-      text: '',
-    }
-  }
+  @State() registration: registration
   /**
    * TEMPLATING
    */
@@ -141,14 +145,14 @@ export class KidPaywall {
           { this.login.text }
           <a 
             class="font-bold text-brand-1 underline"  
-            href={ this.login.url }
+            href={ this.gtmPermalink(this.login.url, this.gtmLoginMedium) }
           >
             { this.login.label }
           </a>
         </div>
         <a
           class="font-bold text-brand-1 underline" 
-          href={ this.branding.url}
+          href={ this.gtmPermalink(this.branding.url, this.gtmBrandingMedium)}
           target="_blank"
         >
           { this.branding.label }
@@ -177,14 +181,15 @@ export class KidPaywall {
           return (
             <div class="flex py-1 w-full">
               <span class="pr-2 icon" innerHTML={ fasCheck }/>
-              <div class={`text-left text-sm ${ popular? 'text-grey-100': 'text-grey-700'}`}>{list}</div>
+              <div class={`text-left text-sm ${ popular? 'text-grey-100': 'text-grey-700'}`}>{ list }</div>
             </div>
             )
           }
         )
       }
       const labelPopular = <div class="bg-orange-300 p-1 text-center mx-4">POPULER</div> 
-      const items = this.items.map(item => {
+      const items = this.items.map((item,index) => {
+        
         return (
         <div class={ `flex flex-col px-4 w-full box-border lg:order-none ${ item.popular ? 'order-first' : '' }` }> 
           <div class={item.popular ? 'px-4': 'p-4'}>
@@ -192,18 +197,23 @@ export class KidPaywall {
           </div>
           <div class={ `${item.popular ? 'bg-brand-1 text-grey-100' : 'border border-grey-300' } shadow-md flex flex-grow flex-col rounded-lg w-full mb-4`} >
             <div class="font-bold text-center text-2xl px-4 py-8">{ item.title }</div>
-            <img src={item.image} alt={item.title} style={{ width:"100%", marginBottom:"1.5rem" }}/>
+            <img src={ item.image } alt={ item.title } class="w-full mb-6"/>
             <div class="text-center">
               <span class="font-bold text-lg">{ this.rupiahFormat(item.harga) }</span>
               <span class="lowercase"> /{ item.satuan }</span>
             </div>
             <div class="px-4 text-sm">
-              <a href={item.url} class="font-bold bg-green-400 capitalize text-grey-100 rounded-lg h-10 px-5 text-xl leading-7 flex justify-center items-center">BERLANGGANAN</a>
+              <a
+                href={ this.gtmPermalink(item.url,`${this.gtmPaywallMedium}${index}`) }
+                class="font-bold bg-green-400 capitalize text-grey-100 rounded-lg h-10 px-5 text-xl leading-7 flex justify-center items-center"
+                target="_blank"
+              >
+                BERLANGGANAN
+              </a>
               <div class="flex flex-col p-2 w-full">
                 { benefitsList(item.benefits, item.popular) }
               </div>
             </div>
-            
           </div>
           
         </div>
@@ -248,6 +258,26 @@ export class KidPaywall {
    */
   private rupiahFormat(str:string):string {
     return 'Rp ' + str.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+  }
+  /**
+   * Fungsi untuk secara dinamis menambahkan param gtm. 
+   * mendeteksi input url apakah mempunyai query/(?) sebelum diconcat dengan param gtm
+   * @param str : isinya url typedata string yang mau di tambahain gtm
+   * @param trackMedium : isinya string attribut track_medium gtm
+   */
+  private gtmPermalink(str:string, trackMedium:string):string {
+    
+    const escapeUrlContent = encodeURIComponent(this.gtmTrackContent)
+    let urlDelimiter = '?'
+    if(str.includes('?')) {
+      urlDelimiter = '&'
+    }
+    const params = [
+      `track_source=${this.gtmTrackSource}`,
+      `track_medium=${trackMedium}`,
+      `track_content=${escapeUrlContent}`
+    ]
+    return `${str}${urlDelimiter}${params.join('&')}`
   }
   /**
    * Metode ini dipanggil sekali sebelum komponen terhubung dengan DOM
@@ -297,7 +327,7 @@ export class KidPaywall {
 
   render() {
     return (
-      <div class={`relative w-full ${this.errorMsg ? '' : '-mt-24'}`}>
+      <div class={`relative w-full mb-4 ${this.errorMsg ? '' : '-mt-24'}`}>
         { this.errorMsg ? this.templateError() : this.templateResult() }
       </div>
     )

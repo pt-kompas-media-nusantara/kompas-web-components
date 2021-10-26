@@ -8,6 +8,26 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface KidPaywall {
         /**
+          * prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.
+         */
+        "gtmBrandingMedium": string;
+        /**
+          * prop gtmLoginMedium mengakomodasi penambahan atribut param `track_medium` di permalink button login.
+         */
+        "gtmLoginMedium": string;
+        /**
+          * prop gtmPaywallMedium mengakomodasi penambahan atribut param `track_medium` di permalink button berlangganan pada setiap item paket berlangganan`.
+         */
+        "gtmPaywallMedium": string;
+        /**
+          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+         */
+        "gtmTrackContent": string;
+        /**
+          * prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.
+         */
+        "gtmTrackSource": string;
+        /**
           * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
         "isLogin": boolean;
@@ -111,6 +131,26 @@ declare global {
 }
 declare namespace LocalJSX {
     interface KidPaywall {
+        /**
+          * prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.
+         */
+        "gtmBrandingMedium"?: string;
+        /**
+          * prop gtmLoginMedium mengakomodasi penambahan atribut param `track_medium` di permalink button login.
+         */
+        "gtmLoginMedium"?: string;
+        /**
+          * prop gtmPaywallMedium mengakomodasi penambahan atribut param `track_medium` di permalink button berlangganan pada setiap item paket berlangganan`.
+         */
+        "gtmPaywallMedium"?: string;
+        /**
+          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+         */
+        "gtmTrackContent"?: string;
+        /**
+          * prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.
+         */
+        "gtmTrackSource"?: string;
         /**
           * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
