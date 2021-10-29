@@ -32,7 +32,7 @@ describe('KidPaywall', () => {
     expect(pageRoot).toEqualHtml(`
       <kid-paywall is-login="true">
         <mock:shadow-root>
-          <div class="mb-4 relative w-full" id="container">
+          <div class="mb-4 relative w-full">
             <div class="bg-red-200 p-4 rounded w-full">
               <h3 class="font-bold leading-tight mb-2 mt-0 mx-0 text-base">
                 Galat
