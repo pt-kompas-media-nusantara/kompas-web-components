@@ -9,22 +9,42 @@ import { newSpecPage } from '@stencil/core/testing'
 import { KidPaywall } from './kid-paywall'
 
 
-
 describe('KidPaywall', () => {
-  it('component without props is rendered and throws an error', async () => {
-    
-    const { root } = await newSpecPage({
+  /**
+   * masih coba2
+   */
+  let element
+  let document
+  let documentBody
+  let pageRoot
+  beforeEach(async () => {
+    const { rootInstance , doc, body, root} = await newSpecPage({
       components: [KidPaywall],
-      html: `<kid-paywall></kid-paywall>`
+      html: '<kid-paywall is-login="true"></kid-paywall>'
     })
-    console.log(root)
-    // expect(root.checked).toBe(false);
+    element = rootInstance
+    document = doc
+    documentBody = body
+    pageRoot = root
+  })
 
+  it('throws an error template', () => {
+    expect(pageRoot).toEqualHtml(`
+      <kid-paywall is-login="true">
+        <mock:shadow-root>
+          <div class="mb-4 relative w-full" id="container">
+            <div class="bg-red-200 p-4 rounded w-full">
+              <h3 class="font-bold leading-tight mb-2 mt-0 mx-0 text-base">
+                Galat
+              </h3>
+              <p class="my-0 text-base">
+                404 Ada galat saat memproses permintaan.
+              </p>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </kid-paywall>
+  ` )
   })
 })
 
-// it('should toggle the checked property', () => {
-//   const toggle = new KidPaywall();
-
-//   expect(toggle.isLogin).toBe(false);
-// });

@@ -341,7 +341,7 @@ export class KidPaywall {
 
   render() {
     return (
-      <div class={`relative w-full mb-4 ${this.errorMsg ? '' : '-mt-24'}`}>
+      <div id="container" class={`relative w-full mb-4 ${this.errorMsg ? '' : '-mt-24'}`}>
         { this.errorMsg ? this.templateError() : this.templateResult() }
       </div>
     )
