@@ -51,7 +51,14 @@ export class KidPaywall {
    * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
    */
   @Prop() isLogin: boolean = false
-
+  /**
+   * prop show-registration untuk menampilkan section resgistration & branding
+   */
+  @Prop() showRegistration: boolean = true
+  /**
+   * prop show-membership untuk menampilkan section membership
+   */
+  @Prop() showMembership: boolean = true
   /**
    * prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.
    */
@@ -128,10 +135,10 @@ export class KidPaywall {
     return (
       <div>
         <div class="transparent-linear text-transition" />
-        { this.isLogin ? '' : this.templateBannerRegistration()  }
-        { this.templateHeader() }
-        { this.templateTitle() }
-        { this.templateMemberships() }
+        { this.showRegistration ? this.templateBannerRegistration() : '' }
+        { this.showRegistration ? this.templateHeader() : '' }
+        { this.showMembership ? this.templateTitle() : '' }
+        { this.showMembership ? this.templateMemberships() : ''}
       </div>
     )
   }
@@ -181,7 +188,7 @@ export class KidPaywall {
           return (
             <div class="flex py-1 w-full">
               <span class="pr-2 icon" innerHTML={ fasCheck }/>
-              <div class={`text-left text-sm ${ popular? 'text-grey-100': 'text-grey-700'}`}>{ list }</div>
+              <div class={ `text-left text-sm ${ popular? 'text-grey-100': 'text-grey-700'}` }>{ list }</div>
             </div>
             )
           }
@@ -229,25 +236,32 @@ export class KidPaywall {
    * mengelola tampilan pada section Banner Registration
    */
   private templateBannerRegistration() {
-    return (
-      <div class="box-border flex flex-col w-full items-center p-4 bg-blue-100  md:flex-row  md:py-0  md:px-8">
-        <div class="flex w-full pb-3 md:pb-0 md:w-3/4">
-          <div class="flex-1">
-            <img src={ this.registration.content.img } alt="banner registration" />
+    if (!this.isLogin) {
+      return (
+        <div class="box-border flex flex-col w-full items-center p-4 bg-blue-100  md:flex-row  md:py-0  md:px-8">
+          <div class="flex w-full pb-3 md:pb-0 md:w-3/4">
+            <div class="flex-1">
+              <img src={ this.registration.content.img } alt="banner registration" />
+            </div>
+            <div class="flex w-3/4 items-center justify-center">
+              <div class="font-sans text-grey-600 text-base font-bold pl-4 md:text-xl md:text-center">
+                { this.registration.content.text }
+              </div>
+            </div>
           </div>
-          <div class="flex w-3/4 items-center justify-center">
-            <div class="font-sans text-grey-600 text-base font-bold pl-4 md:text-xl md:text-center">
-              { this.registration.content.text }
+          <div class="w-full justify-end md:w-1/4 md:flex">
+            <div class="w-full font-bold shadow capitalize rounded px-4 h-8 leading-8 justify-center items-center inline-flex bg-green-400 text-grey-100 md:w-auto select-none">
+              <span class="inline">{ this.registration.action.label }</span>
             </div>
           </div>
         </div>
-        <div class="w-full justify-end md:w-1/4 md:flex">
-          <div class="w-full font-bold shadow capitalize rounded px-4 h-8 leading-8 justify-center items-center inline-flex bg-green-400 text-grey-100 md:w-auto select-none">
-            <span class="inline">{ this.registration.action.label }</span>
-          </div>
-        </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div />
+      )
+    }
+    
   }
   /** 
    * MEHTODS

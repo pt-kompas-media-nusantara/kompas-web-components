@@ -31,6 +31,14 @@ export namespace Components {
           * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
         "isLogin": boolean;
+        /**
+          * prop show-membership untuk menampilkan section membership
+         */
+        "showMembership": boolean;
+        /**
+          * prop show-registration untuk menampilkan section resgistration & branding
+         */
+        "showRegistration": boolean;
     }
     interface KidRecommender {
         /**
@@ -155,6 +163,14 @@ declare namespace LocalJSX {
           * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
          */
         "isLogin"?: boolean;
+        /**
+          * prop show-membership untuk menampilkan section membership
+         */
+        "showMembership"?: boolean;
+        /**
+          * prop show-registration untuk menampilkan section resgistration & branding
+         */
+        "showRegistration"?: boolean;
     }
     interface KidRecommender {
         /**
