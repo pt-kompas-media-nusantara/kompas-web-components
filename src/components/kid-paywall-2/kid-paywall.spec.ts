@@ -11,14 +11,16 @@ import { KidPaywall } from './kid-paywall'
 
 describe('KidPaywall', () => {
   /**
-   * masih coba2
+   * masih coba2 ya
+   * belom nemu cara akses shadow root untuk ngecek per Dom nya
    */
   let element
   // let document
   // let documentBody
   let pageRoot
   beforeEach(async () => {
-    const { rootInstance,
+    const { 
+      rootInstance,
       // doc,
       // body,
       root
