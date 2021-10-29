@@ -46,5 +46,8 @@ describe('KidPaywall', () => {
       </kid-paywall>
   ` )
   })
+  it('sets is-login to true', () => {
+    expect(element.isLogin).toBe(true)
+  })
 })
 
