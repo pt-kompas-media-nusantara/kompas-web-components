@@ -14,17 +14,21 @@ describe('KidPaywall', () => {
    * masih coba2
    */
   let element
-  let document
-  let documentBody
+  // let document
+  // let documentBody
   let pageRoot
   beforeEach(async () => {
-    const { rootInstance , doc, body, root} = await newSpecPage({
+    const { rootInstance,
+      // doc,
+      // body,
+      root
+    } = await newSpecPage({
       components: [KidPaywall],
       html: '<kid-paywall is-login="true"></kid-paywall>'
     })
     element = rootInstance
-    document = doc
-    documentBody = body
+    // document = doc
+    // documentBody = body
     pageRoot = root
   })
 
@@ -48,6 +52,13 @@ describe('KidPaywall', () => {
   })
   it('sets is-login to true', () => {
     expect(element.isLogin).toBe(true)
+  })
+  it('sets to default value', () => {
+    expect(element.showMembership).toBe(true)
+    expect(element.showRegistration).toBe(true)
+    expect(element.gtmLoginMedium).toBeFalsy()
+    expect(element.gtmBrandingMedium).toBeFalsy()
+    expect(element.gtmPaywallMedium).toBeFalsy()
   })
 })
 
