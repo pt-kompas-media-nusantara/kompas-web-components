@@ -4,14 +4,13 @@ import { inlineSvg } from 'stencil-inline-svg';
 import autoprefixer from 'autoprefixer';
 import nested from 'postcss-nested';
 import tailwind from 'tailwindcss';
-import tailwind2, { PluginOpts } from 'stencil-tailwind-plugin';
+import tailwindStencil, { PluginOpts } from 'stencil-tailwind-plugin';
 import tailwindConfig from './tailwind.config';
 const opts = Object.assign(
     {},
     PluginOpts.DEFAULT,
     { 
       debug: true,
-
       stripComments: true,
       enablePurge: true,
       tailwindConf: tailwindConfig
@@ -41,7 +40,7 @@ export const config: Config = {
     }
   ],
   plugins: [
-    tailwind2(opts),
+    tailwindStencil(opts),
     postcss({
       plugins: [
         nested(),
