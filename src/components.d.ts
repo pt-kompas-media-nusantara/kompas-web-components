@@ -20,7 +20,7 @@ export namespace Components {
          */
         "gtmPaywallMedium": string;
         /**
-          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink. hint: url dari window.location.href
          */
         "gtmTrackContent": string;
         /**
@@ -152,7 +152,7 @@ declare namespace LocalJSX {
          */
         "gtmPaywallMedium"?: string;
         /**
-          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink. hint: url dari window.location.href
          */
         "gtmTrackContent"?: string;
         /**
