@@ -43,6 +43,8 @@ _Bagian ini menyusul_.
 | `gtmTrackContent`   | `gtm-track-content`   | prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.                                                    | `string`  | `''`    |
 | `gtmTrackSource`    | `gtm-track-source`    | prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.                                                      | `string`  | `''`    |
 | `isLogin`           | `is-login`            | prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.                                                                   | `boolean` | `false` |
+| `showMembership`    | `show-membership`     | prop show-membership untuk menampilkan section membership                                                                                          | `boolean` | `true`  |
+| `showRegistration`  | `show-registration`   | prop show-registration untuk menampilkan section resgistration & branding                                                                          | `boolean` | `true`  |
 
 
 ----------------------------------------------
