@@ -6,6 +6,40 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface KidPaywall {
+        /**
+          * prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.
+         */
+        "gtmBrandingMedium": string;
+        /**
+          * prop gtmLoginMedium mengakomodasi penambahan atribut param `track_medium` di permalink button login.
+         */
+        "gtmLoginMedium": string;
+        /**
+          * prop gtmPaywallMedium mengakomodasi penambahan atribut param `track_medium` di permalink button berlangganan pada setiap item paket berlangganan`.
+         */
+        "gtmPaywallMedium": string;
+        /**
+          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+         */
+        "gtmTrackContent": string;
+        /**
+          * prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.
+         */
+        "gtmTrackSource": string;
+        /**
+          * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
+         */
+        "isLogin": boolean;
+        /**
+          * prop show-membership untuk menampilkan section membership
+         */
+        "showMembership": boolean;
+        /**
+          * prop show-registration untuk menampilkan section resgistration & branding
+         */
+        "showRegistration": boolean;
+    }
     interface KidRecommender {
         /**
           * Kunci otentikasi
@@ -58,6 +92,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLKidPaywallElement extends Components.KidPaywall, HTMLStencilElement {
+    }
+    var HTMLKidPaywallElement: {
+        prototype: HTMLKidPaywallElement;
+        new (): HTMLKidPaywallElement;
+    };
     interface HTMLKidRecommenderElement extends Components.KidRecommender, HTMLStencilElement {
     }
     var HTMLKidRecommenderElement: {
@@ -89,6 +129,7 @@ declare global {
         new (): HTMLKompasFooterSupportsElement;
     };
     interface HTMLElementTagNameMap {
+        "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
         "kompas-footer": HTMLKompasFooterElement;
         "kompas-footer-default": HTMLKompasFooterDefaultElement;
@@ -97,6 +138,40 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface KidPaywall {
+        /**
+          * prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.
+         */
+        "gtmBrandingMedium"?: string;
+        /**
+          * prop gtmLoginMedium mengakomodasi penambahan atribut param `track_medium` di permalink button login.
+         */
+        "gtmLoginMedium"?: string;
+        /**
+          * prop gtmPaywallMedium mengakomodasi penambahan atribut param `track_medium` di permalink button berlangganan pada setiap item paket berlangganan`.
+         */
+        "gtmPaywallMedium"?: string;
+        /**
+          * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+         */
+        "gtmTrackContent"?: string;
+        /**
+          * prop gtmTrackSource mengakomodasi penambahan atribut param `track_source` di semua permalink.
+         */
+        "gtmTrackSource"?: string;
+        /**
+          * prop isLogin mengakomodasi untuk menampilkan banner registration secara dinamis.
+         */
+        "isLogin"?: boolean;
+        /**
+          * prop show-membership untuk menampilkan section membership
+         */
+        "showMembership"?: boolean;
+        /**
+          * prop show-registration untuk menampilkan section resgistration & branding
+         */
+        "showRegistration"?: boolean;
+    }
     interface KidRecommender {
         /**
           * Kunci otentikasi
@@ -148,6 +223,7 @@ declare namespace LocalJSX {
         "branding": any;
     }
     interface IntrinsicElements {
+        "kid-paywall": KidPaywall;
         "kid-recommender": KidRecommender;
         "kompas-footer": KompasFooter;
         "kompas-footer-default": KompasFooterDefault;
@@ -159,6 +235,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "kid-paywall": LocalJSX.KidPaywall & JSXBase.HTMLAttributes<HTMLKidPaywallElement>;
             "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
             "kompas-footer": LocalJSX.KompasFooter & JSXBase.HTMLAttributes<HTMLKompasFooterElement>;
             "kompas-footer-default": LocalJSX.KompasFooterDefault & JSXBase.HTMLAttributes<HTMLKompasFooterDefaultElement>;

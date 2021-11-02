@@ -22,6 +22,7 @@
 
       p {
         margin-bottom: 16px;
+        text-align: left;
       }
 
       #app {
@@ -35,14 +36,29 @@
     </style>
   </head>
   <body id="app">
-    <div style="max-width: 560px;">
+    <div style="max-width: 1165px;margin:auto">
       <h2>Lipsum Dei</h2>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci similique omnis dolorem dolores aliquam quis perspiciatis fugiat illum nisi laboriosam accusantium quam explicabo suscipit, asperiores blanditiis, ipsum exercitationem, reiciendis vitae!</p>
-      <kid-recommender
+
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci similique omnis dolorem dolores aliquam quis perspiciatis fugiat illum nisi laboriosam accusantium quam explicabo suscipit, asperiores blanditiis, ipsum exercitationem, reiciendis vitae!
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci similique omnis dolorem dolores aliquam quis perspiciatis fugiat illum nisi laboriosam accusantium quam explicabo suscipit, asperiores blanditiis, ipsum exercitationem, reiciendis vitae!
+      </p>
+      <kid-paywall
+        is-login="false"
+        show-registration="false"
+        show-membership="true"
+        gtm-track-source="kompaspedia-paywall"
+        gtm-track-content="https://kompaspedia.kompas.id/baca/infografik/kronologi/awal-berdirinya-perserikatan-bangsa-bangsa"
+        gtm-login-medium="login-paywall"
+        gtm-branding-medium="mengapakompasid-paywall"
+        gtm-paywall-medium="paywall"
+      >
+      </kid-paywall>
+      <!-- <kid-recommender
         auth-key="1f77b0ab-bb93-11ea-8390-000d3aa2b8f9"
         dark-mode="false"
-      ></kid-recommender>
-
+      ></kid-recommender> -->
       <!--
 
         post-tags="Kemenkes, Kemenlu, vaksin Covid-19, satgas penanganan covid-19, diplomasi vaksin, Wiku Adisasmito, Jakarta, diplomasi vaksin, Satgas Penanganan Covid-19"
@@ -51,7 +67,7 @@
         utm="utm_source=kompascom&utm_campaign=wasweswos"
       -->
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci similique omnis dolorem dolores aliquam quis perspiciatis fugiat illum nisi laboriosam accusantium quam explicabo suscipit, asperiores blanditiis, ipsum exercitationem, reiciendis vitae!</p>
-      <button class="btn btn-primary mb-5">tes bootstrap class</button>
+      <!-- <button class="btn btn-primary mb-5">tes bootstrap class</button> -->
     </div>
     <div>
       <kompas-footer />

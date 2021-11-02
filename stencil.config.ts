@@ -4,6 +4,18 @@ import { inlineSvg } from 'stencil-inline-svg';
 import autoprefixer from 'autoprefixer';
 import nested from 'postcss-nested';
 import tailwind from 'tailwindcss';
+import tailwindStencil, { PluginOpts } from 'stencil-tailwind-plugin';
+import tailwindConfig from './tailwind.config';
+const opts = Object.assign(
+    {},
+    PluginOpts.DEFAULT,
+    { 
+      debug: true,
+      stripComments: true,
+      enablePurge: true,
+      tailwindConf: tailwindConfig
+    }
+  )
 
 export const config: Config = {
   namespace: 'kompas-web-components',
@@ -28,6 +40,7 @@ export const config: Config = {
     }
   ],
   plugins: [
+    tailwindStencil(opts),
     postcss({
       plugins: [
         nested(),
@@ -37,7 +50,17 @@ export const config: Config = {
     }),
     inlineSvg()
   ],
+  devServer: {
+    reloadStrategy: 'pageReload'
+  },
   bundles: [
-    { components: ['kompas-footer', 'kompas-footer-default', 'kompas-footer-supports', 'kompas-footer-products'] }
+    { 
+      components: [
+        'kompas-footer',
+        'kompas-footer-default',
+        'kompas-footer-supports',
+        'kompas-footer-products'
+      ] 
+    }
   ]
 };
