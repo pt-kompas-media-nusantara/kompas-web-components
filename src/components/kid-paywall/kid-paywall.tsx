@@ -275,6 +275,11 @@ export class KidPaywall {
   private rupiahFormat(str:string):string {
     return 'Rp ' + str.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
+
+  private getUrl(): string {
+    const ogUrl = document.querySelector('meta[property="og:url"]') ? document.querySelector('meta[property="og:url"]').getAttribute('content') : ''
+    return this.gtmTrackContent || ogUrl
+  }
   /**
    * Fungsi untuk secara dinamis menambahkan param gtm. 
    * mendeteksi input url apakah mempunyai query/(?) sebelum diconcat dengan param gtm
@@ -283,7 +288,7 @@ export class KidPaywall {
    */
   private gtmPermalink(str:string, trackMedium:string):string {
     
-    const escapeUrlContent = encodeURIComponent(this.gtmTrackContent)
+    const escapeUrlContent = encodeURIComponent(this.getUrl())
     let urlDelimiter = '?'
     if(str.includes('?')) {
       urlDelimiter = '&'
@@ -296,7 +301,7 @@ export class KidPaywall {
     return `${str}${urlDelimiter}${params.join('&')}`
   }
   private addNextParam(str:string):string {
-    return `${str}?next=${encodeURIComponent(this.gtmTrackContent)}`
+    return `${str}?next=${encodeURIComponent(this.getUrl())}`
   }
   /**
    * Metode ini dipanggil sekali sebelum komponen terhubung dengan DOM
