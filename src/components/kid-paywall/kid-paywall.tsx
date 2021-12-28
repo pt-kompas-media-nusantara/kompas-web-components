@@ -66,6 +66,7 @@ export class KidPaywall {
 
   /**
    * prop gtmTrackContent mengakomodasi penambahan atribut param `track_content` di semua permalink.
+   * hint: url dari window.location.href
    */
   @Prop() gtmTrackContent: string = ''
 
@@ -83,6 +84,7 @@ export class KidPaywall {
    * prop gtmPaywallMedium mengakomodasi penambahan atribut param `track_medium` di permalink button berlangganan pada setiap item paket berlangganan`.
    */
   @Prop() gtmPaywallMedium: string = ''
+
   /**
    * States
    */
@@ -152,7 +154,7 @@ export class KidPaywall {
           { this.login.text }
           <a 
             class="font-bold text-brand-1 underline"  
-            href={ this.gtmPermalink(this.login.url, this.gtmLoginMedium) }
+            href={ this.gtmPermalink(this.addNextParam(this.login.url), this.gtmLoginMedium) }
           >
             { this.login.label }
           </a>
@@ -250,9 +252,9 @@ export class KidPaywall {
             </div>
           </div>
           <div class="w-full justify-end md:w-1/4 md:flex">
-            <div class="w-full font-bold shadow capitalize rounded px-4 h-8 leading-8 justify-center items-center inline-flex bg-green-400 text-grey-100 md:w-auto select-none">
+            <a href={this.gtmPermalink(this.addNextParam(this.registration.action.url),this.gtmLoginMedium)} class="w-full font-bold shadow capitalize rounded px-4 h-8 leading-8 justify-center items-center inline-flex bg-green-400 text-grey-100 md:w-auto select-none">
               <span class="inline">{ this.registration.action.label }</span>
-            </div>
+            </a>
           </div>
         </div>
       )
@@ -273,6 +275,11 @@ export class KidPaywall {
   private rupiahFormat(str:string):string {
     return 'Rp ' + str.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
+
+  private getUrl(): string {
+    const ogUrl = document.querySelector('meta[property="og:url"]') ? document.querySelector('meta[property="og:url"]').getAttribute('content') : ''
+    return this.gtmTrackContent || ogUrl
+  }
   /**
    * Fungsi untuk secara dinamis menambahkan param gtm. 
    * mendeteksi input url apakah mempunyai query/(?) sebelum diconcat dengan param gtm
@@ -280,18 +287,17 @@ export class KidPaywall {
    * @param trackMedium : isinya string attribut track_medium gtm
    */
   private gtmPermalink(str:string, trackMedium:string):string {
-    
-    const escapeUrlContent = encodeURIComponent(this.gtmTrackContent)
+    const escapeUrlContent = encodeURIComponent(this.getUrl())
     let urlDelimiter = '?'
-    if(str.includes('?')) {
-      urlDelimiter = '&'
-    }
     const params = [
       `track_source=${this.gtmTrackSource}`,
       `track_medium=${trackMedium}`,
       `track_content=${escapeUrlContent}`
     ]
     return `${str}${urlDelimiter}${params.join('&')}`
+  }
+  private addNextParam(str:string):string {
+    return `${str}?next=${encodeURIComponent(this.getUrl())}`
   }
   /**
    * Metode ini dipanggil sekali sebelum komponen terhubung dengan DOM
