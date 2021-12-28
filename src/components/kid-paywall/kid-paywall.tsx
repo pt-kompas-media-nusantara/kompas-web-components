@@ -287,12 +287,8 @@ export class KidPaywall {
    * @param trackMedium : isinya string attribut track_medium gtm
    */
   private gtmPermalink(str:string, trackMedium:string):string {
-    
     const escapeUrlContent = encodeURIComponent(this.getUrl())
     let urlDelimiter = '?'
-    if(str.includes('?')) {
-      urlDelimiter = '&'
-    }
     const params = [
       `track_source=${this.gtmTrackSource}`,
       `track_medium=${trackMedium}`,
