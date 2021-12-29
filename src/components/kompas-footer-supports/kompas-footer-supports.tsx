@@ -38,7 +38,7 @@ export class KompasFooterSupports {
           label = 'Kompas Kring'
           break
         case 'email':
-          action = `mailto:${items[0][key]}`
+          action = `mailto:${items[0][key]}?body=${encodeURIComponent('Halo, saya perlu informasi mengenai kompas.id')}`
           label = 'Email'
           break
         case 'whatsapp':
