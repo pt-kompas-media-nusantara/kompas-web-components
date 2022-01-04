@@ -16,14 +16,14 @@ export class KompasFooter {
   /**
    * wording untuk chat whatsapp & email
    */
-  @Prop() wordingMessage!: string
+  @Prop() wordingMessage: string = 'Halo saya perlu informasi mengenai kompas.id'
 
   render () {
     return (
       <footer class="w--full">
-        <kompas-footer-supports branding={ branding } />
+        <kompas-footer-supports branding={ branding } wording-message={this.wordingMessage}/>
         <kompas-footer-products branding={ branding }  />
-        <kompas-footer-default menus={ menus } wording-message={this.wordingMessage}/>
+        <kompas-footer-default menus={ menus }/>
       </footer>
     )
   }

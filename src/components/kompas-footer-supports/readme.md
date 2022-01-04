@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property                | Attribute  | Description                                                 | Type  | Default     |
-| ----------------------- | ---------- | ----------------------------------------------------------- | ----- | ----------- |
-| `branding` _(required)_ | `branding` | Rubrik/kategori artikel, pisahkan tiap item dengan koma (,) | `any` | `undefined` |
+| Property                | Attribute         | Description                                                 | Type     | Default                                           |
+| ----------------------- | ----------------- | ----------------------------------------------------------- | -------- | ------------------------------------------------- |
+| `branding` _(required)_ | `branding`        | Rubrik/kategori artikel, pisahkan tiap item dengan koma (,) | `any`    | `undefined`                                       |
+| `wordingMessage`        | `wording-message` | wording untuk chat whatsapp & email                         | `string` | `'Halo, saya perlu informasi mengenai kompas.id'` |
 
 
 ## Dependencies

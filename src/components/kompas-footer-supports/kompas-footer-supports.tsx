@@ -19,7 +19,9 @@ export class KompasFooterSupports {
   /**
    * wording untuk chat whatsapp & email
    */
-  @Prop() wordingMessage!: string
+  @Prop() wordingMessage: string = 'Halo saya perlu informasi mengenai kompas.id'
+
+  
 
   private items() {
     const icons = {
@@ -31,7 +33,6 @@ export class KompasFooterSupports {
     const { support: { items = [] } } = this.branding
     const [ ob ] = items
     let res = []
-
     for (const key in ob) {
       let action
       let label
@@ -46,7 +47,7 @@ export class KompasFooterSupports {
           label = 'Email'
           break
         case 'whatsapp':
-          action = `https://api.whatsapp.com/send?text=${encodeURIComponent(this.wordingMessage)}`
+          action = `https://api.whatsapp.com/send/?phone=${this.phoneNumberFormatter(ob[key])}&text=${encodeURIComponent(this.wordingMessage)}`
           label = 'Whatsapp'
           break
         case 'hour':
@@ -55,7 +56,6 @@ export class KompasFooterSupports {
           label = 'Jam Kerja'
           break
       }
-
 
       res.push({
         action,
@@ -70,10 +70,10 @@ export class KompasFooterSupports {
       return (
         <div class="flex-- items--center mb--4 lg:mb--0">
           <span class="icon lg mr--2" innerHTML={ o.icon } />
-          <div class="flex-- flex--col leading--tight text--sm">
+          <a class="flex-- flex--col leading--tight text--sm" href={o.action}>
             <strong>{ o.label }</strong>
             <span>{ o.sublabel }</span>
-          </div>
+          </a>
         </div>
       )
     })
@@ -83,6 +83,12 @@ export class KompasFooterSupports {
         { res }
       </div>
     )
+  }
+  private phoneNumberFormatter(rawNumber:string):string {
+    const removeSpace = rawNumber.split(' ').join('')
+    const removePlus = removeSpace.replace('+', '')
+    const removeDash = removePlus.replace('-','')
+    return removeDash
   }
 
   private label () {
