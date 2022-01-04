@@ -16,6 +16,10 @@ export class KompasFooterSupports {
    * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
    */
   @Prop() branding!: any
+  /**
+   * wording untuk chat whatsapp
+   */
+  @Prop() wordingMessage!: string
 
   private items() {
     const icons = {
@@ -38,11 +42,11 @@ export class KompasFooterSupports {
           label = 'Kompas Kring'
           break
         case 'email':
-          action = `mailto:${items[0][key]}?body=${encodeURIComponent('Halo, saya perlu informasi mengenai kompas.id')}`
+          action = `mailto:${items[0][key]}?body=${encodeURIComponent(this.wordingMessage)}`
           label = 'Email'
           break
         case 'whatsapp':
-          action = `https://api.whatsapp.com/send?text=${encodeURIComponent('Halo, saya perlu informasi mengenai kompas.id')}`
+          action = `https://api.whatsapp.com/send?text=${encodeURIComponent(this.wordingMessage)}`
           label = 'Whatsapp'
           break
         case 'hour':
