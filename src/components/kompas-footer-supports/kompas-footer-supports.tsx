@@ -17,7 +17,7 @@ export class KompasFooterSupports {
    */
   @Prop() branding!: any
   /**
-   * wording untuk chat whatsapp
+   * wording untuk chat whatsapp & email
    */
   @Prop() wordingMessage!: string
 
