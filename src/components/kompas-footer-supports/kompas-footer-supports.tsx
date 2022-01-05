@@ -67,13 +67,25 @@ export class KompasFooterSupports {
     }
 
     res = res.map(o => {
-      return (
-        <div class="flex-- items--center mb--4 lg:mb--0">
-          <span class="icon lg mr--2" innerHTML={ o.icon } />
-          <a class="flex-- flex--col leading--tight text--sm" href={o.action}>
+      let sections = (
+        <div class="flex-- flex--col leading--tight text--sm">
+          <strong>{ o.label }</strong>
+          <span>{ o.sublabel }</span>
+        </div>
+      )
+      if (o.action) {
+        sections = (
+          <a class="flex-- flex--col leading--tight text--sm" href={o.action} target="_blank">
             <strong>{ o.label }</strong>
             <span>{ o.sublabel }</span>
           </a>
+        )
+      }
+      
+      return (
+        <div class="flex-- items--center mb--4 lg:mb--0">
+          <span class="icon lg mr--2" innerHTML={ o.icon } />
+          { sections }
         </div>
       )
     })
