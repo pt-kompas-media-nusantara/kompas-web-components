@@ -80,6 +80,13 @@ export default {
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property         | Attribute         | Description                         | Type     | Default                                          |
+| ---------------- | ----------------- | ----------------------------------- | -------- | ------------------------------------------------ |
+| `wordingMessage` | `wording-message` | wording untuk chat whatsapp & email | `string` | `'Halo saya perlu informasi mengenai kompas.id'` |
+
+
 ## Dependencies
 
 ### Depends on

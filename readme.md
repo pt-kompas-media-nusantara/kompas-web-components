@@ -22,5 +22,7 @@ npm test
 
 To publish to NPM
 ```bash
+npm run build
+npm login
 npm publish --access public --otp=<code>
 ```

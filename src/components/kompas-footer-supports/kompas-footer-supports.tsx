@@ -16,6 +16,12 @@ export class KompasFooterSupports {
    * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
    */
   @Prop() branding!: any
+  /**
+   * wording untuk chat whatsapp & email
+   */
+  @Prop() wordingMessage: string = 'Halo saya perlu informasi mengenai kompas.id'
+
+  
 
   private items() {
     const icons = {
@@ -27,7 +33,6 @@ export class KompasFooterSupports {
     const { support: { items = [] } } = this.branding
     const [ ob ] = items
     let res = []
-
     for (const key in ob) {
       let action
       let label
@@ -38,11 +43,11 @@ export class KompasFooterSupports {
           label = 'Kompas Kring'
           break
         case 'email':
-          action = `mailto:${items[0][key]}`
+          action = `mailto:${items[0][key]}?body=${encodeURIComponent(this.wordingMessage)}`
           label = 'Email'
           break
         case 'whatsapp':
-          action = `https://api.whatsapp.com/send?text=${encodeURIComponent('Halo, saya perlu informasi mengenai kompas.id')}`
+          action = `https://api.whatsapp.com/send/?phone=${this.phoneNumberFormatter(ob[key])}&text=${encodeURIComponent(this.wordingMessage)}`
           label = 'Whatsapp'
           break
         case 'hour':
@@ -51,7 +56,6 @@ export class KompasFooterSupports {
           label = 'Jam Kerja'
           break
       }
-
 
       res.push({
         action,
@@ -63,13 +67,25 @@ export class KompasFooterSupports {
     }
 
     res = res.map(o => {
+      let sections = (
+        <div class="flex-- flex--col leading--tight text--sm">
+          <strong>{ o.label }</strong>
+          <span>{ o.sublabel }</span>
+        </div>
+      )
+      if (o.action) {
+        sections = (
+          <a class="flex-- flex--col leading--tight text--sm" href={o.action} target="_blank">
+            <strong>{ o.label }</strong>
+            <span>{ o.sublabel }</span>
+          </a>
+        )
+      }
+      
       return (
         <div class="flex-- items--center mb--4 lg:mb--0">
           <span class="icon lg mr--2" innerHTML={ o.icon } />
-          <div class="flex-- flex--col leading--tight text--sm">
-            <strong>{ o.label }</strong>
-            <span>{ o.sublabel }</span>
-          </div>
+          { sections }
         </div>
       )
     })
@@ -79,6 +95,12 @@ export class KompasFooterSupports {
         { res }
       </div>
     )
+  }
+  private phoneNumberFormatter(rawNumber:string):string {
+    const removeSpace = rawNumber.split(' ').join('')
+    const removePlus = removeSpace.replace('+', '')
+    const removeDash = removePlus.replace('-','')
+    return removeDash
   }
 
   private label () {

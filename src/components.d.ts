@@ -71,6 +71,10 @@ export namespace Components {
         "section": string;
     }
     interface KompasFooter {
+        /**
+          * wording untuk chat whatsapp & email
+         */
+        "wordingMessage": string;
     }
     interface KompasFooterDefault {
         /**
@@ -89,6 +93,10 @@ export namespace Components {
           * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
          */
         "branding": any;
+        /**
+          * wording untuk chat whatsapp & email
+         */
+        "wordingMessage": string;
     }
 }
 declare global {
@@ -203,6 +211,10 @@ declare namespace LocalJSX {
         "section"?: string;
     }
     interface KompasFooter {
+        /**
+          * wording untuk chat whatsapp & email
+         */
+        "wordingMessage"?: string;
     }
     interface KompasFooterDefault {
         /**
@@ -221,6 +233,10 @@ declare namespace LocalJSX {
           * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
          */
         "branding": any;
+        /**
+          * wording untuk chat whatsapp & email
+         */
+        "wordingMessage"?: string;
     }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
