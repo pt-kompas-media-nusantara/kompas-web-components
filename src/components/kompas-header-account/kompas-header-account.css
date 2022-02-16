@@ -6,6 +6,11 @@
   }
 }
 
+.sidebar {
+  @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 p-2 z-10 overflow-y-scroll h-screen shadow-lg; 
+  @apply border border-grey-200 flex flex-col font-sans text-sm;
+}
+
 /* Custom Class */
 .icon {
   &-sm {

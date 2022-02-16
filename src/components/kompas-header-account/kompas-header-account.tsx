@@ -28,8 +28,12 @@ export class KompasHeaderAccount {
   @State() isShowDropdown: boolean = false;
 
   private account () {
+    const toggleDropdown = () => {
+      this.isShowDropdown = !this.isShowDropdown
+    }
+
     return (
-      <a class="cursor-pointer">
+      <a onClick={() => toggleDropdown()} class="cursor-pointer">
         <div class="flex flex-row items-center self-center">
           <div class="flex bg-grey-100 rounded-full h-6 w-6 items-center justify-center relative">
             <span class="capitalize text-xs text-blue-600 font-bold"></span>
@@ -40,10 +44,19 @@ export class KompasHeaderAccount {
     )
   }
 
+  private accountSidebar = () => {
+    return ( 
+     <div class="sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
+
+     </div>
+    )
+  }
+
   render() {
     return (
       <div>
         {this.account()}
+        {this.isShowDropdown ? this.accountSidebar() : ''}
       </div>
     );
   }
