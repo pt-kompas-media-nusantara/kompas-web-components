@@ -1,3 +1,51 @@
 :host {
-  display: block;
+  @apply block;
+  * {
+    @apply font-sans;
+    box-sizing: border-box;
+  }
+}
+
+/* Custom Class */
+.icon {
+  &-sm {
+    & svg {
+      @apply h-4;
+    }
+  }
+
+  &-md {
+    & svg {
+      @apply h-6;
+    }
+  }
+
+  &-white {
+    @apply text-grey-100;
+    & svg {
+      @apply fill-current;
+    }
+  }
+}
+
+/* Custom Scrollbar for header */
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0356a8;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0356a8;
 }

@@ -98,6 +98,12 @@ export namespace Components {
          */
         "wordingMessage": string;
     }
+    interface KompasHeaderAccount {
+        /**
+          * Value to Add spasing on top of sidebar (will convert to pixel)
+         */
+        "sidebarTopSpacing": number;
+    }
 }
 declare global {
     interface HTMLKidPaywallElement extends Components.KidPaywall, HTMLStencilElement {
@@ -136,6 +142,12 @@ declare global {
         prototype: HTMLKompasFooterSupportsElement;
         new (): HTMLKompasFooterSupportsElement;
     };
+    interface HTMLKompasHeaderAccountElement extends Components.KompasHeaderAccount, HTMLStencilElement {
+    }
+    var HTMLKompasHeaderAccountElement: {
+        prototype: HTMLKompasHeaderAccountElement;
+        new (): HTMLKompasHeaderAccountElement;
+    };
     interface HTMLElementTagNameMap {
         "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
@@ -143,6 +155,7 @@ declare global {
         "kompas-footer-default": HTMLKompasFooterDefaultElement;
         "kompas-footer-products": HTMLKompasFooterProductsElement;
         "kompas-footer-supports": HTMLKompasFooterSupportsElement;
+        "kompas-header-account": HTMLKompasHeaderAccountElement;
     }
 }
 declare namespace LocalJSX {
@@ -238,6 +251,12 @@ declare namespace LocalJSX {
          */
         "wordingMessage"?: string;
     }
+    interface KompasHeaderAccount {
+        /**
+          * Value to Add spasing on top of sidebar (will convert to pixel)
+         */
+        "sidebarTopSpacing"?: number;
+    }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
         "kid-recommender": KidRecommender;
@@ -245,6 +264,7 @@ declare namespace LocalJSX {
         "kompas-footer-default": KompasFooterDefault;
         "kompas-footer-products": KompasFooterProducts;
         "kompas-footer-supports": KompasFooterSupports;
+        "kompas-header-account": KompasHeaderAccount;
     }
 }
 export { LocalJSX as JSX };
@@ -257,6 +277,7 @@ declare module "@stencil/core" {
             "kompas-footer-default": LocalJSX.KompasFooterDefault & JSXBase.HTMLAttributes<HTMLKompasFooterDefaultElement>;
             "kompas-footer-products": LocalJSX.KompasFooterProducts & JSXBase.HTMLAttributes<HTMLKompasFooterProductsElement>;
             "kompas-footer-supports": LocalJSX.KompasFooterSupports & JSXBase.HTMLAttributes<HTMLKompasFooterSupportsElement>;
+            "kompas-header-account": LocalJSX.KompasHeaderAccount & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountElement>;
         }
     }
 }
