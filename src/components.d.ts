@@ -100,7 +100,15 @@ export namespace Components {
     }
     interface KompasHeaderAccount {
         /**
-          * Value to Add spasing on top of sidebar (will convert to pixel)
+          * Logout Url
+         */
+        "logoutUrl": string;
+        /**
+          * Total Notification Count
+         */
+        "notificationTotal": number;
+        /**
+          * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing": number;
     }
@@ -109,6 +117,10 @@ export namespace Components {
           * Logout Url
          */
         "logoutUrl": string;
+        /**
+          * Total Notification Count
+         */
+        "notificationTotal": number;
     }
 }
 declare global {
@@ -266,7 +278,15 @@ declare namespace LocalJSX {
     }
     interface KompasHeaderAccount {
         /**
-          * Value to Add spasing on top of sidebar (will convert to pixel)
+          * Logout Url
+         */
+        "logoutUrl"?: string;
+        /**
+          * Total Notification Count
+         */
+        "notificationTotal"?: number;
+        /**
+          * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing"?: number;
     }
@@ -275,6 +295,10 @@ declare namespace LocalJSX {
           * Logout Url
          */
         "logoutUrl"?: string;
+        /**
+          * Total Notification Count
+         */
+        "notificationTotal"?: number;
     }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;

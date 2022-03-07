@@ -14,10 +14,20 @@ export class KompasHeaderAccount {
    */
 
   /**
-   * Value to Add spasing on top of sidebar (will convert to pixel)
-   */
-  @Prop() sidebarTopSpacing: number = 50
+    * Logout Url
+    */
+  @Prop() logoutUrl: string
 
+  /**
+    * Total Notification Count
+    */
+  @Prop() notificationTotal: number = 0
+
+  /**
+    * Value to Add spacing on top of sidebar (will convert to pixel)
+    */
+  @Prop() sidebarTopSpacing: number = 0
+  
   /**
    * STATES
    */
@@ -46,9 +56,9 @@ export class KompasHeaderAccount {
 
   private accountSidebar = () => {
     return ( 
-     <div class="sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
-
-     </div>
+      <div class="sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
+        <kompas-header-account-menu logout-url={this.logoutUrl} notification-total={this.notificationTotal}/>
+      </div>
     )
   }
 
