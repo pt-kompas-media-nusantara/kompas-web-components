@@ -104,6 +104,12 @@ export namespace Components {
          */
         "sidebarTopSpacing": number;
     }
+    interface KompasHeaderAccountMenu {
+        /**
+          * Logout Url
+         */
+        "logoutUrl": string;
+    }
 }
 declare global {
     interface HTMLKidPaywallElement extends Components.KidPaywall, HTMLStencilElement {
@@ -148,6 +154,12 @@ declare global {
         prototype: HTMLKompasHeaderAccountElement;
         new (): HTMLKompasHeaderAccountElement;
     };
+    interface HTMLKompasHeaderAccountMenuElement extends Components.KompasHeaderAccountMenu, HTMLStencilElement {
+    }
+    var HTMLKompasHeaderAccountMenuElement: {
+        prototype: HTMLKompasHeaderAccountMenuElement;
+        new (): HTMLKompasHeaderAccountMenuElement;
+    };
     interface HTMLElementTagNameMap {
         "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
@@ -156,6 +168,7 @@ declare global {
         "kompas-footer-products": HTMLKompasFooterProductsElement;
         "kompas-footer-supports": HTMLKompasFooterSupportsElement;
         "kompas-header-account": HTMLKompasHeaderAccountElement;
+        "kompas-header-account-menu": HTMLKompasHeaderAccountMenuElement;
     }
 }
 declare namespace LocalJSX {
@@ -257,6 +270,12 @@ declare namespace LocalJSX {
          */
         "sidebarTopSpacing"?: number;
     }
+    interface KompasHeaderAccountMenu {
+        /**
+          * Logout Url
+         */
+        "logoutUrl"?: string;
+    }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
         "kid-recommender": KidRecommender;
@@ -265,6 +284,7 @@ declare namespace LocalJSX {
         "kompas-footer-products": KompasFooterProducts;
         "kompas-footer-supports": KompasFooterSupports;
         "kompas-header-account": KompasHeaderAccount;
+        "kompas-header-account-menu": KompasHeaderAccountMenu;
     }
 }
 export { LocalJSX as JSX };
@@ -278,6 +298,7 @@ declare module "@stencil/core" {
             "kompas-footer-products": LocalJSX.KompasFooterProducts & JSXBase.HTMLAttributes<HTMLKompasFooterProductsElement>;
             "kompas-footer-supports": LocalJSX.KompasFooterSupports & JSXBase.HTMLAttributes<HTMLKompasFooterSupportsElement>;
             "kompas-header-account": LocalJSX.KompasHeaderAccount & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountElement>;
+            "kompas-header-account-menu": LocalJSX.KompasHeaderAccountMenu & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountMenuElement>;
         }
     }
 }

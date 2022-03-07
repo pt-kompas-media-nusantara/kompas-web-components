@@ -6,6 +6,14 @@
   }
 }
 
+.header-account-sidebar--menu {
+  @apply flex flex-row items-center p-2 hover:bg-grey-200 transition ease-in-out rounded-sm;
+}
+
+.header-account-sidebar--title {
+  @apply flex-grow text-base font-bold mx-4;
+}
+
 .sidebar {
   @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 p-2 z-10 overflow-y-scroll h-screen shadow-lg; 
   @apply border border-grey-200 flex flex-col font-sans text-sm;
@@ -15,18 +23,25 @@
 .icon {
   &-sm {
     & svg {
-      @apply h-4;
+      @apply h-4 w-4;
     }
   }
 
   &-md {
     & svg {
-      @apply h-6;
+      @apply h-6 w-6;
     }
   }
 
   &-white {
     @apply text-grey-100;
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-blue-600 {
+    @apply text-blue-600;
     & svg {
       @apply fill-current;
     }
