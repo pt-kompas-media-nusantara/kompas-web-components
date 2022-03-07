@@ -58,6 +58,7 @@ export class KompasHeaderAccount {
     return ( 
       <div class="sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
         <kompas-header-account-menu logout-url={this.logoutUrl} notification-total={this.notificationTotal}/>
+        <kompas-header-account-help-center/>
       </div>
     )
   }
