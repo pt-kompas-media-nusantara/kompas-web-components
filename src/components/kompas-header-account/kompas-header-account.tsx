@@ -1,6 +1,5 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg'
-import { user } from './interface'
 
 @Component({
   tag: 'kompas-header-account',
@@ -78,7 +77,7 @@ export class KompasHeaderAccount {
 
   private accountSidebar = () => {
     return ( 
-      <div class="sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
+      <div class="header-account-sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
         <kompas-header-account-profile user-initial-name={this.getInitialUserName()} userData={this.formattedUserData}/>
         <kompas-header-account-menu logoutUrl={this.logoutUrl} notificationTotal={this.notificationTotal}/>
         <kompas-header-account-help-center/>

@@ -6,29 +6,28 @@
   }
 }
 
-.header-account-sidebar--menu {
+.header-account-menu--item {
   @apply flex flex-row items-center p-2 hover:bg-grey-200 transition ease-in-out rounded-sm;
 }
 
-.header-account-sidebar--title {
+.header-account-menu--title {
   @apply flex-grow text-base font-bold mx-4;
 }
 
-.header-account-sidebar--notification-info {
+.header-account-menu--notification-info {
   @apply text-sm rounded-3xl flex items-center justify-center bg-orange-400 text-grey-100 h-7 w-7;
 }
 
-.header-account-sidebar--help-center-item {
+.header-account-help-center--item {
   @apply flex flex-row items-center px-2;
 }
 
-.header-account-sidebar--help-center-content {
+.header-account-help-center--content {
   @apply flex flex-col flex-grow mx-4 leading-4 text-base gap-y-2;
 }
 
-
-.sidebar {
-  @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 p-2 z-10 overflow-y-scroll h-screen shadow-lg; 
+.header-account-sidebar {
+  @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 z-10 overflow-y-scroll h-screen shadow-lg; 
   @apply border border-grey-200 flex flex-col font-sans text-sm;
 }
 

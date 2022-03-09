@@ -19,9 +19,9 @@ export class KompasHeaderAccountHelpCenter {
 
   // Q & A 
   private qna = () => (
-    <div class="header-account-sidebar--help-center-item">
+    <div class="header-account-help-center--item">
       <div class="ml-3 icon-md icon-blue-600" innerHTML={commentIcon}></div>
-      <div class="header-account-sidebar--help-center-content">
+      <div class="header-account-help-center--content">
         <p>Tanya Jawab</p>
         <a href="http://kb.kompas.id/" class="font-bold">http://kb.kompas.id/</a>
       </div>
@@ -41,9 +41,9 @@ export class KompasHeaderAccountHelpCenter {
     }
 
     return (
-      <div class="header-account-sidebar--help-center-item">
+      <div class="header-account-help-center--item">
         <div class="ml-3 icon-md icon-blue-600" innerHTML={phoneAltIcon}></div>              
-        <div class="relative header-account-sidebar--help-center-content">
+        <div class="relative header-account-help-center--content">
           { 
             this.clipboardClicked ? 
               <p class="absolute bg-grey-200 rounded-md h-full top-0 w-full flex items-center justify-center">Berhasil menyalin!</p>
@@ -64,9 +64,9 @@ export class KompasHeaderAccountHelpCenter {
 
   // Whatsapp
   private whatsapp = () => (
-    <a href="https://api.whatsapp.com/send?phone=6281290050800" class="header-account-sidebar--help-center-item">
+    <a href="https://api.whatsapp.com/send?phone=6281290050800" class="header-account-help-center--item">
       <div class="ml-3 icon-md icon-blue-600" innerHTML={whatsappIcon}></div>
-      <div class="header-account-sidebar--help-center-content">
+      <div class="header-account-help-center--content">
         <p>Whatsapp</p>
         <p class="font-bold hover:underline">+62812 900 50 800</p>
       </div>
@@ -75,9 +75,9 @@ export class KompasHeaderAccountHelpCenter {
 
   // Email 
   private email = () => (
-    <a href="mailto:hotline@kompas.id" class="header-account-sidebar--help-center-item">
+    <a href="mailto:hotline@kompas.id" class="header-account-help-center--item">
       <div class="ml-3 icon-md icon-blue-600" innerHTML={envelopeIcon}></div>
-      <div class="header-account-sidebar--help-center-content">
+      <div class="header-account-help-center--content">
         <p>Email</p>
         <p class="font-bold hover:underline">hotline@kompas.id</p>
       </div>
@@ -86,7 +86,7 @@ export class KompasHeaderAccountHelpCenter {
 
   // Working Hour 
   private workingHour = () => (
-    <div class="header-account-sidebar--help-center-item">
+    <div class="header-account-help-center--item">
       <div class="ml-3 icon-md icon-blue-600" innerHTML={clockIcon}></div>
       <div class="flex flex-col mx-4 leading-4 gap-y-2 text-base">
         <p>Jam Kerja</p>
@@ -97,7 +97,7 @@ export class KompasHeaderAccountHelpCenter {
 
   render() {
     return (
-      <div class="mt-4 mb-20 leading-4">
+      <div class="mt-4 p-2 mb-20 leading-4">
         <p class="text-base mx-2 text-left">Pusat Bantuan</p>
         <div class="flex flex-shrink-0 flex-col text-left text-sm gap-y-4 my-4">
           {this.qna()}
