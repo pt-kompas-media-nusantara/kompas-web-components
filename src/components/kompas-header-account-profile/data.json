@@ -1,0 +1,21 @@
+{
+    "firstName": "Hehe",
+    "lastName": "Hihi Haha",
+    "expired": "",
+    "isActive": "Tidak Berlangganan",
+    "updateMembership": {
+      "label": "Perbarui Langganan",
+      "popUp": {
+        "title": "Perbarui Langganan ?",
+        "body": "",
+        "cancelButton": {
+          "label": "Batal",
+          "url": "https://www.kompas.id/berlangganan/"
+        },
+        "updateButton": {
+          "label": "Perbarui",
+          "url": ""
+        }
+      }
+    }
+}

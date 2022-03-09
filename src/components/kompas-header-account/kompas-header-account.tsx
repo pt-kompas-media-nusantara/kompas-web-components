@@ -1,5 +1,6 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg'
+import { user } from './interface'
 
 @Component({
   tag: 'kompas-header-account',
@@ -14,18 +15,23 @@ export class KompasHeaderAccount {
    */
 
   /**
-    * Logout Url
-    */
+   * Logout Url
+   */
   @Prop() logoutUrl: string
 
   /**
-    * Total Notification Count
-    */
+   * Total Notification Count
+   */
   @Prop() notificationTotal: number = 0
 
   /**
-    * Value to Add spacing on top of sidebar (will convert to pixel)
-    */
+   * Value consist of User Data
+   */
+  @Prop() userData: any
+
+  /**
+   * Value to Add spacing on top of sidebar (will convert to pixel)
+   */
   @Prop() sidebarTopSpacing: number = 0
   
   /**
@@ -37,6 +43,18 @@ export class KompasHeaderAccount {
    */
   @State() isShowDropdown: boolean = false;
 
+  formattedUserData: user
+
+  /**
+   * Get First Character of the username
+   * @returns string
+   */
+  getInitialUserName = () => {
+    if(!this.formattedUserData?.firstName.length) return false
+
+    return this.formattedUserData.firstName.charAt(0)
+  }
+
   private account () {
     const toggleDropdown = () => {
       this.isShowDropdown = !this.isShowDropdown
@@ -45,9 +63,13 @@ export class KompasHeaderAccount {
     return (
       <a onClick={() => toggleDropdown()} class="cursor-pointer">
         <div class="flex flex-row items-center self-center">
-          <div class="flex bg-grey-100 rounded-full h-6 w-6 items-center justify-center relative">
-            <span class="capitalize text-xs text-blue-600 font-bold"></span>
-          </div>
+          { !this.getInitialUserName() ? 
+            <div class="bg-grey-300 rounded-full h-6 w-6 animate-pulse"></div>
+            :
+            <div class="flex bg-grey-100 rounded-full h-6 w-6 items-center justify-center relative">
+              <span class="capitalize text-xs text-blue-600 font-bold">{this.getInitialUserName()}</span>
+            </div>
+          }
           <div class="ml-3 icon-sm icon-white" innerHTML={chevronDown}></div>
         </div>
       </a>
@@ -57,7 +79,8 @@ export class KompasHeaderAccount {
   private accountSidebar = () => {
     return ( 
       <div class="sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
-        <kompas-header-account-menu logout-url={this.logoutUrl} notification-total={this.notificationTotal}/>
+        <kompas-header-account-profile user-initial-name={this.getInitialUserName()} userData={this.formattedUserData}/>
+        <kompas-header-account-menu logoutUrl={this.logoutUrl} notificationTotal={this.notificationTotal}/>
         <kompas-header-account-help-center/>
       </div>
     )
@@ -72,4 +95,12 @@ export class KompasHeaderAccount {
     );
   }
 
+  componentWillRender() {
+    /**
+     * Format User Data if Props is string Type
+     * If this component will implement on vanilla JS. 
+     * Usually to sent attribute that non primitive (Obj / Array) need to stringify first
+     */
+    this.formattedUserData = typeof this.userData === 'string' ? JSON.parse(this.userData) : this.userData
+  }
 }

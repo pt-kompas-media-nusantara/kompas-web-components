@@ -111,6 +111,10 @@ export namespace Components {
           * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing": number;
+        /**
+          * Value consist of User Data
+         */
+        "userData": any;
     }
     interface KompasHeaderAccountHelpCenter {
     }
@@ -125,6 +129,11 @@ export namespace Components {
         "notificationTotal": number;
     }
     interface KompasHeaderAccountProfile {
+        "userData": any;
+        /**
+          * User Initial Name
+         */
+        "userInitialName": string;
     }
 }
 declare global {
@@ -307,6 +316,10 @@ declare namespace LocalJSX {
           * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing"?: number;
+        /**
+          * Value consist of User Data
+         */
+        "userData"?: any;
     }
     interface KompasHeaderAccountHelpCenter {
     }
@@ -321,6 +334,11 @@ declare namespace LocalJSX {
         "notificationTotal"?: number;
     }
     interface KompasHeaderAccountProfile {
+        "userData"?: any;
+        /**
+          * User Initial Name
+         */
+        "userInitialName"?: string;
     }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
