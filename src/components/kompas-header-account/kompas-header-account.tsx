@@ -3,8 +3,7 @@ import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/
 import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg'
 
 interface user {
-  firstName: string
-  lastName: string
+  userName: string
   expired: string
   activeInfo: string
   updateMembership: string
@@ -61,9 +60,9 @@ export class KompasHeaderAccount {
    * @returns string
    */
   getInitialUserName = () => {
-    if(!this.formattedUserData?.firstName.length) return false
+    if(!this.formattedUserData?.userName.length) return false
 
-    return this.formattedUserData.firstName.charAt(0)
+    return this.formattedUserData.userName.charAt(0)
   }
 
   /**
@@ -112,7 +111,7 @@ export class KompasHeaderAccount {
     return ( 
       <div class="header-account-sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
         <kompas-header-account-profile user-initial-name={this.getInitialUserName()} userData={this.formattedUserData}/>
-        <kompas-header-account-menu logoutUrl={this.logoutUrl} notificationTotal={this.notificationTotal}/>
+        <kompas-header-account-menu logout-url={this.logoutUrl} notification-total={this.notificationTotal}/>
         <kompas-header-account-help-center/>
       </div>
     )
