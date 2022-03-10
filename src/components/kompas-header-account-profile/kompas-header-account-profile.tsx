@@ -13,9 +13,15 @@ export class KompasHeaderAccountProfile {
    */
   @Prop() userInitialName: string
   
+  /**
+   * User Data
+   */
   @Prop() userData: any
 
   render() {
+    /**
+     * Skeleton Loading when data is not ready yet
+     */
     const skeletonLoading = (
       <div>
         <div class="flex flex-row mb-5 items-center gap-4 leading-none">
@@ -32,7 +38,13 @@ export class KompasHeaderAccountProfile {
       </div>
     )
 
+    /**
+     * Profile Content
+     */
     const profileContent = () => {
+      /**
+       * Expired Button Element
+       */
       const subscribeButton = () => {
         if(!this.userData?.updateMembership) return
         const handleSubscribe = () => {
@@ -45,6 +57,18 @@ export class KompasHeaderAccountProfile {
           </div>
         )
       }
+
+      /**
+       * expired Info Element
+       */
+      const expiredInfo = () => {
+        const isNearExpire = this.userData?.expired?.includes('Berakhir')
+        const expiredTextColor = isNearExpire ? `text-orange-400` : `text-grey-500`
+        
+        return (
+          <p class={`capitalize font-bold text-sm pb-1 whitespace-nowrap ${expiredTextColor}`}>{ this.userData?.expired }</p>
+        ) 
+      }
       
       return (
         <div class="flex flex-col items-center leading-none">
@@ -56,7 +80,7 @@ export class KompasHeaderAccountProfile {
             <div class="flex flex-col text-left">
               <p class="capitalize font-bold text-base pb-1 whitespace-nowrap text-blue-600">{ this.userData?.userName }</p>
               <p class="capitalize pb-1 text-sm whitespace-nowrap">{ this.userData?.activeInfo }</p>
-              <p class="capitalize font-bold text-sm pb-1 whitespace-nowrap text-orange-700">{ this.userData?.expired }</p>
+              { expiredInfo() }
             </div>
           </div>
 

@@ -137,6 +137,9 @@ export namespace Components {
         "notificationTotal": number;
     }
     interface KompasHeaderAccountProfile {
+        /**
+          * User Data
+         */
         "userData": any;
         /**
           * User Initial Name
@@ -350,6 +353,9 @@ declare namespace LocalJSX {
         "notificationTotal"?: number;
     }
     interface KompasHeaderAccountProfile {
+        /**
+          * User Data
+         */
         "userData"?: any;
         /**
           * User Initial Name
