@@ -1,11 +1,13 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg'
 import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg'
+import royalBlueCrownIcon from '../../../assets/icons/crown-royal-blue-60.svg' 
 
 interface user {
   userName: string
   expired: string
   activeInfo: string
+  isMembership: boolean,
   updateMembership: string
 }
 
@@ -81,7 +83,6 @@ export class KompasHeaderAccount {
       this.isShowDropdown = !this.isShowDropdown
     }
 
-
     /**
      * notification indicator, show indicator when notificaion total is not empty
      */
@@ -90,6 +91,15 @@ export class KompasHeaderAccount {
       return (
         <div class="header-account--notification-indicator"></div>
       )
+    }
+
+    /**
+     * membership icon element, show if isMebership has truthy value
+     */
+    const membershipIcon = () => {
+      if(!this.formattedUserData?.isMembership) return
+
+      return <div class="header-account--membership-icon icon-xs" innerHTML={royalBlueCrownIcon}/>
     }
 
     return (
@@ -101,6 +111,7 @@ export class KompasHeaderAccount {
             <div class="flex bg-grey-100 rounded-full h-6 w-6 items-center justify-center relative">
               <span class="capitalize text-xs text-blue-600 font-bold">{this.getInitialUserName()}</span>
               {notificationIndicator()}
+              {membershipIcon()}
             </div>
           }
           <div class="ml-3 icon-sm icon-white" innerHTML={this.isShowDropdown ? chevronUp : chevronDown}></div>

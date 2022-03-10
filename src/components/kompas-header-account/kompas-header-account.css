@@ -26,6 +26,12 @@
   @apply flex flex-col flex-grow mx-4 leading-4 text-base gap-y-2;
 }
 
+.header-account--membership-icon {
+  @apply absolute;
+  bottom: -3px;
+  right: -4px;
+}
+
 .header-account--notification-indicator {
   @apply absolute top-0 h-2 w-2 bg-orange-400 rounded-full;
   right: -1px;
@@ -38,6 +44,12 @@
 
 /* Custom Class */
 .icon {
+  &-xs {
+    & svg {
+      @apply h-3 w-3;
+    }
+  }
+
   &-sm {
     & svg {
       @apply h-4 w-4;
