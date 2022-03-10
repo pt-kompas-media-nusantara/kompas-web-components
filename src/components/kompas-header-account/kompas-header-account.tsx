@@ -1,5 +1,14 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg'
+import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg'
+
+interface user {
+  firstName: string
+  lastName: string
+  expired: string
+  activeInfo: string
+  updateMembership: string
+}
 
 @Component({
   tag: 'kompas-header-account',
@@ -42,6 +51,9 @@ export class KompasHeaderAccount {
    */
   @State() isShowDropdown: boolean = false;
 
+  /**
+   * Variable to store formatted user data
+   */
   formattedUserData: user
 
   /**
@@ -54,9 +66,26 @@ export class KompasHeaderAccount {
     return this.formattedUserData.firstName.charAt(0)
   }
 
+  /**
+   * Header account activator
+   */
   private account () {
+    /**
+     * Function to toggle Sidebar
+     */
     const toggleDropdown = () => {
       this.isShowDropdown = !this.isShowDropdown
+    }
+
+
+    /**
+     * notification indicator, show indicator when notificaion total is not empty
+     */
+    const notificationIndicator = () => {
+      if(!this.notificationTotal) return
+      return (
+        <div class="header-account--notification-indicator"></div>
+      )
     }
 
     return (
@@ -67,14 +96,18 @@ export class KompasHeaderAccount {
             :
             <div class="flex bg-grey-100 rounded-full h-6 w-6 items-center justify-center relative">
               <span class="capitalize text-xs text-blue-600 font-bold">{this.getInitialUserName()}</span>
+              {notificationIndicator()}
             </div>
           }
-          <div class="ml-3 icon-sm icon-white" innerHTML={chevronDown}></div>
+          <div class="ml-3 icon-sm icon-white" innerHTML={this.isShowDropdown ? chevronUp : chevronDown}></div>
         </div>
       </a>
     )
   }
 
+  /**
+   * Header Account Sidebar wrapper
+   */
   private accountSidebar = () => {
     return ( 
       <div class="header-account-sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
