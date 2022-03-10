@@ -27,6 +27,11 @@ export class KompasHeaderAccount {
   @Prop() logoutUrl: string
 
   /**
+   * Manage Account Url
+   */
+  @Prop() manageAccountUrl: string
+
+  /**
    * Total Notification Count
    */
   @Prop() notificationTotal: number = 0
@@ -111,7 +116,7 @@ export class KompasHeaderAccount {
     return ( 
       <div class="header-account-sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
         <kompas-header-account-profile user-initial-name={this.getInitialUserName()} userData={this.formattedUserData}/>
-        <kompas-header-account-menu logout-url={this.logoutUrl} notification-total={this.notificationTotal}/>
+        <kompas-header-account-menu manage-account-url={this.manageAccountUrl} logout-url={this.logoutUrl} notification-total={this.notificationTotal}/>
         <kompas-header-account-help-center/>
       </div>
     )

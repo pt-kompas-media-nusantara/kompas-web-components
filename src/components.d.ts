@@ -104,6 +104,10 @@ export namespace Components {
          */
         "logoutUrl": string;
         /**
+          * Manage Account Url
+         */
+        "manageAccountUrl": string;
+        /**
           * Total Notification Count
          */
         "notificationTotal": number;
@@ -312,6 +316,10 @@ declare namespace LocalJSX {
           * Logout Url
          */
         "logoutUrl"?: string;
+        /**
+          * Manage Account Url
+         */
+        "manageAccountUrl"?: string;
         /**
           * Total Notification Count
          */
