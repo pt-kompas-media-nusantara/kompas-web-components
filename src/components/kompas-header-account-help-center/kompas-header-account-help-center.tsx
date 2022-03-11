@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State } from '@stencil/core'
 import commentIcon from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/comments.svg'
 import phoneAltIcon from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/phone-alt.svg'
 import copyIcon from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/copy.svg'

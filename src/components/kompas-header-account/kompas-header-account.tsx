@@ -1,12 +1,12 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core'
 import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg'
 import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg'
 import royalBlueCrownIcon from '../../../assets/icons/crown-royal-blue-60.svg' 
 
 interface user {
-  userName: string
-  expired: string
-  activeInfo: string
+  userName: string,
+  expired: string,
+  activeInfo: string,
   isMembership: boolean,
   updateMembership: string
 }

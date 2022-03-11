@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core'
 import blueCrownIcon from '../../../assets/icons/crown-blue-10.svg' 
 
 @Component({

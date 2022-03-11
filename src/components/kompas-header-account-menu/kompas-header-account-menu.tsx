@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core'
 import shoppingCart from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/shopping-cart.svg'
 import userCog from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/user-cog.svg'
 import exchangeAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/exchange-alt.svg'
