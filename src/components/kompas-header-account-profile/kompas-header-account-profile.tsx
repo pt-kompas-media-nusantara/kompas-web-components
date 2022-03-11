@@ -17,7 +17,7 @@ export class KompasHeaderAccountProfile {
   /**
    * User Data
    */
-  @Prop() userData: any
+  @Prop() userData!: any
 
   render() {
     /**

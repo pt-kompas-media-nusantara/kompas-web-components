@@ -334,7 +334,7 @@ declare namespace LocalJSX {
         /**
           * Value consist of User Data
          */
-        "userData"?: any;
+        "userData": any;
     }
     interface KompasHeaderAccountHelpCenter {
     }
@@ -356,7 +356,7 @@ declare namespace LocalJSX {
         /**
           * User Data
          */
-        "userData"?: any;
+        "userData": any;
         /**
           * User Initial Name
          */

@@ -41,7 +41,7 @@ export class KompasHeaderAccount {
   /**
    * Value consist of User Data
    */
-  @Prop() userData: any
+  @Prop() userData!: any
 
   /**
    * Value to Add spacing on top of sidebar (will convert to pixel)
