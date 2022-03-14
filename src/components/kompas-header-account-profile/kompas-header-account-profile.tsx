@@ -66,7 +66,7 @@ export class KompasHeaderAccountProfile {
         const expiredTextColor = isNearExpire ? `text-orange-400` : `text-grey-500`
         
         return (
-          <p class={`capitalize font-bold text-sm pb-1 whitespace-nowrap ${expiredTextColor}`}>{ this.userData?.expired }</p>
+          <p class={`capitalize font-bold text-sm pb-1 ${expiredTextColor}`}>{ this.userData?.expired }</p>
         ) 
       }
 
@@ -92,8 +92,8 @@ export class KompasHeaderAccountProfile {
             </div>
 
             <div class="flex flex-col text-left">
-              <p class="capitalize font-bold text-base pb-1 whitespace-nowrap text-blue-600">{ this.userData?.userName }</p>
-              <p class="capitalize pb-1 text-sm whitespace-nowrap">{ this.userData?.activeInfo }</p>
+              <p class="capitalize font-bold text-base pb-1 text-blue-600">{ this.userData?.userName }</p>
+              <p class="capitalize pb-1 text-sm">{ this.userData?.activeInfo }</p>
               { expiredInfo() }
             </div>
           </div>
