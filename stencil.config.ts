@@ -61,6 +61,15 @@ export const config: Config = {
         'kompas-footer-supports',
         'kompas-footer-products'
       ] 
+    },
+    // Header Account bundle
+    {
+      components: [
+        'kompas-header-account',
+        'kompas-header-account-menu',
+        'kompas-header-account-help-center',
+        'kompas-header-account-profile'
+      ]
     }
   ]
 };

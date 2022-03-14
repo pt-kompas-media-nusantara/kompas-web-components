@@ -62,7 +62,11 @@ module.exports = {
         700: '#7A5700'
       }
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '76': '19rem'
+      }
+    },
   },
   variants: {
     extend: {},

@@ -1,0 +1,107 @@
+:host {
+  @apply block;
+  * {
+    @apply font-sans;
+    box-sizing: border-box;
+  }
+}
+
+.header-account-menu--item {
+  @apply flex flex-row items-center p-2 hover:bg-grey-200 transition ease-in-out rounded-sm;
+}
+
+.header-account-menu--title {
+  @apply flex-grow text-base font-bold mx-4;
+}
+
+.header-account-menu--notification-info {
+  @apply text-sm rounded-3xl flex items-center justify-center bg-orange-400 text-grey-100 h-7 w-7;
+}
+
+.header-account-help-center--item {
+  @apply flex flex-row items-center px-2;
+}
+
+.header-account-help-center--content {
+  @apply flex flex-col flex-grow mx-4 leading-4 text-base gap-y-2;
+}
+
+.header-account--membership-icon {
+  @apply absolute;
+  bottom: -3px;
+  right: -4px;
+}
+
+.header-account--notification-indicator {
+  @apply absolute top-0 h-2 w-2 bg-orange-400 rounded-full;
+  right: -1px;
+}
+
+.header-account-sidebar {
+  @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 z-10 overflow-y-scroll h-screen shadow-lg; 
+  @apply border border-grey-200 flex flex-col font-sans text-sm;
+}
+
+/* Custom Class */
+.icon {
+  &-xs {
+    & svg {
+      @apply h-3 w-3;
+    }
+  }
+
+  &-sm {
+    & svg {
+      @apply h-4 w-4;
+    }
+  }
+
+  &-md {
+    & svg {
+      @apply h-5 w-5;
+    }
+  }
+
+  &-white {
+    @apply text-grey-100;
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-blue-600 {
+    @apply text-blue-600;
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-grey-400 {
+    @apply text-grey-400;
+    & svg {
+      @apply fill-current;
+    }
+  }
+}
+
+/* Custom Scrollbar for header */
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0356a8;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0356a8;
+}

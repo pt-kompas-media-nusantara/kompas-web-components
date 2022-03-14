@@ -37,6 +37,17 @@
   </head>
   <body id="app">
     <div style="max-width: 1165px;margin:auto">
+      <header style="width:100%;position:fixed;left:0;top:0px;background-color: #0356A8;padding:0.75rem;z-index: 10;">
+        <div style="max-width: 1280px;margin:auto;display: flex">
+          <kompas-header-account 
+            style="margin-left: auto;"
+            sidebar-top-spacing=48
+            notification-total=10
+            logout-url="/logout"
+            manage-account-url="/manage-count"
+          />
+        </div>
+      </header>
       <h2>Lipsum Dei</h2>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci similique omnis dolorem dolores aliquam quis perspiciatis fugiat illum nisi laboriosam accusantium quam explicabo suscipit, asperiores blanditiis, ipsum exercitationem, reiciendis vitae!</p>
 
@@ -75,3 +86,15 @@
     </div>
   </body>
 </html>
+<script>
+  setTimeout(()=>{
+    document.querySelector('kompas-header-account').setAttribute('user-data', JSON.stringify({
+      "userName" : "User Fullname",
+      "expired" : "Berakhir: 6 hari lagi",
+      "activeInfo" : "Aktif Berlangganan",
+      "isMembership": true,
+      "updateMembership" : "Perbarui Langganan",
+    })
+  )}, 1000)
+ 
+</script>
