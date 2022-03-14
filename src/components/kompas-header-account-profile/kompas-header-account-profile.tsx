@@ -1,5 +1,4 @@
 import { Component, Prop, h } from '@stencil/core'
-import blueCrownIcon from '../../../assets/icons/crown-blue-10.svg' 
 
 @Component({
   tag: 'kompas-header-account-profile',
@@ -77,7 +76,11 @@ export class KompasHeaderAccountProfile {
       const membershipIcon = () => {
         if(!this.userData?.isMembership) return
 
-        return <div class="header-account--membership-icon" innerHTML={blueCrownIcon}/>
+        return (
+          <div>
+            <img class="header-account--membership-icon" src="https://d3w4qaq4xm1ncv.cloudfront.net/global-header/crown-blue-10.svg" alt="membership-crown-icon"/>
+          </div>
+        )
       }
       
       return (

@@ -1,7 +1,6 @@
 import { Component, h, Prop, State } from '@stencil/core'
 import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg'
 import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg'
-import royalBlueCrownIcon from '../../../assets/icons/crown-royal-blue-60.svg' 
 
 interface user {
   userName: string,
@@ -99,7 +98,11 @@ export class KompasHeaderAccount {
     const membershipIcon = () => {
       if(!this.formattedUserData?.isMembership) return
 
-      return <div class="header-account--membership-icon icon-xs" innerHTML={royalBlueCrownIcon}/>
+      return (
+        <div>
+          <img class="header-account--membership-icon h-3 w-3" src="https://d3w4qaq4xm1ncv.cloudfront.net/global-header/crown-royal-blue-60.svg" alt="membership-crown-icon"/>
+        </div>
+      )
     }
 
     return (

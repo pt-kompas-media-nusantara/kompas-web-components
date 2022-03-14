@@ -1,6 +1,5 @@
 jest.mock('../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg', () => ({ chevronDown:'' }))
 jest.mock('../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg', () => ({ chevronUp:'' }))
-jest.mock('../../../assets/icons/crown-royal-blue-60.svg', () => ({ royalBlueCrownIcon:'' }))
 
 import { newSpecPage } from '@stencil/core/testing';
 import { KompasHeaderAccount } from './kompas-header-account';
