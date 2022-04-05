@@ -1,0 +1,81 @@
+.bg {
+  &-white {
+    @apply bg-grey-100
+  }
+}
+
+.text {
+  &-white {
+    @apply text-grey-100
+  }
+}
+
+.icon {
+  &-xs {
+    & svg {
+      @apply h-3 w-3;
+    }
+  }
+
+  &-sm {
+    & svg {
+      @apply h-4 w-4;
+    }
+  }
+
+  &-md {
+    & svg {
+      @apply h-5 w-5;
+    }
+  }
+
+  &-lg {
+    & svg {
+      @layer base {
+        @apply h-3 w-3;
+      }
+
+      @screen md {
+        @apply h-5 w-5;
+      }
+    }
+  }
+
+  &-white {
+    @apply text-grey-100;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-green-500 {
+    @apply text-green-500;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-blue-600 {
+    @apply text-blue-600;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-yellow-100 {
+    @apply text-yellow-100;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+}
+
+
+/* component */
+.kompas-paywall-header {
+  @apply flex w-full items-center;
+}

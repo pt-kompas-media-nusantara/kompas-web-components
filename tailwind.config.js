@@ -65,7 +65,10 @@ module.exports = {
     extend: {
       spacing: {
         '76': '19rem'
-      }
+      },
+      rotate: {
+        55: '55deg'
+      },
     },
   },
   variants: {

@@ -146,6 +146,10 @@ export namespace Components {
          */
         "userInitialName": string;
     }
+    interface KompasPaywall {
+        "slug": string;
+        "type": 'epaper' | 'reguler' | 'kompaspedia';
+    }
 }
 declare global {
     interface HTMLKidPaywallElement extends Components.KidPaywall, HTMLStencilElement {
@@ -208,6 +212,12 @@ declare global {
         prototype: HTMLKompasHeaderAccountProfileElement;
         new (): HTMLKompasHeaderAccountProfileElement;
     };
+    interface HTMLKompasPaywallElement extends Components.KompasPaywall, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallElement: {
+        prototype: HTMLKompasPaywallElement;
+        new (): HTMLKompasPaywallElement;
+    };
     interface HTMLElementTagNameMap {
         "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
@@ -219,6 +229,7 @@ declare global {
         "kompas-header-account-help-center": HTMLKompasHeaderAccountHelpCenterElement;
         "kompas-header-account-menu": HTMLKompasHeaderAccountMenuElement;
         "kompas-header-account-profile": HTMLKompasHeaderAccountProfileElement;
+        "kompas-paywall": HTMLKompasPaywallElement;
     }
 }
 declare namespace LocalJSX {
@@ -362,6 +373,10 @@ declare namespace LocalJSX {
          */
         "userInitialName"?: string;
     }
+    interface KompasPaywall {
+        "slug"?: string;
+        "type"?: 'epaper' | 'reguler' | 'kompaspedia';
+    }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
         "kid-recommender": KidRecommender;
@@ -373,6 +388,7 @@ declare namespace LocalJSX {
         "kompas-header-account-help-center": KompasHeaderAccountHelpCenter;
         "kompas-header-account-menu": KompasHeaderAccountMenu;
         "kompas-header-account-profile": KompasHeaderAccountProfile;
+        "kompas-paywall": KompasPaywall;
     }
 }
 export { LocalJSX as JSX };
@@ -389,6 +405,7 @@ declare module "@stencil/core" {
             "kompas-header-account-help-center": LocalJSX.KompasHeaderAccountHelpCenter & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountHelpCenterElement>;
             "kompas-header-account-menu": LocalJSX.KompasHeaderAccountMenu & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountMenuElement>;
             "kompas-header-account-profile": LocalJSX.KompasHeaderAccountProfile & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountProfileElement>;
+            "kompas-paywall": LocalJSX.KompasPaywall & JSXBase.HTMLAttributes<HTMLKompasPaywallElement>;
         }
     }
 }
