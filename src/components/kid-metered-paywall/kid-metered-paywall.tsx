@@ -22,11 +22,7 @@ export class KidMeteredPaywall {
   /**
    * prop isLogin untuk menunjukkan apakah user sudah login atau belum.
    */
-  @Prop() isLogin: boolean = true
-
-  /**
-   * States
-   */
+  @Prop() isLogin: boolean = false
 
   /**
    * TEMPLATING
@@ -61,7 +57,7 @@ export class KidMeteredPaywall {
 
   render() {
     return (
-      <div class=" sticky bottom-0 w-full h-full">
+      <div class="sticky bottom-0 w-full h-full">
         {this.countdownArticle > 0 && this.countdownArticle < 6 && this.isLogin ? this.templateMeteredPaywall() : ''}
       </div>
     )
