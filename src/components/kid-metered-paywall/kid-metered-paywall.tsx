@@ -18,7 +18,7 @@ export class KidMeteredPaywall {
   /**
    * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
    */
-  @Prop() countdownArticle: number = 4
+  @Prop() countdownArticle: number = 0
   /**
    * prop isLogin untuk menunjukkan apakah user sudah login atau belum.
    */
