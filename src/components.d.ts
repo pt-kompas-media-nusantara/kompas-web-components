@@ -147,8 +147,20 @@ export namespace Components {
         "userInitialName": string;
     }
     interface KompasPaywall {
+        "isLogin": boolean;
         "slug": string;
         "type": 'epaper' | 'reguler' | 'kompaspedia';
+    }
+    interface KompasPaywallBannerRegistration {
+        "bannerData": any;
+    }
+    interface KompasPaywallBody {
+        "isLogin": boolean;
+        "slug": string;
+        "type": 'epaper' | 'reguler' | 'kompaspedia';
+    }
+    interface KompasPaywallInformationHeader {
+        "title": string;
     }
 }
 declare global {
@@ -218,6 +230,24 @@ declare global {
         prototype: HTMLKompasPaywallElement;
         new (): HTMLKompasPaywallElement;
     };
+    interface HTMLKompasPaywallBannerRegistrationElement extends Components.KompasPaywallBannerRegistration, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallBannerRegistrationElement: {
+        prototype: HTMLKompasPaywallBannerRegistrationElement;
+        new (): HTMLKompasPaywallBannerRegistrationElement;
+    };
+    interface HTMLKompasPaywallBodyElement extends Components.KompasPaywallBody, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallBodyElement: {
+        prototype: HTMLKompasPaywallBodyElement;
+        new (): HTMLKompasPaywallBodyElement;
+    };
+    interface HTMLKompasPaywallInformationHeaderElement extends Components.KompasPaywallInformationHeader, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallInformationHeaderElement: {
+        prototype: HTMLKompasPaywallInformationHeaderElement;
+        new (): HTMLKompasPaywallInformationHeaderElement;
+    };
     interface HTMLElementTagNameMap {
         "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
@@ -230,6 +260,9 @@ declare global {
         "kompas-header-account-menu": HTMLKompasHeaderAccountMenuElement;
         "kompas-header-account-profile": HTMLKompasHeaderAccountProfileElement;
         "kompas-paywall": HTMLKompasPaywallElement;
+        "kompas-paywall-banner-registration": HTMLKompasPaywallBannerRegistrationElement;
+        "kompas-paywall-body": HTMLKompasPaywallBodyElement;
+        "kompas-paywall-information-header": HTMLKompasPaywallInformationHeaderElement;
     }
 }
 declare namespace LocalJSX {
@@ -374,8 +407,20 @@ declare namespace LocalJSX {
         "userInitialName"?: string;
     }
     interface KompasPaywall {
+        "isLogin"?: boolean;
         "slug"?: string;
         "type"?: 'epaper' | 'reguler' | 'kompaspedia';
+    }
+    interface KompasPaywallBannerRegistration {
+        "bannerData"?: any;
+    }
+    interface KompasPaywallBody {
+        "isLogin"?: boolean;
+        "slug"?: string;
+        "type"?: 'epaper' | 'reguler' | 'kompaspedia';
+    }
+    interface KompasPaywallInformationHeader {
+        "title"?: string;
     }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
@@ -389,6 +434,9 @@ declare namespace LocalJSX {
         "kompas-header-account-menu": KompasHeaderAccountMenu;
         "kompas-header-account-profile": KompasHeaderAccountProfile;
         "kompas-paywall": KompasPaywall;
+        "kompas-paywall-banner-registration": KompasPaywallBannerRegistration;
+        "kompas-paywall-body": KompasPaywallBody;
+        "kompas-paywall-information-header": KompasPaywallInformationHeader;
     }
 }
 export { LocalJSX as JSX };
@@ -406,6 +454,9 @@ declare module "@stencil/core" {
             "kompas-header-account-menu": LocalJSX.KompasHeaderAccountMenu & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountMenuElement>;
             "kompas-header-account-profile": LocalJSX.KompasHeaderAccountProfile & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountProfileElement>;
             "kompas-paywall": LocalJSX.KompasPaywall & JSXBase.HTMLAttributes<HTMLKompasPaywallElement>;
+            "kompas-paywall-banner-registration": LocalJSX.KompasPaywallBannerRegistration & JSXBase.HTMLAttributes<HTMLKompasPaywallBannerRegistrationElement>;
+            "kompas-paywall-body": LocalJSX.KompasPaywallBody & JSXBase.HTMLAttributes<HTMLKompasPaywallBodyElement>;
+            "kompas-paywall-information-header": LocalJSX.KompasPaywallInformationHeader & JSXBase.HTMLAttributes<HTMLKompasPaywallInformationHeaderElement>;
         }
     }
 }
