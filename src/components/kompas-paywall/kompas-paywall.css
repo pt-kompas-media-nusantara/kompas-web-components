@@ -85,8 +85,6 @@
   }
 }
 
-
-/* component */
-.kompas-paywall-header {
-  @apply flex w-full items-center;
+.wrapper-body {
+  @apply flex flex-col items-center justify-center
 }

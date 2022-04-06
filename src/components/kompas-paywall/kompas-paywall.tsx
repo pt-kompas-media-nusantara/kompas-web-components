@@ -11,6 +11,8 @@ export class KompasPaywall {
   @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' | 'kompaspedia' = 'reguler'
+  @Prop() isSubscribe: boolean = false
+  @Prop() quota: number = 0
   @State() paywallData: any = {} // add interface type
   @State() isExtensionsOpened: boolean = false
 
@@ -119,31 +121,56 @@ export class KompasPaywall {
   )
 
   private renderEpaperPaywallSection = (): void => (
-    <kompas-paywall-body type={this.type} isLogin={this.isLogin}></kompas-paywall-body>
+    <kompas-paywall-body is-login={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
   )
 
-  private renderRegularPaywallSection = (): void => (
-    <div>
-      {this.transitionBox()}
-      <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
-        <div class="flex flex-col w-full max-w-screen-sm my-5">
-          {this.isLogin ? '' : <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register}></kompas-paywall-banner-registration>}
-          <kompas-paywall-information-header title="adsadsa"></kompas-paywall-information-header>
-          <kompas-paywall-body></kompas-paywall-body>
+  private renderRegularPaywallSection = (): void => {
+    const informationContent = this.paywallData.informations.meterredPaywall
+    if (this.isSubscribe && (this.quota === informationContent.maxQuota)) {
+      return (
+        <div>
+          {this.transitionBox()}
+          <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
+            <div class="flex flex-col w-full max-w-screen-md my-5">
+              <kompas-paywall-information-header title={informationContent.maxQuotaMessage}></kompas-paywall-information-header>
+              <kompas-paywall-body is-login={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  )
+      )
+    } else if (this.isSubscribe && (this.quota < informationContent.maxQuota)) {
+      return (
+        <div>
+          <h1>metered paywall</h1>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          {this.transitionBox()}
+          <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
+            <div class="flex flex-col w-full max-w-screen-md my-5">
+              <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register}></kompas-paywall-banner-registration>
+              <kompas-paywall-body is-login={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+  }
 
   private selectorTypePaywall = (type: 'epaper' | 'reguler' | 'kompaspedia') => {
     switch (type) {
       case 'epaper': return (this.renderEpaperPaywallSection())
       case 'reguler': return (this.renderRegularPaywallSection())
+      case 'kompaspedia': return (this.renderEpaperPaywallSection())
       default: return (this.renderRegularPaywallSection())
     }
   }
+
+
   render() {
-    console.log('datas', this.isLogin)
     return (
       <div class="relative w-full">
         {this.selectorTypePaywall(this.type)}

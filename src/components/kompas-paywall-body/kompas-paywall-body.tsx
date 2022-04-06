@@ -12,6 +12,21 @@ interface Product {
   isHighlight: boolean,
   url: string,
 }
+
+interface Memberships {
+  title: string,
+  percentage: number,
+  price: number,
+  discountPrice: number,
+  periode: string,
+  isHighlight: boolean,
+  url: string
+}
+
+interface Packages {
+  title: string,
+  memberships: Array<Memberships>
+}
 @Component({
   tag: 'kompas-paywall-body',
   styleUrl: '../kompas-paywall/kompas-paywall.css',
@@ -23,101 +38,9 @@ export class KompasPaywallBody {
   @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' | 'kompaspedia' = 'reguler'
-  @State() paywallData: any = {} // add interface type
+  @Prop() paywallData: any = {} // add interface type
   @State() isExtensionsOpened: boolean = false
 
-  async componentWillRender() {
-    try {
-      const result = await fetch('https://kompasid-production-content.s3.ap-southeast-1.amazonaws.com/paywall/paywall.json', {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }).then((res => res.json()))
-
-      const mockResult = {
-        informations: {
-          title: 'Langganan untuk Lanjut Membaca',
-          description: [
-            "Akses tak terbatas Kompas.id (web & app)",
-            "Berita digital tanpa iklan pop-up",
-            "30 arsip terbaru ePaper Kompas",
-            "Artikel  Opini eksklusif",
-          ],
-          register: {
-            img: 'https://www.kompas.id/img/backgrounds/ilustrasi-banner-registration.png',
-            title: 'Ingin Membaca Artikel Ini Secara Utuh?',
-            subtitle: 'Daftar akun untuk membaca 5 artikel premium secara gratis ',
-            label: 'Daftar Sekarang '
-          }
-        },
-        packages: {
-          title: "Sekali bayar, tanpa perpanjang otomatis",
-          memberships: [
-            {
-              title: "Kompas Digital Premium 12 Bulan (Hemat 40%)",
-              percentage: 40,
-              price: 360000,
-              discountPrice: 600000,
-              periode: "1 Tahun",
-              isHighlight: true,
-              url: 'https://checkout.kompas.id/?product_id=9802032&'
-
-            }, {
-              title: "Kompas Digital Premium 1 Bulan",
-              percentage: 0,
-              discountPrice: 0,
-              price: 50000,
-              periode: "1 Bulan",
-              isHighlight: false,
-              url: "https://checkout.kompas.id/?product_id=9802035&",
-
-            }
-          ]
-        },
-        payment: {
-          desktop: [
-            { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-            { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-            { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
-            { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-            { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-            { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-            { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" },
-            { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-            { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-            { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-            { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-            { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-            { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" }
-          ],
-          mobile: [
-            { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-            { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-            { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-            { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
-          ],
-          ekstension: [
-            { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-            { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-            { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-            { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-            { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" },
-            { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-            { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-            { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-            { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" }
-          ]
-        }
-      }
-
-      this.paywallData = mockResult
-
-    } catch (error) {
-      throw new Error(`${error.status} Ada galat saat memproses permintaan.`)
-    }
-  }
 
   private primaryPackages = (product: Product): void => (
     <div class="flex justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
@@ -200,9 +123,9 @@ export class KompasPaywallBody {
       </button>
     </div>
   )
-  private userAction = (isLogin: boolean): void => (
+  private userAction = (isLogin: boolean, type: 'epaper' | 'reguler' | 'kompaspedia'): void => (
     <div class="flex h-20 bg-blue-600 w-full justify-evenly rounded-b mt-6 md:mt-8 relative">
-      {this.isLogin || (this.type !== 'epaper') ? this.helpDesk() : this.authRegister()}
+      {isLogin || (type !== 'epaper') ? this.helpDesk() : this.authRegister()}
     </div >
   )
 
@@ -215,22 +138,17 @@ export class KompasPaywallBody {
     </div>
   )
 
-  private headerSection = (): void => (
-    <div class="kompas-paywall-header">
-      {this.type === 'epaper' ?
-        <button onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} />
-        : ''
-      }
-      <h4 class="text-base md:text-xl text-center font-bold font-serif tracking-wide md:tracking-normal w-full">
-        Langganan untuk Lanjut Membaca
-      </h4>
+  private headerSection = (type: 'epaper' | 'reguler' | 'kompaspedia'): void => (
+    <div class="flex w-full items-center">
+      {type === 'epaper' ? <button onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} /> : ''}
+      <h4 class="text-base md:text-xl text-center font-bold font-serif tracking-wide md:tracking-normal w-full">Langganan untuk Lanjut Membaca</h4>
     </div>
   )
 
-  private descriptionSection = (): void => (
+  private descriptionSection = (data: Array<string>): void => (
     <div class=" flex flex-col items-center">
       <div class="flex flex-col space-y-2 mt-2.5 md:mt-3">
-        {this.paywallData.informations.description.map((item) => (
+        {data.map((item) => (
           <div class="flex items-center">
             <div class="icon-xs icon-green-500" innerHTML={check}></div>
             <h6 class="text-xs md:text-base ml-0.5 md:ml-1">{item}</h6>
@@ -240,38 +158,28 @@ export class KompasPaywallBody {
     </div>
   )
 
-  private packagesSection = (): void => {
-    const packages = this.paywallData.packages.memberships
-    return (<div class="flex flex-col w-full items-center mt-8 lg:mt-2 px-2 ">
-      <h6 class="text-sm md:text-base font-bold"> {packages.title} </h6>
-      {packages.map((item) => (
-        item.isHighlight ? this.primaryPackages(item) : this.secondaryPackages(item)
-      ))}
+  private packagesSection = (data: Packages): void => (
+    <div class="flex flex-col w-full items-center mt-8 lg:mt-2 px-2 ">
+      <h6 class="text-sm md:text-base font-bold"> {data.title} </h6>
+      {data.memberships.map((item) => (item.isHighlight ? this.primaryPackages(item) : this.secondaryPackages(item)))}
     </div>
-    )
-  }
+  )
 
-  private paymentDesktopSection = (): void => (
+  private paymentDesktopSection = (data: Array<{ link: string, name: string }>): void => (
     <div class="hidden md:flex w-full md:max-w-xs lg:max-w-md items-center justify-evenly flex-wrap">
-      {this.paywallData.payment.desktop.map((item) => (
-        <img class="object-cover w-16 h-9" src={item.link} alt={`${item.name}-logo-payment`} />
-      ))}
+      {data.map((item) => (<img class="object-cover w-16 h-9" src={item.link} alt={`${item.name}-logo-payment`} />))}
     </div>
   )
 
-  private paymentMobileSection = (): void => (
-    <div class="flex md:hidden w-full max-w-sm items-center justify-evenly flex-wrap  mt-4">
-      {this.paywallData.payment.mobile.map((item) => (
-        <img class="object-cover w-16 h-9" src={item.link} alt={`${item.name}-logo-payment`} />
-      ))}
-      <button onClick={() => this.paymentExtensionHandler()} class="text-xs md:text-sm text-blue-600 font-bold" >
-        +9 lainnya
-      </button>
+  private paymentMobileSection = (data: Array<{ link: string, name: string }>): void => (
+    <div class="flex md:hidden w-full max-w-sm items-center justify-evenly flex-wrap  mt-4 px-4">
+      {data.map((item) => (<img class="object-cover w-16 h-9" src={item.link} alt={`${item.name}-logo-payment`} />))}
+      <button onClick={() => this.paymentExtensionHandler()} class="text-xs md:text-sm text-blue-600 font-bold" >+9 lainnya </button>
     </div>
   )
 
-  private paymentMobileExtension = () => (
-    <div class="bg-white border-white w-full rounded p-3 ">
+  private paymentMobileExtension = (data: Array<{ link: string, name: string }>) => (
+    <div class="bg-white border-white w-full rounded p-3 bottom-0 max-w-xs mb-5 md:hidden px-2 absolute">
       <svg
         class="right-0 text-white h-4 mr-12 -mt-7 border-white z-0 transform rotate-180 absolute"
         x="0px"
@@ -281,7 +189,7 @@ export class KompasPaywallBody {
         <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
       </svg>
       <div class="flex md:hidden w-full max-w-sm items-center flex-wrap">
-        {this.paywallData.payment.ekstension.map((item) => (
+        {data.map((item) => (
           <img class="object-cover w-14 h-7" src={item.link} alt={`${item.name}-logo-payment`} />
         ))}
       </div>
@@ -323,23 +231,23 @@ export class KompasPaywallBody {
   }
 
   render() {
-    console.log('props', this.type, this.slug, this.isLogin)
+    console.log('props', window.location)
     return (
-      <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
+      <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
         <div class="flex flex-col w-full max-w-screen-sm my-5">
           {this.type === 'epaper' ? this.topNavigator() : ''}
           <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded-t pt-6 md:pt-8 relative">
-            {this.headerSection()}
-            {this.descriptionSection()}
-            {this.packagesSection()}
+            {this.headerSection(this.type)}
+            {this.descriptionSection(this.paywallData.informations.description)}
+            {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            {this.paymentDesktopSection()}
-            {this.paymentMobileSection()}
-            {this.userAction(this.isLogin)}
+            {this.paymentDesktopSection(this.paywallData.payment.desktop)}
+            {this.paymentMobileSection(this.paywallData.payment.mobile)}
+            {this.userAction(this.isLogin, this.type)}
             {this.isExtensionsOpened ?
-              <div class="bottom-0 w-full max-w-xs mb-5 md:hidden px-2 absolute">
-                {this.paymentMobileExtension()}
+              <div class="">
+                {this.paymentMobileExtension(this.paywallData.payment.ekstension)}
               </div> : ''
             }
           </div>

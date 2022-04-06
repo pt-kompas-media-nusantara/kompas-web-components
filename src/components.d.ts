@@ -148,6 +148,8 @@ export namespace Components {
     }
     interface KompasPaywall {
         "isLogin": boolean;
+        "isSubscribe": boolean;
+        "quota": number;
         "slug": string;
         "type": 'epaper' | 'reguler' | 'kompaspedia';
     }
@@ -156,6 +158,7 @@ export namespace Components {
     }
     interface KompasPaywallBody {
         "isLogin": boolean;
+        "paywallData": any;
         "slug": string;
         "type": 'epaper' | 'reguler' | 'kompaspedia';
     }
@@ -408,6 +411,8 @@ declare namespace LocalJSX {
     }
     interface KompasPaywall {
         "isLogin"?: boolean;
+        "isSubscribe"?: boolean;
+        "quota"?: number;
         "slug"?: string;
         "type"?: 'epaper' | 'reguler' | 'kompaspedia';
     }
@@ -416,6 +421,7 @@ declare namespace LocalJSX {
     }
     interface KompasPaywallBody {
         "isLogin"?: boolean;
+        "paywallData"?: any;
         "slug"?: string;
         "type"?: 'epaper' | 'reguler' | 'kompaspedia';
     }
