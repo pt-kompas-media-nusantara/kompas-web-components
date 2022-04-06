@@ -1,0 +1,21 @@
+.text-transition {
+  @apply w-full;
+  @apply h-20;
+}
+.body {
+  position: sticky;
+  top: 0;
+  height:100%;
+  width: 100%
+}
+.icon {
+  @apply h-4 text-green-400;
+
+  &.lg {
+    @apply h-6;
+
+    & svg {
+      @apply h-6;
+    }
+  }
+}
