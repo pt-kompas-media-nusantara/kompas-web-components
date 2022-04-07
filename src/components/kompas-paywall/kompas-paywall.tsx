@@ -10,7 +10,7 @@ export class KompasPaywall {
 
   @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
-  @Prop() type: 'epaper' | 'reguler' | 'kompaspedia' = 'reguler'
+  @Prop() type: 'epaper' | 'reguler' = 'reguler'
   @Prop() isSubscribe: boolean = false
   @Prop() quota: number = 0
   @State() paywallData: any = {} // add interface type
@@ -18,13 +18,13 @@ export class KompasPaywall {
 
   async componentWillRender() {
     try {
-      const result = await fetch('https://kompasid-production-content.s3.ap-southeast-1.amazonaws.com/paywall/paywall.json', {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }).then((res => res.json()))
+      // const result = await fetch('https://kompasid-production-content.s3.ap-southeast-1.amazonaws.com/paywall/paywall.json', {
+      //   method: 'GET',
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   },
+      // }).then((res => res.json()))
 
       const mockResult = {
         informations: {
@@ -132,7 +132,7 @@ export class KompasPaywall {
           {this.transitionBox()}
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
-              <kompas-paywall-information-header title={informationContent.maxQuotaMessage}></kompas-paywall-information-header>
+              <kompas-paywall-information-header content={informationContent.maxQuotaMessage}></kompas-paywall-information-header>
               <kompas-paywall-body is-login={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
             </div>
           </div>
@@ -160,11 +160,10 @@ export class KompasPaywall {
 
   }
 
-  private selectorTypePaywall = (type: 'epaper' | 'reguler' | 'kompaspedia') => {
+  private selectorTypePaywall = (type: 'epaper' | 'reguler') => {
     switch (type) {
       case 'epaper': return (this.renderEpaperPaywallSection())
       case 'reguler': return (this.renderRegularPaywallSection())
-      case 'kompaspedia': return (this.renderEpaperPaywallSection())
       default: return (this.renderRegularPaywallSection())
     }
   }

@@ -151,7 +151,7 @@ export namespace Components {
         "isSubscribe": boolean;
         "quota": number;
         "slug": string;
-        "type": 'epaper' | 'reguler' | 'kompaspedia';
+        "type": 'epaper' | 'reguler';
     }
     interface KompasPaywallBannerRegistration {
         "bannerData": any;
@@ -160,10 +160,10 @@ export namespace Components {
         "isLogin": boolean;
         "paywallData": any;
         "slug": string;
-        "type": 'epaper' | 'reguler' | 'kompaspedia';
+        "type": 'epaper' | 'reguler';
     }
     interface KompasPaywallInformationHeader {
-        "title": string;
+        "content": string;
     }
 }
 declare global {
@@ -414,7 +414,7 @@ declare namespace LocalJSX {
         "isSubscribe"?: boolean;
         "quota"?: number;
         "slug"?: string;
-        "type"?: 'epaper' | 'reguler' | 'kompaspedia';
+        "type"?: 'epaper' | 'reguler';
     }
     interface KompasPaywallBannerRegistration {
         "bannerData"?: any;
@@ -423,10 +423,10 @@ declare namespace LocalJSX {
         "isLogin"?: boolean;
         "paywallData"?: any;
         "slug"?: string;
-        "type"?: 'epaper' | 'reguler' | 'kompaspedia';
+        "type"?: 'epaper' | 'reguler';
     }
     interface KompasPaywallInformationHeader {
-        "title"?: string;
+        "content"?: string;
     }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;

@@ -37,13 +37,13 @@ export class KompasPaywallBody {
 
   @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
-  @Prop() type: 'epaper' | 'reguler' | 'kompaspedia' = 'reguler'
+  @Prop() type: 'epaper' | 'reguler' = 'reguler'
   @Prop() paywallData: any = {} // add interface type
-  @State() isExtensionsOpened: boolean = false
+  @State() isExtensionsOpened: boolean = true
 
 
   private primaryPackages = (product: Product): void => (
-    <div class="flex justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
+    <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
       <div class="flex flex-col py-3 ml-6 md:ml-8">
         <div class="flex flex-none items-center">
           <h5 class="text-base md:text-lg font-bold text-orange-400">
@@ -123,7 +123,7 @@ export class KompasPaywallBody {
       </button>
     </div>
   )
-  private userAction = (isLogin: boolean, type: 'epaper' | 'reguler' | 'kompaspedia'): void => (
+  private userAction = (isLogin: boolean, type: 'epaper' | 'reguler'): void => (
     <div class="flex h-20 bg-blue-600 w-full justify-evenly rounded-b mt-6 md:mt-8 relative">
       {isLogin || (type !== 'epaper') ? this.helpDesk() : this.authRegister()}
     </div >
@@ -138,7 +138,7 @@ export class KompasPaywallBody {
     </div>
   )
 
-  private headerSection = (type: 'epaper' | 'reguler' | 'kompaspedia'): void => (
+  private headerSection = (type: 'epaper' | 'reguler'): void => (
     <div class="flex w-full items-center">
       {type === 'epaper' ? <button onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} /> : ''}
       <h4 class="text-base md:text-xl text-center font-bold font-serif tracking-wide md:tracking-normal w-full">Langganan untuk Lanjut Membaca</h4>
@@ -172,26 +172,28 @@ export class KompasPaywallBody {
   )
 
   private paymentMobileSection = (data: Array<{ link: string, name: string }>): void => (
-    <div class="flex md:hidden w-full max-w-sm items-center justify-evenly flex-wrap  mt-4 px-4">
-      {data.map((item) => (<img class="object-cover w-16 h-9" src={item.link} alt={`${item.name}-logo-payment`} />))}
+    <div class="grid md:hidden items-center grid-flow-col grid-cols-auto grid-rows-1 gap-4 mt-4 mx-4">
+      {data.map((item) => (<img class="" src={item.link} alt={`${item.name}-logo-payment`} />))}
       <button onClick={() => this.paymentExtensionHandler()} class="text-xs md:text-sm text-blue-600 font-bold" >+9 lainnya </button>
     </div>
   )
 
   private paymentMobileExtension = (data: Array<{ link: string, name: string }>) => (
-    <div class="bg-white border-white w-full rounded p-3 bottom-0 max-w-xs mb-5 md:hidden px-2 absolute">
-      <svg
-        class="right-0 text-white h-4 mr-12 -mt-7 border-white z-0 transform rotate-180 absolute"
-        x="0px"
-        y="0px"
-        viewBox="0 0 255 255"
-      >
-        <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
-      </svg>
-      <div class="flex md:hidden w-full max-w-sm items-center flex-wrap">
-        {data.map((item) => (
-          <img class="object-cover w-14 h-7" src={item.link} alt={`${item.name}-logo-payment`} />
-        ))}
+    <div class="w-full bottom-0 max-w-xs mb-1 ml-8 md:hidden absolute px-4">
+      <div class="bg-white border-white w-full rounded p-3 max-w-xs">
+        <svg
+          class="right-0 text-white h-4 mr-10 -mt-7 border-white z-0 transform rotate-180 absolute"
+          x="0px"
+          y="0px"
+          viewBox="0 0 255 255"
+        >
+          <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
+        </svg>
+        <div class="grid place-items-center items-center grid-flow-row grid-cols-5 grid-rows-2  gap-y-4">
+          {data.map((item) => (
+            <img class="object-cover" src={item.link} alt={`${item.name}-logo-payment`} />
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -234,7 +236,7 @@ export class KompasPaywallBody {
     console.log('props', window.location)
     return (
       <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
-        <div class="flex flex-col w-full max-w-screen-sm my-5">
+        <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
           <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded-t pt-6 md:pt-8 relative">
             {this.headerSection(this.type)}
@@ -245,12 +247,8 @@ export class KompasPaywallBody {
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
-            {this.isExtensionsOpened ?
-              <div class="">
-                {this.paymentMobileExtension(this.paywallData.payment.ekstension)}
-              </div> : ''
-            }
           </div>
+          {this.isExtensionsOpened ? (this.paymentMobileExtension(this.paywallData.payment.ekstension)) : ''}
         </div>
       </div>
     );

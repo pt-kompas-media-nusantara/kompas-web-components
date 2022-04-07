@@ -7,12 +7,12 @@ import { Component, Prop, h } from '@stencil/core'
 })
 export class KompasPaywallInformationHeader {
 
-  @Prop() title: string = ''
+  @Prop() content: string = ''
 
   render() {
     return (
       <div class="my-8">
-        <h5 class="text-base md:text-xl font-bold font-serif">{this.title}</h5>
+        <h5 class="text-base md:text-xl font-bold font-serif">{this.content}</h5>
       </div>
     )
   }
