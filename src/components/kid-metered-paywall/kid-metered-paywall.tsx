@@ -49,9 +49,9 @@ export class KidMeteredPaywall {
   private getCountdownArticle(): void {
     const getCountdown = this.countdownArticle
     if (getCountdown < 5) {
-      return <p>Anda memiliki sisa <b> {this.countdownArticle} dari 5</b> artikel premium gratis bulan ini. Langganan untuk akses tanpa batas</p>
+      return <p>Anda memiliki sisa <b>{this.countdownArticle} dari 5</b> artikel premium gratis bulan ini. Langganan untuk akses tanpa batas</p>
     } else {
-      return <p>Anda sedang membaca artikel gratis terakhir bulan ini. Langganan untuk akses tanpa batas</p>
+      return <p>Anda sedang membaca <b>artikel gratis terakhir bulan ini.</b> Langganan untuk akses tanpa batas</p>
     }
   }
 
