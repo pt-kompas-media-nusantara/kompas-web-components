@@ -62,8 +62,8 @@ export class KompasHeaderAccountProfile {
        * expired Info Element
        */
       const expiredInfo = () => {
-        const isNearExpire = this.userData?.expired?.includes('Berakhir')
-        const expiredTextColor = isNearExpire ? `text-orange-400` : `text-grey-500`
+        const isNearExpired = this.userData?.isNearExpired
+        const expiredTextColor = isNearExpired ? `text-orange-400` : `text-grey-500`
         
         return (
           <p class={`capitalize font-bold text-sm pb-1 ${expiredTextColor}`}>{ this.userData?.expired }</p>

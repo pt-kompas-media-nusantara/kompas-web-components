@@ -5,6 +5,7 @@ import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/ch
 interface user {
   userName: string,
   expired: string,
+  isNearExpired: boolean,
   activeInfo: string,
   isMembership: boolean,
   updateMembership: string
