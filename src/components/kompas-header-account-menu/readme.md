@@ -1,6 +1,6 @@
 # kompas-header-account-menu
 
-
+Prefer to define it on ENV. so it can be easily changed domain (local, development, or production)
 
 <!-- Auto Generated Below -->
 
