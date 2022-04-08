@@ -13,7 +13,7 @@ export class KompasPaywall {
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
   @Prop() isSubscribe: boolean = false
   @Prop() quota: number = 0
-  @State() paywallData: any = {} // add interface type
+  @State() paywallData: any = undefined // add interface type
   @State() isExtensionsOpened: boolean = false
 
   async componentWillRender() {
@@ -126,7 +126,7 @@ export class KompasPaywall {
 
   private renderRegularPaywallSection = (): void => {
     const informationContent = this.paywallData.informations.meterredPaywall
-    if (this.isSubscribe && (this.quota === informationContent.maxQuota)) {
+    if (this.isSubscribe && (this.quota > informationContent.maxQuota)) {
       return (
         <div>
           {this.transitionBox()}
@@ -138,11 +138,9 @@ export class KompasPaywall {
           </div>
         </div>
       )
-    } else if (this.isSubscribe && (this.quota < informationContent.maxQuota)) {
+    } else if (this.isSubscribe && (this.quota <= informationContent.maxQuota)) {
       return (
-        <div>
-          <h1>metered paywall</h1>
-        </div>
+        <kompas-paywall-meter countdown-article={this.quota}></kompas-paywall-meter>
       )
     } else {
       return (

@@ -105,7 +105,7 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
   <img width="300" src="https://user-images.githubusercontent.com/43400392/162159351-9dbef0ce-0113-4cbb-a8a6-9709fbaf1974.png">
 
 2. kompas-paywall-banner-registration <br>
-  sub-komponen ini merupakan komponen banner registration user 
+  sub-komponen ini merupakan komponen banner registration user <br>
   <img width="300" src="https://user-images.githubusercontent.com/43400392/162159659-3bbc12ca-78bb-4985-baf6-0df35a5e89a2.png">
   
 3. kompas-paywall-information-header <br>

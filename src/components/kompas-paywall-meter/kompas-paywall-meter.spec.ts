@@ -3,21 +3,21 @@
  * npm run test.spec -- src/components/kid-metered-paywall/kid-metered-paywall.spec.ts
  */
 import { newSpecPage } from '@stencil/core/testing'
-import { KidMeteredPaywall } from './kid-metered-paywall'
+import { KompasPaywallMeter } from './kompas-paywall-meter'
 
-describe('KidMeteredPaywall', () => {
+describe('KompasPaywallMeter', () => {
   it('Render root component', async () => {
     const { root } = await newSpecPage({
-      components: [KidMeteredPaywall],
-      html: `<kid-metered-paywall></kid-metered-paywall>`,
+      components: [KompasPaywallMeter],
+      html: `<kid-paywall-meter></kid-paywall-meter>`,
     })
 
     expect(root).toEqualHtml(`
-        <kid-metered-paywall>
+        <kid-paywall-meter>
         <mock:shadow-root>
             <div class="bottom-0 h-full sticky w-full"></div>
         </mock:shadow-root>
-     </kid-metered-paywall>
+     </kid-paywall-meter>
      `)
   })
 })
