@@ -151,6 +151,6 @@ export class KompasHeaderAccount {
      * If this component will implement on vanilla JS. 
      * Usually to sent attribute that non primitive (Obj / Array) need to stringify first
      */
-    this.formattedUserData = typeof this.userData === 'string' ? JSON.parse(this.userData) : this.userData
+    this.formattedUserData = JSON.parse(this.userData)
   }
 }
