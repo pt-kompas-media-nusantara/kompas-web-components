@@ -44,12 +44,6 @@
 
 /* Custom Class */
 .icon {
-  &-xs {
-    & svg {
-      @apply h-3 w-3;
-    }
-  }
-
   &-sm {
     & svg {
       @apply h-4 w-4;
@@ -58,7 +52,7 @@
 
   &-md {
     & svg {
-      @apply h-5 w-5;
+      @apply h-6 w-6;
     }
   }
 

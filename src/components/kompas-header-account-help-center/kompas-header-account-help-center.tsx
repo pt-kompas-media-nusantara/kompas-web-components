@@ -23,7 +23,7 @@ export class KompasHeaderAccountHelpCenter {
       <div class="ml-3 icon-md icon-blue-600" innerHTML={commentIcon}></div>
       <div class="header-account-help-center--content">
         <p>Tanya Jawab</p>
-        <a href="http://kb.kompas.id/" class="font-bold">http://kb.kompas.id/</a>
+        <a href="http://kb.kompas.id/" class="font-bold hover:underline">http://kb.kompas.id/</a>
       </div>
     </div>
   )

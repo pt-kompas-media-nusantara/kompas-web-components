@@ -84,7 +84,7 @@ export class KompasHeaderAccountProfile {
       }
       
       return (
-        <div class="flex flex-col items-center leading-none">
+        <div class="flex flex-col items-start leading-none">
           <div class="flex lex-row items-center gap-4">
             <div class="flex bg-brand-1 flex-shrink-0 p-5 rounded-full h-16 w-16 items-center justify-center relative">
               <span class="capitalize text-2xl text-grey-100 font-bold">{ this.userInitialName }</span>
