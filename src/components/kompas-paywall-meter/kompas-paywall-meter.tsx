@@ -173,7 +173,7 @@ export class KompasPaywallMeter {
 
   render() {
     return (
-      <div class="sticky bottom-0 w-screen h-full">
+      <div class={`w-full h-full ${this.countdownArticle < 6 ? 'sticky bottom-0 ' : ''}`}>
         {this.isLogin ? this.templateMeteredPaywall() : ''}
       </div>
     )
