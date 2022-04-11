@@ -1,0 +1,109 @@
+.transparent-linear {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, 0)), to(#fff));
+  background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #fff);
+}
+
+.text-transition {
+  @apply w-full;
+  @apply h-20;
+  @apply bg-grey-100
+}
+
+.bg {
+  &-white {
+    @apply bg-grey-100
+  }
+}
+
+.text {
+  &-white {
+    @apply text-grey-100
+  }
+}
+
+.icon {
+  &-xs {
+    & svg {
+      @apply h-3 w-3;
+    }
+  }
+
+  &-sm {
+    & svg {
+      @apply h-4 w-4;
+    }
+  }
+
+  &-md {
+    & svg {
+      @apply h-5 w-5;
+    }
+  }
+
+  &-lg {
+    & svg {
+      @layer base {
+        @apply h-3 w-3;
+      }
+
+      @screen md {
+        @apply h-5 w-5;
+      }
+    }
+  }
+
+  &-white {
+    @apply text-grey-100;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-green-500 {
+    @apply text-green-500;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-blue-600 {
+    @apply text-blue-600;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+
+  &-yellow-100 {
+    @apply text-yellow-100;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+}
+
+.wrapper-body {
+  @apply flex flex-col items-center justify-center
+}
+
+.body {
+  position: sticky;
+  top: 0;
+  height: 100%;
+  width: 100%
+}
+
+/* .icon {
+  @apply h-4 text-green-400;
+
+  &.lg {
+    @apply h-6;
+
+    & svg {
+      @apply h-6;
+    }
+  }
+} */

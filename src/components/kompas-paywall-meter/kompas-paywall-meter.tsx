@@ -6,12 +6,12 @@
 import { Component, h, Prop } from '@stencil/core'
 
 @Component({
-  tag: 'kid-metered-paywall',
-  styleUrl: 'kid-metered-paywall.css',
+  tag: 'kompas-paywall-meter',
+  styleUrl: '../kompas-paywall/kompas-paywall.css',
   shadow: true
 })
 
-export class KidMeteredPaywall {
+export class KompasPaywallMeter {
   /**
    * Props
    */
@@ -19,11 +19,6 @@ export class KidMeteredPaywall {
    * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
    */
   @Prop() countdownArticle: number = 0
-  /**
-   * prop isLogin untuk menunjukkan apakah user sudah login atau belum.
-   */
-  @Prop() isLogin: boolean = false
-
   /**
    * TEMPLATING
    */
@@ -48,7 +43,7 @@ export class KidMeteredPaywall {
    */
   private getCountdownArticle(): void {
     const getCountdown = this.countdownArticle
-    if (getCountdown < 5) {
+    if (getCountdown > 0 && getCountdown < 5) {
       return <p>Anda memiliki sisa <b>{this.countdownArticle} dari 5</b> artikel premium gratis bulan ini. Langganan untuk akses tanpa batas</p>
     } else {
       return <p>Anda sedang membaca <b>artikel gratis terakhir bulan ini.</b> Langganan untuk akses tanpa batas</p>
@@ -57,8 +52,8 @@ export class KidMeteredPaywall {
 
   render() {
     return (
-      <div class="sticky bottom-0 w-full h-full">
-        {this.countdownArticle > 0 && this.countdownArticle < 6 && this.isLogin ? this.templateMeteredPaywall() : ''}
+      <div class="sticky bottom-0 w-screen h-full">
+        {this.templateMeteredPaywall()}
       </div>
     )
   }
