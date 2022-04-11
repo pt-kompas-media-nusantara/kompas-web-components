@@ -1,5 +1,5 @@
 import { Component, Prop, h } from '@stencil/core'
-import { Registration } from './types'
+import { Registration } from '../kompas-paywall/types'
 
 @Component({
   tag: 'kompas-paywall-banner-registration',

@@ -78,7 +78,6 @@ export const config: Config = {
         'kompas-paywall-information-header',
         'kompas-paywall-body',
         'kompas-paywall-meter',
-
       ]
     }
   ]
