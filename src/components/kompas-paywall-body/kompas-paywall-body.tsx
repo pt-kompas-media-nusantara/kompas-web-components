@@ -2,7 +2,7 @@ import { Component, h, Prop, State } from '@stencil/core'
 import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.svg'
 import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
-import { Product, Packages, PaymentImage, PaywallProduct } from './types'
+import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
 @Component({
   tag: 'kompas-paywall-body',
   styleUrl: '../kompas-paywall/kompas-paywall.css',
@@ -216,7 +216,7 @@ export class KompasPaywallBody {
     console.log('props', window.location)
     return (
       <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
-        <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm my-5 relative">
+        <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm px-4 md:px-0 my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
           <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded-t pt-6 md:pt-8 relative">
             {this.headerSection(this.type)}

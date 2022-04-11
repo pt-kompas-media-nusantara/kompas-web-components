@@ -66,7 +66,7 @@ describe('Kompas Paywall Epaper', () => {
 })
 
 
-describe('Kompas Paywall Reguler with Mettered Paywall', () => {
+describe('Kompas Paywall Reguler Paywall', () => {
   it('should render kompas paywall reguler when user is login', async () => {
     const { root } = await newSpecPage({
       components: [KompasPaywall],
@@ -115,37 +115,21 @@ describe('Kompas Paywall Reguler with Mettered Paywall', () => {
      `)
   })
 
-  it('should render kompas paywall reguler when user isSubscribe and have quota is between 0 and 5', async () => {
+  it('should render kompas paywall reguler with is-with-header is true and show default text header (quota article is run out) ', async () => {
     const { root } = await newSpecPage({
       components: [KompasPaywall],
-      html: `<kompas-paywall type='reguler' is-login='true' is-subscribe='true' quota='2'></kompas-paywall>`,
+      html: `<kompas-paywall type='reguler' is-with-header></kompas-paywall>`,
     })
     expect(root).toEqualHtml(`
-      <kompas-paywall type='reguler' is-login='true' is-subscribe='true' quota='2' >
-        <mock:shadow-root>
-          <div class="relative w-full">
-            <kompas-paywall-meter countdown-article='2'></kompas-paywall-meter>
-          </div>
-        </mock:shadow-root>
-      </kompas-paywall>
-     `)
-  })
-
-  it('should render kompas paywall reguler when user isSubscribe and have quota is more than 5', async () => {
-    const { root } = await newSpecPage({
-      components: [KompasPaywall],
-      html: `<kompas-paywall type='reguler' is-login='true' is-subscribe='true' quota='7'></kompas-paywall>`,
-    })
-    expect(root).toEqualHtml(`
-      <kompas-paywall type='reguler' is-login='true' is-subscribe='true' quota='7' >
+      <kompas-paywall type='reguler' is-with-header >
         <mock:shadow-root>
           <div class="relative w-full">
             <div>
               <div class="-mt-24 h-20 transparent-linear w-full z-0"></div>
-              <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
-                <div class="flex flex-col w-full max-w-screen-md my-5">
-                  <kompas-paywall-information-header content='Akses artikel gratis Anda bulan ini sudah habis.'></kompas-paywall-information-header>
-                  <kompas-paywall-body is-login='' type='reguler'></kompas-paywall-body>
+              <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
+                <div class="flex flex-col max-w-screen-md my-5 w-full">
+                  <kompas-paywall-information-header content="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
+                  <kompas-paywall-body type="reguler"></kompas-paywall-body>
                 </div>
               </div>
             </div>
@@ -154,4 +138,29 @@ describe('Kompas Paywall Reguler with Mettered Paywall', () => {
       </kompas-paywall>
      `)
   })
+
+  it('should render kompas paywall reguler with is-with-header is true and show text header', async () => {
+    const { root } = await newSpecPage({
+      components: [KompasPaywall],
+      html: `<kompas-paywall type='reguler' is-with-header text-header="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall>`,
+    })
+    expect(root).toEqualHtml(`
+      <kompas-paywall type='reguler' is-with-header  text-header="Akses artikel gratis Anda bulan ini sudah habis.">
+        <mock:shadow-root>
+          <div class="relative w-full">
+            <div>
+              <div class="-mt-24 h-20 transparent-linear w-full z-0"></div>
+              <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
+                <div class="flex flex-col max-w-screen-md my-5 w-full">
+                  <kompas-paywall-information-header content="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
+                  <kompas-paywall-body type="reguler"></kompas-paywall-body>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mock:shadow-root>
+      </kompas-paywall>
+     `)
+  })
+
 })

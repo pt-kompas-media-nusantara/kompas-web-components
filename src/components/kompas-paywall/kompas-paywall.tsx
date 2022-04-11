@@ -1,5 +1,5 @@
 import { Component, h, Prop, State } from '@stencil/core'
-
+import { PaywallProduct } from './types'
 @Component({
   tag: 'kompas-paywall',
   styleUrl: 'kompas-paywall.css',
@@ -7,14 +7,14 @@ import { Component, h, Prop, State } from '@stencil/core'
 })
 
 export class KompasPaywall {
+  @State() paywallData: PaywallProduct | undefined = undefined // add interface type
+  @State() isExtensionsOpened: boolean = false
 
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
-  @Prop() isSubscribe: boolean = false
-  @Prop() quota: number = 0
+  @Prop() isWithHeader: boolean = false
+  @Prop() textHeader: string = ''
 
-  @State() paywallData: any = undefined // add interface type
-  @State() isExtensionsOpened: boolean = false
 
   async componentWillRender() {
     try {
@@ -26,7 +26,7 @@ export class KompasPaywall {
       //   },
       // }).then((res => res.json()))
 
-      const mockResult = {
+      const mockResult: PaywallProduct = {
         informations: {
           title: 'Langganan untuk Lanjut Membaca',
           description: [
@@ -41,7 +41,7 @@ export class KompasPaywall {
             subtitle: 'Daftar akun untuk membaca 5 artikel premium secara gratis ',
             label: 'Daftar Sekarang '
           },
-          meterredPaywall: {
+          meterred: {
             maxQuota: 5,
             label: 'Langganan',
             maxQuotaMessage: 'Akses artikel gratis Anda bulan ini sudah habis.',
@@ -121,26 +121,22 @@ export class KompasPaywall {
   )
 
   private renderEpaperPaywallSection = (): void => (
-    <kompas-paywall-body is-login={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+    <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
   )
 
   private renderRegularPaywallSection = (): void => {
-    const informationContent = this.paywallData.informations.meterredPaywall
-    if (this.isSubscribe && (this.quota > informationContent.maxQuota)) {
+    const defaultHeaderText: string = this.paywallData.informations.meterred.maxQuotaMessage
+    if (this.isWithHeader) {
       return (
         <div>
           {this.transitionBox()}
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
-              <kompas-paywall-information-header content={informationContent.maxQuotaMessage}></kompas-paywall-information-header>
-              <kompas-paywall-body is-login={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+              <kompas-paywall-information-header text={this.textHeader || defaultHeaderText}></kompas-paywall-information-header>
+              <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
             </div>
           </div>
         </div>
-      )
-    } else if (this.isSubscribe && (this.quota <= informationContent.maxQuota)) {
-      return (
-        <kompas-paywall-meter countdown-article={this.quota}></kompas-paywall-meter>
       )
     } else {
       return (
@@ -149,7 +145,7 @@ export class KompasPaywall {
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
               <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register}></kompas-paywall-banner-registration>
-              <kompas-paywall-body is-login={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+              <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
             </div>
           </div>
         </div>
