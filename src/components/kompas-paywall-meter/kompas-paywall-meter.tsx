@@ -18,8 +18,8 @@ export class KompasPaywallMeter {
   /**
    * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
    */
-  @Prop() countdownArticle: number = 7
-  @Prop() isLogin: boolean = true
+  @Prop() countdownArticle: number = 0
+  @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
   /**
    * State
