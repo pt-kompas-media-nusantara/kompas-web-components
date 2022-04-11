@@ -1,6 +1,6 @@
 # kompas-paywall
 
-Ini adalah redesign komponen _paywall_ yang digunakan pada [epaper.kompas.id](https://epaper.kompas.id) dan [kompas.id](https://kompas.id). Komponen ini dibuat sedinamis mungkin dengan dalam satu cakupan paywall. Penggunaan komponen ini dapat dibedakan berdasarkan type productnya ( epaper atau reguler(kompas.id)). 
+Ini adalah redesign komponen _paywall_ yang digunakan pada [epaper.kompas.id](https://epaper.kompas.id) dan [kompas.id](https://kompas.id).  Penggunaan komponen ini dapat dibedakan berdasarkan type productnya ( epaper atau reguler(kompas.id)). 
 
 ## Pemasangan
 
@@ -86,9 +86,8 @@ Contoh:
 ```javascript
 <kompas-paywall 
   type="reguler" 
-  is-login="true"
-  isSubscribe="true"
-  quota="2"
+  is-with-header="true"
+  header-text="this is defult text message"
 />
 ```
 
@@ -117,12 +116,12 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 
 ## Properties
 
-| Property      | Attribute      | Description | Type                    | Default     |
-| ------------- | -------------- | ----------- | ----------------------- | ----------- |
-| `isLogin`     | `is-login`     |             | `boolean`               | `false`     |
-| `isSubscribe` | `is-subscribe` |             | `boolean`               | `false`     |
-| `quota`       | `quota`        |             | `number`                | `0`         |
-| `type`        | `type`         |             | `"epaper" \| "reguler"` | `'reguler'` |
+| Property       | Attribute        | Description | Type                    | Default     |
+| -------------- | ---------------- | ----------- | ----------------------- | ----------- |
+| `isLogin`      | `is-login`       |             | `boolean`               | `false`     |
+| `isWithHeader` | `is-with-header` |             | `boolean`               | `false`     |
+| `textHeader`   | `text-header`    |             | `string`                | `''`        |
+| `type`         | `type`           |             | `"epaper" \| "reguler"` | `'reguler'` |
 
 
 ## Dependencies
@@ -131,7 +130,6 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 
 - [kompas-paywall-body](../kompas-paywall-body)
 - [kompas-paywall-information-header](../kompas-paywall-information-header)
-- [kompas-paywall-meter](../kompas-paywall-meter)
 - [kompas-paywall-banner-registration](../kompas-paywall-banner-registration)
 
 ### Graph
@@ -139,7 +137,6 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 graph TD;
   kompas-paywall --> kompas-paywall-body
   kompas-paywall --> kompas-paywall-information-header
-  kompas-paywall --> kompas-paywall-meter
   kompas-paywall --> kompas-paywall-banner-registration
   kompas-paywall-meter --> kompas-paywall-information-header
   kompas-paywall-meter --> kompas-paywall-body

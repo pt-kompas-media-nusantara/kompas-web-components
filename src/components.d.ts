@@ -5,8 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Registration } from "./components/kompas-paywall-banner-registration/types";
-import { PaywallProduct } from "./components/kompas-paywall-body/types";
+import { PaywallProduct, Registration } from "./components/kompas-paywall/types";
 export namespace Components {
     interface KidPaywall {
         /**
@@ -150,8 +149,8 @@ export namespace Components {
     }
     interface KompasPaywall {
         "isLogin": boolean;
-        "isSubscribe": boolean;
-        "quota": number;
+        "isWithHeader": boolean;
+        "textHeader": string;
         "type": 'epaper' | 'reguler';
     }
     interface KompasPaywallBannerRegistration {
@@ -164,7 +163,7 @@ export namespace Components {
         "type": 'epaper' | 'reguler';
     }
     interface KompasPaywallInformationHeader {
-        "content": string;
+        "text": string;
     }
     interface KompasPaywallMeter {
         /**
@@ -427,8 +426,8 @@ declare namespace LocalJSX {
     }
     interface KompasPaywall {
         "isLogin"?: boolean;
-        "isSubscribe"?: boolean;
-        "quota"?: number;
+        "isWithHeader"?: boolean;
+        "textHeader"?: string;
         "type"?: 'epaper' | 'reguler';
     }
     interface KompasPaywallBannerRegistration {
@@ -441,7 +440,7 @@ declare namespace LocalJSX {
         "type"?: 'epaper' | 'reguler';
     }
     interface KompasPaywallInformationHeader {
-        "content"?: string;
+        "text"?: string;
     }
     interface KompasPaywallMeter {
         /**
