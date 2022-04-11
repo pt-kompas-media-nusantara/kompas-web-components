@@ -1,4 +1,5 @@
 import { Component, Prop, h } from '@stencil/core'
+import { Registration } from './types'
 
 @Component({
   tag: 'kompas-paywall-banner-registration',
@@ -7,11 +8,13 @@ import { Component, Prop, h } from '@stencil/core'
 })
 export class KompasPaywallBannerRegistration {
 
-  @Prop() bannerData: any = {}
+  @Prop() bannerData: Registration | undefined = undefined
 
   private redirectToRegister = (): void => {
-    // add next params
-    window.open("https://account.kompas.id/login?")
+    const loginHost: string = 'https://account.kompas.id/login'
+    const nextParams: string = encodeURIComponent(window.location.href)
+    const directUrlRegister: string = `${loginHost}?next=${nextParams}`
+    window.location.href = directUrlRegister
   }
 
   render() {

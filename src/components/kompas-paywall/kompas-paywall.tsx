@@ -8,11 +8,11 @@ import { Component, h, Prop, State } from '@stencil/core'
 
 export class KompasPaywall {
 
-  @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
   @Prop() isSubscribe: boolean = false
   @Prop() quota: number = 0
+
   @State() paywallData: any = undefined // add interface type
   @State() isExtensionsOpened: boolean = false
 
@@ -58,7 +58,7 @@ export class KompasPaywall {
               discountPrice: 600000,
               periode: "1 Tahun",
               isHighlight: true,
-              url: 'https://checkout.kompas.id/?product_id=9802032&'
+              url: 'https://checkout.kompas.id/?product_id%3D9802032%26track_source%3Depaper-kompas%26track_medium%3Dpaywall2%26utm_campaign%3Dkonten_berbayar%26track_content%3D'
 
             }, {
               title: "Kompas Digital Premium 1 Bulan",
@@ -67,7 +67,7 @@ export class KompasPaywall {
               price: 50000,
               periode: "1 Bulan",
               isHighlight: false,
-              url: "https://checkout.kompas.id/?product_id=9802035&",
+              url: "https://checkout.kompas.id/?product_id%3D9802035%26track_source%3Depaper-kompas%26track_medium%3Dpaywall1%26utm_campaign%3Dkonten_berbayar%26track_content%3D",
 
             }
           ]

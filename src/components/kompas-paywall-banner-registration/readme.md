@@ -1,14 +1,28 @@
 # kompas-paywall-banner-registration
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property     | Attribute | Description | Type           | Default     |
+| ------------ | --------- | ----------- | -------------- | ----------- |
+| `bannerData` | --        |             | `Registration` | `undefined` |
+
+
 ## Dependencies
 
 ### Used by
 
- - [kompas-paywall-banner-registration](../kompas-paywall-banner-registration/)
+ - [kompas-paywall](../kompas-paywall)
 
 ### Graph
 ```mermaid
 graph TD;
   kompas-paywall --> kompas-paywall-banner-registration
+  style kompas-paywall-banner-registration fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

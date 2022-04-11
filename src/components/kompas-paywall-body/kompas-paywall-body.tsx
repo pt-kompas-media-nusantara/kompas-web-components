@@ -2,31 +2,7 @@ import { Component, h, Prop, State } from '@stencil/core'
 import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.svg'
 import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
-
-interface Product {
-  title: string,
-  percentage: number,
-  price: number,
-  discountPrice: number,
-  periode: string,
-  isHighlight: boolean,
-  url: string,
-}
-
-interface Memberships {
-  title: string,
-  percentage: number,
-  price: number,
-  discountPrice: number,
-  periode: string,
-  isHighlight: boolean,
-  url: string
-}
-
-interface Packages {
-  title: string,
-  memberships: Array<Memberships>
-}
+import { Product, Packages, PaymentImage, PaywallProduct } from './types'
 @Component({
   tag: 'kompas-paywall-body',
   styleUrl: '../kompas-paywall/kompas-paywall.css',
@@ -38,8 +14,8 @@ export class KompasPaywallBody {
   @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
-  @Prop() paywallData: any = {} // add interface type
-  @State() isExtensionsOpened: boolean = true
+  @Prop() paywallData: PaywallProduct | undefined = undefined
+  @State() isExtensionsOpened: boolean = false
 
 
   private primaryPackages = (product: Product): void => (
@@ -79,7 +55,7 @@ export class KompasPaywallBody {
   )
 
   private secondaryPackages = (product: Product): void => (
-    <div class="flex justify-between bg-white py-3 px-4 rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-3 md:mt-4">
+    <div class="flex  flex-wrap justify-between bg-white py-3 px-4 rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-3 md:mt-4">
       <div class="flex items-center">
         <h5 class="text-base md:text-lg font-bold text-orange-400">
           {this.getRupiahFormat(product.price)}
@@ -165,20 +141,20 @@ export class KompasPaywallBody {
     </div>
   )
 
-  private paymentDesktopSection = (data: Array<{ link: string, name: string }>): void => (
+  private paymentDesktopSection = (data: Array<PaymentImage>): void => (
     <div class="hidden md:flex w-full md:max-w-xs lg:max-w-md items-center justify-evenly flex-wrap">
       {data.map((item) => (<img class="object-cover w-16 h-9" src={item.link} alt={`${item.name}-logo-payment`} />))}
     </div>
   )
 
-  private paymentMobileSection = (data: Array<{ link: string, name: string }>): void => (
+  private paymentMobileSection = (data: Array<PaymentImage>): void => (
     <div class="grid md:hidden items-center grid-flow-col grid-cols-auto grid-rows-1 gap-4 mt-4 mx-4">
       {data.map((item) => (<img class="" src={item.link} alt={`${item.name}-logo-payment`} />))}
       <button onClick={() => this.paymentExtensionHandler()} class="text-xs md:text-sm text-blue-600 font-bold" >+9 lainnya </button>
     </div>
   )
 
-  private paymentMobileExtension = (data: Array<{ link: string, name: string }>) => (
+  private paymentMobileExtension = (data: Array<PaymentImage>) => (
     <div class="w-full bottom-0 max-w-xs mb-1 ml-8 md:hidden absolute px-4">
       <div class="bg-white border-white w-full rounded p-3 max-w-xs">
         <svg
@@ -213,23 +189,27 @@ export class KompasPaywallBody {
     return 'Rp ' + roundedValue.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
   private redirectToRegister = (): void => {
-    // add next params
-    window.open("https://account.kompas.id/login?")
+    const loginHost: string = 'https://account.kompas.id/login'
+    const nextParams: string = encodeURIComponent(window.location.href)
+    const directUrlRegister: string = `${loginHost}?next=${nextParams}`
+    window.location.href = directUrlRegister
   }
   private redirectToHelpdesk = (): void => {
     window.open("https://api.whatsapp.com/send/?phone=6281290050800&text=Halo,%20saya%20perlu%20informasi%20mengenai%20kompas.id")
   }
   private redirectToCheckout = (url: string): void => {
-    window.open(url)
-  }
-  private paymentExtensionHandler = (): void => {
-    this.isExtensionsOpened = !this.isExtensionsOpened
+    const originHost: string = encodeURIComponent(window.location.href)
+    const directUrlCheckout: string = url + originHost
+    window.open(directUrlCheckout)
   }
   private redirectToSubscriber = (): void => {
     window.open("https://www.kompas.id/berlangganan")
   }
   private redirectToPrevUrl = (): void => {
     window.history.back()
+  }
+  private paymentExtensionHandler = (): void => {
+    this.isExtensionsOpened = !this.isExtensionsOpened
   }
 
   render() {

@@ -12,7 +12,7 @@ export class KompasPaywallInformationHeader {
   render() {
     return (
       <div class="my-8">
-        <h5 class="text-base md:text-xl font-bold font-serif">{this.content}</h5>
+        <h5 class="text-base text-center md:text-xl font-bold font-serif">{this.content}</h5>
       </div>
     )
   }
