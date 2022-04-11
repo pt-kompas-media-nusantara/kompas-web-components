@@ -20,11 +20,13 @@
 ### Used by
 
  - [kompas-paywall](../kompas-paywall)
+ - [kompas-paywall-meter](../kompas-paywall-meter)
 
 ### Graph
 ```mermaid
 graph TD;
   kompas-paywall --> kompas-paywall-body
+  kompas-paywall-meter --> kompas-paywall-body
   style kompas-paywall-body fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

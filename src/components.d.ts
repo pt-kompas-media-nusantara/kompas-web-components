@@ -171,6 +171,8 @@ export namespace Components {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle": number;
+        "isLogin": boolean;
+        "type": 'epaper' | 'reguler';
     }
 }
 declare global {
@@ -446,6 +448,8 @@ declare namespace LocalJSX {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle"?: number;
+        "isLogin"?: boolean;
+        "type"?: 'epaper' | 'reguler';
     }
     interface IntrinsicElements {
         "kid-paywall": KidPaywall;
