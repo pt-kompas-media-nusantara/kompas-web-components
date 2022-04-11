@@ -77,7 +77,7 @@ export const config: Config = {
         'kompas-paywall-banner-registration',
         'kompas-paywall-information-header',
         'kompas-paywall-body',
-        'kompas-paywall-meter',
+        'kid-metered-paywall',
       ]
     }
   ]

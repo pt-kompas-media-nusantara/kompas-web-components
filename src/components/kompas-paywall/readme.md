@@ -138,8 +138,6 @@ graph TD;
   kompas-paywall --> kompas-paywall-body
   kompas-paywall --> kompas-paywall-information-header
   kompas-paywall --> kompas-paywall-banner-registration
-  kompas-paywall-meter --> kompas-paywall-information-header
-  kompas-paywall-meter --> kompas-paywall-body
   style kompas-paywall fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

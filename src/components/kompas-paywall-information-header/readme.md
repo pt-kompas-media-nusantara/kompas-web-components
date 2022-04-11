@@ -17,13 +17,11 @@
 ### Used by
 
  - [kompas-paywall](../kompas-paywall)
- - [kompas-paywall-meter](../kompas-paywall-meter)
 
 ### Graph
 ```mermaid
 graph TD;
   kompas-paywall --> kompas-paywall-information-header
-  kompas-paywall-meter --> kompas-paywall-information-header
   style kompas-paywall-information-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
