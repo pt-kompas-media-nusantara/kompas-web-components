@@ -115,10 +115,14 @@ document.querySelector('kompas-header-account').setAttribute('user-data', JSON.s
 
 | Property                | Attribute             | Description                                                    | Type     | Default     |
 | ----------------------- | --------------------- | -------------------------------------------------------------- | -------- | ----------- |
+| `cartUrl`               | `cart-url`            | Cart Url                                                       | `string` | `undefined` |
 | `logoutUrl`             | `logout-url`          | Logout Url                                                     | `string` | `undefined` |
 | `manageAccountUrl`      | `manage-account-url`  | Manage Account Url                                             | `string` | `undefined` |
 | `notificationTotal`     | `notification-total`  | Total Notification Count                                       | `number` | `0`         |
+| `notificationUrl`       | `notification-url`    | Notification Url                                               | `string` | `undefined` |
+| `ordersUrl`             | `orders-url`          | Orders Url                                                     | `string` | `undefined` |
 | `sidebarTopSpacing`     | `sidebar-top-spacing` | Value to Add spacing on top of sidebar (will convert to pixel) | `number` | `0`         |
+| `subscriptionUrl`       | `subscription-url`    | Subscription Url                                               | `string` | `undefined` |
 | `userData` _(required)_ | `user-data`           | Value consist of User Data                                     | `any`    | `undefined` |
 
 

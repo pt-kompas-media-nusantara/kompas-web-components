@@ -13,6 +13,11 @@ import signOutAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/s
 export class KompasHeaderAccountMenu {
 
   /**
+    * Cart Url
+    */
+  @Prop() cartUrl: string = 'https://gerai.kompas.id/cart'
+
+  /**
     * Logout Url
     */
   @Prop() logoutUrl: string = 'https://account.kompas.id/logout'
@@ -21,7 +26,17 @@ export class KompasHeaderAccountMenu {
     * Manage Account Url
     */
   @Prop() manageAccountUrl: string = 'https://account.kompas.id/manage-account/my-account'
+
+  /**
+    * Notification Url
+    */
+  @Prop() notificationUrl: string = 'https://account.kompas.id/notification'
   
+  /**
+    * Orders Url
+    */
+  @Prop() ordersUrl: string = 'https://gerai.kompas.id/my-account/orders'
+
   /**
     * Total Notification Count
     */
@@ -47,7 +62,7 @@ export class KompasHeaderAccountMenu {
       <div>
         <li class="font-bold flex flex-shrink-0 gap-y-3 py-4 flex-col text-left text-sm border-b border-grey-300 p-2 leading-4">
           {/* Cart */}
-          <a href="https://gerai.kompas.id/cart" class="header-account-menu--item">
+          <a href={this.cartUrl} class="header-account-menu--item">
             <div class="ml-3 icon-md icon-blue-600" innerHTML={shoppingCart}></div>
             <p class="header-account-menu--title">Keranjang</p>
           </a>
@@ -57,12 +72,12 @@ export class KompasHeaderAccountMenu {
             <p class="header-account-menu--title">Kelola Akun</p>
           </a>
           {/* Transaction  */}
-          <a href="https://gerai.kompas.id/my-account/orders" class="header-account-menu--item">
+          <a href={this.ordersUrl} class="header-account-menu--item">
             <div class="ml-3 icon-md icon-blue-600" innerHTML={exchangeAlt}></div>
             <p class="header-account-menu--title">Transaksi</p>
           </a>
           {/* Notifications  */}
-          <a href="https://account.kompas.id/notification" class="header-account-menu--item">
+          <a href={this.notificationUrl} class="header-account-menu--item">
             <div class="ml-3 icon-md icon-blue-600" innerHTML={bell}></div>
             <p class="header-account-menu--title">Notifikasi</p>
             <p class="flex-none">

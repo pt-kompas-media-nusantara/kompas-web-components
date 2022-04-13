@@ -12,11 +12,16 @@ export class KompasHeaderAccountProfile {
    * User Initial Name
    */
   @Prop() userInitialName: string
-  
+
   /**
    * User Data
    */
   @Prop() userData!: any
+
+  /**
+   * Subscription Url
+   */
+  @Prop() subscriptionUrl: string = 'https://www.kompas.id/berlangganan'
 
   render() {
     /**
@@ -48,7 +53,7 @@ export class KompasHeaderAccountProfile {
       const subscribeButton = () => {
         if(!this.userData?.updateMembership) return
         const handleSubscribe = () => {
-          window.location.href = 'https://www.kompas.id/berlangganan'
+          window.location.href = this.subscriptionUrl
         }
 
         return (
@@ -64,10 +69,10 @@ export class KompasHeaderAccountProfile {
       const expiredInfo = () => {
         const isNearExpired = this.userData?.isNearExpired
         const expiredTextColor = isNearExpired ? `text-orange-400` : `text-grey-500`
-        
+
         return (
           <p class={`capitalize font-bold text-sm pb-1 ${expiredTextColor}`}>{ this.userData?.expired }</p>
-        ) 
+        )
       }
 
       /**
@@ -82,7 +87,7 @@ export class KompasHeaderAccountProfile {
           </div>
         )
       }
-      
+
       return (
         <div class="flex flex-col items-start leading-none">
           <div class="flex lex-row items-center gap-4">
@@ -106,7 +111,7 @@ export class KompasHeaderAccountProfile {
 
     return (
       <div class="border-b border-grey-300 flex flex-shrink-0 flex-col bg-blue-100 p-4">
-        { 
+        {
           !this.userData ? skeletonLoading : profileContent()
         }
       </div>
