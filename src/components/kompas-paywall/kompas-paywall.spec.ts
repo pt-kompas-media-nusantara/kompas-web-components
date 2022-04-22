@@ -41,7 +41,7 @@ describe('Kompas Paywall Epaper', () => {
       <kompas-paywall type='epaper' is-login='true'>
         <mock:shadow-root>
           <div class="relative w-full">
-            <kompas-paywall-body is-login='' type="epaper"></kompas-paywall-body>
+            <kompas-paywall-body isLogin='' type="epaper"></kompas-paywall-body>
           </div>
         </mock:shadow-root>
       </kompas-paywall>
@@ -81,7 +81,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
             <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
               <div class="flex flex-col max-w-screen-md my-5 w-full">
                 <kompas-paywall-banner-registration></kompas-paywall-banner-registration>
-                <kompas-paywall-body is-login='' type="reguler"></kompas-paywall-body>
+                <kompas-paywall-body isLogin='' type="reguler"></kompas-paywall-body>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
               <div class="-mt-24 h-20 transparent-linear w-full z-0"></div>
               <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
                 <div class="flex flex-col max-w-screen-md my-5 w-full">
-                  <kompas-paywall-information-header content="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
+                  <kompas-paywall-information-header text="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
                   <kompas-paywall-body type="reguler"></kompas-paywall-body>
                 </div>
               </div>
@@ -152,7 +152,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
               <div class="-mt-24 h-20 transparent-linear w-full z-0"></div>
               <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
                 <div class="flex flex-col max-w-screen-md my-5 w-full">
-                  <kompas-paywall-information-header content="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
+                  <kompas-paywall-information-header text="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
                   <kompas-paywall-body type="reguler"></kompas-paywall-body>
                 </div>
               </div>
