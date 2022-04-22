@@ -35,9 +35,10 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
-    {
-      type: 'dist-hydrate-script'
-    }
+    // disable ssr hydrate app
+    // {
+    //   type: 'dist-hydrate-script'
+    // }
   ],
   plugins: [
     tailwindStencil(opts),
