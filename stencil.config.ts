@@ -35,7 +35,7 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
-    // disable ssr hydrated app
+    // disable ssr hydrate app
     // {
     //   type: 'dist-hydrate-script'
     // }
@@ -70,6 +70,15 @@ export const config: Config = {
         'kompas-header-account-menu',
         'kompas-header-account-help-center',
         'kompas-header-account-profile'
+      ]
+    },
+    {
+      components: [
+        'kompas-paywall',
+        'kompas-paywall-banner-registration',
+        'kompas-paywall-information-header',
+        'kompas-paywall-body',
+        'kid-metered-paywall',
       ]
     }
   ]
