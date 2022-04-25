@@ -7,15 +7,15 @@ import tailwind from 'tailwindcss';
 import tailwindStencil, { PluginOpts } from 'stencil-tailwind-plugin';
 import tailwindConfig from './tailwind.config';
 const opts = Object.assign(
-    {},
-    PluginOpts.DEFAULT,
-    { 
-      debug: true,
-      stripComments: true,
-      enablePurge: true,
-      tailwindConf: tailwindConfig
-    }
-  )
+  {},
+  PluginOpts.DEFAULT,
+  {
+    debug: true,
+    stripComments: true,
+    enablePurge: true,
+    tailwindConf: tailwindConfig
+  }
+)
 
 export const config: Config = {
   namespace: 'kompas-web-components',
@@ -35,9 +35,10 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
-    {
-      type: 'dist-hydrate-script'
-    }
+    // disable ssr hydrate app
+    // {
+    //   type: 'dist-hydrate-script'
+    // }
   ],
   plugins: [
     tailwindStencil(opts),
@@ -54,13 +55,13 @@ export const config: Config = {
     reloadStrategy: 'pageReload'
   },
   bundles: [
-    { 
+    {
       components: [
         'kompas-footer',
         'kompas-footer-default',
         'kompas-footer-supports',
         'kompas-footer-products'
-      ] 
+      ]
     },
     // Header Account bundle
     {
@@ -69,6 +70,15 @@ export const config: Config = {
         'kompas-header-account-menu',
         'kompas-header-account-help-center',
         'kompas-header-account-profile'
+      ]
+    },
+    {
+      components: [
+        'kompas-paywall',
+        'kompas-paywall-banner-registration',
+        'kompas-paywall-information-header',
+        'kompas-paywall-body',
+        'kid-metered-paywall',
       ]
     }
   ]

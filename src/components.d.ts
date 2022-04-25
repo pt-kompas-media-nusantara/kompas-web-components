@@ -5,7 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { PaywallProduct, Registration } from "./components/kompas-paywall/types";
 export namespace Components {
+    interface KidMeteredPaywall {
+        /**
+          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
+         */
+        "countdownArticle": number;
+    }
     interface KidPaywall {
         /**
           * prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.
@@ -146,8 +153,32 @@ export namespace Components {
          */
         "userInitialName": string;
     }
+    interface KompasPaywall {
+        "isLogin": boolean;
+        "isWithHeader": boolean;
+        "textHeader": string;
+        "type": 'epaper' | 'reguler';
+    }
+    interface KompasPaywallBannerRegistration {
+        "bannerData": Registration | undefined;
+    }
+    interface KompasPaywallBody {
+        "isLogin": boolean;
+        "paywallData": PaywallProduct | undefined;
+        "slug": string;
+        "type": 'epaper' | 'reguler';
+    }
+    interface KompasPaywallInformationHeader {
+        "text": string;
+    }
 }
 declare global {
+    interface HTMLKidMeteredPaywallElement extends Components.KidMeteredPaywall, HTMLStencilElement {
+    }
+    var HTMLKidMeteredPaywallElement: {
+        prototype: HTMLKidMeteredPaywallElement;
+        new (): HTMLKidMeteredPaywallElement;
+    };
     interface HTMLKidPaywallElement extends Components.KidPaywall, HTMLStencilElement {
     }
     var HTMLKidPaywallElement: {
@@ -208,7 +239,32 @@ declare global {
         prototype: HTMLKompasHeaderAccountProfileElement;
         new (): HTMLKompasHeaderAccountProfileElement;
     };
+    interface HTMLKompasPaywallElement extends Components.KompasPaywall, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallElement: {
+        prototype: HTMLKompasPaywallElement;
+        new (): HTMLKompasPaywallElement;
+    };
+    interface HTMLKompasPaywallBannerRegistrationElement extends Components.KompasPaywallBannerRegistration, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallBannerRegistrationElement: {
+        prototype: HTMLKompasPaywallBannerRegistrationElement;
+        new (): HTMLKompasPaywallBannerRegistrationElement;
+    };
+    interface HTMLKompasPaywallBodyElement extends Components.KompasPaywallBody, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallBodyElement: {
+        prototype: HTMLKompasPaywallBodyElement;
+        new (): HTMLKompasPaywallBodyElement;
+    };
+    interface HTMLKompasPaywallInformationHeaderElement extends Components.KompasPaywallInformationHeader, HTMLStencilElement {
+    }
+    var HTMLKompasPaywallInformationHeaderElement: {
+        prototype: HTMLKompasPaywallInformationHeaderElement;
+        new (): HTMLKompasPaywallInformationHeaderElement;
+    };
     interface HTMLElementTagNameMap {
+        "kid-metered-paywall": HTMLKidMeteredPaywallElement;
         "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
         "kompas-footer": HTMLKompasFooterElement;
@@ -219,9 +275,19 @@ declare global {
         "kompas-header-account-help-center": HTMLKompasHeaderAccountHelpCenterElement;
         "kompas-header-account-menu": HTMLKompasHeaderAccountMenuElement;
         "kompas-header-account-profile": HTMLKompasHeaderAccountProfileElement;
+        "kompas-paywall": HTMLKompasPaywallElement;
+        "kompas-paywall-banner-registration": HTMLKompasPaywallBannerRegistrationElement;
+        "kompas-paywall-body": HTMLKompasPaywallBodyElement;
+        "kompas-paywall-information-header": HTMLKompasPaywallInformationHeaderElement;
     }
 }
 declare namespace LocalJSX {
+    interface KidMeteredPaywall {
+        /**
+          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
+         */
+        "countdownArticle"?: number;
+    }
     interface KidPaywall {
         /**
           * prop gtmBrandingMedium mengakomodasi penambahan atribut param `track_medium` di permalink button branding `mengapa kompas.id?`.
@@ -362,7 +428,26 @@ declare namespace LocalJSX {
          */
         "userInitialName"?: string;
     }
+    interface KompasPaywall {
+        "isLogin"?: boolean;
+        "isWithHeader"?: boolean;
+        "textHeader"?: string;
+        "type"?: 'epaper' | 'reguler';
+    }
+    interface KompasPaywallBannerRegistration {
+        "bannerData"?: Registration | undefined;
+    }
+    interface KompasPaywallBody {
+        "isLogin"?: boolean;
+        "paywallData"?: PaywallProduct | undefined;
+        "slug"?: string;
+        "type"?: 'epaper' | 'reguler';
+    }
+    interface KompasPaywallInformationHeader {
+        "text"?: string;
+    }
     interface IntrinsicElements {
+        "kid-metered-paywall": KidMeteredPaywall;
         "kid-paywall": KidPaywall;
         "kid-recommender": KidRecommender;
         "kompas-footer": KompasFooter;
@@ -373,12 +458,17 @@ declare namespace LocalJSX {
         "kompas-header-account-help-center": KompasHeaderAccountHelpCenter;
         "kompas-header-account-menu": KompasHeaderAccountMenu;
         "kompas-header-account-profile": KompasHeaderAccountProfile;
+        "kompas-paywall": KompasPaywall;
+        "kompas-paywall-banner-registration": KompasPaywallBannerRegistration;
+        "kompas-paywall-body": KompasPaywallBody;
+        "kompas-paywall-information-header": KompasPaywallInformationHeader;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "kid-metered-paywall": LocalJSX.KidMeteredPaywall & JSXBase.HTMLAttributes<HTMLKidMeteredPaywallElement>;
             "kid-paywall": LocalJSX.KidPaywall & JSXBase.HTMLAttributes<HTMLKidPaywallElement>;
             "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
             "kompas-footer": LocalJSX.KompasFooter & JSXBase.HTMLAttributes<HTMLKompasFooterElement>;
@@ -389,6 +479,10 @@ declare module "@stencil/core" {
             "kompas-header-account-help-center": LocalJSX.KompasHeaderAccountHelpCenter & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountHelpCenterElement>;
             "kompas-header-account-menu": LocalJSX.KompasHeaderAccountMenu & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountMenuElement>;
             "kompas-header-account-profile": LocalJSX.KompasHeaderAccountProfile & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountProfileElement>;
+            "kompas-paywall": LocalJSX.KompasPaywall & JSXBase.HTMLAttributes<HTMLKompasPaywallElement>;
+            "kompas-paywall-banner-registration": LocalJSX.KompasPaywallBannerRegistration & JSXBase.HTMLAttributes<HTMLKompasPaywallBannerRegistrationElement>;
+            "kompas-paywall-body": LocalJSX.KompasPaywallBody & JSXBase.HTMLAttributes<HTMLKompasPaywallBodyElement>;
+            "kompas-paywall-information-header": LocalJSX.KompasPaywallInformationHeader & JSXBase.HTMLAttributes<HTMLKompasPaywallInformationHeaderElement>;
         }
     }
 }
