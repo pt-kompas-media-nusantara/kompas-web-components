@@ -150,21 +150,23 @@ export class KompasHeaderAccount {
    */
   private accountSidebar = () => {
     return (
-      <div class="header-account-sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
+      <div class="header-account-sidebar z-index-max" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
         <kompas-header-account-profile
           user-initial-name={this.getInitialUserName()}
           userData={this.formattedUserData}
           subscription-url={this.subscriptionUrl}
         />
-        <kompas-header-account-menu
-          cart-url={this.cartUrl}
-          manage-account-url={this.manageAccountUrl}
-          logout-url={this.logoutUrl}
-          notification-url={this.notificationUrl}
-          notification-total={this.notificationTotal}
-          orders-url={this.ordersUrl}
-        />
-        <kompas-header-account-help-center/>
+        <div class="overflow-y-scroll h-screen pl-4 pr-3 py-4">
+          <kompas-header-account-menu
+            cart-url={this.cartUrl}
+            manage-account-url={this.manageAccountUrl}
+            logout-url={this.logoutUrl}
+            notification-url={this.notificationUrl}
+            notification-total={this.notificationTotal}
+            orders-url={this.ordersUrl}
+          />
+          <kompas-header-account-help-center/>
+        </div>
       </div>
     )
   }

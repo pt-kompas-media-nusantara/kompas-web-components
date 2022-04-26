@@ -7,7 +7,7 @@
 }
 
 .header-account-menu--item {
-  @apply flex flex-row items-center p-2 hover:bg-grey-200 transition ease-in-out rounded-sm;
+  @apply flex flex-row items-center p-3 hover:bg-grey-200 transition ease-in-out rounded-sm;
 }
 
 .header-account-menu--title {
@@ -19,7 +19,7 @@
 }
 
 .header-account-help-center--item {
-  @apply flex flex-row items-center px-2;
+  @apply flex flex-row items-center px-3;
 }
 
 .header-account-help-center--content {
@@ -38,7 +38,7 @@
 }
 
 .header-account-sidebar {
-  @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 z-10 overflow-y-scroll h-screen shadow-lg; 
+  @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 z-10 shadow-lg;
   @apply border border-grey-200 flex flex-col font-sans text-sm;
 }
 
@@ -76,6 +76,10 @@
       @apply fill-current;
     }
   }
+}
+
+.z-index-max {
+  z-index: 99999;
 }
 
 /* Custom Scrollbar for header */
