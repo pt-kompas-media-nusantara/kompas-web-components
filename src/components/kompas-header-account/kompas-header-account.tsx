@@ -5,6 +5,7 @@ import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/ch
 interface user {
   userName: string,
   expired: string,
+  isNearExpired: boolean,
   activeInfo: string,
   isMembership: boolean,
   updateMembership: string
@@ -23,6 +24,11 @@ export class KompasHeaderAccount {
    */
 
   /**
+   * Cart Url
+   */
+  @Prop() cartUrl: string
+
+  /**
    * Logout Url
    */
   @Prop() logoutUrl: string
@@ -38,6 +44,16 @@ export class KompasHeaderAccount {
   @Prop() notificationTotal: number = 0
 
   /**
+   * Notification Url
+   */
+  @Prop() notificationUrl: string
+
+  /**
+   * Orders Url
+   */
+  @Prop() ordersUrl: string
+
+  /**
    * Value consist of User Data
    */
   @Prop() userData!: any
@@ -46,7 +62,13 @@ export class KompasHeaderAccount {
    * Value to Add spacing on top of sidebar (will convert to pixel)
    */
   @Prop() sidebarTopSpacing: number = 0
-  
+
+  /**
+   * Subscription Url
+   */
+  @Prop() subscriptionUrl: string
+
+
   /**
    * STATES
    */
@@ -108,7 +130,7 @@ export class KompasHeaderAccount {
     return (
       <a onClick={() => toggleDropdown()} class="cursor-pointer">
         <div class="flex flex-row items-center self-center">
-          { !this.getInitialUserName() ? 
+          { !this.getInitialUserName() ?
             <div class="bg-grey-300 rounded-full h-6 w-6 animate-pulse"></div>
             :
             <div class="flex bg-grey-100 rounded-full h-6 w-6 items-center justify-center relative">
@@ -127,11 +149,24 @@ export class KompasHeaderAccount {
    * Header Account Sidebar wrapper
    */
   private accountSidebar = () => {
-    return ( 
-      <div class="header-account-sidebar" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
-        <kompas-header-account-profile user-initial-name={this.getInitialUserName()} userData={this.formattedUserData}/>
-        <kompas-header-account-menu manage-account-url={this.manageAccountUrl} logout-url={this.logoutUrl} notification-total={this.notificationTotal}/>
-        <kompas-header-account-help-center/>
+    return (
+      <div class="header-account-sidebar z-index-max" style={{ marginTop: `${this.sidebarTopSpacing}px` }}>
+        <kompas-header-account-profile
+          user-initial-name={this.getInitialUserName()}
+          userData={this.formattedUserData}
+          subscription-url={this.subscriptionUrl}
+        />
+        <div class="overflow-y-scroll h-screen pl-4 pr-3 py-4">
+          <kompas-header-account-menu
+            cart-url={this.cartUrl}
+            manage-account-url={this.manageAccountUrl}
+            logout-url={this.logoutUrl}
+            notification-url={this.notificationUrl}
+            notification-total={this.notificationTotal}
+            orders-url={this.ordersUrl}
+          />
+          <kompas-header-account-help-center/>
+        </div>
       </div>
     )
   }
@@ -148,9 +183,11 @@ export class KompasHeaderAccount {
   componentWillRender() {
     /**
      * Format User Data if Props is string Type
-     * If this component will implement on vanilla JS. 
+     * If this component will implement on vanilla JS.
      * Usually to sent attribute that non primitive (Obj / Array) need to stringify first
      */
-    this.formattedUserData = typeof this.userData === 'string' ? JSON.parse(this.userData) : this.userData
+    if (this.userData) {
+      this.formattedUserData = JSON.parse(this.userData)
+    }
   }
 }

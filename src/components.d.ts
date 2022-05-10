@@ -107,6 +107,10 @@ export namespace Components {
     }
     interface KompasHeaderAccount {
         /**
+          * Cart Url
+         */
+        "cartUrl": string;
+        /**
           * Logout Url
          */
         "logoutUrl": string;
@@ -119,9 +123,21 @@ export namespace Components {
          */
         "notificationTotal": number;
         /**
+          * Notification Url
+         */
+        "notificationUrl": string;
+        /**
+          * Orders Url
+         */
+        "ordersUrl": string;
+        /**
           * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing": number;
+        /**
+          * Subscription Url
+         */
+        "subscriptionUrl": string;
         /**
           * Value consist of User Data
          */
@@ -131,6 +147,10 @@ export namespace Components {
     }
     interface KompasHeaderAccountMenu {
         /**
+          * Cart Url
+         */
+        "cartUrl": string;
+        /**
           * Logout Url
          */
         "logoutUrl": string;
@@ -142,8 +162,20 @@ export namespace Components {
           * Total Notification Count
          */
         "notificationTotal": number;
+        /**
+          * Notification Url
+         */
+        "notificationUrl": string;
+        /**
+          * Orders Url
+         */
+        "ordersUrl": string;
     }
     interface KompasHeaderAccountProfile {
+        /**
+          * Subscription Url
+         */
+        "subscriptionUrl": string;
         /**
           * User Data
          */
@@ -382,6 +414,10 @@ declare namespace LocalJSX {
     }
     interface KompasHeaderAccount {
         /**
+          * Cart Url
+         */
+        "cartUrl"?: string;
+        /**
           * Logout Url
          */
         "logoutUrl"?: string;
@@ -394,9 +430,21 @@ declare namespace LocalJSX {
          */
         "notificationTotal"?: number;
         /**
+          * Notification Url
+         */
+        "notificationUrl"?: string;
+        /**
+          * Orders Url
+         */
+        "ordersUrl"?: string;
+        /**
           * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing"?: number;
+        /**
+          * Subscription Url
+         */
+        "subscriptionUrl"?: string;
         /**
           * Value consist of User Data
          */
@@ -406,6 +454,10 @@ declare namespace LocalJSX {
     }
     interface KompasHeaderAccountMenu {
         /**
+          * Cart Url
+         */
+        "cartUrl"?: string;
+        /**
           * Logout Url
          */
         "logoutUrl"?: string;
@@ -417,8 +469,20 @@ declare namespace LocalJSX {
           * Total Notification Count
          */
         "notificationTotal"?: number;
+        /**
+          * Notification Url
+         */
+        "notificationUrl"?: string;
+        /**
+          * Orders Url
+         */
+        "ordersUrl"?: string;
     }
     interface KompasHeaderAccountProfile {
+        /**
+          * Subscription Url
+         */
+        "subscriptionUrl"?: string;
         /**
           * User Data
          */
