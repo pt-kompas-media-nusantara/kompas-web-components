@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property      | Attribute  | Description | Type                    | Default     |
-| ------------- | ---------- | ----------- | ----------------------- | ----------- |
-| `isLogin`     | `is-login` |             | `boolean`               | `false`     |
-| `paywallData` | --         |             | `PaywallProduct`        | `undefined` |
-| `slug`        | `slug`     |             | `string`                | `""`        |
-| `type`        | `type`     |             | `"epaper" \| "reguler"` | `'reguler'` |
+| Property             | Attribute             | Description | Type                    | Default     |
+| -------------------- | --------------------- | ----------- | ----------------------- | ----------- |
+| `isLogin`            | `is-login`            |             | `boolean`               | `false`     |
+| `paywallData`        | --                    |             | `PaywallProduct`        | `undefined` |
+| `slug`               | `slug`                |             | `string`                | `""`        |
+| `subscriptionStatus` | `subscription-status` |             | `string`                | `''`        |
+| `type`               | `type`                |             | `"epaper" \| "reguler"` | `'reguler'` |
+| `userGuid`           | `user-guid`           |             | `string`                | `''`        |
 
 
 ## Dependencies

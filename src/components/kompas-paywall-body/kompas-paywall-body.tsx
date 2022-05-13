@@ -15,6 +15,8 @@ export class KompasPaywallBody {
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
   @Prop() paywallData: PaywallProduct | undefined = undefined
+  @Prop() userGuid: string = ''
+  @Prop() subscriptionStatus: string = ''
   @State() isExtensionsOpened: boolean = false
 
 
@@ -203,6 +205,7 @@ export class KompasPaywallBody {
     window.open(directUrlCheckout)
   }
   private redirectToSubscriber = (): void => {
+    this.sendDataLayer()
     window.open("https://www.kompas.id/berlangganan")
   }
   private redirectToPrevUrl = (): void => {
@@ -210,6 +213,25 @@ export class KompasPaywallBody {
   }
   private paymentExtensionHandler = (): void => {
     this.isExtensionsOpened = !this.isExtensionsOpened
+  }
+
+  private sendDataLayer = (): void => {
+    window.dataLayer.push({
+      event: 'halamanBerlanggananClick',
+      subscriptionStatus: this.subscriptionStatus,
+      GUID: this.userGuid,
+      interface: this.deviceType
+    });
+  }
+
+  get deviceType() {
+    if (window.innerWidth <= 768) {
+      return 'Mobile'
+    } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
+      return 'Tab'
+    } else {
+      return 'Desktop'
+    }
   }
 
   render() {
