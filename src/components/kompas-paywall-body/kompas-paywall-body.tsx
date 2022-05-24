@@ -235,12 +235,11 @@ export class KompasPaywallBody {
   }
 
   render() {
-    console.log('props', window.location)
     return (
       <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
         <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm px-4 md:px-0 my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
-          <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded-t pt-6 md:pt-8 relative">
+          <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded pt-6 md:pt-8 relative">
             {this.headerSection(this.type)}
             {this.descriptionSection(this.paywallData.informations.description)}
             {this.packagesSection(this.paywallData.packages)}
