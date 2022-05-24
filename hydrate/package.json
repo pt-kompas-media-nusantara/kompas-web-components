@@ -1,0 +1,6 @@
+{
+  "name": "@kompasid/web-components/hydrate",
+  "description": "KompasWebComponents component hydration app.",
+  "main": "index.js",
+  "types": "index.d.ts"
+}
