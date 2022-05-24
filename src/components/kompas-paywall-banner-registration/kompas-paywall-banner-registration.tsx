@@ -11,13 +11,32 @@ export class KompasPaywallBannerRegistration {
   @Prop() bannerData: Registration | undefined = undefined
 
   private redirectToRegister = (): void => {
+    this.sendDataLayer('registrationOfferClick')
     const loginHost: string = 'https://account.kompas.id/login'
     const nextParams: string = encodeURIComponent(window.location.href)
     const directUrlRegister: string = `${loginHost}?next=${nextParams}`
     window.location.href = directUrlRegister
   }
 
+  private sendDataLayer = (value: string): void => {
+    window.dataLayer.push({
+      event: value,
+      interface: this.deviceType
+    });
+  }
+  
+  get deviceType() {
+    if (window.innerWidth <= 768) {
+      return 'Mobile'
+    } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
+      return 'Tab'
+    } else {
+      return 'Desktop'
+    }
+  }
+
   render() {
+    this.sendDataLayer('registrationOfferimppression')
     return (
       <div class="flex flex-col items-center my-5">
         <div class="flex flex-col md:flex-row justify-between items-center w-full">

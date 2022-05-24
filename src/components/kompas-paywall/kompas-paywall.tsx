@@ -14,6 +14,8 @@ export class KompasPaywall {
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
   @Prop() isWithHeader: boolean = false
   @Prop() textHeader: string = ''
+  @Prop() userGuid: string = ''
+  @Prop() subscriptionStatus: string = ''
 
 
   async componentWillRender() {
@@ -121,7 +123,7 @@ export class KompasPaywall {
   )
 
   private renderEpaperPaywallSection = (): void => (
-    <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+    <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
   )
 
   private renderRegularPaywallSection = (): void => {
@@ -133,7 +135,7 @@ export class KompasPaywall {
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
               <kompas-paywall-information-header text={this.textHeader || defaultHeaderText}></kompas-paywall-information-header>
-              <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+              <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
             </div>
           </div>
         </div>
@@ -145,7 +147,7 @@ export class KompasPaywall {
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
               <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register}></kompas-paywall-banner-registration>
-              <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData}></kompas-paywall-body>
+              <kompas-paywall-body isLogin={this.isLogin} type={this.type} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
             </div>
           </div>
         </div>
@@ -161,7 +163,6 @@ export class KompasPaywall {
       default: return (this.renderRegularPaywallSection())
     }
   }
-
 
   render() {
     return (
