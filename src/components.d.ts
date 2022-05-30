@@ -154,6 +154,7 @@ export namespace Components {
         "userInitialName": string;
     }
     interface KompasPaywall {
+        "countdownArticle": number;
         "isLogin": boolean;
         "isWithHeader": boolean;
         "subscriptionStatus": string;
@@ -165,6 +166,7 @@ export namespace Components {
         "bannerData": Registration | undefined;
     }
     interface KompasPaywallBody {
+        "countdownArticle": number;
         "isLogin": boolean;
         "paywallData": PaywallProduct | undefined;
         "slug": string;
@@ -433,6 +435,7 @@ declare namespace LocalJSX {
         "userInitialName"?: string;
     }
     interface KompasPaywall {
+        "countdownArticle"?: number;
         "isLogin"?: boolean;
         "isWithHeader"?: boolean;
         "subscriptionStatus"?: string;
@@ -444,6 +447,7 @@ declare namespace LocalJSX {
         "bannerData"?: Registration | undefined;
     }
     interface KompasPaywallBody {
+        "countdownArticle"?: number;
         "isLogin"?: boolean;
         "paywallData"?: PaywallProduct | undefined;
         "slug"?: string;

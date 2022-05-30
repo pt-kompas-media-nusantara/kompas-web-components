@@ -118,6 +118,7 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 
 | Property             | Attribute             | Description | Type                    | Default     |
 | -------------------- | --------------------- | ----------- | ----------------------- | ----------- |
+| `countdownArticle`   | `countdown-article`   |             | `number`                | `0`         |
 | `isLogin`            | `is-login`            |             | `boolean`               | `false`     |
 | `isWithHeader`       | `is-with-header`      |             | `boolean`               | `false`     |
 | `subscriptionStatus` | `subscription-status` |             | `string`                | `''`        |
