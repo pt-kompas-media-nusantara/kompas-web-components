@@ -15,6 +15,9 @@ export class KompasPaywallBody {
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
   @Prop() paywallData: PaywallProduct | undefined = undefined
+  @Prop() userGuid: string = ''
+  @Prop() subscriptionStatus: string = ''
+  @Prop() countdownArticle: number = 0
   @State() isExtensionsOpened: boolean = false
 
 
@@ -40,7 +43,7 @@ export class KompasPaywallBody {
           </div>
         </div>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url)} class="h-auto bg-green-500 rounded mr-3" >
+      <button onClick={() => this.redirectToCheckout(product.url, '12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-3" >
         <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
           Beli Paket
         </h6>
@@ -64,7 +67,7 @@ export class KompasPaywallBody {
           / {product.periode}
         </h6>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url)} class="h-auto bg-green-500 rounded" >
+      <button onClick={() => this.redirectToCheckout(product.url, '1', '9802035', 50000, 2)} class="h-auto bg-green-500 rounded" >
         <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
           Beli Paket
         </h6>
@@ -195,14 +198,17 @@ export class KompasPaywallBody {
     window.location.href = directUrlRegister
   }
   private redirectToHelpdesk = (): void => {
+    this.sendDataLayeronHelpDesk()
     window.open("https://api.whatsapp.com/send/?phone=6281290050800&text=Halo,%20saya%20perlu%20informasi%20mengenai%20kompas.id")
   }
-  private redirectToCheckout = (url: string): void => {
+  private redirectToCheckout = (url: string, name: string, id:string, price: number, position: number): void => {
+    this.sendDataLayeronButtonBuyPackage(name, id, price, position)
     const originHost: string = encodeURIComponent(window.location.href)
     const directUrlCheckout: string = url + originHost
     window.open(directUrlCheckout)
   }
   private redirectToSubscriber = (): void => {
+    this.sendDataLayer()
     window.open("https://www.kompas.id/berlangganan")
   }
   private redirectToPrevUrl = (): void => {
@@ -210,6 +216,91 @@ export class KompasPaywallBody {
   }
   private paymentExtensionHandler = (): void => {
     this.isExtensionsOpened = !this.isExtensionsOpened
+  }
+
+  private sendDataLayer = (): void => {
+    window.dataLayer.push({
+      event: 'halamanBerlanggananClick',
+      subscriptionStatus: this.subscriptionStatus,
+      GUID: this.userGuid,
+      interface: this.deviceType
+    });
+  }
+
+  private sendDataLayeronPaywallBody = (): void => {
+    window.dataLayer.push({
+      event: 'productOfferImpression',
+      ecommerce: {
+        currencyCode: 'IDR',
+        impressions: [
+          {
+            name: 'cash - paywall - kdp 12 Bulan - reguler',
+            id: '9802032',
+            price: 360000,
+            list: this.listDataLayer,
+            position: 1
+          },
+          {
+            name: 'cash - paywall - kdp 1 Bulan - reguler',
+            id: '9802035',
+            price: 50000,
+            list: this.listDataLayer,
+            position: 2
+          }
+        ]
+      }
+    });
+  }
+
+  private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: number): void => {
+    window.dataLayer.push({
+      event: 'productClick',
+      ecommerce: {
+        click: {
+          actionField: {
+            list: 'Paywall'
+          },        
+        products: [
+          {
+            name: `cash - paywall - kdp ${name} - reguler`,
+            id: `${id}`,
+            price: `${price}`,
+            list: this.listDataLayer,
+            position: `${position}`
+          }
+        ]
+      }
+    }
+    });
+  }
+
+  private sendDataLayeronHelpDesk = (): void => {
+    window.dataLayer.push({
+      event: 'helpOfferClick',
+      userType: this.subscriptionStatus,
+      GUID: this.userGuid,
+      interface: this.deviceType
+    });
+  }
+
+  get listDataLayer() {
+    if (this.isLogin) {
+      if (this.countdownArticle > 5) {
+        return 'login paywall'
+      }
+    } else {
+      return 'non-login paywall'
+    }
+  }
+
+  get deviceType() {
+    if (window.innerWidth <= 768) {
+      return 'Mobile'
+    } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
+      return 'Tab'
+    } else {
+      return 'Desktop'
+    }
   }
 
   render() {
@@ -226,6 +317,7 @@ export class KompasPaywallBody {
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
+            {this.sendDataLayeronPaywallBody()}
           </div>
           {this.isExtensionsOpened ? (this.paymentMobileExtension(this.paywallData.payment.ekstension)) : ''}
         </div>

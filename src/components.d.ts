@@ -186,19 +186,25 @@ export namespace Components {
         "userInitialName": string;
     }
     interface KompasPaywall {
+        "countdownArticle": number;
         "isLogin": boolean;
         "isWithHeader": boolean;
+        "subscriptionStatus": string;
         "textHeader": string;
         "type": 'epaper' | 'reguler';
+        "userGuid": string;
     }
     interface KompasPaywallBannerRegistration {
         "bannerData": Registration | undefined;
     }
     interface KompasPaywallBody {
+        "countdownArticle": number;
         "isLogin": boolean;
         "paywallData": PaywallProduct | undefined;
         "slug": string;
+        "subscriptionStatus": string;
         "type": 'epaper' | 'reguler';
+        "userGuid": string;
     }
     interface KompasPaywallInformationHeader {
         "text": string;
@@ -493,19 +499,25 @@ declare namespace LocalJSX {
         "userInitialName"?: string;
     }
     interface KompasPaywall {
+        "countdownArticle"?: number;
         "isLogin"?: boolean;
         "isWithHeader"?: boolean;
+        "subscriptionStatus"?: string;
         "textHeader"?: string;
         "type"?: 'epaper' | 'reguler';
+        "userGuid"?: string;
     }
     interface KompasPaywallBannerRegistration {
         "bannerData"?: Registration | undefined;
     }
     interface KompasPaywallBody {
+        "countdownArticle"?: number;
         "isLogin"?: boolean;
         "paywallData"?: PaywallProduct | undefined;
         "slug"?: string;
+        "subscriptionStatus"?: string;
         "type"?: 'epaper' | 'reguler';
+        "userGuid"?: string;
     }
     interface KompasPaywallInformationHeader {
         "text"?: string;

@@ -116,12 +116,15 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 
 ## Properties
 
-| Property       | Attribute        | Description | Type                    | Default     |
-| -------------- | ---------------- | ----------- | ----------------------- | ----------- |
-| `isLogin`      | `is-login`       |             | `boolean`               | `false`     |
-| `isWithHeader` | `is-with-header` |             | `boolean`               | `false`     |
-| `textHeader`   | `text-header`    |             | `string`                | `''`        |
-| `type`         | `type`           |             | `"epaper" \| "reguler"` | `'reguler'` |
+| Property             | Attribute             | Description | Type                    | Default     |
+| -------------------- | --------------------- | ----------- | ----------------------- | ----------- |
+| `countdownArticle`   | `countdown-article`   |             | `number`                | `0`         |
+| `isLogin`            | `is-login`            |             | `boolean`               | `false`     |
+| `isWithHeader`       | `is-with-header`      |             | `boolean`               | `false`     |
+| `subscriptionStatus` | `subscription-status` |             | `string`                | `''`        |
+| `textHeader`         | `text-header`         |             | `string`                | `''`        |
+| `type`               | `type`                |             | `"epaper" \| "reguler"` | `'reguler'` |
+| `userGuid`           | `user-guid`           |             | `string`                | `''`        |
 
 
 ## Dependencies
