@@ -21,7 +21,7 @@ describe('Kompas Paywall --default', () => {
             <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
               <div class="flex flex-col max-w-screen-md my-5 w-full">
                 <kompas-paywall-banner-registration></kompas-paywall-banner-registration>
-                <kompas-paywall-body subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
+                <kompas-paywall-body countdownarticle="0" subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@ describe('Kompas Paywall Epaper', () => {
       <kompas-paywall type='epaper' is-login='true'>
         <mock:shadow-root>
           <div class="relative w-full">
-            <kompas-paywall-body islogin="" subscriptionstatus="" type="epaper" userguid=""></kompas-paywall-body>
+            <kompas-paywall-body countdownarticle="0" islogin="" subscriptionstatus="" type="epaper" userguid=""></kompas-paywall-body>
           </div>
         </mock:shadow-root>
       </kompas-paywall>
@@ -57,7 +57,7 @@ describe('Kompas Paywall Epaper', () => {
       <kompas-paywall type='epaper' is-login='false'>
         <mock:shadow-root>
           <div class="relative w-full">
-            <kompas-paywall-body subscriptionstatus="" type="epaper" userguid=""></kompas-paywall-body>
+            <kompas-paywall-body countdownarticle="0" subscriptionstatus="" type="epaper" userguid=""></kompas-paywall-body>
           </div>
         </mock:shadow-root>
       </kompas-paywall>
@@ -81,7 +81,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
             <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
               <div class="flex flex-col max-w-screen-md my-5 w-full">
                 <kompas-paywall-banner-registration></kompas-paywall-banner-registration>
-                <kompas-paywall-body islogin="" subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
+                <kompas-paywall-body countdownarticle="0" islogin="" subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
             <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
               <div class="flex flex-col max-w-screen-md my-5 w-full">
                 <kompas-paywall-banner-registration></kompas-paywall-banner-registration>
-                <kompas-paywall-body subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
+                <kompas-paywall-body countdownarticle="0" subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
               </div>
             </div>
           </div>
@@ -129,7 +129,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
               <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
                 <div class="flex flex-col max-w-screen-md my-5 w-full">
                   <kompas-paywall-information-header text="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
-                  <kompas-paywall-body subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
+                  <kompas-paywall-body countdownarticle="0" subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
               <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
                 <div class="flex flex-col max-w-screen-md my-5 w-full">
                   <kompas-paywall-information-header text="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
-                  <kompas-paywall-body subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
+                  <kompas-paywall-body countdownarticle="0" subscriptionstatus="" type="reguler" userguid=""></kompas-paywall-body>
                 </div>
               </div>
             </div>

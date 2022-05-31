@@ -9,6 +9,7 @@
 
 | Property             | Attribute             | Description | Type                    | Default     |
 | -------------------- | --------------------- | ----------- | ----------------------- | ----------- |
+| `countdownArticle`   | `countdown-article`   |             | `number`                | `0`         |
 | `isLogin`            | `is-login`            |             | `boolean`               | `false`     |
 | `paywallData`        | --                    |             | `PaywallProduct`        | `undefined` |
 | `slug`               | `slug`                |             | `string`                | `""`        |
