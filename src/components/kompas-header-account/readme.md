@@ -109,7 +109,7 @@ Dan untuk property `url`, sudah ada default valuenya. Jika tidak mau ada perubah
 cartUrl: string = 'https://gerai.kompas.id/cart'
 logoutUrl: string = 'https://account.kompas.id/logout'
 manageAccountUrl: string = 'https://account.kompas.id/manage-account/my-account'
-notificationUrl: string = 'https://account.kompas.id/notification'
+notificationUrl: string = 'https://account.kompas.id/manage-account/notification'
 ordersUrl: string = 'https://gerai.kompas.id/my-account/orders'
 subscriptionUrl: string = 'https://www.kompas.id/berlangganan'
 ```

@@ -30,7 +30,7 @@ export class KompasHeaderAccountMenu {
   /**
     * Notification Url
     */
-  @Prop() notificationUrl: string = 'https://account.kompas.id/notification'
+  @Prop() notificationUrl: string = 'https://account.kompas.id/manage-account/notification'
 
   /**
     * Orders Url
