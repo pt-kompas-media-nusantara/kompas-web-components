@@ -61,7 +61,7 @@ export class KompasPaywall {
               discountPrice: 600000,
               periode: "1 Tahun",
               isHighlight: true,
-              url: 'https://checkoutv2.kompas.id/kdp?productId=9802032&referrer%3D'
+              url: 'https://checkoutv2.kompas.id/kdp?productId=9802032&referrer='
 
             }, {
               title: "Kompas Digital Premium 1 Bulan",
@@ -70,7 +70,7 @@ export class KompasPaywall {
               price: 50000,
               periode: "1 Bulan",
               isHighlight: false,
-              url: "https://checkoutv2.kompas.id/kdp?productId=9802035&referrer%3D",
+              url: "https://checkoutv2.kompas.id/kdp?productId=9802035&referrer=",
 
             }
           ]
