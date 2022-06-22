@@ -97,9 +97,9 @@ export class KompasHeaderAccountHelpCenter {
 
   render() {
     return (
-      <div class="leading-none mt-4">
+      <div class="leading-none mt-4 text-grey-600">
         <p class="text-base mx-1 text-left">Pusat Bantuan</p>
-        <div class="flex flex-shrink-0 flex-col text-left text-sm gap-y-4 my-4">
+        <div class="flex flex-shrink-0 flex-col text-left text-sm gap-y-4 my-4 ">
           {this.qna()}
           {this.telephone()}
           {this.whatsapp()}
