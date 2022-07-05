@@ -59,7 +59,7 @@ export class KompasHeaderAccountMenu {
 
   render() {
     return (
-      <div class="border-b border-grey-300">
+      <div class="border-b border-grey-300 text-grey-600">
         <li class="font-bold flex flex-shrink-0 flex-col text-left text-sm mb-4">
           {/* Cart */}
           <a href={this.cartUrl} class="header-account-menu--item">
