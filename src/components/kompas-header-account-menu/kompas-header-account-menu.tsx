@@ -13,6 +13,11 @@ import signOutAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/s
 export class KompasHeaderAccountMenu {
 
   /**
+    * Cart Url
+    */
+  @Prop() cartUrl: string = 'https://gerai.kompas.id/cart'
+
+  /**
     * Logout Url
     */
   @Prop() logoutUrl: string = 'https://account.kompas.id/logout'
@@ -21,58 +26,68 @@ export class KompasHeaderAccountMenu {
     * Manage Account Url
     */
   @Prop() manageAccountUrl: string = 'https://account.kompas.id/manage-account/my-account'
-  
+
+  /**
+    * Notification Url
+    */
+  @Prop() notificationUrl: string = 'https://account.kompas.id/manage-account/notification'
+
+  /**
+    * Orders Url
+    */
+  @Prop() ordersUrl: string = 'https://gerai.kompas.id/my-account/orders'
+
   /**
     * Total Notification Count
     */
   @Prop() notificationTotal: number = 0
-  
-  // Notification Count
-  private notificationTotalInfo = () => {
-    if(!this.notificationTotal) return;
 
-    const isOneDigitNotification = this.notificationTotal > 0 && this.notificationTotal <= 9
+  // Render Total Bubble
+  private renderTotalBubble = (total: number) => {
+    if(!total) return;
+
+    const isOneDigitNotification = total > 0 && total <= 9
     const additionalStyling = isOneDigitNotification ? '' : 'pl-1'
 
     return (
       <div class={`header-account-menu--notification-info ${additionalStyling}`}>
         {/* Limit Display to use "9+"" if total notification exceed 9 */}
-        { isOneDigitNotification ? this.notificationTotal : '9+'}
+        { isOneDigitNotification ? total : '9+'}
       </div>
-    ) 
+    )
   }
 
   render() {
     return (
-      <div>
-        <li class="font-bold flex flex-shrink-0 gap-y-3 py-4 flex-col text-left text-sm border-b border-grey-300 p-2 leading-4">
+      <div class="border-b border-grey-300 text-grey-600">
+        <li class="font-bold flex flex-shrink-0 flex-col text-left text-sm mb-4">
           {/* Cart */}
-          <a href="https://gerai.kompas.id/cart" class="header-account-menu--item">
-            <div class="ml-3 icon-md icon-blue-600" innerHTML={shoppingCart}></div>
+          <a href={this.cartUrl} class="header-account-menu--item">
+            <div class="icon-md icon-blue-600" innerHTML={shoppingCart}></div>
             <p class="header-account-menu--title">Keranjang</p>
           </a>
           {/* Manage Account  */}
           <a href={this.manageAccountUrl} class="header-account-menu--item">
-            <div class="ml-3 icon-md icon-blue-600" innerHTML={userCog}></div>
+            <div class="icon-md icon-blue-600" innerHTML={userCog}></div>
             <p class="header-account-menu--title">Kelola Akun</p>
           </a>
           {/* Transaction  */}
-          <a href="https://gerai.kompas.id/my-account/orders" class="header-account-menu--item">
-            <div class="ml-3 icon-md icon-blue-600" innerHTML={exchangeAlt}></div>
+          <a href={this.ordersUrl} class="header-account-menu--item">
+            <div class="icon-md icon-blue-600" innerHTML={exchangeAlt}></div>
             <p class="header-account-menu--title">Transaksi</p>
           </a>
           {/* Notifications  */}
-          <a href="https://account.kompas.id/notification" class="header-account-menu--item">
-            <div class="ml-3 icon-md icon-blue-600" innerHTML={bell}></div>
+          <a href={this.notificationUrl} class="header-account-menu--item">
+            <div class="icon-md icon-blue-600" innerHTML={bell}></div>
             <p class="header-account-menu--title">Notifikasi</p>
             <p class="flex-none">
               {/* Conditional rendering based on notification count */}
-              {this.notificationTotalInfo()}
+              {this.renderTotalBubble(this.notificationTotal)}
             </p>
           </a>
           {/* Logout */}
           <a href={this.logoutUrl} class="header-account-menu--item">
-            <div class="ml-3 icon-md icon-blue-600" innerHTML={signOutAlt}></div>
+            <div class="icon-md icon-blue-600" innerHTML={signOutAlt}></div>
             <p class="header-account-menu--title">Keluar</p>
           </a>
         </li>

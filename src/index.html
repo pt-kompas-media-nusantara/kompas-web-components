@@ -64,8 +64,17 @@
   <div style="max-width: 1165px;margin:auto">
     <header style="width:100%;position:fixed;left:0;top:0px;background-color: #0356A8;padding:0.75rem;z-index: 10;">
       <div style="max-width: 1280px;margin:auto;display: flex">
-        <kompas-header-account style="margin-left: auto;" sidebar-top-spacing=48 notification-total=10
-          logout-url="/logout" manage-account-url="/manage-count" />
+        <kompas-header-account
+          cart-url="/cart"
+          logout-url="/logout"
+          manage-account-url="/manage-count"
+          notification-url="/notif"
+          notification-total=10
+          orders-url="/orders"
+          sidebar-top-spacing=48
+          subscription-url=""
+          style="margin-left: auto;"
+        />
       </div>
     </header>
     <h2>Lipsum Dei</h2>
@@ -116,7 +125,8 @@
     document.querySelector('kompas-header-account').setAttribute('user-data', JSON.stringify({
       "userName": "User Fullname",
       "expired": "Berakhir: 6 hari lagi",
-      "activeInfo": "Aktif Berlangganan",
+      "isNearExpired": false,
+      "activeInfo": "Kompas Digital Premium 1 Bulan - Auto Renewal Example Text",
       "isMembership": true,
       "updateMembership": "Perbarui Langganan",
     }))

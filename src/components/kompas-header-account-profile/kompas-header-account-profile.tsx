@@ -1,4 +1,5 @@
 import { Component, Prop, h } from '@stencil/core'
+import { truncate } from '../../utils/text'
 
 @Component({
   tag: 'kompas-header-account-profile',
@@ -12,11 +13,16 @@ export class KompasHeaderAccountProfile {
    * User Initial Name
    */
   @Prop() userInitialName: string
-  
+
   /**
    * User Data
    */
   @Prop() userData!: any
+
+  /**
+   * Subscription Url
+   */
+  @Prop() subscriptionUrl: string = 'https://www.kompas.id/berlangganan'
 
   render() {
     /**
@@ -48,12 +54,12 @@ export class KompasHeaderAccountProfile {
       const subscribeButton = () => {
         if(!this.userData?.updateMembership) return
         const handleSubscribe = () => {
-          window.location.href = 'https://www.kompas.id/berlangganan'
+          window.location.href = this.subscriptionUrl
         }
 
         return (
-          <div class="mt-5 w-full">
-            <button onClick={()=> handleSubscribe()} class="w-full font-sans rounded-lg px-4 py-3 my-2 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">{ this.userData?.updateMembership }</button>
+          <div class="w-full">
+            <button onClick={()=> handleSubscribe()} class="w-full font-sans rounded-lg px-4 py-3 mt-4 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">{ this.userData?.updateMembership }</button>
           </div>
         )
       }
@@ -62,12 +68,12 @@ export class KompasHeaderAccountProfile {
        * expired Info Element
        */
       const expiredInfo = () => {
-        const isNearExpire = this.userData?.expired?.includes('Berakhir')
-        const expiredTextColor = isNearExpire ? `text-orange-400` : `text-grey-500`
-        
+        const isNearExpired = this.userData?.isNearExpired
+        const expiredTextColor = isNearExpired ? `text-orange-400` : `text-grey-600`
+
         return (
-          <p class={`capitalize font-bold text-sm pb-1 whitespace-nowrap ${expiredTextColor}`}>{ this.userData?.expired }</p>
-        ) 
+          <p class={`capitalize font-bold text-sm ${expiredTextColor}`}>{ this.userData?.expired }</p>
+        )
       }
 
       /**
@@ -82,19 +88,19 @@ export class KompasHeaderAccountProfile {
           </div>
         )
       }
-      
+
       return (
-        <div class="flex flex-col items-center leading-none">
-          <div class="flex lex-row items-center gap-4">
+        <div class="flex flex-col items-start leading-none">
+          <div class="flex flex-row items-center gap-4">
             <div class="flex bg-brand-1 flex-shrink-0 p-5 rounded-full h-16 w-16 items-center justify-center relative">
               <span class="capitalize text-2xl text-grey-100 font-bold">{ this.userInitialName }</span>
               {membershipIcon()}
             </div>
 
             <div class="flex flex-col text-left">
-              <p class="capitalize font-bold text-base pb-1 whitespace-nowrap text-blue-600">{ this.userData?.userName }</p>
-              <p class="capitalize pb-1 text-sm whitespace-nowrap">{ this.userData?.activeInfo }</p>
-              { expiredInfo() }
+              <p class="capitalize font-bold text-base text-blue-600">{ truncate(this.userData?.userName, 25) }</p>
+              <p class="capitalize text-sm text-grey-600">{ this.userData?.activeInfo }</p>
+              {expiredInfo()}
             </div>
           </div>
 
@@ -106,7 +112,7 @@ export class KompasHeaderAccountProfile {
 
     return (
       <div class="border-b border-grey-300 flex flex-shrink-0 flex-col bg-blue-100 p-4">
-        { 
+        {
           !this.userData ? skeletonLoading : profileContent()
         }
       </div>
