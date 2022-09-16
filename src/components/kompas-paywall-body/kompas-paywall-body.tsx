@@ -3,6 +3,8 @@ import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.
 import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
 import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
+import GoogleLogo from '../../../assets/images/google-logo.svg'
+
 @Component({
   tag: 'kompas-paywall-body',
   styleUrl: '../kompas-paywall/kompas-paywall.css',
@@ -45,7 +47,7 @@ export class KompasPaywallBody {
       </div>
       <button onClick={() => this.redirectToCheckout(product.url, '12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-3" >
         <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
-          Beli Paket
+          Langganan
         </h6>
       </button >
       <div class="absolute top-0 left-0">
@@ -69,7 +71,7 @@ export class KompasPaywallBody {
       </div>
       <button onClick={() => this.redirectToCheckout(product.url, '1', '9802035', 50000, 2)} class="h-auto bg-green-500 rounded" >
         <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
-          Beli Paket
+          Langganan
         </h6>
       </button>
     </div>
@@ -185,7 +187,17 @@ export class KompasPaywallBody {
     </div>
   )
   private separatorLine = (): void => (
-    <div class="hidden border-b-2 border-blue-200 w-1/4 my-4 md:flex justify-center" />
+    <div class="flex flex-row w-full justify-center">
+      <div class="border-b-2 border-blue-200 w-1/4 my-4 flex justify-center" />
+      <p class="px-4 pt-1">atau</p>
+      <div class="border-b-2 border-blue-200 w-1/4 my-4 flex justify-center" />
+    </div>
+  )
+  public subscribeWithGoogleSection = (): void => (
+      <button class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
+        <p>Subscribe with</p>
+        <div class="pl-2" innerHTML={GoogleLogo}></div>
+      </button>
   )
   private getRupiahFormat = (value: number): string => {
     const roundedValue = Math.round(value)
@@ -314,6 +326,7 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
+            {this.subscribeWithGoogleSection()}
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
