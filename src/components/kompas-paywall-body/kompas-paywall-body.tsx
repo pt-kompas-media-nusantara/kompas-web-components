@@ -3,7 +3,6 @@ import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.
 import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
 import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
-import GoogleLogo from '../../../assets/images/google-logo.svg'
 
 @Component({
   tag: 'kompas-paywall-body',
@@ -196,7 +195,7 @@ export class KompasPaywallBody {
   public subscribeWithGoogleSection = (): void => (
       <button class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
         <p>Subscribe with</p>
-        <div class="pl-2" innerHTML={GoogleLogo}></div>
+        <img class="pl-2" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
       </button>
   )
   private getRupiahFormat = (value: number): string => {
