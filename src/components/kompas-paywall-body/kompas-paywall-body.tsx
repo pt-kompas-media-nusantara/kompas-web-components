@@ -20,6 +20,24 @@ export class KompasPaywallBody {
   @Prop() subscriptionStatus: string = ''
   @Prop() countdownArticle: number = 0
   @State() isExtensionsOpened: boolean = false
+  @State() kompasAkunHost: string = ''
+  @State() kompasApigenHost: string = ''
+  @State() kompasApiWcmHost: string = ''
+  @State() kompasLoginHost: string = ''
+  @State() selfHost: string = ''
+  @State() swgPublisherName: string = ''
+  @State() swgPublisherId: string = ''
+  @State() swgProductId: string = ''
+  // path: { [key: string]: string } = {
+    // kompasAkunHost: process.env.KOMPAS_AKUN_HOST,
+    // kompasApigenHost: process.env.KOMPAS_APIGEN_HOST,
+    // kompasApiWcmHost: process.env.KOMPAS_APIWCM_HOST,
+    // kompasLoginHost: process.env.KOMPAS_LOGIN_HOST,
+    // selfHost: process.env.SELF_HOST,
+    // swgPublisherName: process.env.SWG_PUBLISHER_NAME,
+    // swgPublisherId: process.env.SWG_PUBLISHER_ID,
+    // swgProductId: process.env.SWG_PRODUCT_ID,
+  // }
 
 
   private primaryPackages = (product: Product): void => (
@@ -193,11 +211,192 @@ export class KompasPaywallBody {
     </div>
   )
   public subscribeWithGoogleSection = (): void => (
-      <button class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
-        <p>Subscribe with</p>
-        <img class="pl-2" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
-      </button>
+    <button id="swg-button" onClick={() => this.subscribeWithGoogleButton()} class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
+      <p>Subscribe with</p>
+      <img class="pl-2" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
+    </button>
   )
+  get redirectToLogin() {
+    return `${this.kompasLoginHost}/login?next=${encodeURIComponent(this.selfHost + location.pathname)}`
+  }
+  private subscribeWithGoogleButton = (): void => {
+    console.log('hit');
+    
+    // @ts-ignore
+    (self.SWG = self.SWG || []).push((subscriptions: any) => {
+      // set entitlement
+      subscriptions.setOnEntitlementsResponse(async (entitlementsPromise: any) => {
+        const swgButton = document.getElementById('swg-button')
+        const resultEntitlements = await entitlementsPromise
+        const axios = require('axios').default
+        console.log('result entitlement', resultEntitlements, resultEntitlements.enablesThis())
+        console.log('guid', this.userGuid, !this.userGuid)
+
+        if (resultEntitlements.enablesThis() && !this.userGuid) {
+          // kalau tidak login dan belum berlangganan
+          const userEntitlements = resultEntitlements.entitlements || []
+          const { source, subscriptionToken } = userEntitlements[0]
+          let product = ''
+          let subsToken = subscriptionToken
+
+          console.log('source', source, userEntitlements, subscriptionToken) // test
+          if (source === 'google') {
+            const { productId, purchaseToken } = JSON.parse(subscriptionToken)
+            product = productId
+            subsToken = purchaseToken
+          }
+
+          const test: any = new Promise((resolve, reject) => {
+            // cek data pengguna, dapatkan token
+            axios
+              .$post(`${this.kompasApigenHost}/v1/user/token/${source}`, {
+                subscription_token: subsToken,
+                products: product,
+                detail: 'test',
+              })
+              .then(response => {
+                resolve(response.result.token)
+              })
+              .catch(() => {
+                reject(new Error('User not found'))
+              })
+          })
+
+          console.log('account', test)
+
+          // subscription look up
+          subscriptions.waitForSubscriptionLookup(test).then((token: string) => {
+            console.log('success on wait for subscription', test, token)
+            if (token) {
+              console.log('success on wait for subscription => response exist')
+              subscriptions.showLoginNotification().then(async () => {
+                try {
+                  const respons = await axios.$post(`${this.kompasAkunHost}/api/subscription/login/${source}`, { token })
+                  console.log('success /api/subscription/login/')
+                  console.log('datas', token, respons)
+                  // window.location.reload()
+                } catch (error) {
+                  console.log('Auto login failed!', error)
+                }
+              })
+            } else {
+              console.log('success on wait for subscription => response not exist')
+              subscriptions.completeDeferredAccountCreation({ resultEntitlements, consent: true }).then(async () => {
+                const data = {
+                  subscription_token: subsToken,
+                  products: product,
+                  detail: 'test',
+                }
+                try {
+                  const response: any = await axios.$post(`${this.kompasApigenHost}/v1/user/register/token/${source}`, data)
+                  const token = response.result.token
+
+                  await axios.$post(`${this.kompasAkunHost}/api/subscription/login/${source}`, token)
+                  console.log('success on wait for subscription => response not exist => /v1/user/register/token/', token)
+                  window.location.reload()
+                } catch (error) {
+                  console.log('error while register subscription', error)
+                }
+              })
+            }
+          })
+        } else {
+          // subscriptions attach button
+          console.log('success get on attach button')
+          subscriptions.attachButton(swgButton, { theme: 'light', lang: 'en' }, () => {
+            console.log('success get on attach button => in')
+            subscriptions.showOffers({ isClosable: true })
+            subscriptions.setOnLoginRequest(() => {
+              window.location.href = this.redirectToLogin
+            })
+            subscriptions.setOnPaymentResponse(async (paymentResponse: any) => {
+              const response = await paymentResponse
+              console.log('value response ', response)
+              const raw = JSON.parse(response.purchaseData.raw)
+              const productId = raw.productId
+              const purchaseToken = raw.purchaseToken
+              const packageName = raw.packageName
+              const email = response.userData.data.email
+
+              const data = {
+                subscription_token: purchaseToken,
+                products: productId,
+                detail: 'test',
+              }
+              let userToken, accessToken
+              try {
+                const response = await axios.$post(`${this.kompasApigenHost}/v1/user/token/google`, data)
+                userToken = response.result.token
+              } catch (error) {
+                console.log('error while getting user token', error)
+              }
+
+              if (userToken) {
+                // login and update membership
+                try {
+                  const response = await axios.$post(`${this.kompasAkunHost}/api/subscription/login/google`, { token: userToken })
+                  accessToken = response.access_token
+                  const data = {
+                    email,
+                    package_name: packageName,
+                    product_id: productId,
+                    purchase_token: purchaseToken,
+                  }
+                  await axios.$post(`${this.kompasApiWcmHost}/v2/membership/swg/create`, data, {
+                    headers: {
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  })
+                } catch (error) {
+                  console.log('error while getting access token ', error)
+                }
+              } else {
+                // register and login the unknown user
+                let token
+                const data = {
+                  subscription_token: purchaseToken,
+                  products: productId,
+                  detail: 'test',
+                }
+                try {
+                  const response = await axios.$post(`${this.kompasApigenHost}/v1/user/register/token/google`, data)
+                  token = response.result.token
+                } catch (error) {
+                  console.log('error while getting token google ', error)
+                }
+
+                if (token) {
+                  let accessToken
+                  try {
+                    const response: any = await axios.$post(`${this.kompasAkunHost}/api/subscription/login/google`, { token })
+                    accessToken = response.accessToken
+                    const data = {
+                      email,
+                      package_name: packageName,
+                      product_id: productId,
+                      purchase_token: purchaseToken,
+                    }
+                    await axios.$post(`${this.kompasApiWcmHost}/v2/membership/swg/create`, data, {
+                      headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                      },
+                    })
+                  } catch (error) {
+                    console.log('error while login to google ', error)
+                  }
+                }
+              }
+              console.log('completed')
+              await response.complete()
+              window.location.reload()
+            })
+          })
+        }
+      })
+    })
+    console.log('hittt');
+    
+  }
   private getRupiahFormat = (value: number): string => {
     const roundedValue = Math.round(value)
     return 'Rp ' + roundedValue.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
