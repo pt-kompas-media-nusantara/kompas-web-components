@@ -20,25 +20,14 @@ export class KompasPaywallBody {
   @Prop() subscriptionStatus: string = ''
   @Prop() countdownArticle: number = 0
   @State() isExtensionsOpened: boolean = false
-  @State() kompasAkunHost: string = ''
-  @State() kompasApigenHost: string = ''
-  @State() kompasApiWcmHost: string = ''
-  @State() kompasLoginHost: string = ''
-  @State() selfHost: string = ''
-  @State() swgPublisherName: string = ''
-  @State() swgPublisherId: string = ''
-  @State() swgProductId: string = ''
-  // path: { [key: string]: string } = {
-    // kompasAkunHost: process.env.KOMPAS_AKUN_HOST,
-    // kompasApigenHost: process.env.KOMPAS_APIGEN_HOST,
-    // kompasApiWcmHost: process.env.KOMPAS_APIWCM_HOST,
-    // kompasLoginHost: process.env.KOMPAS_LOGIN_HOST,
-    // selfHost: process.env.SELF_HOST,
-    // swgPublisherName: process.env.SWG_PUBLISHER_NAME,
-    // swgPublisherId: process.env.SWG_PUBLISHER_ID,
-    // swgProductId: process.env.SWG_PRODUCT_ID,
-  // }
-
+  @State() kompasAkunHost: string = process.env.KOMPAS_AKUN_HOST
+  @State() kompasApigenHost: string = process.env.KOMPAS_APIGEN_HOST
+  @State() kompasApiWcmHost: string = process.env.KOMPAS_APIWCM_HOST
+  @State() kompasLoginHost: string = process.env.KOMPAS_LOGIN_HOST
+  @State() selfHost: string = process.env.SELF_HOST
+  @State() swgPublisherName: string = process.env.SWG_PUBLISHER_NAME
+  @State() swgPublisherId: string = process.env.SWG_PUBLISHER_ID
+  @State() swgProductId: string = process.env.SWG_PRODUCT_ID
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
