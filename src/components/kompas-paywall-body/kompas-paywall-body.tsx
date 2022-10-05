@@ -200,7 +200,7 @@ export class KompasPaywallBody {
     </div>
   )
   public subscribeWithGoogleSection = (): void => (
-    <button id="swg-button" onClick={() => this.subscribeWithGoogleButton()} class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
+    <button id="swg-button" class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
       <p>Subscribe with</p>
       <img class="pl-2" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
     </button>
