@@ -200,63 +200,73 @@ export class KompasPaywallBody {
     </div>
   )
   public subscribeWithGoogleSection = (): void => (
-    <button id="swg-button" onClick={() => this.subscribeWithGoogleButton()} class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
+    <div id="swg-button" class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
       <p>Subscribe with</p>
-      <img class="pl-2" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
-    </button>
+    </div>
   )
   get redirectToLogin() {
     return `${this.kompasLoginHost}/login?next=${encodeURIComponent(this.selfHost + location.pathname)}`
   }
   private getRegisterToken = async (path:string, payload:any): Promise<string> => {
-    const axios = require('axios').default
-    try {
-      const response = await axios.$post(`${this.kompasApigenHost}/v1/user/register/token/${path}`, payload)
-      console.log('response get register token ', response.result.token, payload)
-      return response.access_token
-    } catch (error) {
-      console.log('error get Register ', error)
-      throw (error)
-    }
+    return fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+      .then((response: any) => {
+        console.log('response get register token ', response.result.token, payload)
+        return response.access_token
+      })
+      .catch((error) => {
+        console.log('error get Register ', error)
+        throw (error)
+      })
   }
   private getUserToken = async (path:string, payload:any): Promise<string> => {
-    const axios = require('axios').default
-    try {
-      const response :any = await axios.$post(`${this.kompasApigenHost}/v1/user/token/${path}`, payload)
-      console.log('response get user token ', response.result.token, payload)
-      return response.result.token
-    } catch (error) {
-      console.log('error get user Token ', error)
-      throw (error)
-    }
+    return fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+      .then((response: any) => {
+        console.log('response get user token ', response.result.token, payload)
+        return response.access_token
+      })
+      .catch((error) => {
+        console.log('error get user Token ', error)
+        throw (error)
+      })
   }
   private getSubscriptionToken = async (path:string, payload:any): Promise<string> => {
-    const config = { withCredentials: true }
-    const axios = require('axios').default
-    try {
-      const response = await axios.$post(`${this.kompasAkunHost}/api/subscription/login/${path}`, payload, config)
-      console.log('response get user token ', response.access_token, payload)
-      return response.access_token
-    } catch (error) {
-      console.log('error get subscription Token ', error)
-      throw (error)
-    }
+    return fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      credentials: 'include'
+    })
+      .then((response: any) => {
+        console.log('response get subscription token ', response.result.token, payload)
+        return response.access_token
+      })
+      .catch((error) => {
+        console.log('error get subscription Token ', error)
+        throw (error)
+      })
   }
-  private createSwG = async (payload:any, token:string): Promise<void> => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-    const axios = require('axios').default
-    try {
-      await axios.$post(`${this.kompasApiWcmHost}/v2/membership/swg/create`, payload, config)
+  private createSwG = async (payload:any, token:string) => {
+    fetch(`${this.kompasApiWcmHost}/v2/membership/swg/create`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(() => {
       console.log('swg created')
-    } catch (error) {
+    })
+    .catch((error) => {
       console.log('error on create swg', error)
       throw (error)
-    }
+    })
   }
   private subscribeWithGoogleButton = (): void => {
-    const axios = require('axios').default
     // @ts-ignore
     (self.SWG = self.SWG || []).push((subscriptions:any) => {
       // set entitlement
@@ -279,8 +289,11 @@ export class KompasPaywallBody {
           
           const payload = { subscription_token: subsToken, products: product, detail: 'test' }
           const accountPromise :any = new Promise((resolve, reject) => {
-          axios.$post(`${this.kompasApigenHost}/v1/user/token/${source}`, payload)
-          .then(response => resolve(response.result.token))
+          fetch(`${this.kompasApigenHost}/v1/user/token/${source}`, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+          })
+          .then((response:any) => resolve(response.result.token))
           .catch(() => reject(new Error('User not found')))
         })
         
@@ -468,9 +481,16 @@ console.log('hittt')
     }
   }
 
+  async componentWillLoad() {
+    this.subscribeWithGoogleButton()
+  }
+
   render() {
     return (
       <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
+        <head>
+          <script src='https://news.google.com/swg/js/v1/swg.js'></script>
+        </head>
         <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm px-4 md:px-0 my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
           <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded pt-6 md:pt-8 relative">
