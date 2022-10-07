@@ -207,64 +207,64 @@ export class KompasPaywallBody {
   get redirectToLogin() {
     return `${this.kompasLoginHost}/login?next=${encodeURIComponent(this.selfHost + location.pathname)}`
   }
-  private getRegisterToken = async (path:string, payload:any): Promise<string> => {
+  private getRegisterToken = async (path: string, payload: any): Promise<string> => {
     return fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
       method: 'POST',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     })
       .then((response: any) => {
         console.log('response get register token ', response.result.token, payload)
         return response.access_token
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('error get Register ', error)
-        throw (error)
+        throw error
       })
   }
-  private getUserToken = async (path:string, payload:any): Promise<string> => {
+  private getUserToken = async (path: string, payload: any): Promise<string> => {
     return fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
       method: 'POST',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     })
       .then((response: any) => {
         console.log('response get user token ', response.result.token, payload)
         return response.access_token
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('error get user Token ', error)
-        throw (error)
+        throw error
       })
   }
-  private getSubscriptionToken = async (path:string, payload:any): Promise<string> => {
+  private getSubscriptionToken = async (path: string, payload: any): Promise<string> => {
     return fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
       method: 'POST',
       body: JSON.stringify(payload),
-      credentials: 'include'
+      credentials: 'include',
     })
       .then((response: any) => {
         console.log('response get subscription token ', response.result.token, payload)
         return response.access_token
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('error get subscription Token ', error)
-        throw (error)
+        throw error
       })
   }
-  private createSwG = async (payload:any, token:string) => {
+  private createSwG = async (payload: any, token: string) => {
     fetch(`${this.kompasApiWcmHost}/v2/membership/swg/create`, {
       method: 'POST',
       body: JSON.stringify(payload),
-      headers: { 
-        Authorization: `Bearer ${token}`
-      }
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
-    .then(() => {
-      console.log('swg created')
-    })
-    .catch((error) => {
-      console.log('error on create swg', error)
-      throw (error)
-    })
+      .then(() => {
+        console.log('swg created')
+      })
+      .catch(error => {
+        console.log('error on create swg', error)
+        throw error
+      })
   }
   private subscribeWithGoogleButton = (): void => {
     // @ts-ignore
