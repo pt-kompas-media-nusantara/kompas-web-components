@@ -200,9 +200,7 @@ export class KompasPaywallBody {
     </div>
   )
   public subscribeWithGoogleSection = (): void => (
-    <div id="swg-button" class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4">
-      <p>Subscribe with</p>
-    </div>
+    <button id="swg-button" />
   )
   get redirectToLogin() {
     return `${this.kompasLoginHost}/login?next=${encodeURIComponent(this.selfHost + location.pathname)}`
@@ -366,7 +364,7 @@ export class KompasPaywallBody {
         }
       })
     })
-    console.log('hittt')
+    console.log('Function subscribeWithGoogleButton selesai berjalan')
   }
   private getRupiahFormat = (value: number): string => {
     const roundedValue = Math.round(value)
