@@ -482,8 +482,8 @@ export class KompasPaywallBody {
     }
   }
 
-  async componentWillLoad() {
-    this.subscribeWithGoogleButton()
+  async componentDidLoad() {
+    await this.subscribeWithGoogleButton()
   }
 
   render() {
