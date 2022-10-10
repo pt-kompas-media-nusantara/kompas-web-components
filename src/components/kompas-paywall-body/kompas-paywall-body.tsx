@@ -11,7 +11,6 @@ import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywa
 })
 
 export class KompasPaywallBody {
-
   @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
   @Prop() type: 'epaper' | 'reguler' = 'reguler'
@@ -28,6 +27,7 @@ export class KompasPaywallBody {
   @State() swgPublisherName: string = 'Harian Kompas Dev'
   @State() swgPublisherId: string = 'kompas.cloud'
   @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
+
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
@@ -488,10 +488,32 @@ export class KompasPaywallBody {
 
   render() {
     return (
-      <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
+      <div>
         <head>
-          <script src='https://news.google.com/swg/js/v1/swg.js'></script>
+          <script type="application/ld+json">
+          {
+            {
+              '@context': 'https://schema.org',
+              '@type': ['WebSite', 'WebPage'],
+              'isAccessibleForFree': false,
+              'url': this.selfHost + location.pathname,
+              'name': this.swgPublisherName,
+              'hasPart': {
+                '@type': 'WebPageElement',
+                'isAccessibleForFree': false,
+                'cssSelector': '.paywall'
+              },
+              'isPartOf': {
+                '@type': ['CreativeWork', 'Product'],
+                'name': this.swgPublisherId,
+                'productID': this.swgProductId
+              }
+            }
+          },
+          </script>
+          <script async src="https://news.google.com/swg/js/v1/swg.js" type="text/javascript"></script>
         </head>
+        <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
         <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm px-4 md:px-0 my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
           <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded pt-6 md:pt-8 relative">
@@ -508,6 +530,7 @@ export class KompasPaywallBody {
           </div>
           {this.isExtensionsOpened ? (this.paymentMobileExtension(this.paywallData.payment.ekstension)) : ''}
         </div>
+      </div>
       </div>
     )
   }
