@@ -495,18 +495,18 @@ export class KompasPaywallBody {
             {
               '@context': 'https://schema.org',
               '@type': ['WebSite', 'WebPage'],
-              'isAccessibleForFree': false,
-              'url': this.selfHost + location.pathname,
-              'name': this.swgPublisherName,
-              'hasPart': {
+              isAccessibleForFree: false,
+              url: this.selfHost + location.pathname,
+              name: this.swgPublisherName,
+              hasPart: {
                 '@type': 'WebPageElement',
-                'isAccessibleForFree': false,
-                'cssSelector': '.paywall'
+                isAccessibleForFree: false,
+                cssSelector: '.paywall'
               },
               'isPartOf': {
                 '@type': ['CreativeWork', 'Product'],
-                'name': this.swgPublisherId,
-                'productID': this.swgProductId
+                name: this.swgPublisherId,
+                productID: this.swgProductId
               }
             }
           },
