@@ -200,7 +200,9 @@ export class KompasPaywallBody {
     </div>
   )
   public subscribeWithGoogleSection = (): void => (
-    <button id="swg-button" />
+    <div class="flex justify-center items-start mt-4 md:mt-0">
+        <button id="swg-button"></button>
+    </div>
   )
   get redirectToLogin() {
     return `${this.kompasLoginHost}/login?next=${encodeURIComponent(this.selfHost + location.pathname)}`
@@ -500,13 +502,12 @@ export class KompasPaywallBody {
         productID: this.swgProductId
       }
     }
-    var str = JSON.stringify(jsonData, null, 2)
-    var script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.text = str
-    script.async = true
-    const head = document.querySelector("head")
-    head.appendChild(script)
+    const str = JSON.stringify(jsonData)
+    const jsonScript = document.createElement('script')
+    jsonScript.type = 'application/ld+json'
+    jsonScript.text = str
+    const jsonHead = document.querySelector("head")
+    jsonHead.appendChild(jsonScript)
   }
 
   componentDidLoad () {
