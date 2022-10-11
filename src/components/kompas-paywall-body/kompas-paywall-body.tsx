@@ -264,7 +264,7 @@ export class KompasPaywallBody {
         throw error
       })
   }
-  private subscribeWithGoogleButton = (): void => {
+  private subscribeWithGoogleButton = (): any => {
     // @ts-ignore
     (self.SWG = self.SWG || []).push((subscriptions: any) => {
       // set entitlement
@@ -482,37 +482,17 @@ export class KompasPaywallBody {
     }
   }
 
-  async componentDidLoad() {
-    await this.subscribeWithGoogleButton()
+  componentDidLoad () {
+    const head = document.querySelector("head")
+    const script = document.createElement("script")
+    script.src = "https://news.google.com/swg/js/v1/swg.js"
+    script.async = true
+    script.onload  = this.subscribeWithGoogleButton()
+    head.appendChild(script)
   }
 
   render() {
     return (
-      <div>
-        <head>
-          <script type="application/ld+json">
-          {
-            {
-              '@context': 'https://schema.org',
-              '@type': ['WebSite', 'WebPage'],
-              isAccessibleForFree: false,
-              url: this.selfHost + location.pathname,
-              name: this.swgPublisherName,
-              hasPart: {
-                '@type': 'WebPageElement',
-                isAccessibleForFree: false,
-                cssSelector: '.paywall'
-              },
-              'isPartOf': {
-                '@type': ['CreativeWork', 'Product'],
-                name: this.swgPublisherId,
-                productID: this.swgProductId
-              }
-            }
-          },
-          </script>
-          <script async src="https://news.google.com/swg/js/v1/swg.js" type="text/javascript"></script>
-        </head>
         <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
         <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm px-4 md:px-0 my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
@@ -530,9 +510,31 @@ export class KompasPaywallBody {
           </div>
           {this.isExtensionsOpened ? (this.paymentMobileExtension(this.paywallData.payment.ekstension)) : ''}
         </div>
-      </div>
+        <script id="data" type="application/json">
+        {
+          {
+          body: false,
+          hid: 'swg_schema',
+          json: {
+            '@context': 'https://schema.org',
+            '@type': ['WebSite', 'WebPage'],
+            isAccessibleForFree: false,
+            url: this.selfHost + location.pathname,
+            name: this.swgPublisherName,
+            hasPart: {
+              '@type': 'WebPageElement',
+              isAccessibleForFree: false,
+              cssSelector: '.paywall'
+            },
+            isPartOf: {
+              '@type': ['CreativeWork', 'Product'],
+              name: this.swgPublisherId,
+              productID: this.swgProductId
+            }
+          }}
+        },
+        </script>
       </div>
     )
   }
-
 }
