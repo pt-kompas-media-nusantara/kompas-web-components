@@ -510,7 +510,7 @@ export class KompasPaywallBody {
           </div>
           {this.isExtensionsOpened ? (this.paymentMobileExtension(this.paywallData.payment.ekstension)) : ''}
         </div>
-        <script id="data" type="application/json" async>
+        <script id="data" type="application/json">
         {
           {
           body: false,
