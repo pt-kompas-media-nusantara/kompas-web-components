@@ -482,7 +482,7 @@ export class KompasPaywallBody {
     }
   }
 
-  private makeScript = (): any => {
+  private jsonScript = (): any => {
     const jsonData = {
       '@context': 'https://schema.org',
       '@type': ['WebSite', 'WebPage'],
@@ -510,10 +510,9 @@ export class KompasPaywallBody {
   }
 
   componentDidLoad () {
-    this.makeScript()
+    this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
-    head.appendChild(script)
     script.src = "https://news.google.com/swg/js/v1/swg.js"
     script.async = true
     script.onload  = this.subscribeWithGoogleButton()
