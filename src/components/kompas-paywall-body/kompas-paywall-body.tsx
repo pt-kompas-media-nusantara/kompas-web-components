@@ -482,9 +482,38 @@ export class KompasPaywallBody {
     }
   }
 
+  private makeScript = (): any => {
+    const jsonData = {
+      '@context': 'https://schema.org',
+      '@type': ['WebSite', 'WebPage'],
+      isAccessibleForFree: false,
+      url: this.selfHost + location.pathname,
+      name: this.swgPublisherName,
+      hasPart: {
+        '@type': 'WebPageElement',
+        isAccessibleForFree: false,
+        cssSelector: '.paywall'
+      },
+      isPartOf: {
+        '@type': ['CreativeWork', 'Product'],
+        name: this.swgPublisherId,
+        productID: this.swgProductId
+      }
+    }
+    var str = JSON.stringify(jsonData, null, 2)
+    var script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.text = str
+    script.async = true
+    const head = document.querySelector("head")
+    head.appendChild(script)
+  }
+
   componentDidLoad () {
+    this.makeScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
+    head.appendChild(script)
     script.src = "https://news.google.com/swg/js/v1/swg.js"
     script.async = true
     script.onload  = this.subscribeWithGoogleButton()
@@ -510,30 +539,6 @@ export class KompasPaywallBody {
           </div>
           {this.isExtensionsOpened ? (this.paymentMobileExtension(this.paywallData.payment.ekstension)) : ''}
         </div>
-        <script id="data" type="application/json">
-        {
-          {
-          body: false,
-          hid: 'swg_schema',
-          json: {
-            '@context': 'https://schema.org',
-            '@type': ['WebSite', 'WebPage'],
-            isAccessibleForFree: false,
-            url: this.selfHost + location.pathname,
-            name: this.swgPublisherName,
-            hasPart: {
-              '@type': 'WebPageElement',
-              isAccessibleForFree: false,
-              cssSelector: '.paywall'
-            },
-            isPartOf: {
-              '@type': ['CreativeWork', 'Product'],
-              name: this.swgPublisherId,
-              productID: this.swgProductId
-            }
-          }}
-        },
-        </script>
       </div>
     )
   }
