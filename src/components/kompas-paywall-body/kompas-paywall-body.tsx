@@ -531,7 +531,9 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            {this.subscribeWithGoogleSection()}
+            <div class="flex w-full justify-center items-start mt-4 md:mt-0">
+              <button id="swg-button"></button>
+            </div>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
