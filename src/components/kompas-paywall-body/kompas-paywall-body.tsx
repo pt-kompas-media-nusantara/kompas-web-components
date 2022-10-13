@@ -493,7 +493,6 @@ export class KompasPaywallBody {
       'name': this.swgPublisherName,
       'hasPart': {
         '@type': 'WebPageElement',
-        'isAccessibleForFree': false,
       },
       'isPartOf': {
         '@type': ['CreativeWork', 'Product'],
