@@ -199,7 +199,7 @@ export class KompasPaywallBody {
       <div class="border-b-2 border-blue-200 w-1/4 my-4 flex justify-center" />
     </div>
   )
-  public subscribeWithGoogleSection = (): void => (
+  private subscribeWithGoogleSection = (): void => (
     <div class="flex justify-center items-start mt-4 md:mt-0">
         <button id="swg-button"></button>
     </div>
@@ -504,7 +504,7 @@ export class KompasPaywallBody {
     const jsonScript = document.createElement('script')
     jsonScript.type = 'application/ld+json'
     jsonScript.text = str
-    const jsonHead = document.querySelector("head")
+    const jsonHead = document.querySelector("body")
     jsonHead.appendChild(jsonScript)
   }
 
