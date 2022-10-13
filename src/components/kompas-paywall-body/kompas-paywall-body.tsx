@@ -326,7 +326,7 @@ export class KompasPaywallBody {
         } else {
           // subscriptions attach button
           console.log('success get on attach button')
-          subscriptions.attachButton(swgButton, { theme: 'light', lang: 'en' }, () => {
+          subscriptions.createButton({ theme: 'light', lang: 'en' }, () => {
             console.log('success get on attach button => in')
             subscriptions.showOffers({ isClosable: true })
             subscriptions.setOnLoginRequest(() => {
