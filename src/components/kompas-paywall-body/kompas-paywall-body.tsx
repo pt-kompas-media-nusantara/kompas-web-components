@@ -199,11 +199,6 @@ export class KompasPaywallBody {
       <div class="border-b-2 border-blue-200 w-1/4 my-4 flex justify-center" />
     </div>
   )
-  private subscribeWithGoogleSection = (): void => (
-    <div class="flex justify-center items-start mt-4 md:mt-0">
-        <button id="swg-button"></button>
-    </div>
-  )
   get redirectToLogin() {
     return `${this.kompasLoginHost}/login?next=${encodeURIComponent(this.selfHost + location.pathname)}`
   }
