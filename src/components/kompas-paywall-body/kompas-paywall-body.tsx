@@ -326,7 +326,7 @@ export class KompasPaywallBody {
         } else {
           // subscriptions attach button
           console.log('success get on attach button')
-          subscriptions.createButton(swgButton, { theme: 'light', lang: 'en' }, () => {
+          subscriptions.attachButton(swgButton, { theme: 'light', lang: 'en' }, () => {
             console.log('success get on attach button => in')
             subscriptions.showOffers({ isClosable: true })
             subscriptions.setOnLoginRequest(() => {
@@ -488,18 +488,17 @@ export class KompasPaywallBody {
     const jsonData = {
       '@context': 'https://schema.org',
       '@type': ['WebSite', 'WebPage'],
-      isAccessibleForFree: false,
-      url: this.selfHost + location.pathname,
-      name: this.swgPublisherName,
-      hasPart: {
+      'isAccessibleForFree': false,
+      'url': this.selfHost + location.pathname,
+      'name': this.swgPublisherName,
+      'hasPart': {
         '@type': 'WebPageElement',
-        isAccessibleForFree: false,
-        cssSelector: '.paywall'
+        'isAccessibleForFree': false,
       },
-      isPartOf: {
+      'isPartOf': {
         '@type': ['CreativeWork', 'Product'],
-        name: this.swgPublisherId,
-        productID: this.swgProductId
+        'name': this.swgPublisherId,
+        'productID': this.swgProductId
       }
     }
     const str = JSON.stringify(jsonData)
@@ -531,9 +530,8 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            <div class="flex w-full justify-center items-start mt-4 md:mt-0">
-              <button id="swg-button"></button>
-            </div>
+            <button class="swg-button"></button>
+            <button class="swg-button-light"></button>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
