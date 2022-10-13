@@ -503,7 +503,7 @@ export class KompasPaywallBody {
     jsonHead.appendChild(jsonScript)
   }
 
-  componentDidLoad () {
+  componentDidRender () {
     this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
