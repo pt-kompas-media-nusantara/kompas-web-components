@@ -493,7 +493,6 @@ export class KompasPaywallBody {
       'name': this.swgPublisherName,
       'hasPart': {
         '@type': 'WebPageElement',
-        'isAccessibleForFree': false,
       },
       'isPartOf': {
         '@type': ['CreativeWork', 'Product'],
@@ -530,8 +529,8 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            <button class="swg-button"></button>
-            <button class="swg-button-light"></button>
+            <button id="swg-button"></button>
+            <button id="swg-button-light"></button>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
