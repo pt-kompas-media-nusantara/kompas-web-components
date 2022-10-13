@@ -504,7 +504,7 @@ export class KompasPaywallBody {
     const jsonScript = document.createElement('script')
     jsonScript.type = 'application/ld+json'
     jsonScript.text = str
-    const jsonHead = document.querySelector("head")
+    const jsonHead = document.querySelector("body")
     jsonHead.appendChild(jsonScript)
   }
 
