@@ -3,6 +3,7 @@ import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.
 import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
 import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
+import { Element } from '@stencil/core'
 
 @Component({
   tag: 'kompas-paywall-body',
@@ -27,7 +28,8 @@ export class KompasPaywallBody {
   @State() swgPublisherName: string = 'Harian Kompas Dev'
   @State() swgPublisherId: string = 'kompas.cloud'
   @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
-
+  @Element() el: HTMLElement
+  private swgComponent: HTMLElement
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
@@ -266,7 +268,6 @@ export class KompasPaywallBody {
     (self.SWG = self.SWG || []).push((subscriptions: any) => {
       // set entitlement
       subscriptions.setOnEntitlementsResponse(async (entitlementsPromise: any) => {
-        const swgButton = document.getElementById('swg-button')
         const resultEntitlements = await entitlementsPromise
         console.log('result entitlement', resultEntitlements, resultEntitlements.enablesThis())
 
@@ -321,7 +322,7 @@ export class KompasPaywallBody {
         } else {
           // subscriptions attach button
           console.log('success get on attach button')
-          subscriptions.attachButton(swgButton, { theme: 'light', lang: 'en' }, () => {
+          subscriptions.attachButton(this.swgComponent, { theme: 'light', lang: 'en' }, () => {
             console.log('success get on attach button => in')
             subscriptions.showOffers({ isClosable: true })
             subscriptions.setOnLoginRequest(() => {
@@ -503,7 +504,8 @@ export class KompasPaywallBody {
     jsonHead.appendChild(jsonScript)
   }
 
-  componentDidRender () {
+  componentDidLoad () {
+    this.swgComponent = this.el.querySelector('.swg-button')
     this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
@@ -525,7 +527,8 @@ export class KompasPaywallBody {
             {this.informationPackages()}
             {this.separatorLine()}
             <button id="swg-button"></button>
-            <button id="swg-button-light"></button>
+            <button class="swg-button"></button>
+            <div class="swg-button"></div>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
