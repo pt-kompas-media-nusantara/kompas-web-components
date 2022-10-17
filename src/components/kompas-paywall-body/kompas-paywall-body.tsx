@@ -504,7 +504,10 @@ export class KompasPaywallBody {
   }
 
   componentDidLoad () {
-    const swgComponent = this.el.querySelector('.swg-button')
+    const swgComponent = document.getElementById('swg-button')
+    if(swgComponent){
+      swgComponent.addEventListener('click', this.subscribeWithGoogleButton(swgComponent), false)
+    }
     this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
