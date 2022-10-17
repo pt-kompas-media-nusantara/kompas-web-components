@@ -504,17 +504,17 @@ export class KompasPaywallBody {
   }
 
   componentDidLoad () {
-    const swgComponent = document.getElementById('swg-button')
-    if(swgComponent){
-      swgComponent.addEventListener('click', this.subscribeWithGoogleButton(swgComponent), false)
-    }
+    const el = this.el.querySelector('.swg-button')
+    if(el){
+      el.addEventListener('click', this.subscribeWithGoogleButton(el), false)
     this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
     script.src = "https://news.google.com/swg/js/v1/swg.js"
     script.async = true
-    script.onload  = this.subscribeWithGoogleButton(swgComponent)
+    script.onload  = this.subscribeWithGoogleButton(el)
     head.appendChild(script)
+    }
   }
 
   render() {
