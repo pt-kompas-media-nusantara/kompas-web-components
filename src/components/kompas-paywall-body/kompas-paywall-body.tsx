@@ -29,7 +29,6 @@ export class KompasPaywallBody {
   @State() swgPublisherId: string = 'kompas.cloud'
   @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
   @Element() el: HTMLElement
-  private swgComponent: HTMLElement
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
@@ -263,7 +262,7 @@ export class KompasPaywallBody {
         throw error
       })
   }
-  private subscribeWithGoogleButton = (): any => {
+  private subscribeWithGoogleButton = (swgComponent: any): any => {
     // @ts-ignore
     (self.SWG = self.SWG || []).push((subscriptions: any) => {
       // set entitlement
@@ -322,7 +321,7 @@ export class KompasPaywallBody {
         } else {
           // subscriptions attach button
           console.log('success get on attach button')
-          subscriptions.attachButton(this.swgComponent, { theme: 'light', lang: 'en' }, () => {
+          subscriptions.attachButton(swgComponent, { theme: 'light', lang: 'en' }, () => {
             console.log('success get on attach button => in')
             subscriptions.showOffers({ isClosable: true })
             subscriptions.setOnLoginRequest(() => {
@@ -505,14 +504,16 @@ export class KompasPaywallBody {
   }
 
   componentDidLoad () {
-    this.swgComponent = this.el.querySelector('.swg-button')
+    const el = this.el.querySelector('.swg-button')
+    if(el){
     this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
     script.src = "https://news.google.com/swg/js/v1/swg.js"
     script.async = true
-    script.onload  = this.subscribeWithGoogleButton()
+    script.onload  = this.subscribeWithGoogleButton(el)
     head.appendChild(script)
+    }
   }
 
   render() {
