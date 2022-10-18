@@ -499,21 +499,24 @@ export class KompasPaywallBody {
     const jsonScript = document.createElement('script')
     jsonScript.type = 'application/ld+json'
     jsonScript.text = str
+    // jsonScript.async = true
+    jsonScript.defer = true
     const jsonHead = document.querySelector("head")
     jsonHead.appendChild(jsonScript)
   }
 
   componentDidLoad () {
     const el = this.el.querySelector('.swg-button')
-    if(el){
+    // if(el){
     this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
     script.src = "https://news.google.com/swg/js/v1/swg.js"
     script.async = true
+    script.defer = true
     script.onload  = this.subscribeWithGoogleButton(el)
     head.appendChild(script)
-    }
+    // }
   }
 
   render() {
