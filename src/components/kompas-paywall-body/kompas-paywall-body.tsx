@@ -262,12 +262,13 @@ export class KompasPaywallBody {
         throw error
       })
   }
-  private subscribeWithGoogleButton = (swgComponent: any): any => {
+  private subscribeWithGoogleButton = (): any => {
     // @ts-ignore
     (self.SWG = self.SWG || []).push((subscriptions: any) => {
       // set entitlement
       subscriptions.setOnEntitlementsResponse(async (entitlementsPromise: any) => {
         const resultEntitlements = await entitlementsPromise
+        const swgComponent = document.getElementById("swg-button")
         console.log('result entitlement', resultEntitlements, resultEntitlements.enablesThis())
 
         if (resultEntitlements.enablesThis() && !this.userGuid) {
@@ -499,24 +500,19 @@ export class KompasPaywallBody {
     const jsonScript = document.createElement('script')
     jsonScript.type = 'application/ld+json'
     jsonScript.text = str
-    // jsonScript.async = true
     jsonScript.defer = true
     const jsonHead = document.querySelector("head")
     jsonHead.appendChild(jsonScript)
   }
 
   componentDidLoad () {
-    const el = this.el.querySelector('.swg-button')
-    // if(el){
     this.jsonScript()
     const head = document.querySelector("head")
     const script = document.createElement("script")
     script.src = "https://news.google.com/swg/js/v1/swg.js"
-    script.async = true
     script.defer = true
-    script.onload  = this.subscribeWithGoogleButton(el)
+    script.onload  = this.subscribeWithGoogleButton()
     head.appendChild(script)
-    // }
   }
 
   render() {
@@ -532,7 +528,7 @@ export class KompasPaywallBody {
             {this.separatorLine()}
             <button id="swg-button"></button>
             <button class="swg-button"></button>
-            <div class="swg-button"></div>
+            <div id="swg-button"></div>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
