@@ -29,6 +29,7 @@ export class KompasPaywallBody {
   @State() swgPublisherId: string = 'kompas.cloud'
   @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
   @Element() el: HTMLElement
+  buttonElement!: HTMLButtonElement;
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
@@ -268,7 +269,6 @@ export class KompasPaywallBody {
       // set entitlement
       subscriptions.setOnEntitlementsResponse(async (entitlementsPromise: any) => {
         const resultEntitlements = await entitlementsPromise
-        const swgComponent = document.getElementById("swg-button")
         console.log('result entitlement', resultEntitlements, resultEntitlements.enablesThis())
 
         if (resultEntitlements.enablesThis() && !this.userGuid) {
@@ -322,7 +322,7 @@ export class KompasPaywallBody {
         } else {
           // subscriptions attach button
           console.log('success get on attach button')
-          subscriptions.attachButton(swgComponent, { theme: 'light', lang: 'en' }, () => {
+          subscriptions.attachButton(this.buttonElement, { theme: 'light', lang: 'en' }, () => {
             console.log('success get on attach button => in')
             subscriptions.showOffers({ isClosable: true })
             subscriptions.setOnLoginRequest(() => {
@@ -507,12 +507,16 @@ export class KompasPaywallBody {
 
   componentDidLoad () {
     this.jsonScript()
-    const head = document.querySelector("head")
-    const script = document.createElement("script")
-    script.src = "https://news.google.com/swg/js/v1/swg.js"
-    script.defer = true
-    script.onload  = this.subscribeWithGoogleButton()
-    head.appendChild(script)
+    if(this.buttonElement){
+      console.log("swg", this.buttonElement);
+      
+      const head = document.querySelector("head")
+      const script = document.createElement("script")
+      script.src = "https://news.google.com/swg/js/v1/swg.js"
+      script.defer = true
+      script.onload  = this.subscribeWithGoogleButton()
+      head.appendChild(script)
+    }
   }
 
   render() {
@@ -526,9 +530,7 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            <button id="swg-button"></button>
-            <button class="swg-button"></button>
-            <div id="swg-button"></div>
+            <button id="swg-button" ref={(el) => this.buttonElement = el as HTMLButtonElement} >test</button>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
