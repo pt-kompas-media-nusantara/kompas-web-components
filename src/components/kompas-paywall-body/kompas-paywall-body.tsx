@@ -530,7 +530,7 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            <button id="swg-button" ref={(el) => this.buttonElement = el as HTMLButtonElement} >test</button>
+            <button class="swg-button-light" ref={(el) => this.buttonElement = el as HTMLButtonElement}></button>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
