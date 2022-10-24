@@ -29,7 +29,7 @@ export class KompasPaywallBody {
   @State() swgPublisherId: string = 'kompas.cloud'
   @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
   @Element() el: HTMLElement
-  buttonElement!: HTMLButtonElement;
+  buttonElement!: HTMLButtonElement
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
@@ -508,8 +508,6 @@ export class KompasPaywallBody {
   componentDidLoad () {
     this.jsonScript()
     if(this.buttonElement){
-      console.log("swg", this.buttonElement);
-      
       const head = document.querySelector("head")
       const script = document.createElement("script")
       script.src = "https://news.google.com/swg/js/v1/swg.js"
@@ -530,7 +528,10 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            <button class="swg-button-light" ref={(el) => this.buttonElement = el as HTMLButtonElement}></button>
+            <button class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4" ref={(el) => this.buttonElement = el as HTMLButtonElement}>
+              <p>Subscribe with</p>
+              <img class="pl-2" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
+            </button>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
