@@ -23,7 +23,7 @@ export class KompasPaywallBody {
   @State() kompasAkunHost: string = 'https://akun.kompas.cloud'
   @State() kompasApigenHost: string = 'https://apigen.kompas.cloud'
   @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.cloud'
-  @State() kompasLoginHost: string = 'https://account.kompas.cloud'
+  @State() kompasLoginHost: string = 'https://account.kompas.cloud/login'
   @State() selfHost: string = 'https://www.kompas.cloud/berlangganan/'
   @State() swgPublisherName: string = 'Harian Kompas Dev'
   @State() swgPublisherId: string = 'kompas.cloud'
@@ -203,7 +203,7 @@ export class KompasPaywallBody {
     </div>
   )
   get redirectToLogin() {
-    return `${this.kompasLoginHost}/login?next=${encodeURIComponent(this.selfHost + location.pathname)}`
+    return `${this.kompasLoginHost}?next=${encodeURIComponent(this.selfHost + location.pathname)}`
   }
   private getRegisterToken = async (path: string, payload: any): Promise<string> => {
     return fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
