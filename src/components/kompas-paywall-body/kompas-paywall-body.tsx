@@ -23,11 +23,12 @@ export class KompasPaywallBody {
   @State() kompasAkunHost: string = 'https://akun.kompas.cloud'
   @State() kompasApigenHost: string = 'https://apigen.kompas.cloud'
   @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.cloud'
-  @State() kompasLoginHost: string = 'https://account.kompas.cloud/login'
+  @State() kompasLoginHost: string = 'https://account.kompas.cloud'
   @State() selfHost: string = 'https://www.kompas.cloud/berlangganan/'
   @State() swgPublisherName: string = 'Harian Kompas Dev'
   @State() swgPublisherId: string = 'kompas.cloud'
   @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
+  @State() errorFlag: number = 0
   @Element() el: HTMLElement
   buttonElement!: HTMLButtonElement
 
@@ -211,7 +212,7 @@ export class KompasPaywallBody {
     })
       .then((response: any) => {
         console.log('response get register token ', response.result.token, payload)
-        return response.access_token
+        return response.result.token
       })
       .catch(error => {
         console.log('error get Register ', error)
@@ -225,7 +226,7 @@ export class KompasPaywallBody {
     })
       .then((response: any) => {
         console.log('response get user token ', response.result.token, payload)
-        return response.access_token
+        return response.result.token
       })
       .catch(error => {
         console.log('error get user Token ', error)
@@ -240,11 +241,19 @@ export class KompasPaywallBody {
     })
       .then((response: any) => {
         console.log('response get subscription token ', response.result.token, payload)
+        this.errorFlag = 0
         return response.access_token
       })
-      .catch(error => {
-        console.log('error get subscription Token ', error)
-        throw error
+      .catch(async error => {
+        const errorCode = error.response.status
+        console.log('error get subscription Token ', errorCode)
+        if (errorCode === 500 && this.errorFlag < 5) {
+          this.errorFlag++
+          await this.getSubscriptionToken(path, payload)
+        } else {
+          this.errorFlag = 0
+          throw (error)
+        }
       })
   }
   private createSwG = async (payload: any, token: string) => {
@@ -271,98 +280,45 @@ export class KompasPaywallBody {
         const resultEntitlements = await entitlementsPromise
         console.log('result entitlement', resultEntitlements, resultEntitlements.enablesThis())
 
-        if (resultEntitlements.enablesThis() && !this.userGuid) {
-          // kalau tidak login dan belum berlangganan
-          const userEntitlements = resultEntitlements.entitlements || []
-          const { source, subscriptionToken } = userEntitlements[0]
-          let product = ''
-          let subsToken = subscriptionToken
+        // subscriptions attach button
+        console.log('success get on attach button')
+        subscriptions.attachButton(this.buttonElement, { theme: 'light', lang: 'en' }, () => {
+          console.log('success get on attach button => in')
+          subscriptions.showOffers({ isClosable: true })
+          subscriptions.setOnLoginRequest(() => { window.location.href = this.redirectToLogin })
+          subscriptions.setOnPaymentResponse(async (paymentResponse:any) => {
+            const response = await paymentResponse
+            console.log('flag 2 ', response)
+            const raw = JSON.parse(response.purchaseData.raw)
+            const { productId, purchaseToken, packageName } = raw
+            const email = response.userData.data.email
 
-          if (source === 'google') {
-            const { productId, purchaseToken } = JSON.parse(subscriptionToken)
-            product = productId
-            subsToken = purchaseToken
-          }
+            const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
+            const userToken = await this.getUserToken('google', payload)
 
-          const payload = { subscription_token: subsToken, products: product, detail: 'test' }
-          const accountPromise: any = new Promise((resolve, reject) => {
-            fetch(`${this.kompasApigenHost}/v1/user/token/${source}`, {
-              method: 'POST',
-              body: JSON.stringify(payload),
-            })
-              .then((response: any) => resolve(response.result.token))
-              .catch(() => reject(new Error('User not found')))
-          })
-
-          console.log('find a subscription', payload, accountPromise) // test
-
-          // subscription look up
-          subscriptions.waitForSubscriptionLookup(accountPromise).then((token: string) => {
-            console.log('waitForSubscriptionLookup', token)
-            if (token) {
-              console.log('showLoginNotification')
-              subscriptions.showLoginNotification().then(async () => {
-                await this.getSubscriptionToken(source, { token })
-                console.log('token setted')
-                window.location.reload()
-              })
-            } else {
-              console.log('completeDeferredAccountCreation')
-              subscriptions.completeDeferredAccountCreation({ resultEntitlements, consent: true }).then(async () => {
-                const payload = { subscription_token: subsToken, products: product, detail: 'test' }
-                const token = await this.getRegisterToken(source, payload)
-                if (token) {
-                  await this.getSubscriptionToken(source, { token })
-                  console.log('token setted')
-                  window.location.reload()
-                }
-              })
-            }
-          })
-        } else {
-          // subscriptions attach button
-          console.log('success get on attach button')
-          subscriptions.attachButton(this.buttonElement, { theme: 'light', lang: 'en' }, () => {
-            console.log('success get on attach button => in')
-            subscriptions.showOffers({ isClosable: true })
-            subscriptions.setOnLoginRequest(() => {
-              window.location.href = this.redirectToLogin
-            })
-            subscriptions.setOnPaymentResponse(async (paymentResponse: any) => {
-              const response = await paymentResponse
-              console.log('flag 2 ', response)
-              const raw = JSON.parse(response.purchaseData.raw)
-              const { productId, purchaseToken, packageName } = raw
-              const email = response.userData.data.email
-
-              const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
-              const userToken = await this.getUserToken('google', payload)
-
-              if (userToken) {
-                // login and update membership
-                const accessToken = await this.getSubscriptionToken('google', { token: userToken })
-                if (accessToken) {
-                  const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
-                  await this.createSwG(payload, accessToken)
-                }
-              } else {
-                // register and login the unknown user
-                const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
-                const token = await this.getRegisterToken('google', payload)
-                if (token) {
-                  const accessToken = await this.getSubscriptionToken('google', { token })
-                  const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
-                  await this.createSwG(payload, accessToken)
-                }
+            if (userToken) {
+              // login and update membership
+              const accessToken = await this.getSubscriptionToken('google', { token: userToken })
+              if (accessToken) {
+                const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
+                await this.createSwG(payload, accessToken)
               }
-              console.log('completed')
-              window.location.reload()
-            })
+            } else {
+              // register and login the unknown user
+              const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
+              const token = await this.getRegisterToken('google', payload)
+              if (token) {
+                const accessToken = await this.getSubscriptionToken('google', { token })
+                const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
+                await this.createSwG(payload, accessToken)
+              }
+            }
+            console.log('completed')
+            if (!this.isLogin) { window.location.href = this.redirectToLogin }
           })
-        }
+        })
       })
     })
-    console.log('Function subscribeWithGoogleButton selesai berjalan')
   }
   private getRupiahFormat = (value: number): string => {
     const roundedValue = Math.round(value)
