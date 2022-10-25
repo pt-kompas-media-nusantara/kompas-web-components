@@ -3,7 +3,6 @@ import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.
 import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
 import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
-import { Element } from '@stencil/core'
 
 @Component({
   tag: 'kompas-paywall-body',
@@ -24,12 +23,11 @@ export class KompasPaywallBody {
   @State() kompasApigenHost: string = 'https://apigen.kompas.cloud'
   @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.cloud'
   @State() kompasLoginHost: string = 'https://account.kompas.cloud/login'
-  @State() selfHost: string = 'https://www.kompas.cloud/berlangganan/'
+  @State() selfHost: string = 'https://epaper.kompas.cloud'
   @State() swgPublisherName: string = 'Harian Kompas Dev'
   @State() swgPublisherId: string = 'kompas.cloud'
   @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
   @State() errorFlag: number = 0
-  @Element() el: HTMLElement
   buttonElement!: HTMLButtonElement
 
   private primaryPackages = (product: Product): void => (
