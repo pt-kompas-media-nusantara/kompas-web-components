@@ -207,6 +207,9 @@ export class KompasPaywallBody {
     return fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
       method: 'POST',
       body: JSON.stringify(payload),
+      headers: {
+        'content-type': 'application/json'
+      }
     })
       .then((response: any) => {
         console.log('response get register token ', response.result.token, payload)
@@ -482,9 +485,9 @@ export class KompasPaywallBody {
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
             {this.separatorLine()}
-            <button class="border-2 bg-grey-100 border-grey-100 rounded-md px-6 shadow-sm flex flex-row py-3 mt-1 mb-4" ref={(el) => this.buttonElement = el as HTMLButtonElement}>
+            <button class="border-2 bg-grey-100 border-grey-100 rounded-lg px-6 shadow-sm flex flex-row py-2 mt-1 mb-4" ref={(el) => this.buttonElement = el as HTMLButtonElement}>
               <p>Subscribe with</p>
-              <img class="pl-2" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
+              <img class="pl-2 object-scale-down w-20 pt-0.5" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
             </button>
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
