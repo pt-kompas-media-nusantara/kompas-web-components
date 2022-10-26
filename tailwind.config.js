@@ -69,6 +69,9 @@ module.exports = {
       rotate: {
         55: '55deg'
       },
+      fontSize: {
+        xxs: '0.625rem',
+      },
       // Add custom font famliy
       fontFamily: {
         'pt-sans': ['"PT Sans"', 'Arial', 'Verdana', 'Helvetica', 'sans-serif'],
