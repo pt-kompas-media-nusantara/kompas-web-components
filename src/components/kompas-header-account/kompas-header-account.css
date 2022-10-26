@@ -1,7 +1,7 @@
 :host {
   @apply block;
   * {
-    @apply font-sans;
+    @apply font-pt-sans;
     box-sizing: border-box;
   }
 }
@@ -34,16 +34,23 @@
 
 .header-account--notification-indicator {
   @apply absolute top-0 h-2 w-2 bg-orange-400 rounded-full;
-  right: -1px;
+  right: -9px;
+  top: -4.5px;
 }
 
 .header-account-sidebar {
-  @apply fixed w-76 top-0 bottom-0 right-0 bg-grey-100 z-10 shadow-lg;
-  @apply border border-grey-200 flex flex-col font-sans text-sm;
+  @apply w-76 bg-grey-100 shadow-lg;
+  @apply flex flex-col font-pt-sans text-sm;
 }
 
 /* Custom Class */
 .icon {
+  &-xs {
+    & svg {
+      @apply h-3 w-3;
+    }
+  }
+
   &-sm {
     & svg {
       @apply h-4 w-4;
@@ -70,8 +77,8 @@
     }
   }
 
-  &-grey-400 {
-    @apply text-grey-400;
+  &-grey-600 {
+    @apply text-grey-600;
     & svg {
       @apply fill-current;
     }

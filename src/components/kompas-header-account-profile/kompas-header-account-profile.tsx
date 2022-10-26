@@ -111,7 +111,7 @@ export class KompasHeaderAccountProfile {
     }
 
     return (
-      <div class="border-b border-grey-300 flex flex-shrink-0 flex-col bg-blue-100 p-4">
+      <div class="flex flex-shrink-0 flex-col bg-blue-100 p-4">
         {
           !this.userData ? skeletonLoading : profileContent()
         }

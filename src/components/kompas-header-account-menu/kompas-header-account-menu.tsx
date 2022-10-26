@@ -47,12 +47,12 @@ export class KompasHeaderAccountMenu {
     if(!total) return;
 
     const isOneDigitNotification = total > 0 && total <= 9
-    const additionalStyling = isOneDigitNotification ? '' : 'pl-1'
+    const additionalStyling = isOneDigitNotification ? '' : 'pl-0.5'
 
     return (
       <div class={`header-account-menu--notification-info ${additionalStyling}`}>
         {/* Limit Display to use "9+"" if total notification exceed 9 */}
-        { isOneDigitNotification ? total : '9+'}
+        { isOneDigitNotification ? total : <span>9<span class="pl-px">+</span></span>}
       </div>
     )
   }
