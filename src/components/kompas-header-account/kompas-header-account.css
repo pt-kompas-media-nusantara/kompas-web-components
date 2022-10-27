@@ -28,8 +28,8 @@
 
 .header-account--membership-icon {
   @apply absolute;
-  bottom: -3px;
-  right: -3px;
+  bottom: -2px;
+  right: -2px;
 }
 
 .header-account--notification-indicator {
@@ -87,6 +87,52 @@
 
 .z-index-max {
   z-index: 99999;
+}
+
+/* Animation for header */
+.nav-wrapper {
+  @apply w-screen fixed right-0 top-0 bottom-0;
+  visibility: hidden;
+  transition: visibility 0.2s ease-out;
+  animation: slide-out 0.2s ease-in ;
+}
+
+.is-open {
+  visibility: visible;
+  transition: visibility 0.2s ease-out;
+  animation: slide-in 0.2s ease-out;
+}
+
+.chevron-icon {
+  transition: transform 0.2s ease-out;
+}
+
+.chevron-up {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transition: transform 0.2s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+  }
 }
 
 /* Custom Scrollbar for header */

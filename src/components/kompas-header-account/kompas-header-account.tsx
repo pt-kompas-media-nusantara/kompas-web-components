@@ -1,7 +1,5 @@
-import { Component, h, Prop, State } from '@stencil/core'
+import { Component, h, Prop, State, Watch } from '@stencil/core'
 import chevronDown from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-down.svg'
-import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg'
-
 interface user {
   userName: string,
   expired: string,
@@ -78,6 +76,23 @@ export class KompasHeaderAccount {
    */
   @State() isShowSidebar: boolean = false;
 
+  @Watch('isShowSidebar')
+  // Watcher to hide all content of sidebar after animation end
+  hideContentHandler(val: boolean) {
+    if(!val) {
+      setTimeout(()=>{
+        this.hideContent = true
+      }, 200)
+    } else {
+      this.hideContent = !val
+    }
+  }
+
+  /**
+   * Indicator to hide all content on sidebar
+   */
+  @State() hideContent: boolean = false;
+
   /**
    * Variable to store formatted user data
    */
@@ -133,15 +148,15 @@ export class KompasHeaderAccount {
       <a onClick={() => this.toggleSidebar()} class="cursor-pointer">
         <div class="flex flex-row items-center self-center">
           { !this.getInitialUserName() ?
-            <div class="bg-grey-300 rounded-full h-5 w-5 animate-pulse"></div>
+            <div class="bg-grey-300 rounded-full h-6 w-6 animate-pulse"></div>
             :
-            <div class="flex bg-grey-100 rounded-full h-5 w-5 items-center justify-center relative">
+            <div class="flex bg-grey-100 rounded-full h-6 w-6 items-center justify-center relative">
               <span class="capitalize text-xxs text-blue-600 font-bold">{this.getInitialUserName()}</span>
               {notificationIndicator()}
               {membershipIcon()}
             </div>
           }
-          <div class="ml-3 icon-xs icon-white" innerHTML={this.isShowSidebar ? chevronUp : chevronDown}></div>
+          <div class={`ml-3 icon-xs icon-white chevron-icon ${this.isShowSidebar ? 'chevron-up' : ''}`} innerHTML={chevronDown}></div>
         </div>
       </a>
     )
@@ -152,25 +167,28 @@ export class KompasHeaderAccount {
    */
   private accountSidebar = () => {
     return (
-      <nav class="w-screen fixed right-0 top-0 bottom-0" onClick={() => this.toggleSidebar()}>
-        <div class="bg-grey-100 h-screen overflow-y-auto pb-20 pt-0 shadow-lg w-76 z-index-max ml-auto" style={{ marginTop: `${this.sidebarTopSpacing}px` }} onClick={(ev) => ev.stopPropagation()}>
-          <kompas-header-account-profile
-            user-initial-name={this.getInitialUserName()}
-            userData={this.formattedUserData}
-            subscription-url={this.subscriptionUrl}
-          />
-          <div class="pl-4 pr-3 py-4">
-            <kompas-header-account-menu
-              cart-url={this.cartUrl}
-              manage-account-url={this.manageAccountUrl}
-              logout-url={this.logoutUrl}
-              notification-url={this.notificationUrl}
-              notification-total={this.notificationTotal}
-              orders-url={this.ordersUrl}
+      <nav class={`nav-wrapper ${this.isShowSidebar? 'is-open': ''}`} onClick={() => this.toggleSidebar()}>
+        { !this.hideContent ?
+          <div class="bg-grey-100 h-screen overflow-y-auto pb-20 pt-0 shadow-lg w-76 z-index-max ml-auto" style={{ marginTop: `${this.sidebarTopSpacing}px` }} onClick={(ev) => ev.stopPropagation()}>
+            <kompas-header-account-profile
+              user-initial-name={this.getInitialUserName()}
+              userData={this.formattedUserData}
+              subscription-url={this.subscriptionUrl}
             />
-            <kompas-header-account-help-center/>
+            <div class="pl-4 pr-3 py-4">
+              <kompas-header-account-menu
+                cart-url={this.cartUrl}
+                manage-account-url={this.manageAccountUrl}
+                logout-url={this.logoutUrl}
+                notification-url={this.notificationUrl}
+                notification-total={this.notificationTotal}
+                orders-url={this.ordersUrl}
+              />
+              <kompas-header-account-help-center/>
+            </div>
           </div>
-        </div>
+        :
+          ''}
       </nav>
     )
   }
@@ -179,7 +197,7 @@ export class KompasHeaderAccount {
     return (
       <div>
         {this.account()}
-        {this.isShowSidebar ? this.accountSidebar() : ''}
+        {this.accountSidebar()}
       </div>
     );
   }
