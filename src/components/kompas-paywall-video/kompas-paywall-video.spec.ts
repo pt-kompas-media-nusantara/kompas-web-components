@@ -50,7 +50,7 @@ describe('Kompas Paywall Video', () => {
                         <h5 class="leading-6 text-white text-center text-base md:text-xl max-w-2xl">
                             Akses konten premium Anda bulan ini sudah habis. Aktifkan langganan untuk akses tanpa batas, mulai dari <span class="font-bold">Rp50.000/bulan.</span>
                         </h5>
-                        <div class="flex justify-between mt-4 space-x-3">
+                        <div class="flex justify-between mt-4">
                             <a href="https://www.kompas.id/berlangganan/" target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
                                 Berlangganan
                             </a>
