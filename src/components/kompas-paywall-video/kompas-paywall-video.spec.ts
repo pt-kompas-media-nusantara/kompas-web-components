@@ -24,12 +24,12 @@ describe('Kompas Paywall Video', () => {
                             <a href="https://account.kompas.id/login" target="_blank" class="rounded text-sm text-white px-4 py-1.5 ring-1 ring-grey-100">
                                 Masuk
                             </a>
-                            <a href="https://www.kompas.id/berlangganan/" target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
+                            <a href="https://www.kompas.id/berlangganan" target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
                                 Berlangganan
                             </a>
                         </div>
                         <p class="text-center text-sm leading-4 text-white mt-6 max-w-xs md:max-w-none">
-                        Dapatkan 5 konten premium gratis tiap bulan! <a href="https://account.kompas.id/register?" target="_blank" class="text-blue-300 font-bold">Coba Sekarang</a>
+                        Dapatkan 5 konten premium gratis tiap bulan! <a href="https://account.kompas.id/register" target="_blank" class="text-blue-300 font-bold">Coba Sekarang</a>
                         </p>
                     </div>
                 </mock:shadow-root>
@@ -51,7 +51,7 @@ describe('Kompas Paywall Video', () => {
                             Akses konten premium Anda bulan ini sudah habis. Aktifkan langganan untuk akses tanpa batas, mulai dari <span class="font-bold">Rp50.000/bulan.</span>
                         </h5>
                         <div class="flex justify-between mt-4">
-                            <a href="https://www.kompas.id/berlangganan/" target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
+                            <a href="https://www.kompas.id/berlangganan" target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
                                 Berlangganan
                             </a>
                         </div>
