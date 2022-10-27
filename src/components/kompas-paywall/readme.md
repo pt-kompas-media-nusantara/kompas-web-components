@@ -74,8 +74,7 @@ export default {
 ```
 
 ### Standar
-Anda perlu meletakkan _tag_ komponen `<kompas-paywall />` pada halaman anda 
-(Lebih disarankan untuk meletakkan pada bagian header).
+Anda perlu meletakkan _tag_ komponen `<kompas-paywall />` pada halaman anda.
 
 Contoh:
 
