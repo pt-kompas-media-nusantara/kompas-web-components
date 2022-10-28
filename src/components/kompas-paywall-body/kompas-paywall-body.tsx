@@ -204,7 +204,7 @@ export class KompasPaywallBody {
     return `${this.kompasLoginHost}?next=${encodeURIComponent(this.selfHost + location.pathname)}`
   }
   private getRegisterToken = async (path: string, payload: any): Promise<string> => {
-    return fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
+    return await fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
@@ -235,7 +235,7 @@ export class KompasPaywallBody {
       })
   }
   private getSubscriptionToken = async (path: string, payload: any): Promise<string> => {
-    return fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
+    return await fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
       method: 'POST',
       body: JSON.stringify(payload)
     })
@@ -257,7 +257,7 @@ export class KompasPaywallBody {
       })
   }
   private createSwG = async (payload: any, token: string) => {
-    fetch(`${this.kompasApiWcmHost}/v2/membership/swg/create`, {
+    await fetch(`${this.kompasApiWcmHost}/v2/membership/swg/create`, {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
