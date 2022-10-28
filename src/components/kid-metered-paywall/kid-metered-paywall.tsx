@@ -49,16 +49,38 @@ export class KidMeteredPaywall {
           {this.getCountdownArticle()}
         </div>
         <div class="self-center">
-          <a href="https://www.kompas.id/berlangganan" class="bg-green-400 p-2 rounded-md font-bold text-grey-100 text-sm md:text-xl">Langganan</a>
+          <button onClick={this.redirectToBerlangganan} class="bg-green-400 p-2 rounded-md font-bold text-grey-100 text-sm md:text-xl">Langganan</button>
         </div>
       </div>
     )
+  }
+
+  private redirectToBerlangganan = (): void => {
+    this.dataLayeronLanggananButton()
+    window.location.href = "https://www.kompas.id/berlangganan"
+  }
+
+  private dataLayeronLanggananButton = (): void => {
+    window.dataLayer.push({
+      event: 'meteredBannerBerlanggananClick',
+      usage: this.countdownArticle,
+      articleLeft: this.maxQuota
+    })
+  }
+
+  private dataLayeronMeteredPaywall = (): void => {
+    window.dataLayer.push({
+      event: 'meteredBannerImpression',
+      usage: this.countdownArticle,
+      articleLeft: this.maxQuota
+    })
   }
 
   render() {
     return (
       <div class="sticky bottom-0 w-full h-full">
         {this.countdownArticle > 0 && this.countdownArticle <= this.maxQuota ? this.templateMeteredPaywall() : ''}
+        {this.dataLayeronMeteredPaywall()}
       </div>
     )
   }
