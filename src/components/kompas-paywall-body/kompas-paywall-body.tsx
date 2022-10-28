@@ -21,12 +21,12 @@ export class KompasPaywallBody {
   @State() isExtensionsOpened: boolean = false
   @State() kompasAkunHost: string = 'https://akun.kompas.id'
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
-  @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.id'
-  @State() kompasLoginHost: string = 'https://account.kompas.id'
-  @State() selfHost: string = 'https://epaper.kompas.id'
-  @State() swgPublisherName: string = 'Harian Kompas'
-  @State() swgPublisherId: string = 'kompas.id'
-  @State() swgProductId: string = 'kompas.id:kompas_digital_premium'
+  @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.cloud'
+  @State() kompasLoginHost: string = 'https://account.kompas.cloud'
+  @State() selfHost: string = 'https://epaper.kompas.cloud'
+  @State() swgPublisherName: string = 'Harian Kompas Dev'
+  @State() swgPublisherId: string = 'kompas.cloud'
+  @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
   @State() errorFlag: number = 0
   buttonElement!: HTMLButtonElement
 
@@ -237,7 +237,8 @@ export class KompasPaywallBody {
   private getSubscriptionToken = async (path: string, payload: any): Promise<string> => {
     return await fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
       method: 'POST',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      credentials: 'include',
     })
       .then((response: any) => {
         console.log('response get subscription token ', response.result.token, payload)
