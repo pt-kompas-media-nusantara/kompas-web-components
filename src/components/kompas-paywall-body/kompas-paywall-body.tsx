@@ -223,7 +223,10 @@ export class KompasPaywallBody {
   private getUserToken = async (path: string, payload: any): Promise<string> => {
     return await fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
       method: 'POST',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      headers: {
+        'content-type': 'application/json'
+      }
     })
       .then((response: any) => {
         console.log('response get user token ', response.result.token, payload)
@@ -239,6 +242,9 @@ export class KompasPaywallBody {
       method: 'POST',
       body: JSON.stringify(payload),
       credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
     })
       .then((response: any) => {
         console.log('response get subscription token ', response.result.token, payload)
@@ -262,6 +268,7 @@ export class KompasPaywallBody {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
+        'content-type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     })
