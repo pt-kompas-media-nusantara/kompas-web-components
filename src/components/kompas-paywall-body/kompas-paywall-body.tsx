@@ -19,14 +19,14 @@ export class KompasPaywallBody {
   @Prop() subscriptionStatus: string = ''
   @Prop() countdownArticle: number = 0
   @State() isExtensionsOpened: boolean = false
-  @State() kompasAkunHost: string = 'https://akun.kompas.cloud'
-  @State() kompasApigenHost: string = 'https://apigen.kompas.cloud'
-  @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.cloud'
-  @State() kompasLoginHost: string = 'https://account.kompas.cloud/login'
-  @State() selfHost: string = 'https://epaper.kompas.cloud'
-  @State() swgPublisherName: string = 'Harian Kompas Dev'
-  @State() swgPublisherId: string = 'kompas.cloud'
-  @State() swgProductId: string = 'kompas.cloud:kompas_digital_premium'
+  @State() kompasAkunHost: string = 'https://akun.kompas.id'
+  @State() kompasApigenHost: string = 'https://apigen.kompas.id'
+  @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.id'
+  @State() kompasLoginHost: string = 'https://account.kompas.id'
+  @State() selfHost: string = 'https://epaper.kompas.id'
+  @State() swgPublisherName: string = 'Harian Kompas'
+  @State() swgPublisherId: string = 'kompas.id'
+  @State() swgProductId: string = 'kompas.id:kompas_digital_premium'
   @State() errorFlag: number = 0
   buttonElement!: HTMLButtonElement
 
@@ -221,9 +221,9 @@ export class KompasPaywallBody {
       })
   }
   private getUserToken = async (path: string, payload: any): Promise<string> => {
-    return fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
+    return await fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
       method: 'POST',
-      body: JSON.stringify(payload),
+      body: JSON.stringify(payload)
     })
       .then((response: any) => {
         console.log('response get user token ', response.result.token, payload)
@@ -237,8 +237,7 @@ export class KompasPaywallBody {
   private getSubscriptionToken = async (path: string, payload: any): Promise<string> => {
     return fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
       method: 'POST',
-      body: JSON.stringify(payload),
-      credentials: 'include',
+      body: JSON.stringify(payload)
     })
       .then((response: any) => {
         console.log('response get subscription token ', response.result.token, payload)
@@ -315,7 +314,7 @@ export class KompasPaywallBody {
               }
             }
             console.log('completed')
-            if (!this.isLogin) { window.location.href = this.redirectToLogin }
+            if (!this.isLogin) { window.location.href = this.redirectToLogin } else { window.location.reload() }
           })
         })
       })
