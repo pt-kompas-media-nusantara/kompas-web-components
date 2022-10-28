@@ -1,0 +1,16 @@
+.body {
+  height: 100%;
+  width: 100%;
+}
+
+.text-white {
+  @apply text-grey-100;
+}
+
+.bg-black {
+  @apply bg-grey-700
+}
+
+.radius {
+  border-radius: inherit;
+}
