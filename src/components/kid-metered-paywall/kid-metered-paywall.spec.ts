@@ -5,6 +5,15 @@
 import { newSpecPage } from '@stencil/core/testing'
 import { KidMeteredPaywall } from './kid-metered-paywall'
 
+beforeAll(() => {
+  Object.defineProperty(window, "dataLayer", {
+    value: {
+      push: jest.fn(),
+    },
+  })
+  jest.spyOn(window.dataLayer, 'push').mockImplementation(() => jest.fn())
+})
+
 describe('KidMeteredPaywall', () => {
   it('Render root component', async () => {
     const { root } = await newSpecPage({
