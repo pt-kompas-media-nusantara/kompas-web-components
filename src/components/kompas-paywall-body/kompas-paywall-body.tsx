@@ -220,17 +220,17 @@ export class KompasPaywallBody {
         throw error
       })
   }
-  private getUserToken = async (path: string, payload: any): Promise<string> => {
+  private getUserToken = async (path: string, payload: any): Promise<any> => {
     return await fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
       method: 'POST',
-      body: JSON.stringify(payload),
+      body: payload,
       headers: {
         'content-type': 'application/json'
       }
     })
       .then((response: any) => {
-        console.log('response get user token ', response.result.token, payload)
-        return response.result.token
+        console.log('response get user token ', response.result, payload)
+        console.log('apakah dapet tokennya? ', response.result.token, payload)
       })
       .catch(error => {
         console.log('error get user Token ', error)
