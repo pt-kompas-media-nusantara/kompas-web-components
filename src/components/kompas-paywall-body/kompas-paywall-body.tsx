@@ -228,10 +228,11 @@ export class KompasPaywallBody {
         'content-type': 'application/json'
       }
     })
-      .then((response: any) => {
-        console.log('response get user token aja', response)
-        console.log('response get user token ', response.result, payload)
-        console.log('apakah dapet tokennya? ', response.result.token, payload)
+      .then((response) => response.json())
+      .then((data: any) => {
+        console.log('response get user token aja', data)
+        console.log('response get user token ', data.result, payload)
+        console.log('apakah dapet tokennya? ', data.result.token, payload)
       })
       .catch(error => {
         console.log('error get user Token ', error)
