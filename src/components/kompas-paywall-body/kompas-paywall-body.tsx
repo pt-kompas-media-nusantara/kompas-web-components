@@ -229,6 +229,7 @@ export class KompasPaywallBody {
       }
     })
       .then((response: any) => {
+        console.log('response get user token aja', response)
         console.log('response get user token ', response.result, payload)
         console.log('apakah dapet tokennya? ', response.result.token, payload)
       })
