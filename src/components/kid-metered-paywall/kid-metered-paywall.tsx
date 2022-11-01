@@ -16,9 +16,13 @@ export class KidMeteredPaywall {
    * state
    */
   /**
-   * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
+   * state maxQuota untuk menghandle maksimal artikel yang user bisa baca.
    */
-  @State() maxQuota: number = 5;
+  @State() maxQuota: number = 5
+    /**
+   * state subscriptionUrl untuk memberikan link kemana user akan dialihkan.
+   */
+  @State() subscriptionUrl: string = "https://www.kompas.id/berlangganan"
   /**
    * Props
    */
@@ -42,22 +46,9 @@ export class KidMeteredPaywall {
     }
   }
 
-  private templateMeteredPaywall() {
-    return (
-      <div class="flex flex-row w-full bg-blue-100 py-4 justify-center space-x-4 px-4 lg:px-0 bottom-0">
-        <div class="text-grey-600 text-sm md:text-lg self-center text-left">
-          {this.getCountdownArticle()}
-        </div>
-        <div class="self-center">
-          <button onClick={this.redirectToBerlangganan} class="bg-green-400 p-2 rounded-md font-bold text-grey-100 text-sm md:text-xl">Langganan</button>
-        </div>
-      </div>
-    )
-  }
-
   private redirectToBerlangganan = (): void => {
     this.dataLayeronLanggananButton()
-    window.location.href = "https://www.kompas.id/berlangganan"
+    window.location.href = this.subscriptionUrl
   }
 
   private dataLayeronLanggananButton = (): void => {
@@ -76,11 +67,23 @@ export class KidMeteredPaywall {
     })
   }
 
+  componentDidLoad() {
+    this.dataLayeronMeteredPaywall()
+  }
+
   render() {
     return (
       <div class="sticky bottom-0 w-full h-full">
-        {this.countdownArticle > 0 && this.countdownArticle <= this.maxQuota ? this.templateMeteredPaywall() : ''}
-        {this.dataLayeronMeteredPaywall()}
+        <div class="flex flex-row w-full bg-blue-100 py-4 justify-center space-x-4 px-4 lg:px-0 bottom-0">
+          <div class="text-grey-600 text-sm md:text-lg self-center text-left">
+            {this.getCountdownArticle()}
+          </div>
+          <div class="self-center">
+            <button onClick={this.redirectToBerlangganan} class="bg-green-400 p-2 rounded-md font-bold text-grey-100 text-sm md:text-xl">
+              Langganan
+            </button>
+          </div>
+        </div>
       </div>
     )
   }
