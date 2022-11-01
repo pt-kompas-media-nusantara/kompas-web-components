@@ -223,7 +223,7 @@ export class KompasPaywallBody {
   private getUserToken = async (path: string, payload: any): Promise<any> => {
     return await fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
       method: 'POST',
-      body: payload,
+      body: JSON.stringify(payload),
       headers: {
         'content-type': 'application/json'
       }
