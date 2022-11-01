@@ -211,16 +211,18 @@ export class KompasPaywallBody {
         'content-type': 'application/json'
       }
     })
-      .then((response: any) => {
-        console.log('response get register token ', response.result.token, payload)
-        return response.result.token
+      .then((response) => response.json())
+      .then((data: any) => {
+        console.log('response get register token aja', data, payload)
+        console.log('response get register token ', data.result.token, payload)
+        return data.result.token
       })
       .catch(error => {
         console.log('error get Register ', error)
         throw error
       })
   }
-  private getUserToken = async (path: string, payload: any): Promise<any> => {
+  private getUserToken = async (path: string, payload: any): Promise<string> => {
     return await fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -233,6 +235,7 @@ export class KompasPaywallBody {
         console.log('response get user token aja', data)
         console.log('response get user token ', data.result, payload)
         console.log('apakah dapet tokennya? ', data.result.token, payload)
+        return data.result.token
       })
       .catch(error => {
         console.log('error get user Token ', error)
@@ -248,10 +251,12 @@ export class KompasPaywallBody {
         'content-type': 'application/json'
       }
     })
-      .then((response: any) => {
-        console.log('response get subscription token ', response.result.token, payload)
+      .then((response) => response.json())
+      .then((data: any) => {
+        console.log('response get subscription token aja ', data, payload)
+        console.log('response get subscription token ', data.result.token, payload)
         this.errorFlag = 0
-        return response.access_token
+        return data.access_token
       })
       .catch(async error => {
         const errorCode = error.response.status
