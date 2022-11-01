@@ -59,7 +59,7 @@ export class KompasHeaderAccountProfile {
 
         return (
           <div class="w-full">
-            <button onClick={()=> handleSubscribe()} class="w-full font-sans rounded-lg px-4 py-3 mt-4 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">{ this.userData?.updateMembership }</button>
+            <button onClick={()=> handleSubscribe()} class="w-full rounded-lg px-4 py-3 mt-4 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">{ this.userData?.updateMembership }</button>
           </div>
         )
       }
