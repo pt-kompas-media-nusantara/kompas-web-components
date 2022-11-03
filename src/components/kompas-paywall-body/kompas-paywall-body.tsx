@@ -254,7 +254,7 @@ export class KompasPaywallBody {
       .then((response) => response.json())
       .then((data: any) => {
         console.log('response get subscription token aja ', data, payload)
-        console.log('response get subscription token ', data.result.token, payload)
+        console.log('response get subscription token ', data.result, payload)
         this.errorFlag = 0
         return data.access_token
       })
@@ -279,6 +279,7 @@ export class KompasPaywallBody {
         Authorization: `Bearer ${token}`,
       },
     })
+      .then((response) => response.json())
       .then(() => {
         console.log('swg created')
       })
@@ -310,21 +311,31 @@ export class KompasPaywallBody {
 
             const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
             const userToken = await this.getUserToken('google', payload)
-
+            console.log(userToken, 'ini user token')
             if (userToken) {
+              console.log('masuk ke user token')
               // login and update membership
               const accessToken = await this.getSubscriptionToken('google', { token: userToken })
+              console.log(accessToken, 'ini accessToken')
               if (accessToken) {
+                console.log(accessToken, 'masuk ke accessToken')
                 const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
+                console.log(payload, 'isi payload createswg 1')
                 await this.createSwG(payload, accessToken)
               }
             } else {
+              console.log('masuk ke else nya userToken')
               // register and login the unknown user
               const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
+              console.log(payload, 'payloadnya getRegisterToken')
               const token = await this.getRegisterToken('google', payload)
+              console.log(token, 'berhasil dapat token')
               if (token) {
+                console.log('masuk ke bagian token')
                 const accessToken = await this.getSubscriptionToken('google', { token })
+                console.log(accessToken, 'dapat accessToken')
                 const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
+                console.log(payload, 'isi payload createswg')
                 await this.createSwG(payload, accessToken)
               }
             }
