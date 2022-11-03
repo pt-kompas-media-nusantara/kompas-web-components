@@ -340,7 +340,7 @@ export class KompasPaywallBody {
               }
             }
             console.log('completed')
-            if (!this.isLogin) { window.location.href = this.redirectToLogin } else { window.location.reload() }
+            if (!this.isLogin) { window.location.href = this.redirectToLogin }
           })
         })
       })
