@@ -341,7 +341,7 @@ export class KompasPaywallBody {
               }
             }
             console.log('completed')
-            response.complete(() => {
+            response.complete().then(() => {
               window.location.href = this.redirectToLogin
             })
           })
