@@ -22,7 +22,7 @@ export class KompasPaywallBody {
   @State() kompasAkunHost: string = 'https://akun.kompas.cloud'
   @State() kompasApigenHost: string = 'https://apigen.kompas.cloud'
   @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.cloud'
-  @State() kompasLoginHost: string = 'https://account.kompas.cloud'
+  @State() kompasLoginHost: string = 'https://account.kompas.cloud/login'
   @State() selfHost: string = 'https://epaper.kompas.cloud'
   @State() swgPublisherName: string = 'Harian Kompas Dev'
   @State() swgPublisherId: string = 'kompas.cloud'
@@ -341,6 +341,7 @@ export class KompasPaywallBody {
               }
             }
             console.log('completed')
+            console.log(this.redirectToLogin, 'link login')            
             response.complete().then(() => {
               window.location.href = this.redirectToLogin
             })
