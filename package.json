@@ -1,6 +1,6 @@
 {
   "name": "@kompasid/web-components",
-  "version": "0.3.5-alpha-59",
+  "version": "0.3.5-alpha-60",
   "description": "Kompas.id reusable web components",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
