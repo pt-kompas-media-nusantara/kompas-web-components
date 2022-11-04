@@ -313,7 +313,6 @@ export class KompasPaywallBody {
             const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
             const userToken = await this.getUserToken('google', payload)
             console.log(userToken, 'ini user token')
-            console.log(this.redirectToLogin, 'link login')  
             if (userToken) {
               console.log('masuk ke user token')
               // login and update membership
