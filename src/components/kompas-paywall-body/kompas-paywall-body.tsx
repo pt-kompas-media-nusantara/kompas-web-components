@@ -280,7 +280,8 @@ export class KompasPaywallBody {
       },
     })
       .then((response) => response.json())
-      .then(() => {
+      .then((data) => {
+        console.log(data, 'ini hasil createSwG')
         console.log('swg created')
       })
       .catch(error => {
@@ -340,7 +341,7 @@ export class KompasPaywallBody {
               }
             }
             console.log('completed')
-            if (!this.isLogin) { window.location.href = this.redirectToLogin }
+            window.location.href = this.redirectToLogin
           })
         })
       })
