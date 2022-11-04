@@ -22,7 +22,7 @@ export class KompasPaywallBody {
   @State() kompasAkunHost: string = 'https://akun.kompas.cloud'
   @State() kompasApigenHost: string = 'https://apigen.kompas.cloud'
   @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.cloud'
-  @State() kompasLoginHost: string = 'https://account.kompas.cloud'
+  @State() kompasLoginHost: string = 'https://account.kompas.cloud/login'
   @State() selfHost: string = 'https://epaper.kompas.cloud'
   @State() swgPublisherName: string = 'Harian Kompas Dev'
   @State() swgPublisherId: string = 'kompas.cloud'
@@ -313,6 +313,7 @@ export class KompasPaywallBody {
             const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
             const userToken = await this.getUserToken('google', payload)
             console.log(userToken, 'ini user token')
+            console.log(this.redirectToLogin, 'link login')  
             if (userToken) {
               console.log('masuk ke user token')
               // login and update membership
@@ -341,6 +342,7 @@ export class KompasPaywallBody {
               }
             }
             console.log('completed')
+            console.log(this.redirectToLogin, 'link login')            
             response.complete().then(() => {
               window.location.href = this.redirectToLogin
             })
