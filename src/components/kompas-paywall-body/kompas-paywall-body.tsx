@@ -260,10 +260,14 @@ export class KompasPaywallBody {
       })
       .catch(async error => {
         const errorCode = error.response.status
-        console.log('error get subscription Token ', errorCode)
+        console.log(error,'respon error getSubscriptionToken')
+        console.log(error.response,'respon error getSubscriptionToken')
+        console.log(errorCode,'respon errorCode getSubscriptionToken')
         if (errorCode === 500 && this.errorFlag < 5) {
           this.errorFlag++
-          await this.getSubscriptionToken(path, payload)
+          setTimeout(async ()=>{
+            await this.getSubscriptionToken(path, payload)
+          }, 2000)
         } else {
           this.errorFlag = 0
           throw (error)
