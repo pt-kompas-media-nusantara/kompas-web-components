@@ -246,7 +246,6 @@ export class KompasPaywallBody {
     return await fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
       method: 'POST',
       body: JSON.stringify(payload),
-      credentials: 'include',
       headers: {
         'content-type': 'application/json'
       }
