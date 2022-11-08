@@ -213,12 +213,9 @@ export class KompasPaywallBody {
     })
       .then((response) => response.json())
       .then((data: any) => {
-        console.log('response get register token aja', data, payload)
-        console.log('response get register token ', data.result.token, payload)
         return data.result.token
       })
       .catch(error => {
-        console.log('error get Register ', error)
         throw error
       })
   }
@@ -232,13 +229,9 @@ export class KompasPaywallBody {
     })
       .then((response) => response.json())
       .then((data: any) => {
-        console.log('response get user token aja', data)
-        console.log('response get user token ', data.result, payload)
-        console.log('apakah dapet tokennya? ', data.result.token, payload)
         return data.result.token
       })
       .catch(error => {
-        console.log('error get user Token ', error)
         throw error
       })
   }
@@ -252,16 +245,11 @@ export class KompasPaywallBody {
     })
       .then((response) => response.json())
       .then((data: any) => {
-        console.log('response get subscription token aja ', data, payload)
-        console.log('response get subscription token ', data.result, payload)
         this.errorFlag = 0
         return data.access_token
       })
       .catch(async error => {
         const errorCode = error.response.status
-        console.log(error,'respon error getSubscriptionToken')
-        console.log(error.response,'respon error getSubscriptionToken')
-        console.log(errorCode,'respon errorCode getSubscriptionToken')
         if (errorCode === 500 && this.errorFlag < 5) {
           this.errorFlag++
           setTimeout(async ()=>{
@@ -283,12 +271,10 @@ export class KompasPaywallBody {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data, 'ini hasil createSwG')
-        console.log('swg created')
+      .then(() => {
+        console.log('Success')
       })
       .catch(error => {
-        console.log('error on create swg', error)
         throw error
       })
   }
@@ -301,50 +287,34 @@ export class KompasPaywallBody {
         console.log('result entitlement', resultEntitlements, resultEntitlements.enablesThis())
 
         // subscriptions attach button
-        console.log('success get on attach button')
         subscriptions.attachButton(this.buttonElement, { theme: 'light', lang: 'en' }, () => {
-          console.log('success get on attach button => in')
           subscriptions.showOffers({ isClosable: true })
           subscriptions.setOnLoginRequest(() => { window.location.href = this.redirectToLogin })
           subscriptions.setOnPaymentResponse(async (paymentResponse:any) => {
             const response = await paymentResponse
-            console.log('flag 2 ', response)
             const raw = JSON.parse(response.purchaseData.raw)
             const { productId, purchaseToken, packageName } = raw
             const email = response.userData.data.email
 
             const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
             const userToken = await this.getUserToken('google', payload)
-            console.log(userToken, 'ini user token')
             if (userToken) {
-              console.log('masuk ke user token')
               // login and update membership
               const accessToken = await this.getSubscriptionToken('google', { token: userToken })
-              console.log(accessToken, 'ini accessToken')
               if (accessToken) {
-                console.log(accessToken, 'masuk ke accessToken')
                 const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
-                console.log(payload, 'isi payload createswg 1')
                 await this.createSwG(payload, accessToken)
               }
             } else {
-              console.log('masuk ke else nya userToken')
               // register and login the unknown user
               const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
-              console.log(payload, 'payloadnya getRegisterToken')
               const token = await this.getRegisterToken('google', payload)
-              console.log(token, 'berhasil dapat token')
               if (token) {
-                console.log('masuk ke bagian token')
                 const accessToken = await this.getSubscriptionToken('google', { token })
-                console.log(accessToken, 'dapat accessToken')
                 const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
-                console.log(payload, 'isi payload createswg')
                 await this.createSwG(payload, accessToken)
               }
-            }
-            console.log('completed')
-            console.log(this.redirectToLogin, 'link login')            
+            }        
             response.complete().then(() => {
               window.location.href = this.redirectToLogin
             })
