@@ -18,11 +18,12 @@ Contoh Penerapan:
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property  | Attribute  | Description             | Type      | Default |
-| --------- | ---------- | ------------------------| --------- | ------- |
-| `isLogin` | `is-login` | handle user login state | `boolean` | `false` |
+| Property  | Attribute  | Description | Type      | Default |
+| --------- | ---------- | ----------- | --------- | ------- |
+| `isLogin` | `is-login` |             | `boolean` | `false` |
 
 
 ----------------------------------------------
