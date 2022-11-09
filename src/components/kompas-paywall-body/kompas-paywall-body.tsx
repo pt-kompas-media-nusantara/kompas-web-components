@@ -208,10 +208,10 @@ export class KompasPaywallBody {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
-        'content-type': 'application/json'
-      }
+        'content-type': 'application/json',
+      },
     })
-      .then((response) => response.json())
+      .then(response => response.json())
       .then((data: any) => {
         return data.result.token
       })
@@ -224,8 +224,8 @@ export class KompasPaywallBody {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
-        'content-type': 'application/json'
-      }
+        'content-type': 'application/json',
+      },
     })
       .then((response) => response.json())
       .then((data: any) => {
@@ -240,8 +240,8 @@ export class KompasPaywallBody {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
-        'content-type': 'application/json'
-      }
+        'content-type': 'application/json',
+      },
     })
       .then((response) => response.json())
       .then((data: any) => {
@@ -252,12 +252,12 @@ export class KompasPaywallBody {
         const errorCode = error.response.status
         if (errorCode === 500 && this.errorFlag < 5) {
           this.errorFlag++
-          setTimeout(async ()=>{
+          setTimeout(async () => {
             await this.getSubscriptionToken(path, payload)
           }, 2000)
         } else {
           this.errorFlag = 0
-          throw (error)
+          throw error
         }
       })
   }
@@ -267,13 +267,10 @@ export class KompasPaywallBody {
       body: JSON.stringify(payload),
       headers: {
         'content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
-      .then(() => {
-        console.log('Success')
-      })
       .catch(error => {
         throw error
       })
@@ -282,15 +279,14 @@ export class KompasPaywallBody {
     // @ts-ignore
     (self.SWG = self.SWG || []).push((subscriptions: any) => {
       // set entitlement
-      subscriptions.setOnEntitlementsResponse(async (entitlementsPromise: any) => {
-        const resultEntitlements = await entitlementsPromise
-        console.log('result entitlement', resultEntitlements, resultEntitlements.enablesThis())
-
+      subscriptions.setOnEntitlementsResponse(() => {
         // subscriptions attach button
         subscriptions.attachButton(this.buttonElement, { theme: 'light', lang: 'en' }, () => {
           subscriptions.showOffers({ isClosable: true })
-          subscriptions.setOnLoginRequest(() => { window.location.href = this.redirectToLogin })
-          subscriptions.setOnPaymentResponse(async (paymentResponse:any) => {
+          subscriptions.setOnLoginRequest(() => {
+            window.location.href = this.redirectToLogin
+          })
+          subscriptions.setOnPaymentResponse(async (paymentResponse: any) => {
             const response = await paymentResponse
             const raw = JSON.parse(response.purchaseData.raw)
             const { productId, purchaseToken, packageName } = raw
@@ -314,7 +310,7 @@ export class KompasPaywallBody {
                 const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
                 await this.createSwG(payload, accessToken)
               }
-            }        
+            }
             response.complete().then(() => {
               window.location.href = this.redirectToLogin
             })
