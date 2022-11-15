@@ -59,7 +59,7 @@
 
   &-md {
     & svg {
-      @apply h-6 w-6;
+      @apply h-5 w-5;
     }
   }
 

@@ -15,6 +15,7 @@ Prefer to define it on ENV. so it can be easily changed domain (local, developme
 | `notificationTotal` | `notification-total` | Total Notification Count | `number` | `0`                                                       |
 | `notificationUrl`   | `notification-url`   | Notification Url         | `string` | `'https://account.kompas.id/manage-account/notification'` |
 | `ordersUrl`         | `orders-url`         | Orders Url               | `string` | `'https://gerai.kompas.id/my-account/orders'`             |
+| `readLaterUrl`      | `read-later-url`     | Read Later Url         | `string` | `'https://www.kompas.id/bacananti'`                       |
 
 
 ## Dependencies

@@ -3,6 +3,7 @@ import shoppingCart from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid
 import userCog from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/user-cog.svg'
 import exchangeAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/exchange-alt.svg'
 import bell from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/bell.svg'
+import bookmark from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/bookmark.svg'
 import signOutAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/sign-out-alt.svg'
 
 @Component({
@@ -36,6 +37,11 @@ export class KompasHeaderAccountMenu {
     * Orders Url
     */
   @Prop() ordersUrl: string = 'https://gerai.kompas.id/my-account/orders'
+
+  /**
+    * Read Later Url
+    */
+  @Prop() readLaterUrl: string = 'https://www.kompas.id/bacananti'
 
   /**
     * Total Notification Count
@@ -84,6 +90,11 @@ export class KompasHeaderAccountMenu {
               {/* Conditional rendering based on notification count */}
               {this.renderTotalBubble(this.notificationTotal)}
             </p>
+          </a>
+          {/* Read Later  */}
+          <a href={this.readLaterUrl} class="header-account-menu--item">
+            <div class="icon-md icon-blue-600" innerHTML={bookmark}></div>
+            <p class="header-account-menu--title">Baca Nanti</p>
           </a>
           {/* Logout */}
           <a href={this.logoutUrl} class="header-account-menu--item">
