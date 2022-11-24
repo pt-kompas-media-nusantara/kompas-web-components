@@ -46,7 +46,7 @@ export class KidGracePeriod {
           konten premium tanpa batas.
         </p>
       )
-    } else if (totalGracePeriod > 6) {
+    } else {
       return (
         <p>
           Anda dalam <b class="text-orange-500">hari terakhir</b> masa tenggang langganan. Segera perbarui paket langganan untuk tetap mengakses konten premium tanpa batas.
@@ -76,22 +76,24 @@ export class KidGracePeriod {
     })
   }
 
+  private gracePeriodTemplate = (): void => (
+    <div class="flex flex-col md:flex-row w-full bg-orange-100 justify-end py-4 md:space-x-4 px-4 lg:px-20 bottom-0">
+      <div class="text-grey-600 text-sm md:text-base self-center text-left">{this.getCountdownGracePeriod()}</div>
+      <div class="flex self-center w-full md:w-1/2 justify-end pt-4 md:pt-0">
+        <button onClick={this.redirectToBerlangganan} class="bg-green-400 p-2 rounded-md font-bold text-grey-100 text-sm md:text-base w-full md:w-auto">
+          Perbarui Langganan
+        </button>
+      </div>
+    </div>
+  )
+
   componentDidLoad() {
     this.dataLayeronGracePeriod()
   }
 
   render() {
     return (
-      <div class="sticky bottom-0 w-full h-full">
-        <div class="flex flex-col md:flex-row w-full bg-orange-100 justify-end py-4 md:space-x-4 px-4 lg:px-20 bottom-0">
-          <div class="text-grey-600 text-sm md:text-base self-center text-left">{this.getCountdownGracePeriod()}</div>
-          <div class="flex self-center w-full md:w-1/2 justify-end pt-4 md:pt-0">
-            <button onClick={this.redirectToBerlangganan} class="bg-green-400 p-2 rounded-md font-bold text-grey-100 text-sm md:text-base w-full md:w-auto">
-              Perbarui Langganan
-            </button>
-          </div>
-        </div>
-      </div>
+    <div class="sticky bottom-0 w-full h-full">{this.totalGracePeriod > 0 ? this.gracePeriodTemplate() : ''}</div>
     )
   }
 }
