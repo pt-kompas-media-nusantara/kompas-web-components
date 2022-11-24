@@ -3,6 +3,7 @@ import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.
 import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
 import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
+import { deviceType } from '../../utils/deviceType'
 
 @Component({
   tag: 'kompas-paywall-body',
@@ -355,7 +356,7 @@ export class KompasPaywallBody {
       event: 'halamanBerlanggananClick',
       subscriptionStatus: this.subscriptionStatus,
       GUID: this.userGuid,
-      interface: this.deviceType
+      interface: deviceType()
     })
   }
 
@@ -411,7 +412,7 @@ export class KompasPaywallBody {
       event: 'helpOfferClick',
       userType: this.subscriptionStatus,
       GUID: this.userGuid,
-      interface: this.deviceType
+      interface: deviceType()
     })
   }
 
@@ -422,16 +423,6 @@ export class KompasPaywallBody {
       }
     } else {
       return 'non-login paywall'
-    }
-  }
-
-  get deviceType() {
-    if (window.innerWidth <= 768) {
-      return 'Mobile'
-    } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
-      return 'Tab'
-    } else {
-      return 'Desktop'
     }
   }
 
