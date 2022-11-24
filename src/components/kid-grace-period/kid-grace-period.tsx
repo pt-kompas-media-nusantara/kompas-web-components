@@ -68,7 +68,7 @@ export class KidGracePeriod {
     })
   }
 
-  private dataLayeronMeteredGracePeriod = (): void => {
+  private dataLayeronGracePeriod = (): void => {
     window.dataLayer.push({
       event: 'gracePeriodImpression',
       interface: deviceType(),
@@ -77,7 +77,7 @@ export class KidGracePeriod {
   }
 
   componentDidLoad() {
-    this.dataLayeronMeteredGracePeriod()
+    this.dataLayeronGracePeriod()
   }
 
   render() {
