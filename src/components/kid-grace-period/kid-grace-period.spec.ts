@@ -26,7 +26,7 @@ describe('KidGracePeriod', () => {
          <mock:shadow-root>
            <div class="bottom-0 h-full sticky w-full">
            <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
-           <div class="md:text-lg self-center text-grey-600 text-left text-sm"></div>
+           <div class="md:text-base self-center text-grey-600 text-left text-sm"></div>
            <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
            <button class="bg-green-400 font-bold md:text-base md:w-auto p-2 rounded-md text-grey-100 text-sm w-full">
            Perbarui Langganan
