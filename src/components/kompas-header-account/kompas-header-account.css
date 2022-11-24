@@ -94,13 +94,11 @@
   @apply w-screen fixed right-0 top-0 bottom-0;
   visibility: hidden;
   transition: visibility 0.2s ease-out;
-  animation: slide-out 0.2s ease-in ;
 }
 
 .is-open {
   visibility: visible;
   transition: visibility 0.2s ease-out;
-  animation: slide-in 0.2s ease-out;
 }
 
 .chevron-icon {
