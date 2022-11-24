@@ -93,7 +93,9 @@ export class KidGracePeriod {
 
   render() {
     return (
-    <div class="sticky bottom-0 w-full h-full">{this.totalGracePeriod > 0 ? this.gracePeriodTemplate() : ''}</div>
+    <div class="sticky bottom-0 w-full h-full">
+      {this.totalGracePeriod > 0 ? this.gracePeriodTemplate() : ''}
+    </div>
     )
   }
 }
