@@ -73,6 +73,7 @@ export class KidGracePeriod {
       event: 'gracePeriodImpression',
       interface: deviceType(),
       dayLeft: this.maxGracePeriod - this.totalGracePeriod,
+      urlName: window.location.href
     })
   }
 
