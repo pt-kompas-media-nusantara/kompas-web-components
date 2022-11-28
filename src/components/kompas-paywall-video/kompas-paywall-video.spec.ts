@@ -33,9 +33,9 @@ describe('Kompas Paywall Video', () => {
                             <button class="px-4 py-1.5 ring-1 ring-grey-100 rounded text-sm text-white">
                                 Masuk
                             </button>
-                            <a class="bg-green-500 font-bold px-4 py-1.5 rounded text-sm text-white" href="https://www.kompas.id/berlangganan" target="_blank">
+                            <button class="bg-green-500 font-bold px-4 py-1.5 rounded text-sm text-white">
                                 Berlangganan
-                            </a>
+                            </button>
                         </div>
                         <p class="text-center text-sm leading-4 text-white mt-6 max-w-xs md:max-w-none">
                         Dapatkan 5 konten premium gratis tiap bulan! <a class="cursor-pointer font-bold text-blue-300" target="_blank">Coba Sekarang</a>
