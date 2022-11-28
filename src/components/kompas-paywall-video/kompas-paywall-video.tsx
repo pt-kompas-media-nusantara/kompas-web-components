@@ -16,6 +16,7 @@ export class KompasPaywallVideo {
   private defaultComponent = (): void => (
     <Fragment>
       {this.sendDataLayeronNonLogin()}
+      {this.sendDataLayeronBerlangganan()}
       <h5 class="leading-6 text-white text-center text-base md:text-xl max-w-xl">
         Langganan untuk akses ke seluruh konten premium, mulai dari <span class="font-bold">Rp50.000/bulan.</span>
       </h5>
@@ -23,9 +24,9 @@ export class KompasPaywallVideo {
         <button onClick={() => this.redirectToLogin('Masuk')} class="rounded text-sm text-white px-4 py-1.5 ring-1 ring-grey-100">
           Masuk
         </button>
-        <a href={this.subscriptionUrl} target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
+        <button onClick={() => this.redirectToBerlangganan()} class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
           Berlangganan
-        </a>
+        </button>
       </div>
       <p class="text-center text-sm leading-4 text-white mt-6 max-w-xs md:max-w-none">
         Dapatkan 5 konten premium gratis tiap bulan! <a onClick={() => this.redirectToLogin('Coba Sekarang')} target="_blank" class="text-blue-300 font-bold cursor-pointer">Coba Sekarang</a>
@@ -35,7 +36,7 @@ export class KompasPaywallVideo {
 
   private isLoginComponent = (): void => (
     <Fragment>
-      {this.sendDataLayeronLogin()}
+      {this.sendDataLayeronBerlangganan()}
       <h5 class="leading-6 text-white text-center text-base md:text-xl max-w-2xl">
         Akses konten premium Anda bulan ini sudah habis. Aktifkan langganan untuk akses tanpa batas, mulai dari <span class="font-bold">Rp50.000/bulan.</span>
       </h5>
@@ -54,7 +55,7 @@ export class KompasPaywallVideo {
     })
   }
 
-  private sendDataLayeronLogin = (): void => {
+  private sendDataLayeronBerlangganan = (): void => {
     window.dataLayer.push({
       event: 'productOfferImpression',
       isLogin: this.isLogin,
