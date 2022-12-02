@@ -41,7 +41,7 @@ export class KompasHeaderAccountMenu {
   /**
     * Read Later Url
     */
-  @Prop() readLaterUrl: string = 'https://www.kompas.id/bacananti'
+  @Prop() readLaterUrl: string = 'https://www.kompas.id/baca-nanti'
 
   /**
     * Total Notification Count
