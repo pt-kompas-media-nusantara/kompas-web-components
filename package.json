@@ -24,7 +24,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "2.18.1",
+    "@stencil/core": "2.5.2",
     "react-gtm-module": "^2.0.11"
   },
   "license": "MIT",
@@ -32,7 +32,7 @@
     "@stencil/postcss": "^2.0.0",
     "@types/autoprefixer": "^10.2.0",
     "@types/jest": "^26.0.23",
-    "@types/puppeteer": "5.4.3",
+    "@types/puppeteer": "^5.4.3",
     "autoprefixer": "^10.2.5",
     "axios": "^1.0.0",
     "base-64": "^1.0.0",
