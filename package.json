@@ -32,7 +32,7 @@
     "@stencil/postcss": "^2.0.0",
     "@types/autoprefixer": "^10.2.0",
     "@types/jest": "^26.0.23",
-    "@types/puppeteer": "^5.4.3",
+    "@types/puppeteer": "5.4.3",
     "autoprefixer": "^10.2.5",
     "axios": "^1.0.0",
     "base-64": "^1.0.0",
