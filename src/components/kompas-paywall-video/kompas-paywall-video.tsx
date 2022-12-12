@@ -1,4 +1,5 @@
 import { Component, Fragment, h, Prop, State } from '@stencil/core'
+import { deviceType } from '../../utils/deviceType'
 
 @Component({
   tag: 'kompas-paywall-video',
@@ -51,7 +52,7 @@ export class KompasPaywallVideo {
   private sendDataLayeronNonLogin = (): void => {
     window.dataLayer.push({
       event: 'registrationOfferimppression',
-      interface: this.deviceType
+      interface: deviceType()
     })
   }
 
@@ -59,14 +60,14 @@ export class KompasPaywallVideo {
     window.dataLayer.push({
       event: 'productOfferImpression',
       isLogin: this.isLogin,
-      interface: this.deviceType
+      interface: deviceType()
     })
   }
 
   private sendDataLayeronButtonLogin = (triggerClick: string): void => {
     window.dataLayer.push({
       event: 'registrationOfferClick',
-      interface: this.deviceType,
+      interface: deviceType(),
       buttonClicked: triggerClick
     })
   }
@@ -75,7 +76,7 @@ export class KompasPaywallVideo {
     window.dataLayer.push({
       event: 'productClick',
       isLogin: this.isLogin,
-      interface: this.deviceType
+      interface: deviceType()
     })
   }
 
@@ -87,16 +88,6 @@ export class KompasPaywallVideo {
   private redirectToBerlangganan = (): void => {
     this.sendDataLayeronButtonBerlangganan()
     window.open(this.subscriptionUrl, '_blank')
-  }
-
-  get deviceType() {
-    if (window.innerWidth <= 768) {
-      return 'Mobile'
-    } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
-      return 'Tab'
-    } else {
-      return 'Desktop'
-    }
   }
 
   render() {
