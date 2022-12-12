@@ -39,7 +39,7 @@
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "postcss-nested": "^5.0.5",
-    "puppeteer": "^5.5.0",
+    "puppeteer": "^10.0.0",
     "stencil-inline-svg": "^1.0.1",
     "stencil-tailwind-plugin": "^0.5.0",
     "tailwindcss": "^2.1.2",
