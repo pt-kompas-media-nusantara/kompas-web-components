@@ -48,6 +48,24 @@ npm publish --access public --otp=<code>
 ```
 For detailed explanation on how things work, check out [Stencil.js](https://stenciljs.com/docs/introduction) docs.
 
+## Implement Component to Another Project
+
+on kompas-web-component run:
+```bash
+cd kompas-web-component
+npm start build
+npm link
+```
+
+
+on your project run:
+
+```bash
+cd project-folder
+npm link @kompasid/kompas-web-compoenent
+```
+
+
 ## How to develop
 
 * Create component that want to build on /src/components
