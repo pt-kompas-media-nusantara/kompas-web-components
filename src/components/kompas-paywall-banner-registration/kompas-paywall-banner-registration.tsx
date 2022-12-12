@@ -1,5 +1,6 @@
 import { Component, Prop, h } from '@stencil/core'
 import { Registration } from '../kompas-paywall/types'
+import { deviceType } from '../../utils/deviceType'
 
 @Component({
   tag: 'kompas-paywall-banner-registration',
@@ -21,18 +22,8 @@ export class KompasPaywallBannerRegistration {
   private sendDataLayer = (value: string): void => {
     window.dataLayer.push({
       event: value,
-      interface: this.deviceType
-    });
-  }
-  
-  get deviceType() {
-    if (window.innerWidth <= 768) {
-      return 'Mobile'
-    } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
-      return 'Tab'
-    } else {
-      return 'Desktop'
-    }
+      interface: deviceType()
+    })
   }
 
   render() {

@@ -6,6 +6,15 @@
 import { newSpecPage } from '@stencil/core/testing'
 import { KompasPaywallVideo } from './kompas-paywall-video'
 
+beforeAll(() => {
+    Object.defineProperty(window, "dataLayer", {
+      value: {
+        push: jest.fn(),
+      },
+    })
+    jest.spyOn(window.dataLayer, 'push').mockImplementation(() => jest.fn())
+  })
+
 describe('Kompas Paywall Video', () => {
     it('Render default root component', async () => {
         const { root } = await newSpecPage({
@@ -21,15 +30,15 @@ describe('Kompas Paywall Video', () => {
                         Langganan untuk akses ke seluruh konten premium, mulai dari <span class="font-bold">Rp50.000/bulan.</span>
                         </h5>
                         <div class="flex justify-between mt-4 space-x-3">
-                            <a href="https://account.kompas.id/login" target="_blank" class="rounded text-sm text-white px-4 py-1.5 ring-1 ring-grey-100">
+                            <button class="px-4 py-1.5 ring-1 ring-grey-100 rounded text-sm text-white">
                                 Masuk
-                            </a>
-                            <a href="https://www.kompas.id/berlangganan" target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
+                            </button>
+                            <button class="bg-green-500 font-bold px-4 py-1.5 rounded text-sm text-white">
                                 Berlangganan
-                            </a>
+                            </button>
                         </div>
                         <p class="text-center text-sm leading-4 text-white mt-6 max-w-xs md:max-w-none">
-                        Dapatkan 5 konten premium gratis tiap bulan! <a href="https://account.kompas.id/register" target="_blank" class="text-blue-300 font-bold">Coba Sekarang</a>
+                        Dapatkan 5 konten premium gratis tiap bulan! <a class="cursor-pointer font-bold text-blue-300" target="_blank">Coba Sekarang</a>
                         </p>
                     </div>
                 </mock:shadow-root>
@@ -51,10 +60,10 @@ describe('Kompas Paywall Video', () => {
                             Akses konten premium Anda bulan ini sudah habis. Aktifkan langganan untuk akses tanpa batas, mulai dari <span class="font-bold">Rp50.000/bulan.</span>
                         </h5>
                         <div class="flex justify-between mt-4">
-                            <a href="https://www.kompas.id/berlangganan" target="_blank" class="bg-green-500 rounded px-4 py-1.5 text-sm text-white font-bold">
+                        <button class="bg-green-500 font-bold px-4 py-1.5 rounded text-sm text-white">
                                 Berlangganan
                             </a>
-                        </div>
+                        </button>
                     </div>
                 </mock:shadow-root>
             </kompas-paywall-video>
