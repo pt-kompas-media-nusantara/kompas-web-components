@@ -7,6 +7,12 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PaywallProduct, Registration } from "./components/kompas-paywall/types";
 export namespace Components {
+    interface KidGracePeriod {
+        /**
+          * prop totalGracePeriod untuk menghitung berapa hari grace period user.
+         */
+        "totalGracePeriod": number;
+    }
     interface KidMeteredPaywall {
         /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
@@ -214,6 +220,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLKidGracePeriodElement extends Components.KidGracePeriod, HTMLStencilElement {
+    }
+    var HTMLKidGracePeriodElement: {
+        prototype: HTMLKidGracePeriodElement;
+        new (): HTMLKidGracePeriodElement;
+    };
     interface HTMLKidMeteredPaywallElement extends Components.KidMeteredPaywall, HTMLStencilElement {
     }
     var HTMLKidMeteredPaywallElement: {
@@ -311,6 +323,7 @@ declare global {
         new (): HTMLKompasPaywallVideoElement;
     };
     interface HTMLElementTagNameMap {
+        "kid-grace-period": HTMLKidGracePeriodElement;
         "kid-metered-paywall": HTMLKidMeteredPaywallElement;
         "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
@@ -330,6 +343,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface KidGracePeriod {
+        /**
+          * prop totalGracePeriod untuk menghitung berapa hari grace period user.
+         */
+        "totalGracePeriod"?: number;
+    }
     interface KidMeteredPaywall {
         /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
@@ -536,6 +555,7 @@ declare namespace LocalJSX {
         "isLogin"?: boolean;
     }
     interface IntrinsicElements {
+        "kid-grace-period": KidGracePeriod;
         "kid-metered-paywall": KidMeteredPaywall;
         "kid-paywall": KidPaywall;
         "kid-recommender": KidRecommender;
@@ -558,6 +578,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "kid-grace-period": LocalJSX.KidGracePeriod & JSXBase.HTMLAttributes<HTMLKidGracePeriodElement>;
             "kid-metered-paywall": LocalJSX.KidMeteredPaywall & JSXBase.HTMLAttributes<HTMLKidMeteredPaywallElement>;
             "kid-paywall": LocalJSX.KidPaywall & JSXBase.HTMLAttributes<HTMLKidPaywallElement>;
             "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
