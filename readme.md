@@ -9,7 +9,10 @@ To start building a new web component using Stencil, clone this repo to a new di
 git clone https://github.com/pt-kompas-media-nusantara/kompas-web-components.git
 cd kompas-web-component
 ```
-Use Node.js version 14, NPM version 6 & [Stencil.js](https://stenciljs.com/docs/introduction) version ^2.5.2
+Use 
+* Node.js version 14
+* NPM version 6 
+* [Stencil.js](https://stenciljs.com/docs/introduction) version ^2.5.2
 
 Then run [npm](hhttps://github.com/ionic-team/stencil-component-starter) install to install Kompas Web Component.
 
@@ -47,7 +50,10 @@ For detailed explanation on how things work, check out [Stencil.js](https://sten
 
 ## How to develop
 
-Create component that want to build on /src/components, use .ts format (We use TypeScript for functionality). Declare every components, states and props (if exist) and run npm run build before npm start to create readme in component directory automatically. We use Tailwind CSS v2 for styling component, check out [Tailwind CSS](https://v2.tailwindcss.com/docs) docs.
+* Create component that want to build on /src/components
+* Use .ts format (We use TypeScript for functionality)
+* Declare every components, states and props (if exist) and run npm run build before npm start to create readme in component directory automatically
+* We use Tailwind CSS v2 for styling component, check out [Tailwind CSS](https://v2.tailwindcss.com/docs) docs.
 
 ## Contributing
 
