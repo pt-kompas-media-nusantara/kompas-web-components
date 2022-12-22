@@ -7,12 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PaywallProduct, Registration } from "./components/kompas-paywall/types";
 export namespace Components {
-    interface KidGracePeriod {
-        /**
-          * prop totalGracePeriod untuk menghitung berapa hari grace period user.
-         */
-        "totalGracePeriod": number;
-    }
     interface KidMeteredPaywall {
         /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
@@ -110,6 +104,12 @@ export namespace Components {
           * wording untuk chat whatsapp & email
          */
         "wordingMessage": string;
+    }
+    interface KompasGracePeriod {
+        /**
+          * prop totalGracePeriod untuk menghitung berapa hari grace period user.
+         */
+        "totalGracePeriod": number;
     }
     interface KompasHeaderAccount {
         /**
@@ -220,12 +220,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLKidGracePeriodElement extends Components.KidGracePeriod, HTMLStencilElement {
-    }
-    var HTMLKidGracePeriodElement: {
-        prototype: HTMLKidGracePeriodElement;
-        new (): HTMLKidGracePeriodElement;
-    };
     interface HTMLKidMeteredPaywallElement extends Components.KidMeteredPaywall, HTMLStencilElement {
     }
     var HTMLKidMeteredPaywallElement: {
@@ -267,6 +261,12 @@ declare global {
     var HTMLKompasFooterSupportsElement: {
         prototype: HTMLKompasFooterSupportsElement;
         new (): HTMLKompasFooterSupportsElement;
+    };
+    interface HTMLKompasGracePeriodElement extends Components.KompasGracePeriod, HTMLStencilElement {
+    }
+    var HTMLKompasGracePeriodElement: {
+        prototype: HTMLKompasGracePeriodElement;
+        new (): HTMLKompasGracePeriodElement;
     };
     interface HTMLKompasHeaderAccountElement extends Components.KompasHeaderAccount, HTMLStencilElement {
     }
@@ -323,7 +323,6 @@ declare global {
         new (): HTMLKompasPaywallVideoElement;
     };
     interface HTMLElementTagNameMap {
-        "kid-grace-period": HTMLKidGracePeriodElement;
         "kid-metered-paywall": HTMLKidMeteredPaywallElement;
         "kid-paywall": HTMLKidPaywallElement;
         "kid-recommender": HTMLKidRecommenderElement;
@@ -331,6 +330,7 @@ declare global {
         "kompas-footer-default": HTMLKompasFooterDefaultElement;
         "kompas-footer-products": HTMLKompasFooterProductsElement;
         "kompas-footer-supports": HTMLKompasFooterSupportsElement;
+        "kompas-grace-period": HTMLKompasGracePeriodElement;
         "kompas-header-account": HTMLKompasHeaderAccountElement;
         "kompas-header-account-help-center": HTMLKompasHeaderAccountHelpCenterElement;
         "kompas-header-account-menu": HTMLKompasHeaderAccountMenuElement;
@@ -343,12 +343,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface KidGracePeriod {
-        /**
-          * prop totalGracePeriod untuk menghitung berapa hari grace period user.
-         */
-        "totalGracePeriod"?: number;
-    }
     interface KidMeteredPaywall {
         /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
@@ -446,6 +440,12 @@ declare namespace LocalJSX {
           * wording untuk chat whatsapp & email
          */
         "wordingMessage"?: string;
+    }
+    interface KompasGracePeriod {
+        /**
+          * prop totalGracePeriod untuk menghitung berapa hari grace period user.
+         */
+        "totalGracePeriod"?: number;
     }
     interface KompasHeaderAccount {
         /**
@@ -555,7 +555,6 @@ declare namespace LocalJSX {
         "isLogin"?: boolean;
     }
     interface IntrinsicElements {
-        "kid-grace-period": KidGracePeriod;
         "kid-metered-paywall": KidMeteredPaywall;
         "kid-paywall": KidPaywall;
         "kid-recommender": KidRecommender;
@@ -563,6 +562,7 @@ declare namespace LocalJSX {
         "kompas-footer-default": KompasFooterDefault;
         "kompas-footer-products": KompasFooterProducts;
         "kompas-footer-supports": KompasFooterSupports;
+        "kompas-grace-period": KompasGracePeriod;
         "kompas-header-account": KompasHeaderAccount;
         "kompas-header-account-help-center": KompasHeaderAccountHelpCenter;
         "kompas-header-account-menu": KompasHeaderAccountMenu;
@@ -578,7 +578,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "kid-grace-period": LocalJSX.KidGracePeriod & JSXBase.HTMLAttributes<HTMLKidGracePeriodElement>;
             "kid-metered-paywall": LocalJSX.KidMeteredPaywall & JSXBase.HTMLAttributes<HTMLKidMeteredPaywallElement>;
             "kid-paywall": LocalJSX.KidPaywall & JSXBase.HTMLAttributes<HTMLKidPaywallElement>;
             "kid-recommender": LocalJSX.KidRecommender & JSXBase.HTMLAttributes<HTMLKidRecommenderElement>;
@@ -586,6 +585,7 @@ declare module "@stencil/core" {
             "kompas-footer-default": LocalJSX.KompasFooterDefault & JSXBase.HTMLAttributes<HTMLKompasFooterDefaultElement>;
             "kompas-footer-products": LocalJSX.KompasFooterProducts & JSXBase.HTMLAttributes<HTMLKompasFooterProductsElement>;
             "kompas-footer-supports": LocalJSX.KompasFooterSupports & JSXBase.HTMLAttributes<HTMLKompasFooterSupportsElement>;
+            "kompas-grace-period": LocalJSX.KompasGracePeriod & JSXBase.HTMLAttributes<HTMLKompasGracePeriodElement>;
             "kompas-header-account": LocalJSX.KompasHeaderAccount & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountElement>;
             "kompas-header-account-help-center": LocalJSX.KompasHeaderAccountHelpCenter & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountHelpCenterElement>;
             "kompas-header-account-menu": LocalJSX.KompasHeaderAccountMenu & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountMenuElement>;

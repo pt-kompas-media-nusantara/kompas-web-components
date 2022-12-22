@@ -7,11 +7,11 @@ import { Component, h, State, Prop } from '@stencil/core'
 import { deviceType } from '../../utils/deviceType'
 
 @Component({
-  tag: 'kid-grace-period',
-  styleUrl: '../kid-grace-period/kid-grace-period.css',
+  tag: 'kompas-grace-period',
+  styleUrl: '../kompas-grace-period/kompas-grace-period.css',
   shadow: true,
 })
-export class KidGracePeriod {
+export class KompasGracePeriod {
   /**
    * state
    */
@@ -39,17 +39,17 @@ export class KidGracePeriod {
   private getCountdownGracePeriod(): void {
     const totalGracePeriod = this.totalGracePeriod
     const maxGracePeriod = this.maxGracePeriod
-    if (totalGracePeriod > 0 && totalGracePeriod < maxGracePeriod) {
+    if (totalGracePeriod === 7) {
       return (
         <p>
-          Masa tenggang langganan Anda tersisa <b class="text-orange-500">{maxGracePeriod - totalGracePeriod} hari lagi</b>. Segera perbarui paket langganan untuk tetap mengakses
-          konten premium tanpa batas.
+          Anda dalam <b class="text-orange-500">hari terakhir</b> masa tenggang langganan. Segera perbarui paket langganan untuk tetap mengakses konten premium tanpa batas.
         </p>
       )
     } else {
       return (
         <p>
-          Anda dalam <b class="text-orange-500">hari terakhir</b> masa tenggang langganan. Segera perbarui paket langganan untuk tetap mengakses konten premium tanpa batas.
+          Masa tenggang langganan Anda tersisa <b class="text-orange-500">{maxGracePeriod - totalGracePeriod + 1} hari lagi</b>. Segera perbarui paket langganan untuk tetap mengakses
+          konten premium tanpa batas.
         </p>
       )
     }
@@ -65,7 +65,7 @@ export class KidGracePeriod {
       event: 'gracePeriodClick',
       interface: deviceType(),
       dayLeft: this.maxGracePeriod - this.totalGracePeriod,
-      urlName: window.location.href
+      urlName: window.location.href,
     })
   }
 
@@ -74,7 +74,7 @@ export class KidGracePeriod {
       event: 'gracePeriodImpression',
       interface: deviceType(),
       dayLeft: this.maxGracePeriod - this.totalGracePeriod,
-      urlName: window.location.href
+      urlName: window.location.href,
     })
   }
 
@@ -82,7 +82,7 @@ export class KidGracePeriod {
     <div class="flex flex-col md:flex-row w-full bg-orange-100 justify-end py-4 md:space-x-4 px-4 lg:px-20 bottom-0">
       <div class="text-grey-600 text-sm md:text-base self-center text-left">{this.getCountdownGracePeriod()}</div>
       <div class="flex self-center w-full md:w-1/2 justify-end pt-4 md:pt-0">
-        <button onClick={this.redirectToBerlangganan} class="bg-green-400 p-2 rounded-md font-bold text-grey-100 text-sm md:text-base w-full md:w-auto">
+        <button onClick={this.redirectToBerlangganan} class="bg-green-500 p-2 px-5 rounded-md font-bold text-grey-100 text-sm md:text-base w-full md:w-auto">
           Perbarui Langganan
         </button>
       </div>
@@ -94,10 +94,6 @@ export class KidGracePeriod {
   }
 
   render() {
-    return (
-    <div class="sticky bottom-0 w-full h-full">
-      {this.totalGracePeriod > 0 ? this.gracePeriodTemplate() : ''}
-    </div>
-    )
+    return <div class="sticky bottom-0 w-full h-full">{this.totalGracePeriod > 0 ? this.gracePeriodTemplate() : ''}</div>
   }
 }
