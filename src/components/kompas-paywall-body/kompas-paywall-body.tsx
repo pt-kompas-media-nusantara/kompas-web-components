@@ -19,6 +19,7 @@ export class KompasPaywallBody {
   @Prop() userGuid: string = ''
   @Prop() subscriptionStatus: string = ''
   @Prop() countdownArticle: number = 0
+  @Prop() swgEnable: boolean = false
   @State() isExtensionsOpened: boolean = false
   @State() kompasAkunHost: string = 'https://akun.kompas.id'
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
@@ -452,14 +453,16 @@ export class KompasPaywallBody {
   }
 
   componentDidLoad () {
-    this.jsonScript()
-    if(this.buttonElement){
-      const head = document.querySelector("head")
-      const script = document.createElement("script")
-      script.src = "https://news.google.com/swg/js/v1/swg.js"
-      script.defer = true
-      script.onload  = this.subscribeWithGoogleButton()
-      head.appendChild(script)
+    if (this.swgEnable) {
+      this.jsonScript()
+      if(this.buttonElement){
+        const head = document.querySelector("head")
+        const script = document.createElement("script")
+        script.src = "https://news.google.com/swg/js/v1/swg.js"
+        script.defer = true
+        script.onload  = this.subscribeWithGoogleButton()
+        head.appendChild(script)
+      } 
     }
   }
 
@@ -473,11 +476,16 @@ export class KompasPaywallBody {
             {this.descriptionSection(this.paywallData.informations.description)}
             {this.packagesSection(this.paywallData.packages)}
             {this.informationPackages()}
-            {this.separatorLine()}
-            <button class="border-2 bg-grey-100 border-grey-100 rounded-lg px-6 shadow-sm flex flex-row py-2 mt-1 mb-4" ref={(el) => this.buttonElement = el as HTMLButtonElement}>
-              <p>Subscribe with</p>
-              <img class="pl-2 object-scale-down w-20 pt-0.5" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
-            </button>
+            {this.swgEnable && this.separatorLine()}
+            {this.swgEnable && (
+              <button
+                class="border-2 bg-grey-100 border-grey-100 rounded-lg px-6 shadow-sm flex flex-row py-2 mt-1 mb-4"
+                ref={el => (this.buttonElement = el as HTMLButtonElement)}
+              >
+                <p>Subscribe with</p>
+                <img class="pl-2 object-scale-down w-20 pt-0.5" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
+              </button>
+            )}
             {this.paymentDesktopSection(this.paywallData.payment.desktop)}
             {this.paymentMobileSection(this.paywallData.payment.mobile)}
             {this.userAction(this.isLogin, this.type)}
