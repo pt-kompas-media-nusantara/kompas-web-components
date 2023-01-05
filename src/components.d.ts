@@ -196,6 +196,7 @@ export namespace Components {
         "isLogin": boolean;
         "isWithHeader": boolean;
         "subscriptionStatus": string;
+        "swgEnable": boolean;
         "textHeader": string;
         "type": 'epaper' | 'reguler';
         "userGuid": string;
@@ -209,6 +210,7 @@ export namespace Components {
         "paywallData": PaywallProduct | undefined;
         "slug": string;
         "subscriptionStatus": string;
+        "swgEnable": boolean;
         "type": 'epaper' | 'reguler';
         "userGuid": string;
     }
@@ -532,6 +534,7 @@ declare namespace LocalJSX {
         "isLogin"?: boolean;
         "isWithHeader"?: boolean;
         "subscriptionStatus"?: string;
+        "swgEnable"?: boolean;
         "textHeader"?: string;
         "type"?: 'epaper' | 'reguler';
         "userGuid"?: string;
@@ -545,6 +548,7 @@ declare namespace LocalJSX {
         "paywallData"?: PaywallProduct | undefined;
         "slug"?: string;
         "subscriptionStatus"?: string;
+        "swgEnable"?: boolean;
         "type"?: 'epaper' | 'reguler';
         "userGuid"?: string;
     }

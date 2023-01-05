@@ -121,6 +121,7 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 | `isLogin`            | `is-login`            |             | `boolean`               | `false`     |
 | `isWithHeader`       | `is-with-header`      |             | `boolean`               | `false`     |
 | `subscriptionStatus` | `subscription-status` |             | `string`                | `''`        |
+| `swgEnable`          | `swg-enable`          |             | `boolean`               | `false`     |
 | `textHeader`         | `text-header`         |             | `string`                | `''`        |
 | `type`               | `type`                |             | `"epaper" \| "reguler"` | `'reguler'` |
 | `userGuid`           | `user-guid`           |             | `string`                | `''`        |

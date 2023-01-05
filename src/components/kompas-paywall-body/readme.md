@@ -14,6 +14,7 @@
 | `paywallData`        | --                    |             | `PaywallProduct`        | `undefined` |
 | `slug`               | `slug`                |             | `string`                | `""`        |
 | `subscriptionStatus` | `subscription-status` |             | `string`                | `''`        |
+| `swgEnable`          | `swg-enable`          |             | `boolean`               | `false`     |
 | `type`               | `type`                |             | `"epaper" \| "reguler"` | `'reguler'` |
 | `userGuid`           | `user-guid`           |             | `string`                | `''`        |
 
