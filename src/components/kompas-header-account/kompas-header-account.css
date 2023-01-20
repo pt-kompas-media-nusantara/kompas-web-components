@@ -28,8 +28,8 @@
 
 .header-account--membership-icon {
   @apply absolute;
-  bottom: -3px;
-  right: -4px;
+  bottom: -2px;
+  right: -2px;
 }
 
 .header-account--notification-indicator {
@@ -59,7 +59,7 @@
 
   &-md {
     & svg {
-      @apply h-6 w-6;
+      @apply h-5 w-5;
     }
   }
 
@@ -87,6 +87,16 @@
 
 .z-index-max {
   z-index: 99999;
+}
+
+.chevron-icon {
+  transition: transform 0.2s ease-out;
+}
+
+.chevron-up {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transition: transform 0.2s ease-out;
 }
 
 /* Custom Scrollbar for header */
