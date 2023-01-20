@@ -52,6 +52,11 @@ export class KompasHeaderAccount {
   @Prop() ordersUrl: string
 
   /**
+  * Read Later Url
+  */
+  @Prop() readLaterUrl: string
+
+  /**
    * Value consist of User Data
    */
   @Prop() userData!: any
@@ -165,6 +170,7 @@ export class KompasHeaderAccount {
               notification-url={this.notificationUrl}
               notification-total={this.notificationTotal}
               orders-url={this.ordersUrl}
+              read-later-url={this.readLaterUrl}
             />
             <kompas-header-account-help-center/>
           </div>
