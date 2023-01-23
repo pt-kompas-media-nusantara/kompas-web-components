@@ -137,6 +137,10 @@ export namespace Components {
          */
         "ordersUrl": string;
         /**
+          * Read Later Url
+         */
+        "readLaterUrl": string;
+        /**
           * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing": number;
@@ -176,6 +180,10 @@ export namespace Components {
           * Orders Url
          */
         "ordersUrl": string;
+        /**
+          * Read Later Url
+         */
+        "readLaterUrl": string;
     }
     interface KompasHeaderAccountProfile {
         /**
@@ -475,6 +483,10 @@ declare namespace LocalJSX {
          */
         "ordersUrl"?: string;
         /**
+          * Read Later Url
+         */
+        "readLaterUrl"?: string;
+        /**
           * Value to Add spacing on top of sidebar (will convert to pixel)
          */
         "sidebarTopSpacing"?: number;
@@ -514,6 +526,10 @@ declare namespace LocalJSX {
           * Orders Url
          */
         "ordersUrl"?: string;
+        /**
+          * Read Later Url
+         */
+        "readLaterUrl"?: string;
     }
     interface KompasHeaderAccountProfile {
         /**

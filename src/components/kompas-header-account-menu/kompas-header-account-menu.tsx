@@ -3,6 +3,7 @@ import shoppingCart from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid
 import userCog from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/user-cog.svg'
 import exchangeAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/exchange-alt.svg'
 import bell from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/bell.svg'
+import bookmark from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/bookmark.svg'
 import signOutAlt from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/sign-out-alt.svg'
 
 @Component({
@@ -38,6 +39,11 @@ export class KompasHeaderAccountMenu {
   @Prop() ordersUrl: string = 'https://gerai.kompas.id/my-account/orders'
 
   /**
+    * Read Later Url
+    */
+  @Prop() readLaterUrl: string = 'https://www.kompas.id/baca-nanti'
+
+  /**
     * Total Notification Count
     */
   @Prop() notificationTotal: number = 0
@@ -47,12 +53,12 @@ export class KompasHeaderAccountMenu {
     if(!total) return;
 
     const isOneDigitNotification = total > 0 && total <= 9
-    const additionalStyling = isOneDigitNotification ? '' : 'pl-1'
+    const additionalStyling = isOneDigitNotification ? '' : 'pl-0.5'
 
     return (
       <div class={`header-account-menu--notification-info ${additionalStyling}`}>
         {/* Limit Display to use "9+"" if total notification exceed 9 */}
-        { isOneDigitNotification ? total : '9+'}
+        { isOneDigitNotification ? total : <span>9<span class="pl-px">+</span></span>}
       </div>
     )
   }
@@ -84,6 +90,11 @@ export class KompasHeaderAccountMenu {
               {/* Conditional rendering based on notification count */}
               {this.renderTotalBubble(this.notificationTotal)}
             </p>
+          </a>
+          {/* Read Later  */}
+          <a href={this.readLaterUrl} class="header-account-menu--item">
+            <div class="icon-md icon-blue-600" innerHTML={bookmark}></div>
+            <p class="header-account-menu--title">Baca Nanti</p>
           </a>
           {/* Logout */}
           <a href={this.logoutUrl} class="header-account-menu--item">

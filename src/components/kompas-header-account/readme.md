@@ -96,6 +96,7 @@ Contoh:
   orders-url="https://gerai.kompas.id/my-account/orders"
   sidebar-top-spacing=48
   subscription-url="https://www.kompas.id/berlangganan"
+  read-later-url="https://www.kompas.id/bacananti"
 />
 ```
 
@@ -112,6 +113,7 @@ manageAccountUrl: string = 'https://account.kompas.id/manage-account/my-account'
 notificationUrl: string = 'https://account.kompas.id/manage-account/notification'
 ordersUrl: string = 'https://gerai.kompas.id/my-account/orders'
 subscriptionUrl: string = 'https://www.kompas.id/berlangganan'
+readLaterUrl:string ="https://www.kompas.id/bacananti"
 ```
 ### Vanilla JS
 
@@ -188,6 +190,7 @@ Gambaran terkait detail diatas adalah seperti dibawah ini:
 | `notificationTotal`     | `notification-total`  | Total Notification Count                                       | `number` | `0`         |
 | `notificationUrl`       | `notification-url`    | Notification Url                                               | `string` | `undefined` |
 | `ordersUrl`             | `orders-url`          | Orders Url                                                     | `string` | `undefined` |
+| `readLaterUrl`          | `read-later-url`      | Read Later Url                                                 | `string` | `undefined` |
 | `sidebarTopSpacing`     | `sidebar-top-spacing` | Value to Add spacing on top of sidebar (will convert to pixel) | `number` | `0`         |
 | `subscriptionUrl`       | `subscription-url`    | Subscription Url                                               | `string` | `undefined` |
 | `userData` _(required)_ | `user-data`           | Value consist of User Data                                     | `any`    | `undefined` |

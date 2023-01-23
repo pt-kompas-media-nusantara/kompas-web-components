@@ -64,10 +64,17 @@ module.exports = {
     },
     extend: {
       spacing: {
-        '76': '19rem'
+        76: '19rem'
       },
       rotate: {
         55: '55deg'
+      },
+      fontSize: {
+        xxs: '0.625rem',
+      },
+      // Add custom font famliy
+      fontFamily: {
+        'pt-sans': ['"PT Sans"', 'Arial', 'Verdana', 'Helvetica', 'sans-serif'],
       },
     },
   },

@@ -59,7 +59,7 @@ export class KompasHeaderAccountProfile {
 
         return (
           <div class="w-full">
-            <button onClick={()=> handleSubscribe()} class="w-full font-sans rounded-lg px-4 py-3 mt-4 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">{ this.userData?.updateMembership }</button>
+            <button onClick={()=> handleSubscribe()} class="w-full rounded-lg px-4 py-3 mt-4 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">{ this.userData?.updateMembership }</button>
           </div>
         )
       }
@@ -111,7 +111,7 @@ export class KompasHeaderAccountProfile {
     }
 
     return (
-      <div class="border-b border-grey-300 flex flex-shrink-0 flex-col bg-blue-100 p-4">
+      <div class="flex flex-shrink-0 flex-col bg-blue-100 p-4">
         {
           !this.userData ? skeletonLoading : profileContent()
         }
