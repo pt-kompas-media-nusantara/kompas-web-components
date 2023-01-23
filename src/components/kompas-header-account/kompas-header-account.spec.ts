@@ -17,7 +17,7 @@ describe('kompas-header-account', () => {
             <a class="cursor-pointer">
               <div class="flex flex-row items-center self-center">
                 <div class="animate-pulse bg-grey-300 h-6 rounded-full w-6"></div>
-                <div class="icon-sm icon-white ml-3"></div>
+                <div class="chevron-icon icon-white icon-xs ml-3"></div>
               </div>
             </a>
          </div>
@@ -26,4 +26,3 @@ describe('kompas-header-account', () => {
     `);
   });
 });
- 
