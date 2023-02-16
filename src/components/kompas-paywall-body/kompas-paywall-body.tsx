@@ -33,7 +33,7 @@ export class KompasPaywallBody {
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
-      <div class="flex flex-col py-3 ml-6 md:ml-8">
+      <div class="flex flex-col py-3 px-4">
         <div class="flex flex-none items-center">
           <h5 class="text-base md:text-lg font-bold text-orange-400">
             {this.getRupiahFormat(product.price)}
