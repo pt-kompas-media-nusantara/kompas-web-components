@@ -1,6 +1,5 @@
 import { Component, h, Prop, State } from '@stencil/core'
 import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.svg'
-import star from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/star.svg'
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
 import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
 import { deviceType } from '../../utils/deviceType'
@@ -34,7 +33,7 @@ export class KompasPaywallBody {
 
   private primaryPackages = (product: Product): void => (
     <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
-      <div class="flex flex-col py-3 ml-6 md:ml-8">
+      <div class="flex flex-col py-3 px-4">
         <div class="flex flex-none items-center">
           <h5 class="text-base md:text-lg font-bold text-orange-400">
             {this.getRupiahFormat(product.price)}
@@ -59,11 +58,10 @@ export class KompasPaywallBody {
           Langganan
         </h6>
       </button >
-      <div class="absolute top-0 left-0">
-        <div class="w-9 md:w-14 md:h-10 overflow-hidden  inline-block absolute">
-          <div class="h-36 bg-yellow-400 rotate-45 md:rotate-55 transform origin-top-right relative" />
+      <div class="absolute -top-2 left-4">
+        <div class="rounded bg-yellow-300 px-2 py-0.5 text-xs">
+          <b>Harga Terbaik</b>
         </div>
-        <div class="icon-yellow-100 icon-sm md:icon-base mt-0.5 ml-1 absolute" innerHTML={star}></div>
       </div>
     </div>
   )
@@ -78,8 +76,8 @@ export class KompasPaywallBody {
           / {product.periode}
         </h6>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, '1', '9802035', 50000, 2)} class="h-auto bg-green-500 rounded" >
-        <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
+      <button onClick={() => this.redirectToCheckout(product.url, '1', '9802035', 50000, 2)} class="h-auto bg-white border border-green-500 rounded" >
+        <h6 class="text-xs md:text-base text-green-500 font-bold py-2 px-4">
           Langganan
         </h6>
       </button>
