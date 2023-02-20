@@ -43,14 +43,9 @@ export class KompasPaywallBody {
           </h6>
         </div>
         <div class="flex items-center">
-          <p class="text-xs md:text-sm text-grey-400 line-through">
-            {this.getRupiahFormat(product.discountPrice)}
-          </p>
-          <div class="rounded bg-red-100 ml-1 md:p-0.5">
-            <p class="font-bold text-xs text-red-400">
-              -{product.percentage}%
+            <p class="text-xs">
+            hanya <span class="text-orange-400">Rp 30.000</span> / bulan
             </p>
-          </div>
         </div>
       </div>
       <button onClick={() => this.redirectToCheckout(product.url, '12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-3" >
