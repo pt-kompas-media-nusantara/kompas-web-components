@@ -76,10 +76,11 @@ module.exports = {
       fontFamily: {
         'pt-sans': ['"PT Sans"', 'Arial', 'Verdana', 'Helvetica', 'sans-serif'],
       },
+      width: {
+        '106': '32rem'
+      }
     },
   },
-  variants: {
-    extend: {},
-  },
+  variants: {},
   plugins: [],
 }
