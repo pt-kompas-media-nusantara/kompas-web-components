@@ -230,6 +230,7 @@ export namespace Components {
     }
     interface KompasSurveyPopup {
         "isShowPopUp": boolean;
+        "surveyUrl": string;
         "surveyUuid": string;
         "token": string;
     }
@@ -588,6 +589,7 @@ declare namespace LocalJSX {
     }
     interface KompasSurveyPopup {
         "isShowPopUp"?: boolean;
+        "surveyUrl"?: string;
         "surveyUuid"?: string;
         "token"?: string;
     }

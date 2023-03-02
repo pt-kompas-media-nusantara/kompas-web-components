@@ -10,6 +10,7 @@ export class KompasSurveyPopUp {
   @Prop() isShowPopUp: boolean = true
   @Prop() token: string = 'token'
   @Prop() surveyUuid: string = 'surveyUuid'
+  @Prop() surveyUrl: string = 'https://www.google.com/'
 
   private closePopUp = (): void => {
     const expires = new Date()
@@ -19,8 +20,8 @@ export class KompasSurveyPopUp {
     this.isShowPopUp = false
   }
 
-  private goSurvey = (): void => {
-    window.location.href = `https://www.kompas.id/survey?token=${this.token}&id=${this.surveyUuid}&next=${window.location.href}`
+  private openSurvey = (): void => {
+    window.location.href = `${this.surveyUrl}?next=${window.location.href}`
   }
 
   private surveyPopUp = (): JSX.Element => {
@@ -33,7 +34,7 @@ export class KompasSurveyPopUp {
             <p class="text-sm pt-2 pb-4">Kami ingin mendengar pendapat Anda untuk membuat Kompas.id lebih baik lagi. Bantu kami dengan menjawab pertanyaan singkat berikut ini.</p>
           </div>
           <div>
-            <button class="text-sm rounded bg-green-500 text-grey-100 px-5 py-1.5" onClick={this.goSurvey}>
+            <button class="text-sm rounded bg-green-500 text-grey-100 px-5 py-1.5" onClick={this.openSurvey}>
               Isi Survei
             </button>
           </div>
@@ -53,7 +54,7 @@ export class KompasSurveyPopUp {
           </div>
           <div>
             <p class="text-sm pt-2 pb-4">Kami ingin mendengar pendapat Anda untuk membuat Kompas.id lebih baik lagi. Bantu kami dengan menjawab pertanyaan singkat berikut ini.</p>
-            <button class="text-base rounded bg-green-500 text-grey-100 w-full py-2" onClick={this.goSurvey}>
+            <button class="text-base rounded bg-green-500 text-grey-100 w-full py-2" onClick={this.openSurvey}>
               Isi Survei
             </button>
           </div>
