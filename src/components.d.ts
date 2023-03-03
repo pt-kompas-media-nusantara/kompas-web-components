@@ -231,8 +231,6 @@ export namespace Components {
     interface KompasSurveyPopup {
         "isShowPopUp": boolean;
         "surveyUrl": string;
-        "surveyUuid": string;
-        "token": string;
     }
 }
 declare global {
@@ -590,8 +588,6 @@ declare namespace LocalJSX {
     interface KompasSurveyPopup {
         "isShowPopUp"?: boolean;
         "surveyUrl"?: string;
-        "surveyUuid"?: string;
-        "token"?: string;
     }
     interface IntrinsicElements {
         "kid-metered-paywall": KidMeteredPaywall;

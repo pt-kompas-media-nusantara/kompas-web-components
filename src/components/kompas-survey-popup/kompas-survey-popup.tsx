@@ -7,10 +7,8 @@ import remove from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/remov
   shadow: true,
 })
 export class KompasSurveyPopUp {
-  @Prop() isShowPopUp: boolean = true
-  @Prop() token: string = 'token'
-  @Prop() surveyUuid: string = 'surveyUuid'
-  @Prop() surveyUrl: string = 'https://www.google.com/'
+  @Prop() isShowPopUp: boolean = false
+  @Prop() surveyUrl: string = ''
 
   private closePopUp = (): void => {
     const expires = new Date()
@@ -21,7 +19,10 @@ export class KompasSurveyPopUp {
   }
 
   private openSurvey = (): void => {
-    window.location.href = `${this.surveyUrl}?next=${window.location.href}`
+    window.open(
+      `${this.surveyUrl}?next=${window.location.href}`,
+      '_blank'
+    )
   }
 
   private surveyPopUp = (): JSX.Element => {
