@@ -33,12 +33,17 @@ export class KompasFooter {
    */
   @Prop() isShowDefault: boolean = true
 
+  /**
+   * Flag untuk mengubah tema warna footer
+   */
+  @Prop() isLightMode: boolean = false
+
   render () {
     return (
       <footer class="w--full">
         { this.isShowSupport ? <kompas-footer-supports branding={ branding } wording-message={this.wordingMessage}/> : '' }
         { this.isShowProduct ? <kompas-footer-products branding={ branding }  /> : '' }
-        { this.isShowDefault ? <kompas-footer-default menus={ menus } /> : '' }
+        { this.isShowDefault ? <kompas-footer-default menus={ menus } is-light-mode={this.isLightMode}/> : '' }
       </footer>
     )
   }

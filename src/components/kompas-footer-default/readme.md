@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property             | Attribute | Description                                                 | Type  | Default     |
-| -------------------- | --------- | ----------------------------------------------------------- | ----- | ----------- |
-| `menus` _(required)_ | `menus`   | Rubrik/kategori artikel, pisahkan tiap item dengan koma (,) | `any` | `undefined` |
+| Property             | Attribute       | Description                                                 | Type      | Default     |
+| -------------------- | --------------- | ----------------------------------------------------------- | --------- | ----------- |
+| `isLightMode`        | `is-light-mode` | Flag untuk mengubah tema warna footer                       | `boolean` | `false`     |
+| `menus` _(required)_ | `menus`         | Rubrik/kategori artikel, pisahkan tiap item dengan koma (,) | `any`     | `undefined` |
 
 
 ## Dependencies

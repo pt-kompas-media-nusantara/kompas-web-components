@@ -82,9 +82,13 @@ export default {
 
 ## Properties
 
-| Property         | Attribute         | Description                         | Type     | Default                                          |
-| ---------------- | ----------------- | ----------------------------------- | -------- | ------------------------------------------------ |
-| `wordingMessage` | `wording-message` | wording untuk chat whatsapp & email | `string` | `'Halo saya perlu informasi mengenai kompas.id'` |
+| Property         | Attribute         | Description                                     | Type      | Default                                          |
+| ---------------- | ----------------- | ----------------------------------------------- | --------- | ------------------------------------------------ |
+| `isLightMode`    | `is-light-mode`   | Flag untuk mengubah tema warna footer          | `boolean` | `false`                                          |
+| `isShowDefault`  | `is-show-default` | Flag untuk memunculkan sesi default pada footer | `boolean` | `true`                                           |
+| `isShowProduct`  | `is-show-product` | Flag untuk memunculkan sesi product pada footer | `boolean` | `true`                                           |
+| `isShowSupport`  | `is-show-support` | Flag untuk memunculkan sesi support pada footer | `boolean` | `true`                                           |
+| `wordingMessage` | `wording-message` | wording untuk chat whatsapp & email             | `string`  | `'Halo saya perlu informasi mengenai kompas.id'` |
 
 
 ## Dependencies

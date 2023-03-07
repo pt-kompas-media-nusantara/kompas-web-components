@@ -79,6 +79,10 @@ export namespace Components {
     }
     interface KompasFooter {
         /**
+          * Flag untuk mengubah tema warna footer
+         */
+        "isLightMode": boolean;
+        /**
           * Flag untuk memunculkan sesi default pada footer
          */
         "isShowDefault": boolean;
@@ -97,7 +101,7 @@ export namespace Components {
     }
     interface KompasFooterDefault {
         /**
-          * Flag untuk mengubah warna header
+          * Flag untuk mengubah tema warna footer
          */
         "isLightMode": boolean;
         /**
@@ -452,6 +456,10 @@ declare namespace LocalJSX {
     }
     interface KompasFooter {
         /**
+          * Flag untuk mengubah tema warna footer
+         */
+        "isLightMode"?: boolean;
+        /**
           * Flag untuk memunculkan sesi default pada footer
          */
         "isShowDefault"?: boolean;
@@ -470,7 +478,7 @@ declare namespace LocalJSX {
     }
     interface KompasFooterDefault {
         /**
-          * Flag untuk mengubah warna header
+          * Flag untuk mengubah tema warna footer
          */
         "isLightMode"?: boolean;
         /**
