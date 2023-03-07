@@ -79,11 +79,27 @@ export namespace Components {
     }
     interface KompasFooter {
         /**
+          * Flag untuk memunculkan sesi default pada footer
+         */
+        "isShowDefault": boolean;
+        /**
+          * Flag untuk memunculkan sesi product pada footer
+         */
+        "isShowProduct": boolean;
+        /**
+          * Flag untuk memunculkan sesi support pada footer
+         */
+        "isShowSupport": boolean;
+        /**
           * wording untuk chat whatsapp & email
          */
         "wordingMessage": string;
     }
     interface KompasFooterDefault {
+        /**
+          * Flag untuk mengubah warna header
+         */
+        "isLightMode": boolean;
         /**
           * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
          */
@@ -436,11 +452,27 @@ declare namespace LocalJSX {
     }
     interface KompasFooter {
         /**
+          * Flag untuk memunculkan sesi default pada footer
+         */
+        "isShowDefault"?: boolean;
+        /**
+          * Flag untuk memunculkan sesi product pada footer
+         */
+        "isShowProduct"?: boolean;
+        /**
+          * Flag untuk memunculkan sesi support pada footer
+         */
+        "isShowSupport"?: boolean;
+        /**
           * wording untuk chat whatsapp & email
          */
         "wordingMessage"?: string;
     }
     interface KompasFooterDefault {
+        /**
+          * Flag untuk mengubah warna header
+         */
+        "isLightMode"?: boolean;
         /**
           * Rubrik/kategori artikel, pisahkan tiap item dengan koma (,)
          */
