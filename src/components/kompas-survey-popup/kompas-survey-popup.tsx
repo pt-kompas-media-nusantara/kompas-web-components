@@ -20,7 +20,7 @@ export class KompasSurveyPopUp {
 
   private openSurvey = (): void => {
     window.open(
-      `${this.surveyUrl}?next=${window.location.href}`,
+      `${this.surveyUrl}&next=${window.location.href}`,
       '_blank'
     )
   }
