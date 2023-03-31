@@ -114,8 +114,8 @@ export class KompasPaywallBody {
 
   private topNavigator = (): void => (
     <div class="flex lg:hidden items-center w-full pb-4 ">
-      <div class=" icon-lg icon-white mr-3.5 md:mr-5 " innerHTML={arrowLeft}></div>
-      <button onClick={() => this.redirectToPrevUrl()} class="text-xs md:text-lg text-white">
+      <button onClick={() => this.redirectToPrevUrl()} class="text-xs md:text-lg text-white flex flex-row">
+      <div class="icon-lg icon-white mr-3.5 md:mr-5 pt-0.5" innerHTML={arrowLeft}></div>
         Kembali
       </button>
     </div>
@@ -319,9 +319,9 @@ export class KompasPaywallBody {
     return 'Rp ' + roundedValue.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
   private redirectToRegister = (): void => {
-    const loginHost: string = 'https://account.kompas.id/login'
+    const loginHost: string = 'https://account.kompas.id/register'
     const nextParams: string = encodeURIComponent(window.location.href)
-    const directUrlRegister: string = `${loginHost}?next=${nextParams}`
+    const directUrlRegister: string = `${loginHost}?next=${nextParams}?status=sukses_login&status_login=login`
     window.location.href = directUrlRegister
   }
   private redirectToHelpdesk = (): void => {
