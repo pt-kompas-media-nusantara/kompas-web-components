@@ -10,6 +10,22 @@ import { deviceType } from '../../utils/deviceType'
 export class KompasPaywallVideo {
 
   @Prop() isLogin: boolean = false
+  @Prop() paywall_location: string = ''
+  @Prop() paywall_subscription_package: string = ''
+  @Prop() paywall_subscription_id: string = ''
+  @Prop() paywall_subscription_price: number = 0
+  @Prop() paywall_position: number = 0
+  @Prop() tracker_page_type: string = ''
+  @Prop() tracker_content_id: string = ''
+  @Prop() tracker_content_title: string = ''
+  @Prop() tracker_content_category: string = ''
+  @Prop() tracker_content_type: string = ''
+  @Prop() tracker_user_type: string = ''
+  @Prop() tracker_subscription_status: string = ''
+  @Prop() tracker_page_domain: string = ''
+  @Prop() tracker_metered_wall_type: string = ''
+  @Prop() tracker_metered_wall_balance: number = 0
+  @Prop() user_type: string = ''
   @State() loginUrl: string = 'https://account.kompas.id/login'
   @State() subscriptionUrl: string = 'https://www.kompas.id/berlangganan'
   @State() registerUrl: string = 'https://account.kompas.id/register'
@@ -58,9 +74,18 @@ export class KompasPaywallVideo {
 
   private sendDataLayeronBerlangganan = (): void => {
     window.dataLayer.push({
-      event: 'productOfferImpression',
+      event: 'paywall_viewed',
       isLogin: this.isLogin,
-      interface: deviceType()
+      paywall_location: this.paywall_location,
+      paywall_subscription_package: this.paywall_subscription_package,
+      paywall_subscription_id: this.paywall_subscription_id,
+      paywall_subscription_price: this.paywall_subscription_price,
+      paywall_position: this.paywall_position,
+      tracker_user_type: this.tracker_user_type,
+      tracker_subscription_status: this.tracker_subscription_status,
+      tracker_page_domain: this.tracker_page_domain,
+      tracker_metered_wall_type: this.tracker_metered_wall_type,
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance
     })
   }
 

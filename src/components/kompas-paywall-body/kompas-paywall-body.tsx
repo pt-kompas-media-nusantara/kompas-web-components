@@ -19,6 +19,21 @@ export class KompasPaywallBody {
   @Prop() subscriptionStatus: string = ''
   @Prop() countdownArticle: number = 0
   @Prop() swgEnable: boolean = false
+  @Prop() paywall_location: string = ''
+  @Prop() paywall_subscription_package: number = 0
+  @Prop() paywall_subscription_id: number = 0
+  @Prop() paywall_subscription_price: number = 0
+  @Prop() paywall_position: number = 0
+  @Prop() tracker_page_type: string = ''
+  @Prop() tracker_content_id: string = ''
+  @Prop() tracker_content_title: string = ''
+  @Prop() tracker_content_category: string = ''
+  @Prop() tracker_content_type: string = ''
+  @Prop() tracker_user_type: string = ''
+  @Prop() tracker_subscription_status: string = ''
+  @Prop() tracker_page_domain: string = ''
+  @Prop() tracker_metered_wall_type: string = ''
+  @Prop() tracker_metered_wall_balance: number = 0
   @State() isExtensionsOpened: boolean = false
   @State() kompasAkunHost: string = 'https://akun.kompas.id'
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
@@ -195,6 +210,7 @@ export class KompasPaywallBody {
       <div class="border-b-2 border-blue-200 w-1/4 my-4 flex justify-center" />
     </div>
   )
+
   get redirectToLogin() {
     return `${this.kompasLoginHost}?next=${encodeURIComponent(this.selfHost + location.pathname)}`
   }
@@ -356,26 +372,22 @@ export class KompasPaywallBody {
 
   private sendDataLayeronPaywallBody = (): void => {
     window.dataLayer.push({
-      event: 'productOfferImpression',
-      ecommerce: {
-        currencyCode: 'IDR',
-        impressions: [
-          {
-            name: 'cash - paywall - kdp 12 Bulan - reguler',
-            id: '9802032',
-            price: 360000,
-            list: this.listDataLayer,
-            position: 1
-          },
-          {
-            name: 'cash - paywall - kdp 1 Bulan - reguler',
-            id: '9802035',
-            price: 50000,
-            list: this.listDataLayer,
-            position: 2
-          }
-        ]
-      }
+      event: 'paywall_viewed',
+      paywall_location: this.paywall_location,
+      paywall_subscription_package: this.paywall_subscription_package,
+      paywall_subscription_id: this.paywall_subscription_id,
+      paywall_subscription_price: this.paywall_subscription_price,
+      paywall_position: this.paywall_position,
+      tracker_page_type: this.tracker_page_type,
+      tracker_content_id: this.tracker_content_id,
+      tracker_content_title: this.tracker_content_title,
+      tracker_content_category: this.tracker_content_category,
+      tracker_content_type: this.tracker_content_type,
+      tracker_user_type: this.tracker_user_type,
+      tracker_subscription_status: this.tracker_subscription_status,
+      tracker_page_domain: this.tracker_page_domain,
+      tracker_metered_wall_type: this.tracker_metered_wall_type,
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance
     })
   }
 
