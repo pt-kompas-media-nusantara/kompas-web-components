@@ -75,7 +75,6 @@ export class KompasPaywallVideo {
   private sendDataLayeronBerlangganan = (): void => {
     window.dataLayer.push({
       event: 'paywall_viewed',
-      isLogin: this.isLogin,
       paywall_location: this.paywall_location,
       paywall_subscription_package: this.paywall_subscription_package,
       paywall_subscription_id: this.paywall_subscription_id,
