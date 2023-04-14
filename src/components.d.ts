@@ -206,7 +206,7 @@ export namespace Components {
         "paywall_location": string;
         "paywall_position": number;
         "paywall_subscription_id": number;
-        "paywall_subscription_package": number;
+        "paywall_subscription_package": string;
         "paywall_subscription_price": number;
         "subscriptionStatus": string;
         "swgEnable": boolean;
@@ -215,6 +215,7 @@ export namespace Components {
         "tracker_content_id": string;
         "tracker_content_title": string;
         "tracker_content_type": string;
+        "tracker_epaper_edition": string;
         "tracker_metered_wall_balance": number;
         "tracker_metered_wall_type": string;
         "tracker_page_domain": string;
@@ -234,7 +235,7 @@ export namespace Components {
         "paywall_location": string;
         "paywall_position": number;
         "paywall_subscription_id": number;
-        "paywall_subscription_package": number;
+        "paywall_subscription_package": string;
         "paywall_subscription_price": number;
         "slug": string;
         "subscriptionStatus": string;
@@ -243,6 +244,7 @@ export namespace Components {
         "tracker_content_id": string;
         "tracker_content_title": string;
         "tracker_content_type": string;
+        "tracker_epaper_edition": string;
         "tracker_metered_wall_balance": number;
         "tracker_metered_wall_type": string;
         "tracker_page_domain": string;
@@ -609,7 +611,7 @@ declare namespace LocalJSX {
         "paywall_location"?: string;
         "paywall_position"?: number;
         "paywall_subscription_id"?: number;
-        "paywall_subscription_package"?: number;
+        "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
         "subscriptionStatus"?: string;
         "swgEnable"?: boolean;
@@ -618,6 +620,7 @@ declare namespace LocalJSX {
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
         "tracker_content_type"?: string;
+        "tracker_epaper_edition"?: string;
         "tracker_metered_wall_balance"?: number;
         "tracker_metered_wall_type"?: string;
         "tracker_page_domain"?: string;
@@ -637,7 +640,7 @@ declare namespace LocalJSX {
         "paywall_location"?: string;
         "paywall_position"?: number;
         "paywall_subscription_id"?: number;
-        "paywall_subscription_package"?: number;
+        "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
         "slug"?: string;
         "subscriptionStatus"?: string;
@@ -646,6 +649,7 @@ declare namespace LocalJSX {
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
         "tracker_content_type"?: string;
+        "tracker_epaper_edition"?: string;
         "tracker_metered_wall_balance"?: number;
         "tracker_metered_wall_type"?: string;
         "tracker_page_domain"?: string;
