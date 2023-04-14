@@ -372,6 +372,22 @@ export class KompasPaywallBody {
   }
 
   private sendDataLayeronPaywallBody = (): void => {
+    if (this.type === 'epaper') {
+    window.dataLayer.push({
+      event: 'paywall_viewed',
+      paywall_location: this.paywall_location,
+      paywall_subscription_package: this.paywall_subscription_package,
+      paywall_subscription_id: this.paywall_subscription_id,
+      paywall_subscription_price: this.paywall_subscription_price,
+      paywall_position: this.paywall_position,
+      tracker_epaper_edition: this.tracker_epaper_edition,
+      tracker_user_type: this.tracker_user_type,
+      tracker_subscription_status: this.tracker_subscription_status,
+      tracker_page_domain: this.tracker_page_domain,
+      tracker_metered_wall_type: this.tracker_metered_wall_type,
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance
+    })
+  } else {
     window.dataLayer.push({
       event: 'paywall_viewed',
       paywall_location: this.paywall_location,
@@ -388,9 +404,9 @@ export class KompasPaywallBody {
       tracker_subscription_status: this.tracker_subscription_status,
       tracker_page_domain: this.tracker_page_domain,
       tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance,
-      tracker_epaper_edition: this.tracker_epaper_edition
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance
     })
+  }
   }
 
   private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: number): void => {
