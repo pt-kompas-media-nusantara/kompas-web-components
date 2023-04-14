@@ -203,9 +203,24 @@ export namespace Components {
         "countdownArticle": number;
         "isLogin": boolean;
         "isWithHeader": boolean;
+        "paywall_location": string;
+        "paywall_position": number;
+        "paywall_subscription_id": number;
+        "paywall_subscription_package": number;
+        "paywall_subscription_price": number;
         "subscriptionStatus": string;
         "swgEnable": boolean;
         "textHeader": string;
+        "tracker_content_category": string;
+        "tracker_content_id": string;
+        "tracker_content_title": string;
+        "tracker_content_type": string;
+        "tracker_metered_wall_balance": number;
+        "tracker_metered_wall_type": string;
+        "tracker_page_domain": string;
+        "tracker_page_type": string;
+        "tracker_subscription_status": string;
+        "tracker_user_type": string;
         "type": 'epaper' | 'reguler';
         "userGuid": string;
     }
@@ -216,9 +231,24 @@ export namespace Components {
         "countdownArticle": number;
         "isLogin": boolean;
         "paywallData": PaywallProduct | undefined;
+        "paywall_location": string;
+        "paywall_position": number;
+        "paywall_subscription_id": number;
+        "paywall_subscription_package": number;
+        "paywall_subscription_price": number;
         "slug": string;
         "subscriptionStatus": string;
         "swgEnable": boolean;
+        "tracker_content_category": string;
+        "tracker_content_id": string;
+        "tracker_content_title": string;
+        "tracker_content_type": string;
+        "tracker_metered_wall_balance": number;
+        "tracker_metered_wall_type": string;
+        "tracker_page_domain": string;
+        "tracker_page_type": string;
+        "tracker_subscription_status": string;
+        "tracker_user_type": string;
         "type": 'epaper' | 'reguler';
         "userGuid": string;
     }
@@ -227,6 +257,22 @@ export namespace Components {
     }
     interface KompasPaywallVideo {
         "isLogin": boolean;
+        "paywall_location": string;
+        "paywall_position": number;
+        "paywall_subscription_id": string;
+        "paywall_subscription_package": string;
+        "paywall_subscription_price": number;
+        "tracker_content_category": string;
+        "tracker_content_id": string;
+        "tracker_content_title": string;
+        "tracker_content_type": string;
+        "tracker_metered_wall_balance": number;
+        "tracker_metered_wall_type": string;
+        "tracker_page_domain": string;
+        "tracker_page_type": string;
+        "tracker_subscription_status": string;
+        "tracker_user_type": string;
+        "user_type": string;
     }
     interface KompasSurveyPopup {
         "isShowPopUp": boolean;
@@ -560,9 +606,24 @@ declare namespace LocalJSX {
         "countdownArticle"?: number;
         "isLogin"?: boolean;
         "isWithHeader"?: boolean;
+        "paywall_location"?: string;
+        "paywall_position"?: number;
+        "paywall_subscription_id"?: number;
+        "paywall_subscription_package"?: number;
+        "paywall_subscription_price"?: number;
         "subscriptionStatus"?: string;
         "swgEnable"?: boolean;
         "textHeader"?: string;
+        "tracker_content_category"?: string;
+        "tracker_content_id"?: string;
+        "tracker_content_title"?: string;
+        "tracker_content_type"?: string;
+        "tracker_metered_wall_balance"?: number;
+        "tracker_metered_wall_type"?: string;
+        "tracker_page_domain"?: string;
+        "tracker_page_type"?: string;
+        "tracker_subscription_status"?: string;
+        "tracker_user_type"?: string;
         "type"?: 'epaper' | 'reguler';
         "userGuid"?: string;
     }
@@ -573,9 +634,24 @@ declare namespace LocalJSX {
         "countdownArticle"?: number;
         "isLogin"?: boolean;
         "paywallData"?: PaywallProduct | undefined;
+        "paywall_location"?: string;
+        "paywall_position"?: number;
+        "paywall_subscription_id"?: number;
+        "paywall_subscription_package"?: number;
+        "paywall_subscription_price"?: number;
         "slug"?: string;
         "subscriptionStatus"?: string;
         "swgEnable"?: boolean;
+        "tracker_content_category"?: string;
+        "tracker_content_id"?: string;
+        "tracker_content_title"?: string;
+        "tracker_content_type"?: string;
+        "tracker_metered_wall_balance"?: number;
+        "tracker_metered_wall_type"?: string;
+        "tracker_page_domain"?: string;
+        "tracker_page_type"?: string;
+        "tracker_subscription_status"?: string;
+        "tracker_user_type"?: string;
         "type"?: 'epaper' | 'reguler';
         "userGuid"?: string;
     }
@@ -584,6 +660,22 @@ declare namespace LocalJSX {
     }
     interface KompasPaywallVideo {
         "isLogin"?: boolean;
+        "paywall_location"?: string;
+        "paywall_position"?: number;
+        "paywall_subscription_id"?: string;
+        "paywall_subscription_package"?: string;
+        "paywall_subscription_price"?: number;
+        "tracker_content_category"?: string;
+        "tracker_content_id"?: string;
+        "tracker_content_title"?: string;
+        "tracker_content_type"?: string;
+        "tracker_metered_wall_balance"?: number;
+        "tracker_metered_wall_type"?: string;
+        "tracker_page_domain"?: string;
+        "tracker_page_type"?: string;
+        "tracker_subscription_status"?: string;
+        "tracker_user_type"?: string;
+        "user_type"?: string;
     }
     interface KompasSurveyPopup {
         "isShowPopUp"?: boolean;

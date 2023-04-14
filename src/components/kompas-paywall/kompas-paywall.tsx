@@ -18,7 +18,21 @@ export class KompasPaywall {
   @Prop() userGuid: string = ''
   @Prop() subscriptionStatus: string = ''
   @Prop() swgEnable: boolean = false
-
+  @Prop() paywall_location: string = ''
+  @Prop() paywall_subscription_package: number = 0
+  @Prop() paywall_subscription_id: number = 0
+  @Prop() paywall_subscription_price: number = 0
+  @Prop() paywall_position: number = 0
+  @Prop() tracker_page_type: string = ''
+  @Prop() tracker_content_id: string = ''
+  @Prop() tracker_content_title: string = ''
+  @Prop() tracker_content_category: string = ''
+  @Prop() tracker_content_type: string = ''
+  @Prop() tracker_user_type: string = ''
+  @Prop() tracker_subscription_status: string = ''
+  @Prop() tracker_page_domain: string = ''
+  @Prop() tracker_metered_wall_type: string = ''
+  @Prop() tracker_metered_wall_balance: number = 0
 
   async componentWillRender() {
     try {
@@ -125,7 +139,7 @@ export class KompasPaywall {
   )
 
   private renderEpaperPaywallSection = (): void => (
-    <kompas-paywall-body swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
+    <kompas-paywall-body paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_category={this.tracker_content_category} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} tracker_content_type={this.tracker_content_type} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
   )
 
   private renderRegularPaywallSection = (): void => {
@@ -137,7 +151,7 @@ export class KompasPaywall {
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
               <kompas-paywall-information-header text={this.textHeader || defaultHeaderText}></kompas-paywall-information-header>
-              <kompas-paywall-body swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
+              <kompas-paywall-body paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_category={this.tracker_content_category} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
             </div>
           </div>
         </div>
@@ -149,7 +163,7 @@ export class KompasPaywall {
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
               <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register}></kompas-paywall-banner-registration>
-              <kompas-paywall-body swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
+              <kompas-paywall-body paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_category={this.tracker_content_category} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
             </div>
           </div>
         </div>
