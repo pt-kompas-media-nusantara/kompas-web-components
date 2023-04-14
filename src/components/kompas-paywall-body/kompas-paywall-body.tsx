@@ -20,7 +20,7 @@ export class KompasPaywallBody {
   @Prop() countdownArticle: number = 0
   @Prop() swgEnable: boolean = false
   @Prop() paywall_location: string = ''
-  @Prop() paywall_subscription_package: number = 0
+  @Prop() paywall_subscription_package: string = ''
   @Prop() paywall_subscription_id: number = 0
   @Prop() paywall_subscription_price: number = 0
   @Prop() paywall_position: number = 0
@@ -34,6 +34,7 @@ export class KompasPaywallBody {
   @Prop() tracker_page_domain: string = ''
   @Prop() tracker_metered_wall_type: string = ''
   @Prop() tracker_metered_wall_balance: number = 0
+  @Prop() tracker_epaper_edition: string = ''
   @State() isExtensionsOpened: boolean = false
   @State() kompasAkunHost: string = 'https://akun.kompas.id'
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
@@ -387,7 +388,8 @@ export class KompasPaywallBody {
       tracker_subscription_status: this.tracker_subscription_status,
       tracker_page_domain: this.tracker_page_domain,
       tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance,
+      tracker_epaper_edition: this.tracker_epaper_edition
     })
   }
 
