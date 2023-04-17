@@ -12,6 +12,21 @@ export namespace Components {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle": number;
+        "paywall_location": string;
+        "paywall_position": number;
+        "paywall_subscription_id": string;
+        "paywall_subscription_package": string;
+        "paywall_subscription_price": number;
+        "tracker_content_category": string;
+        "tracker_content_id": string;
+        "tracker_content_title": string;
+        "tracker_content_type": string;
+        "tracker_metered_wall_balance": number;
+        "tracker_metered_wall_type": string;
+        "tracker_page_domain": string;
+        "tracker_page_type": string;
+        "tracker_subscription_status": string;
+        "tracker_user_type": string;
     }
     interface KidPaywall {
         /**
@@ -417,6 +432,21 @@ declare namespace LocalJSX {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle"?: number;
+        "paywall_location"?: string;
+        "paywall_position"?: number;
+        "paywall_subscription_id"?: string;
+        "paywall_subscription_package"?: string;
+        "paywall_subscription_price"?: number;
+        "tracker_content_category"?: string;
+        "tracker_content_id"?: string;
+        "tracker_content_title"?: string;
+        "tracker_content_type"?: string;
+        "tracker_metered_wall_balance"?: number;
+        "tracker_metered_wall_type"?: string;
+        "tracker_page_domain"?: string;
+        "tracker_page_type"?: string;
+        "tracker_subscription_status"?: string;
+        "tracker_user_type"?: string;
     }
     interface KidPaywall {
         /**
