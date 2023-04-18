@@ -6,8 +6,28 @@ import { deviceType } from '../../utils/deviceType'
   styleUrl: 'kompas-paywall-video.css',
   shadow: true,
 })
-
 export class KompasPaywallVideo {
+  /**
+   * Props
+   */
+  /**
+   * prop isLogin untuk menghandle apakah user sudah login atau belum
+   * prop paywall_location = The location where user encounter the paywall
+   * prop paywall_subscription_package = The name of the subscription package viewed by user
+   * prop paywall_subscription_id = The ID of the subscription package viewed by user
+   * prop paywall_subscription_price = The price of the subscriprtion package viewed by user
+   * prop paywall_position = The position of ther subscription package viewed by user
+   * prop tracker_page_type = Type of the page
+   * prop tracker_content_id = ID of article (slug)
+   * prop tracker_content_type = Whether it's free article or paid article
+   * prop tracker_content_title = The title of article
+   * prop tracker_content_category = The category of the content
+   * prop tracker_user_type = Type of user based on their subscription
+   * prop tracker_subscription_status = Status of their subscription
+   * prop tracker_page_domain = Page Domain
+   * prop tracker_metered_wall_type = The type of Metered Wall
+   * prop tracker_metered_wall_balance = The balance of their metered wall
+  */
 
   @Prop() isLogin: boolean = false
   @Prop() paywall_location: string = ''
@@ -46,7 +66,10 @@ export class KompasPaywallVideo {
         </button>
       </div>
       <p class="text-center text-sm leading-4 text-white mt-6 max-w-xs md:max-w-none">
-        Dapatkan 5 konten premium gratis tiap bulan! <a onClick={() => this.redirectToLogin('Coba Sekarang')} target="_blank" class="text-blue-300 font-bold cursor-pointer">Coba Sekarang</a>
+        Dapatkan 5 konten premium gratis tiap bulan!{' '}
+        <a onClick={() => this.redirectToLogin('Coba Sekarang')} target="_blank" class="text-blue-300 font-bold cursor-pointer">
+          Coba Sekarang
+        </a>
       </p>
     </Fragment>
   )
@@ -68,7 +91,7 @@ export class KompasPaywallVideo {
   private sendDataLayeronNonLogin = (): void => {
     window.dataLayer.push({
       event: 'registrationOfferimppression',
-      interface: deviceType()
+      interface: deviceType(),
     })
   }
 
@@ -84,7 +107,7 @@ export class KompasPaywallVideo {
       tracker_subscription_status: this.tracker_subscription_status,
       tracker_page_domain: this.tracker_page_domain,
       tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance,
     })
   }
 
@@ -92,7 +115,7 @@ export class KompasPaywallVideo {
     window.dataLayer.push({
       event: 'registrationOfferClick',
       interface: deviceType(),
-      buttonClicked: triggerClick
+      buttonClicked: triggerClick,
     })
   }
 
@@ -113,7 +136,7 @@ export class KompasPaywallVideo {
       tracker_subscription_status: this.tracker_subscription_status,
       tracker_page_domain: this.tracker_page_domain,
       tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance,
     })
   }
 
