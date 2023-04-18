@@ -403,23 +403,22 @@ export class KompasPaywallBody {
 
   private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: number): void => {
     window.dataLayer.push({
-      event: 'productClick',
-      ecommerce: {
-        click: {
-          actionField: {
-            list: 'Paywall'
-          },        
-        products: [
-          {
-            name: `cash - paywall - kdp ${name} - reguler`,
-            id: `${id}`,
-            price: `${price}`,
-            list: this.listDataLayer,
-            position: `${position}`
-          }
-        ]
-      }
-    }
+      event: 'subscribe_button_clicked',
+      paywall_location: this.paywall_location,
+      paywall_subscription_package: name,
+      paywall_subscription_id: id,
+      paywall_subscription_price: price,
+      paywall_position: position,
+      tracker_page_type: this.tracker_page_type,
+      tracker_content_id: this.tracker_content_id,
+      tracker_content_title: this.tracker_content_title,
+      tracker_content_category: this.tracker_content_category,
+      tracker_content_type: this.tracker_content_type,
+      tracker_user_type: this.tracker_user_type,
+      tracker_subscription_status: this.tracker_subscription_status,
+      tracker_page_domain: this.tracker_page_domain,
+      tracker_metered_wall_type: this.tracker_metered_wall_type,
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance
     })
   }
 

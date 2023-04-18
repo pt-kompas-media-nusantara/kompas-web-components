@@ -98,9 +98,22 @@ export class KompasPaywallVideo {
 
   private sendDataLayeronButtonBerlangganan = (): void => {
     window.dataLayer.push({
-      event: 'productClick',
-      isLogin: this.isLogin,
-      interface: deviceType()
+      event: 'subscribe_button_clicked',
+      paywall_location: this.paywall_location,
+      paywall_subscription_package: this.paywall_subscription_package,
+      paywall_subscription_id: this.paywall_subscription_id,
+      paywall_subscription_price: this.paywall_subscription_price,
+      paywall_position: this.paywall_position,
+      tracker_page_type: this.tracker_page_type,
+      tracker_content_id: this.tracker_content_id,
+      tracker_content_title: this.tracker_content_title,
+      tracker_content_category: this.tracker_content_category,
+      tracker_content_type: this.tracker_content_type,
+      tracker_user_type: this.tracker_user_type,
+      tracker_subscription_status: this.tracker_subscription_status,
+      tracker_page_domain: this.tracker_page_domain,
+      tracker_metered_wall_type: this.tracker_metered_wall_type,
+      tracker_metered_wall_balance: this.tracker_metered_wall_balance
     })
   }
 
