@@ -403,62 +403,56 @@ export class KompasPaywallBody {
 
   private sendDataLayeronPaywallBody = (): void => {
     const gtmParams: Record<string, any> = {
-      paywall_location: '',
-      paywall_subscription_package: this.paywall_subscription_package,
-      paywall_subscription_id: this.paywall_subscription_id,
-      paywall_subscription_price: this.paywall_subscription_price,
-      paywall_position: this.paywall_position,
-      tracker_user_type: this.tracker_user_type,
-      tracker_subscription_status: this.tracker_subscription_status,
-      tracker_page_domain: this.tracker_page_domain,
-      tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance
-    }
-
-    const gtmParams2: Record<string, any> = {
-      paywall_location: '',
-      paywall_subscription_package: this.paywall_subscription_package,
-      paywall_subscription_id: this.paywall_subscription_id,
-      paywall_subscription_price: this.paywall_subscription_price,
-      paywall_position: this.paywall_position,
-      tracker_user_type: this.tracker_user_type,
-      tracker_subscription_status: this.tracker_subscription_status,
-      tracker_page_domain: this.tracker_page_domain,
-      tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance
-    }
-  
-    if (this.type === 'epaper') {
-      gtmParams['tracker_epaper_edition'] = this.tracker_epaper_edition
-    } else {
-      gtmParams['tracker_page_type'] = this.tracker_page_type
-      gtmParams['tracker_content_id'] = this.tracker_content_id
-      gtmParams['tracker_content_title'] = this.tracker_content_title
-      gtmParams['tracker_content_category'] = this.tracker_content_category
-      gtmParams['tracker_content_type'] = this.tracker_content_type
-    }
-
-    gtmParams.paywall_location = "Epaper Detail Page" || this.paywall_location
-    gtmParams.paywall_subscription_package = "12" || this.paywall_subscription_package
-    gtmParams.paywall_subscription_id = "9802032" || this.paywall_subscription_id
-    gtmParams.paywall_subscription_price = 360000 || this.paywall_subscription_price
-    gtmParams.paywall_position = 1 || this.paywall_position
-
-    gtmParams2.paywall_location = "Epaper Detail Page" || this.paywall_location
-    gtmParams2.paywall_subscription_package = "1" || this.paywall_subscription_package
-    gtmParams2.paywall_subscription_id = "9802035" || this.paywall_subscription_id
-    gtmParams2.paywall_subscription_price = 50000 || this.paywall_subscription_price
-    gtmParams2.paywall_position = 2 || this.paywall_position
-
-  
-    window.dataLayer.push({
       event: 'paywall_viewed',
       impressions: [
-        {...gtmParams},
-        {...gtmParams2}
+        {
+          paywall_location: 'Epaper Detail Page',
+          paywall_subscription_package: '12',
+          paywall_subscription_id: '9802032',
+          paywall_subscription_price: 360000,
+          paywall_position: 1,
+          tracker_user_type: this.tracker_user_type,
+          tracker_subscription_status: this.tracker_subscription_status,
+          tracker_page_domain: this.tracker_page_domain,
+          tracker_metered_wall_type: this.tracker_metered_wall_type,
+          tracker_metered_wall_balance: this.tracker_metered_wall_balance
+        },
+        {
+          paywall_location: 'Epaper Detail Page',
+          paywall_subscription_package: '1',
+          paywall_subscription_id: '9802035',
+          paywall_subscription_price: 50000,
+          paywall_position: 2,
+          tracker_user_type: this.tracker_user_type,
+          tracker_subscription_status: this.tracker_subscription_status,
+          tracker_page_domain: this.tracker_page_domain,
+          tracker_metered_wall_type: this.tracker_metered_wall_type,
+          tracker_metered_wall_balance: this.tracker_metered_wall_balance
+        }
       ]
-    })
-  }
+    };
+  
+    if (this.type === 'epaper') {
+      gtmParams.impressions[0]['tracker_epaper_edition'] = this.tracker_epaper_edition;
+      gtmParams.impressions[1]['tracker_epaper_edition'] = this.tracker_epaper_edition;
+    } else {
+      gtmParams.impressions[0]['tracker_page_type'] = this.tracker_page_type;
+      gtmParams.impressions[0]['tracker_content_id'] = this.tracker_content_id;
+      gtmParams.impressions[0]['tracker_content_title'] = this.tracker_content_title;
+      gtmParams.impressions[0]['tracker_content_category'] = this.tracker_content_category;
+      gtmParams.impressions[0]['tracker_content_type'] = this.tracker_content_type;
+  
+      gtmParams.impressions[1]['tracker_page_type'] = this.tracker_page_type;
+      gtmParams.impressions[1]['tracker_content_id'] = this.tracker_content_id;
+      gtmParams.impressions[1]['tracker_content_title'] = this.tracker_content_title;
+      gtmParams.impressions[1]['tracker_content_category'] = this.tracker_content_category;
+      gtmParams.impressions[1]['tracker_content_type'] = this.tracker_content_type;
+    }
+  
+    window.dataLayer.push(gtmParams);
+  };
+  
+
   private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: number): void => {
     window.dataLayer.push({
       event: 'subscribe_button_clicked',
