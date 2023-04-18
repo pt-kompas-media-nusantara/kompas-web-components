@@ -10,6 +10,36 @@ import { deviceType } from '../../utils/deviceType'
   shadow: true,
 })
 
+/**
+  * Props
+*/
+/**
+  * prop slug untuk menghandle slug
+  * prop isLogin untuk menghandle apakah user sudah login atau belum
+  * prop type untuk menghandle tipe epaper
+  * prop paywallData untuk menghandle data paywall
+  * prop userGuid untuk menghandle user Guid
+  * prop subscriptionStatus untuk menghandle status subscription user
+  * prop countdownArticle untuk menghandle count artikel
+  * prop swgEnable untuk menghandle swg apakah di aktifkan atau tidak
+  * prop paywall_location = The location where user encounter the paywall
+  * prop paywall_subscription_package = The name of the subscription package viewed by user
+  * prop paywall_subscription_id = The ID of the subscription package viewed by user
+  * prop paywall_subscription_price = The price of the subscriprtion package viewed by user
+  * prop paywall_position = The position of ther subscription package viewed by user
+  * prop tracker_page_type = Type of the page
+  * prop tracker_content_id = ID of article (slug)
+  * prop tracker_content_type = Whether it's free article or paid article
+  * prop tracker_content_title = The title of article
+  * prop tracker_content_category = The category of the content
+  * prop tracker_user_type = Type of user based on their subscription
+  * prop tracker_subscription_status = Status of their subscription
+  * prop tracker_page_domain = Page Domain
+  * prop tracker_metered_wall_type = The type of Metered Wall
+  * prop tracker_metered_wall_balance = The balance of their metered wall
+  * prop tracker_metered_wall_balance = The edition of epaper viewed by user
+*/
+
 export class KompasPaywallBody {
   @Prop() slug: string = ""
   @Prop() isLogin: boolean = false
