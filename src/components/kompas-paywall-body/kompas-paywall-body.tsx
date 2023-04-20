@@ -94,7 +94,7 @@ export class KompasPaywallBody {
             </p>
         </div>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, '12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-3" >
+      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-3" >
         <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
           Langganan
         </h6>
@@ -117,7 +117,7 @@ export class KompasPaywallBody {
           / {product.periode}
         </h6>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, '1', '9802035', 50000, 2)} class="h-auto bg-white border border-green-500 rounded" >
+      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1', '9802035', 50000, 2)} class="h-auto bg-white border border-green-500 rounded" >
         <h6 class="text-xs md:text-base text-green-500 font-bold py-2 px-4">
           Langganan
         </h6>
@@ -465,6 +465,7 @@ export class KompasPaywallBody {
       tracker_content_id: this.tracker_content_id,
       tracker_content_title: this.tracker_content_title,
       tracker_content_category: this.tracker_content_category,
+      tracker_epaper_edition: this.tracker_epaper_edition,
       tracker_content_type: this.tracker_content_type,
       tracker_user_type: this.tracker_user_type,
       tracker_subscription_status: this.tracker_subscription_status,
