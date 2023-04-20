@@ -51,8 +51,6 @@ export class KompasPaywallBody {
   @Prop() swgEnable: boolean = false
   @Prop() paywall_location: string = ''
   @Prop() paywall_subscription_package: string = ''
-  @Prop() paywall_subscription_package_annual: string = ''
-  @Prop() paywall_subscription_package_monthly: string = ''
   @Prop() paywall_subscription_id: number = 0
   @Prop() paywall_subscription_price: number = 0
   @Prop() paywall_position: number = 0
@@ -409,7 +407,7 @@ export class KompasPaywallBody {
       impressions: [
         {
           paywall_location: this.paywall_location || 'Epaper Detail Page',
-          paywall_subscription_package: this.paywall_subscription_package_annual || 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12',
+          paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12',
           paywall_subscription_id: '9802032',
           paywall_subscription_price: 360000,
           paywall_position: 1,
@@ -421,7 +419,7 @@ export class KompasPaywallBody {
         },
         {
           paywall_location: this.paywall_location || 'Epaper Detail Page',
-          paywall_subscription_package: this.paywall_subscription_package_monthly || 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1',
+          paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1',
           paywall_subscription_id: '9802035',
           paywall_subscription_price: 50000,
           paywall_position: 2,
