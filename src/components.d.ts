@@ -251,8 +251,6 @@ export namespace Components {
         "paywall_position": number;
         "paywall_subscription_id": number;
         "paywall_subscription_package": string;
-        "paywall_subscription_package_annual": string;
-        "paywall_subscription_package_monthly": string;
         "paywall_subscription_price": number;
         "slug": string;
         "subscriptionStatus": string;
@@ -676,8 +674,6 @@ declare namespace LocalJSX {
         "paywall_position"?: number;
         "paywall_subscription_id"?: number;
         "paywall_subscription_package"?: string;
-        "paywall_subscription_package_annual"?: string;
-        "paywall_subscription_package_monthly"?: string;
         "paywall_subscription_price"?: number;
         "slug"?: string;
         "subscriptionStatus"?: string;
