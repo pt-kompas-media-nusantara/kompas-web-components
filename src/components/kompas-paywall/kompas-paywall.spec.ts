@@ -21,7 +21,7 @@ describe('Kompas Paywall --default', () => {
             <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
               <div class="flex flex-col max-w-screen-md my-5 w-full">
                 <kompas-paywall-banner-registration></kompas-paywall-banner-registration>
-                <kompas-paywall-body countdownarticle="0" paywall_location="" paywall_position="0" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscriptionstatus="" content_category="" content_id="" content_title="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" subscription_status="" user_type="" type="reguler" userguid=""></kompas-paywall-body>
+                <kompas-paywall-body content_category="" content_id="" content_title="" countdownarticle="0" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" paywall_location="" paywall_position="" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscription_status="" subscriptionstatus="" type="reguler" user_type="" userguid=""></kompas-paywall-body>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@ describe('Kompas Paywall Epaper', () => {
       <kompas-paywall type='epaper' is-login='true'>
         <mock:shadow-root>
           <div class="relative w-full">
-          <kompas-paywall-body countdownarticle="0" islogin="" paywall_location="" paywall_position="0" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscriptionstatus="" content_category="" content_id="" content_title="" content_type="" epaper_edition="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" subscription_status="" user_type="" type="epaper" userguid=""></kompas-paywall-body>
+          <kompas-paywall-body content_category="" content_id="" content_title="" content_type="" countdownarticle="0" epaper_edition="" islogin="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" paywall_location="" paywall_position="" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscription_status="" subscriptionstatus="" type="epaper" user_type="" userguid=""></kompas-paywall-body>
           </div>
         </mock:shadow-root>
       </kompas-paywall>
@@ -57,14 +57,13 @@ describe('Kompas Paywall Epaper', () => {
       <kompas-paywall type='epaper' is-login='false'>
         <mock:shadow-root>
           <div class="relative w-full">
-          <kompas-paywall-body countdownarticle="0" paywall_location="" paywall_position="0" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscriptionstatus="" content_category="" content_id="" content_title="" content_type="" epaper_edition="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" subscription_status="" user_type="" type="epaper" userguid=""></kompas-paywall-body>
+          <kompas-paywall-body content_category="" content_id="" content_title="" content_type="" countdownarticle="0" epaper_edition="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" paywall_location="" paywall_position="" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscription_status="" subscriptionstatus="" type="epaper" user_type="" userguid=""></kompas-paywall-body>
           </div>
         </mock:shadow-root>
       </kompas-paywall>
      `)
   })
 })
-
 
 describe('Kompas Paywall Reguler Paywall', () => {
   it('should render kompas paywall reguler when user is login', async () => {
@@ -81,7 +80,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
             <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
               <div class="flex flex-col max-w-screen-md my-5 w-full">
                 <kompas-paywall-banner-registration></kompas-paywall-banner-registration>
-                <kompas-paywall-body countdownarticle="0" islogin="" paywall_location="" paywall_position="0" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscriptionstatus="" content_category="" content_id="" content_title="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" subscription_status="" user_type="" type="reguler" userguid=""></kompas-paywall-body>
+                <kompas-paywall-body content_category="" content_id="" content_title="" countdownarticle="0" islogin="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" paywall_location="" paywall_position="" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscription_status="" subscriptionstatus="" type="reguler" user_type="" userguid=""></kompas-paywall-body>
               </div>
             </div>
           </div>
@@ -105,7 +104,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
             <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
               <div class="flex flex-col max-w-screen-md my-5 w-full">
                 <kompas-paywall-banner-registration></kompas-paywall-banner-registration>
-                <kompas-paywall-body countdownarticle="0" paywall_location="" paywall_position="0" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscriptionstatus="" content_category="" content_id="" content_title="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" subscription_status="" user_type="" type="reguler" userguid=""></kompas-paywall-body>
+                <kompas-paywall-body content_category="" content_id="" content_title="" countdownarticle="0" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" paywall_location="" paywall_position="" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscription_status="" subscriptionstatus="" type="reguler" user_type="" userguid=""></kompas-paywall-body>
               </div>
             </div>
           </div>
@@ -129,7 +128,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
               <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
                 <div class="flex flex-col max-w-screen-md my-5 w-full">
                   <kompas-paywall-information-header text="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
-                  <kompas-paywall-body countdownarticle="0" paywall_location="" paywall_position="0" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscriptionstatus="" content_category="" content_id="" content_title="" content_type="" epaper_edition="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" subscription_status="" user_type="" type="reguler" userguid=""></kompas-paywall-body>
+                  <kompas-paywall-body content_category="" content_id="" content_title="" content_type="" countdownarticle="0" epaper_edition="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" paywall_location="" paywall_position="" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscription_status="" subscriptionstatus="" type="reguler" user_type="" userguid=""></kompas-paywall-body>
                 </div>
               </div>
             </div>
@@ -153,7 +152,7 @@ describe('Kompas Paywall Reguler Paywall', () => {
               <div class="bg-white flex flex-col items-center justify-center md:mx-0 mx-4">
                 <div class="flex flex-col max-w-screen-md my-5 w-full">
                   <kompas-paywall-information-header text="Akses artikel gratis Anda bulan ini sudah habis."></kompas-paywall-information-header>
-                  <kompas-paywall-body countdownarticle="0" paywall_location="" paywall_position="0" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscriptionstatus="" content_category="" content_id="" content_title="" content_type="" epaper_edition="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" subscription_status="" user_type="" type="reguler" userguid=""></kompas-paywall-body>
+                  <kompas-paywall-body content_category="" content_id="" content_title="" content_type="" countdownarticle="0" epaper_edition="" metered_wall_balance="0" metered_wall_type="" page_domain="" page_type="" paywall_location="" paywall_position="" paywall_subscription_id="0" paywall_subscription_package="" paywall_subscription_price="0" subscription_status="" subscriptionstatus="" type="reguler" user_type="" userguid=""></kompas-paywall-body>
                 </div>
               </div>
             </div>
@@ -162,5 +161,4 @@ describe('Kompas Paywall Reguler Paywall', () => {
       </kompas-paywall>
      `)
   })
-
 })
