@@ -8,25 +8,25 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PaywallProduct, Registration } from "./components/kompas-paywall/types";
 export namespace Components {
     interface KidMeteredPaywall {
+        "content_category": string;
+        "content_id": string;
+        "content_title": string;
+        "content_type": string;
         /**
-          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca. prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop tracker_page_type = Type of the page prop tracker_content_id = ID of article (slug) prop tracker_content_type = Whether it's free article or paid article prop tracker_content_title = The title of article prop tracker_content_category = The category of the content prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_page_domain = Page Domain prop tracker_metered_wall_type = The type of Metered Wall prop tracker_epaper_edition = The edition of epaper viewed by user prop tracker_metered_wall_balance = The balance of their metered wall
+          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca. prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop page_type = Type of the page prop content_id = ID of article (slug) prop content_type = Whether it's free article or paid article prop content_title = The title of article prop content_category = The category of the content prop user_type = Type of user based on their subscription prop subscription_status = Status of their subscription prop page_domain = Page Domain prop metered_wall_type = The type of Metered Wall prop epaper_edition = The edition of epaper viewed by user prop metered_wall_balance = The balance of their metered wall
          */
         "countdownArticle": number;
+        "metered_wall_balance": number;
+        "metered_wall_type": string;
+        "page_domain": string;
+        "page_type": string;
         "paywall_location": string;
-        "paywall_position": number;
+        "paywall_position": string;
         "paywall_subscription_id": string;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
-        "tracker_content_category": string;
-        "tracker_content_id": string;
-        "tracker_content_title": string;
-        "tracker_content_type": string;
-        "tracker_metered_wall_balance": number;
-        "tracker_metered_wall_type": string;
-        "tracker_page_domain": string;
-        "tracker_page_type": string;
-        "tracker_subscription_status": string;
-        "tracker_user_type": string;
+        "subscription_status": string;
+        "user_type": string;
     }
     interface KidPaywall {
         /**
@@ -215,83 +215,82 @@ export namespace Components {
         "userInitialName": string;
     }
     interface KompasPaywall {
+        "content_category": string;
+        "content_id": string;
+        "content_title": string;
+        "content_type": string;
         "countdownArticle": number;
+        "epaper_edition": string;
         "isLogin": boolean;
         "isWithHeader": boolean;
+        "metered_wall_balance": number;
+        "metered_wall_type": string;
+        "page_domain": string;
+        "page_type": string;
         "paywall_location": string;
-        "paywall_position": number;
+        "paywall_position": string;
         "paywall_subscription_id": number;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
         "subscriptionStatus": string;
+        "subscription_status": string;
         "swgEnable": boolean;
         "textHeader": string;
-        "tracker_content_category": string;
-        "tracker_content_id": string;
-        "tracker_content_title": string;
-        "tracker_content_type": string;
-        "tracker_epaper_edition": string;
-        "tracker_metered_wall_balance": number;
-        "tracker_metered_wall_type": string;
-        "tracker_page_domain": string;
-        "tracker_page_type": string;
-        "tracker_subscription_status": string;
-        "tracker_user_type": string;
         "type": 'epaper' | 'reguler';
         "userGuid": string;
+        "user_type": string;
     }
     interface KompasPaywallBannerRegistration {
         "bannerData": Registration | undefined;
     }
     interface KompasPaywallBody {
+        "content_category": string;
+        "content_id": string;
+        "content_title": string;
+        "content_type": string;
         "countdownArticle": number;
+        "epaper_edition": string;
         "isLogin": boolean;
+        "metered_wall_balance": number;
+        "metered_wall_type": string;
+        "page_domain": string;
+        "page_type": string;
         "paywallData": PaywallProduct | undefined;
         "paywall_location": string;
-        "paywall_position": number;
+        "paywall_position": string;
         "paywall_subscription_id": number;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
         "slug": string;
         "subscriptionStatus": string;
+        "subscription_status": string;
         "swgEnable": boolean;
-        "tracker_content_category": string;
-        "tracker_content_id": string;
-        "tracker_content_title": string;
-        "tracker_content_type": string;
-        "tracker_epaper_edition": string;
-        "tracker_metered_wall_balance": number;
-        "tracker_metered_wall_type": string;
-        "tracker_page_domain": string;
-        "tracker_page_type": string;
-        "tracker_subscription_status": string;
-        "tracker_user_type": string;
         "type": 'epaper' | 'reguler';
         "userGuid": string;
+        "user_type": string;
     }
     interface KompasPaywallInformationHeader {
         "text": string;
     }
     interface KompasPaywallVideo {
+        "content_category": string;
+        "content_id": string;
+        "content_title": string;
+        "content_type": string;
         /**
-          * prop isLogin untuk menghandle apakah user sudah login atau belum prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop tracker_page_type = Type of the page prop tracker_content_id = ID of article (slug) prop tracker_content_type = Whether it's free article or paid article prop tracker_content_title = The title of article prop tracker_content_category = The category of the content prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_page_domain = Page Domain prop tracker_metered_wall_type = The type of Metered Wall prop tracker_metered_wall_balance = The balance of their metered wall
+          * prop isLogin untuk menghandle apakah user sudah login atau belum prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop page_type = Type of the page prop content_id = ID of article (slug) prop content_type = Whether it's free article or paid article prop content_title = The title of article prop content_category = The category of the content prop user_type = Type of user based on their subscription prop subscription_status = Status of their subscription prop page_domain = Page Domain prop metered_wall_type = The type of Metered Wall prop metered_wall_balance = The balance of their metered wall
          */
         "isLogin": boolean;
+        "metered_wall_balance": number;
+        "metered_wall_type": string;
+        "page_domain": string;
+        "page_type": string;
         "paywall_location": string;
         "paywall_position": number;
         "paywall_subscription_id": string;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
-        "tracker_content_category": string;
-        "tracker_content_id": string;
-        "tracker_content_title": string;
-        "tracker_content_type": string;
-        "tracker_metered_wall_balance": number;
-        "tracker_metered_wall_type": string;
-        "tracker_page_domain": string;
-        "tracker_page_type": string;
-        "tracker_subscription_status": string;
-        "tracker_user_type": string;
+        "subscription_status": string;
         "user_type": string;
     }
     interface KompasSurveyPopup {
@@ -431,25 +430,25 @@ declare global {
 }
 declare namespace LocalJSX {
     interface KidMeteredPaywall {
+        "content_category"?: string;
+        "content_id"?: string;
+        "content_title"?: string;
+        "content_type"?: string;
         /**
-          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca. prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop tracker_page_type = Type of the page prop tracker_content_id = ID of article (slug) prop tracker_content_type = Whether it's free article or paid article prop tracker_content_title = The title of article prop tracker_content_category = The category of the content prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_page_domain = Page Domain prop tracker_metered_wall_type = The type of Metered Wall prop tracker_epaper_edition = The edition of epaper viewed by user prop tracker_metered_wall_balance = The balance of their metered wall
+          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca. prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop page_type = Type of the page prop content_id = ID of article (slug) prop content_type = Whether it's free article or paid article prop content_title = The title of article prop content_category = The category of the content prop user_type = Type of user based on their subscription prop subscription_status = Status of their subscription prop page_domain = Page Domain prop metered_wall_type = The type of Metered Wall prop epaper_edition = The edition of epaper viewed by user prop metered_wall_balance = The balance of their metered wall
          */
         "countdownArticle"?: number;
+        "metered_wall_balance"?: number;
+        "metered_wall_type"?: string;
+        "page_domain"?: string;
+        "page_type"?: string;
         "paywall_location"?: string;
-        "paywall_position"?: number;
+        "paywall_position"?: string;
         "paywall_subscription_id"?: string;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
-        "tracker_content_category"?: string;
-        "tracker_content_id"?: string;
-        "tracker_content_title"?: string;
-        "tracker_content_type"?: string;
-        "tracker_metered_wall_balance"?: number;
-        "tracker_metered_wall_type"?: string;
-        "tracker_page_domain"?: string;
-        "tracker_page_type"?: string;
-        "tracker_subscription_status"?: string;
-        "tracker_user_type"?: string;
+        "subscription_status"?: string;
+        "user_type"?: string;
     }
     interface KidPaywall {
         /**
@@ -638,83 +637,82 @@ declare namespace LocalJSX {
         "userInitialName"?: string;
     }
     interface KompasPaywall {
+        "content_category"?: string;
+        "content_id"?: string;
+        "content_title"?: string;
+        "content_type"?: string;
         "countdownArticle"?: number;
+        "epaper_edition"?: string;
         "isLogin"?: boolean;
         "isWithHeader"?: boolean;
+        "metered_wall_balance"?: number;
+        "metered_wall_type"?: string;
+        "page_domain"?: string;
+        "page_type"?: string;
         "paywall_location"?: string;
-        "paywall_position"?: number;
+        "paywall_position"?: string;
         "paywall_subscription_id"?: number;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
         "subscriptionStatus"?: string;
+        "subscription_status"?: string;
         "swgEnable"?: boolean;
         "textHeader"?: string;
-        "tracker_content_category"?: string;
-        "tracker_content_id"?: string;
-        "tracker_content_title"?: string;
-        "tracker_content_type"?: string;
-        "tracker_epaper_edition"?: string;
-        "tracker_metered_wall_balance"?: number;
-        "tracker_metered_wall_type"?: string;
-        "tracker_page_domain"?: string;
-        "tracker_page_type"?: string;
-        "tracker_subscription_status"?: string;
-        "tracker_user_type"?: string;
         "type"?: 'epaper' | 'reguler';
         "userGuid"?: string;
+        "user_type"?: string;
     }
     interface KompasPaywallBannerRegistration {
         "bannerData"?: Registration | undefined;
     }
     interface KompasPaywallBody {
+        "content_category"?: string;
+        "content_id"?: string;
+        "content_title"?: string;
+        "content_type"?: string;
         "countdownArticle"?: number;
+        "epaper_edition"?: string;
         "isLogin"?: boolean;
+        "metered_wall_balance"?: number;
+        "metered_wall_type"?: string;
+        "page_domain"?: string;
+        "page_type"?: string;
         "paywallData"?: PaywallProduct | undefined;
         "paywall_location"?: string;
-        "paywall_position"?: number;
+        "paywall_position"?: string;
         "paywall_subscription_id"?: number;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
         "slug"?: string;
         "subscriptionStatus"?: string;
+        "subscription_status"?: string;
         "swgEnable"?: boolean;
-        "tracker_content_category"?: string;
-        "tracker_content_id"?: string;
-        "tracker_content_title"?: string;
-        "tracker_content_type"?: string;
-        "tracker_epaper_edition"?: string;
-        "tracker_metered_wall_balance"?: number;
-        "tracker_metered_wall_type"?: string;
-        "tracker_page_domain"?: string;
-        "tracker_page_type"?: string;
-        "tracker_subscription_status"?: string;
-        "tracker_user_type"?: string;
         "type"?: 'epaper' | 'reguler';
         "userGuid"?: string;
+        "user_type"?: string;
     }
     interface KompasPaywallInformationHeader {
         "text"?: string;
     }
     interface KompasPaywallVideo {
+        "content_category"?: string;
+        "content_id"?: string;
+        "content_title"?: string;
+        "content_type"?: string;
         /**
-          * prop isLogin untuk menghandle apakah user sudah login atau belum prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop tracker_page_type = Type of the page prop tracker_content_id = ID of article (slug) prop tracker_content_type = Whether it's free article or paid article prop tracker_content_title = The title of article prop tracker_content_category = The category of the content prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_page_domain = Page Domain prop tracker_metered_wall_type = The type of Metered Wall prop tracker_metered_wall_balance = The balance of their metered wall
+          * prop isLogin untuk menghandle apakah user sudah login atau belum prop paywall_location = The location where user encounter the paywall prop paywall_subscription_package = The name of the subscription package viewed by user prop paywall_subscription_id = The ID of the subscription package viewed by user prop paywall_subscription_price = The price of the subscriprtion package viewed by user prop paywall_position = The position of ther subscription package viewed by user prop page_type = Type of the page prop content_id = ID of article (slug) prop content_type = Whether it's free article or paid article prop content_title = The title of article prop content_category = The category of the content prop user_type = Type of user based on their subscription prop subscription_status = Status of their subscription prop page_domain = Page Domain prop metered_wall_type = The type of Metered Wall prop metered_wall_balance = The balance of their metered wall
          */
         "isLogin"?: boolean;
+        "metered_wall_balance"?: number;
+        "metered_wall_type"?: string;
+        "page_domain"?: string;
+        "page_type"?: string;
         "paywall_location"?: string;
         "paywall_position"?: number;
         "paywall_subscription_id"?: string;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
-        "tracker_content_category"?: string;
-        "tracker_content_id"?: string;
-        "tracker_content_title"?: string;
-        "tracker_content_type"?: string;
-        "tracker_metered_wall_balance"?: number;
-        "tracker_metered_wall_type"?: string;
-        "tracker_page_domain"?: string;
-        "tracker_page_type"?: string;
-        "tracker_subscription_status"?: string;
-        "tracker_user_type"?: string;
+        "subscription_status"?: string;
         "user_type"?: string;
     }
     interface KompasSurveyPopup {
