@@ -26,7 +26,7 @@ import { deviceType } from '../../utils/deviceType'
   * prop paywall_subscription_package = The name of the subscription package viewed by user
   * prop paywall_subscription_id = The ID of the subscription package viewed by user
   * prop paywall_subscription_price = The price of the subscriprtion package viewed by user
-  * prop paywall_position = The position of ther subscription package viewed by user
+  * prop paywall_position = The position of the subscription package viewed by user
   * prop tracker_page_type = Type of the page
   * prop tracker_content_id = ID of article (slug)
   * prop tracker_content_type = Whether it's free article or paid article

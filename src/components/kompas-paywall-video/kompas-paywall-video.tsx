@@ -34,7 +34,7 @@ export class KompasPaywallVideo {
   @Prop() paywall_subscription_package: string = ''
   @Prop() paywall_subscription_id: string = ''
   @Prop() paywall_subscription_price: number = 0
-  @Prop() paywall_position: number = 0
+  @Prop() paywall_position: string = ''
   @Prop() tracker_page_type: string = ''
   @Prop() tracker_content_id: string = ''
   @Prop() tracker_content_title: string = ''
