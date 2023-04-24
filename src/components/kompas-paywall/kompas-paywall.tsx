@@ -23,18 +23,18 @@ export class KompasPaywall {
     * prop paywall_subscription_package = The name of the subscription package viewed by user
     * prop paywall_subscription_id = The ID of the subscription package viewed by user
     * prop paywall_subscription_price = The price of the subscriprtion package viewed by user
-    * prop paywall_position = The position of ther subscription package viewed by user
-    * prop tracker_page_type = Type of the page
-    * prop tracker_content_id = ID of article (slug)
-    * prop tracker_content_type = Whether it's free article or paid article
-    * prop tracker_content_title = The title of article
-    * prop tracker_content_category = The category of the content
-    * prop tracker_user_type = Type of user based on their subscription
-    * prop tracker_subscription_status = Status of their subscription
-    * prop tracker_page_domain = Page Domain
-    * prop tracker_metered_wall_type = The type of Metered Wall
-    * prop tracker_metered_wall_balance = The balance of their metered wall
-    * prop tracker_epaper_edition = The edition of epaper viewed by user
+    * prop paywall_position = The position of the subscription package viewed by user
+    * prop page_type = Type of the page
+    * prop content_id = ID of article (slug)
+    * prop content_type = Whether it's free article or paid article
+    * prop content_title = The title of article
+    * prop content_category = The category of the content
+    * prop user_type = Type of user based on their subscription
+    * prop subscription_status = Status of their subscription
+    * prop page_domain = Page Domain
+    * prop metered_wall_type = The type of Metered Wall
+    * prop metered_wall_balance = The balance of their metered wall
+    * prop epaper_edition = The edition of epaper viewed by user
   */
 
   @State() paywallData: PaywallProduct | undefined = undefined // add interface type
@@ -52,7 +52,7 @@ export class KompasPaywall {
   @Prop() paywall_subscription_package: string = ''
   @Prop() paywall_subscription_id: number = 0
   @Prop() paywall_subscription_price: number = 0
-  @Prop() paywall_position: number = 0
+  @Prop() paywall_position: string = ''
   @Prop() tracker_page_type: string = ''
   @Prop() tracker_content_id: string = ''
   @Prop() tracker_content_title: string = ''

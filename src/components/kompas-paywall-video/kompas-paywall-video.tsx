@@ -17,16 +17,16 @@ export class KompasPaywallVideo {
    * prop paywall_subscription_id = The ID of the subscription package viewed by user
    * prop paywall_subscription_price = The price of the subscriprtion package viewed by user
    * prop paywall_position = The position of ther subscription package viewed by user
-   * prop tracker_page_type = Type of the page
-   * prop tracker_content_id = ID of article (slug)
-   * prop tracker_content_type = Whether it's free article or paid article
-   * prop tracker_content_title = The title of article
-   * prop tracker_content_category = The category of the content
-   * prop tracker_user_type = Type of user based on their subscription
-   * prop tracker_subscription_status = Status of their subscription
-   * prop tracker_page_domain = Page Domain
-   * prop tracker_metered_wall_type = The type of Metered Wall
-   * prop tracker_metered_wall_balance = The balance of their metered wall
+   * prop page_type = Type of the page
+   * prop content_id = ID of article (slug)
+   * prop content_type = Whether it's free article or paid article
+   * prop content_title = The title of article
+   * prop content_category = The category of the content
+   * prop user_type = Type of user based on their subscription
+   * prop subscription_status = Status of their subscription
+   * prop page_domain = Page Domain
+   * prop metered_wall_type = The type of Metered Wall
+   * prop metered_wall_balance = The balance of their metered wall
   */
 
   @Prop() isLogin: boolean = false
@@ -45,7 +45,6 @@ export class KompasPaywallVideo {
   @Prop() tracker_page_domain: string = ''
   @Prop() tracker_metered_wall_type: string = ''
   @Prop() tracker_metered_wall_balance: number = 0
-  @Prop() user_type: string = ''
   @State() loginUrl: string = 'https://account.kompas.id/login'
   @State() subscriptionUrl: string = 'https://www.kompas.id/berlangganan'
   @State() registerUrl: string = 'https://account.kompas.id/register'
@@ -103,11 +102,11 @@ export class KompasPaywallVideo {
       paywall_subscription_id: this.paywall_subscription_id,
       paywall_subscription_price: this.paywall_subscription_price,
       paywall_position: this.paywall_position,
-      tracker_user_type: this.tracker_user_type,
-      tracker_subscription_status: this.tracker_subscription_status,
-      tracker_page_domain: this.tracker_page_domain,
-      tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance,
+      user_type: this.tracker_user_type,
+      subscription_status: this.tracker_subscription_status,
+      page_domain: this.tracker_page_domain,
+      metered_wall_type: this.tracker_metered_wall_type,
+      metered_wall_balance: this.tracker_metered_wall_balance,
     })
   }
 
@@ -127,16 +126,16 @@ export class KompasPaywallVideo {
       paywall_subscription_id: this.paywall_subscription_id,
       paywall_subscription_price: this.paywall_subscription_price,
       paywall_position: this.paywall_position,
-      tracker_page_type: this.tracker_page_type,
-      tracker_content_id: this.tracker_content_id,
-      tracker_content_title: this.tracker_content_title,
-      tracker_content_category: this.tracker_content_category,
-      tracker_content_type: this.tracker_content_type,
-      tracker_user_type: this.tracker_user_type,
-      tracker_subscription_status: this.tracker_subscription_status,
-      tracker_page_domain: this.tracker_page_domain,
-      tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.tracker_metered_wall_balance,
+      page_type: this.tracker_page_type,
+      content_id: this.tracker_content_id,
+      content_title: this.tracker_content_title,
+      content_category: this.tracker_content_category,
+      content_type: this.tracker_content_type,
+      user_type: this.tracker_user_type,
+      subscription_status: this.tracker_subscription_status,
+      page_domain: this.tracker_page_domain,
+      metered_wall_type: this.tracker_metered_wall_type,
+      metered_wall_balance: this.tracker_metered_wall_balance,
     })
   }
 

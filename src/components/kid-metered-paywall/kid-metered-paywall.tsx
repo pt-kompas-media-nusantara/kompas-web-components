@@ -50,7 +50,7 @@ export class KidMeteredPaywall {
   @Prop() paywall_subscription_package: string = ''
   @Prop() paywall_subscription_id: string = ''
   @Prop() paywall_subscription_price: number = 0
-  @Prop() paywall_position: number = 0
+  @Prop() paywall_position: string = ''
   @Prop() tracker_page_type: string = ''
   @Prop() tracker_content_id: string = ''
   @Prop() tracker_content_title: string = ''
@@ -85,42 +85,42 @@ export class KidMeteredPaywall {
   private dataLayeronLanggananButton = (): void => {
     window.dataLayer.push({
       event: 'subscribe_button_clicked',
-      paywall_location: this.paywall_location,
-      paywall_subscription_package: this.paywall_subscription_package,
-      paywall_subscription_id: this.paywall_subscription_id,
-      paywall_subscription_price: this.paywall_subscription_price,
-      paywall_position: this.paywall_position,
-      tracker_page_type: this.tracker_page_type,
-      tracker_content_id: this.tracker_content_id,
-      tracker_content_title: this.tracker_content_title,
-      tracker_content_category: this.tracker_content_category,
-      tracker_content_type: this.tracker_content_type,
-      tracker_user_type: this.tracker_user_type,
-      tracker_subscription_status: this.tracker_subscription_status,
-      tracker_page_domain: this.tracker_page_domain,
-      tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.maxQuota - this.countdownArticle
+      paywall_location: this.paywall_location || 'Article Detail Page',
+      paywall_subscription_package: this.paywall_subscription_package || '',
+      paywall_subscription_id: this.paywall_subscription_id || '',
+      paywall_subscription_price: this.paywall_subscription_price || 0,
+      paywall_position: this.paywall_position || '',
+      page_type: this.tracker_page_type,
+      content_id: this.tracker_content_id,
+      content_title: this.tracker_content_title,
+      content_category: this.tracker_content_category,
+      content_type: this.tracker_content_type,
+      user_type: this.tracker_user_type || 'R',
+      subscription_status: this.tracker_subscription_status,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
+      metered_wall_type: this.tracker_metered_wall_type || 'MP',
+      metered_wall_balance: this.maxQuota - this.countdownArticle
     })
   }
 
   private dataLayeronMeteredPaywall = (): void => {
     window.dataLayer.push({
       event: 'paywall_viewed',
-      paywall_location: this.paywall_location,
-      paywall_subscription_package: this.paywall_subscription_package,
-      paywall_subscription_id: this.paywall_subscription_id,
-      paywall_subscription_price: this.paywall_subscription_price,
-      paywall_position: this.paywall_position,
-      tracker_page_type: this.tracker_page_type,
-      tracker_content_id: this.tracker_content_id,
-      tracker_content_title: this.tracker_content_title,
-      tracker_content_category: this.tracker_content_category,
-      tracker_content_type: this.tracker_content_type,
-      tracker_user_type: this.tracker_user_type,
-      tracker_subscription_status: this.tracker_subscription_status,
-      tracker_page_domain: this.tracker_page_domain,
-      tracker_metered_wall_type: this.tracker_metered_wall_type,
-      tracker_metered_wall_balance: this.maxQuota - this.countdownArticle
+      paywall_location: this.paywall_location || 'Article Detail Page',
+      paywall_subscription_package: this.paywall_subscription_package || '',
+      paywall_subscription_id: this.paywall_subscription_id || '',
+      paywall_subscription_price: this.paywall_subscription_price || 0,
+      paywall_position: this.paywall_position || '',
+      page_type: this.tracker_page_type,
+      content_id: this.tracker_content_id,
+      content_title: this.tracker_content_title,
+      content_category: this.tracker_content_category,
+      content_type: this.tracker_content_type,
+      user_type: this.tracker_user_type || 'R',
+      subscription_status: this.tracker_subscription_status,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
+      metered_wall_type: this.tracker_metered_wall_type || 'MP',
+      metered_wall_balance: this.maxQuota - this.countdownArticle
     })
   }
 
