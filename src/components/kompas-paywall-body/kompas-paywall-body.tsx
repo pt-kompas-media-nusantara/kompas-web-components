@@ -430,49 +430,52 @@ export class KompasPaywallBody {
           metered_wall_balance: this.metered_wall_balance
         }
       ]
-    };
-  
-    if (this.type === 'epaper') {
-      gtmParams.impressions[0]['epaper_edition'] = this.epaper_edition;
-      gtmParams.impressions[1]['epaper_edition'] = this.epaper_edition;
-    } else {
-      gtmParams.impressions[0]['page_type'] = this.page_type;
-      gtmParams.impressions[0]['content_id'] = this.content_id;
-      gtmParams.impressions[0]['content_title'] = this.content_title;
-      gtmParams.impressions[0]['content_category'] = this.content_category;
-      gtmParams.impressions[0]['content_type'] = this.content_type;
-  
-      gtmParams.impressions[1]['page_type'] = this.page_type;
-      gtmParams.impressions[1]['content_id'] = this.content_id;
-      gtmParams.impressions[1]['content_title'] = this.content_title;
-      gtmParams.impressions[1]['content_category'] = this.content_category;
-      gtmParams.impressions[1]['content_type'] = this.content_type;
     }
   
-    window.dataLayer.push(gtmParams);
-  };
+    if (this.type === 'epaper') {
+      gtmParams.impressions[0]['epaper_edition'] = this.epaper_edition
+      gtmParams.impressions[1]['epaper_edition'] = this.epaper_edition
+    } else {
+      gtmParams.impressions[0]['page_type'] = this.page_type
+      gtmParams.impressions[0]['content_id'] = this.content_id
+      gtmParams.impressions[0]['content_title'] = this.content_title
+      gtmParams.impressions[0]['content_category'] = this.content_category
+      gtmParams.impressions[0]['content_type'] = this.content_type
+  
+      gtmParams.impressions[1]['page_type'] = this.page_type
+      gtmParams.impressions[1]['content_id'] = this.content_id
+      gtmParams.impressions[1]['content_title'] = this.content_title
+      gtmParams.impressions[1]['content_category'] = this.content_category
+      gtmParams.impressions[1]['content_type'] = this.content_type
+    }
+  
+    window.dataLayer.push(gtmParams)
+  }
   
 
   private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: number): void => {
-    window.dataLayer.push({
+    const gtmParams: Record<string, any> = {
       event: 'subscribe_button_clicked',
       paywall_location: this.paywall_location,
       paywall_subscription_package: name,
       paywall_subscription_id: id,
       paywall_subscription_price: price,
       paywall_position: position,
-      page_type: this.page_type,
-      content_id: this.content_id,
-      content_title: this.content_title,
-      content_category: this.content_category,
-      epaper_edition: this.epaper_edition,
-      content_type: this.content_type,
       user_type: this.user_type,
       subscription_status: this.subscription_status,
       page_domain: this.page_domain,
       metered_wall_type: this.metered_wall_type,
-      metered_wall_balance: this.metered_wall_balance
-    })
+      metered_wall_balance: this.metered_wall_balance,
+    }
+
+    if (this.type !== 'epaper') {
+      gtmParams['content_title'] = this.page_type
+      gtmParams['content_id'] = this.content_id
+      gtmParams['content_category'] = this.content_category
+      gtmParams['content_type'] = this.content_type
+      gtmParams['page_type'] = this.page_type
+    }
+    window.dataLayer.push(gtmParams)
   }
 
   private sendDataLayeronHelpDesk = (): void => {
