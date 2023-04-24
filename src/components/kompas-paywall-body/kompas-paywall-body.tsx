@@ -27,17 +27,17 @@ import { deviceType } from '../../utils/deviceType'
   * prop paywall_subscription_id = The ID of the subscription package viewed by user
   * prop paywall_subscription_price = The price of the subscriprtion package viewed by user
   * prop paywall_position = The position of ther subscription package viewed by user
-  * prop page_type = Type of the page
-  * prop content_id = ID of article (slug)
-  * prop content_type = Whether it's free article or paid article
-  * prop content_title = The title of article
-  * prop content_category = The category of the content
-  * prop user_type = Type of user based on their subscription
-  * prop subscription_status = Status of their subscription
-  * prop page_domain = Page Domain
-  * prop metered_wall_type = The type of Metered Wall
-  * prop metered_wall_balance = The balance of their metered wall
-  * prop metered_wall_balance = The edition of epaper viewed by user
+  * prop tracker_page_type = Type of the page
+  * prop tracker_content_id = ID of article (slug)
+  * prop tracker_content_type = Whether it's free article or paid article
+  * prop tracker_content_title = The title of article
+  * prop tracker_content_category = The category of the content
+  * prop tracker_user_type = Type of user based on their subscription
+  * prop tracker_subscription_status = Status of their subscription
+  * prop tracker_page_domain = Page Domain
+  * prop tracker_metered_wall_type = The type of Metered Wall
+  * prop tracker_metered_wall_balance = The balance of their metered wall
+  * prop tracker_metered_wall_balance = The edition of epaper viewed by user
 */
 
 export class KompasPaywallBody {
@@ -54,17 +54,17 @@ export class KompasPaywallBody {
   @Prop() paywall_subscription_id: number = 0
   @Prop() paywall_subscription_price: number = 0
   @Prop() paywall_position: string = ''
-  @Prop() page_type: string = ''
-  @Prop() content_id: string = ''
-  @Prop() content_title: string = ''
-  @Prop() content_category: string = ''
-  @Prop() content_type: string = ''
-  @Prop() user_type: string = ''
-  @Prop() subscription_status: string = ''
-  @Prop() page_domain: string = ''
-  @Prop() metered_wall_type: string = ''
-  @Prop() metered_wall_balance: number = 0
-  @Prop() epaper_edition: string = ''
+  @Prop() tracker_page_type: string = ''
+  @Prop() tracker_content_id: string = ''
+  @Prop() tracker_content_title: string = ''
+  @Prop() tracker_content_category: string = ''
+  @Prop() tracker_content_type: string = ''
+  @Prop() tracker_user_type: string = ''
+  @Prop() tracker_subscription_status: string = ''
+  @Prop() tracker_page_domain: string = ''
+  @Prop() tracker_metered_wall_type: string = ''
+  @Prop() tracker_metered_wall_balance: number = 0
+  @Prop() tracker_epaper_edition: string = ''
   @State() isExtensionsOpened: boolean = false
   @State() kompasAkunHost: string = 'https://akun.kompas.id'
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
@@ -411,11 +411,11 @@ export class KompasPaywallBody {
           paywall_subscription_id: '9802032',
           paywall_subscription_price: 360000,
           paywall_position: '1',
-          user_type: this.user_type,
-          subscription_status: this.subscription_status,
-          page_domain: this.page_domain,
-          metered_wall_type: this.metered_wall_type || 'HP',
-          metered_wall_balance: this.metered_wall_balance
+          user_type: this.tracker_user_type,
+          subscription_status: this.tracker_subscription_status,
+          page_domain: this.tracker_page_domain,
+          metered_wall_type: this.tracker_metered_wall_type || 'HP',
+          metered_wall_balance: this.tracker_metered_wall_balance
         },
         {
           paywall_location: this.paywall_location || 'Epaper Detail Page',
@@ -423,30 +423,30 @@ export class KompasPaywallBody {
           paywall_subscription_id: '9802035',
           paywall_subscription_price: 50000,
           paywall_position: '2',
-          user_type: this.user_type,
-          subscription_status: this.subscription_status,
-          page_domain: this.page_domain,
-          metered_wall_type: this.metered_wall_type || 'HP',
-          metered_wall_balance: this.metered_wall_balance
+          user_type: this.tracker_user_type,
+          subscription_status: this.tracker_subscription_status,
+          page_domain: this.tracker_page_domain,
+          metered_wall_type: this.tracker_metered_wall_type || 'HP',
+          metered_wall_balance: this.tracker_metered_wall_balance
         }
       ]
     }
   
     if (this.type === 'epaper') {
-      gtmParams.impressions[0]['epaper_edition'] = this.epaper_edition
-      gtmParams.impressions[1]['epaper_edition'] = this.epaper_edition
+      gtmParams.impressions[0]['epaper_edition'] = this.tracker_epaper_edition
+      gtmParams.impressions[1]['epaper_edition'] = this.tracker_epaper_edition
     } else {
-      gtmParams.impressions[0]['page_type'] = this.page_type
-      gtmParams.impressions[0]['content_id'] = this.content_id
-      gtmParams.impressions[0]['content_title'] = this.content_title
-      gtmParams.impressions[0]['content_category'] = this.content_category
-      gtmParams.impressions[0]['content_type'] = this.content_type
+      gtmParams.impressions[0]['page_type'] = this.tracker_page_type
+      gtmParams.impressions[0]['content_id'] = this.tracker_content_id
+      gtmParams.impressions[0]['content_title'] = this.tracker_content_title
+      gtmParams.impressions[0]['content_category'] = this.tracker_content_category
+      gtmParams.impressions[0]['content_type'] = this.tracker_content_type
   
-      gtmParams.impressions[1]['page_type'] = this.page_type
-      gtmParams.impressions[1]['content_id'] = this.content_id
-      gtmParams.impressions[1]['content_title'] = this.content_title
-      gtmParams.impressions[1]['content_category'] = this.content_category
-      gtmParams.impressions[1]['content_type'] = this.content_type
+      gtmParams.impressions[1]['page_type'] = this.tracker_page_type
+      gtmParams.impressions[1]['content_id'] = this.tracker_content_id
+      gtmParams.impressions[1]['content_title'] = this.tracker_content_title
+      gtmParams.impressions[1]['content_category'] = this.tracker_content_category
+      gtmParams.impressions[1]['content_type'] = this.tracker_content_type
     }
   
     window.dataLayer.push(gtmParams)
@@ -461,19 +461,19 @@ export class KompasPaywallBody {
       paywall_subscription_id: id,
       paywall_subscription_price: price,
       paywall_position: position,
-      user_type: this.user_type,
-      subscription_status: this.subscription_status,
-      page_domain: this.page_domain,
-      metered_wall_type: this.metered_wall_type,
-      metered_wall_balance: this.metered_wall_balance,
+      user_type: this.tracker_user_type,
+      subscription_status: this.tracker_subscription_status,
+      page_domain: this.tracker_page_domain,
+      metered_wall_type: this.tracker_metered_wall_type,
+      metered_wall_balance: this.tracker_metered_wall_balance,
     }
 
     if (this.type !== 'epaper') {
-      gtmParams['content_title'] = this.page_type
-      gtmParams['content_id'] = this.content_id
-      gtmParams['content_category'] = this.content_category
-      gtmParams['content_type'] = this.content_type
-      gtmParams['page_type'] = this.page_type
+      gtmParams['content_title'] = this.tracker_page_type
+      gtmParams['content_id'] = this.tracker_content_id
+      gtmParams['content_category'] = this.tracker_content_category
+      gtmParams['content_type'] = this.tracker_content_type
+      gtmParams['page_type'] = this.tracker_page_type
     }
     window.dataLayer.push(gtmParams)
   }

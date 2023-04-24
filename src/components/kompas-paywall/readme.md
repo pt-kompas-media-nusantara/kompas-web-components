@@ -117,30 +117,30 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 
 | Property                       | Attribute                      | Description | Type                    | Default     |
 | ------------------------------ | ------------------------------ | ----------- | ----------------------- | ----------- |
-| `content_category`             | `content_category`             |             | `string`                | `''`        |
-| `content_id`                   | `content_id`                   |             | `string`                | `''`        |
-| `content_title`                | `content_title`                |             | `string`                | `''`        |
-| `content_type`                 | `content_type`                 |             | `string`                | `''`        |
 | `countdownArticle`             | `countdown-article`            |             | `number`                | `0`         |
-| `epaper_edition`               | `epaper_edition`               |             | `string`                | `''`        |
 | `isLogin`                      | `is-login`                     |             | `boolean`               | `false`     |
 | `isWithHeader`                 | `is-with-header`               |             | `boolean`               | `false`     |
-| `metered_wall_balance`         | `metered_wall_balance`         |             | `number`                | `0`         |
-| `metered_wall_type`            | `metered_wall_type`            |             | `string`                | `''`        |
-| `page_domain`                  | `page_domain`                  |             | `string`                | `''`        |
-| `page_type`                    | `page_type`                    |             | `string`                | `''`        |
 | `paywall_location`             | `paywall_location`             |             | `string`                | `''`        |
 | `paywall_position`             | `paywall_position`             |             | `string`                | `''`        |
 | `paywall_subscription_id`      | `paywall_subscription_id`      |             | `number`                | `0`         |
 | `paywall_subscription_package` | `paywall_subscription_package` |             | `string`                | `''`        |
 | `paywall_subscription_price`   | `paywall_subscription_price`   |             | `number`                | `0`         |
 | `subscriptionStatus`           | `subscription-status`          |             | `string`                | `''`        |
-| `subscription_status`          | `subscription_status`          |             | `string`                | `''`        |
 | `swgEnable`                    | `swg-enable`                   |             | `boolean`               | `false`     |
 | `textHeader`                   | `text-header`                  |             | `string`                | `''`        |
+| `tracker_content_category`     | `tracker_content_category`     |             | `string`                | `''`        |
+| `tracker_content_id`           | `tracker_content_id`           |             | `string`                | `''`        |
+| `tracker_content_title`        | `tracker_content_title`        |             | `string`                | `''`        |
+| `tracker_content_type`         | `tracker_content_type`         |             | `string`                | `''`        |
+| `tracker_epaper_edition`       | `tracker_epaper_edition`       |             | `string`                | `''`        |
+| `tracker_metered_wall_balance` | `tracker_metered_wall_balance` |             | `number`                | `0`         |
+| `tracker_metered_wall_type`    | `tracker_metered_wall_type`    |             | `string`                | `''`        |
+| `tracker_page_domain`          | `tracker_page_domain`          |             | `string`                | `''`        |
+| `tracker_page_type`            | `tracker_page_type`            |             | `string`                | `''`        |
+| `tracker_subscription_status`  | `tracker_subscription_status`  |             | `string`                | `''`        |
+| `tracker_user_type`            | `tracker_user_type`            |             | `string`                | `''`        |
 | `type`                         | `type`                         |             | `"epaper" \| "reguler"` | `'reguler'` |
 | `userGuid`                     | `user-guid`                    |             | `string`                | `''`        |
-| `user_type`                    | `user_type`                    |             | `string`                | `''`        |
 
 
 ## Dependencies
