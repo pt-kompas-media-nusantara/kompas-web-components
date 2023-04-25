@@ -462,6 +462,7 @@ export class KompasPaywallBody {
       paywall_subscription_price: price,
       paywall_position: position,
       user_type: this.tracker_user_type,
+      epaper_edition: this.tracker_epaper_edition,
       subscription_status: this.tracker_subscription_status,
       page_domain: this.tracker_page_domain,
       metered_wall_type: this.tracker_metered_wall_type || 'HP',
