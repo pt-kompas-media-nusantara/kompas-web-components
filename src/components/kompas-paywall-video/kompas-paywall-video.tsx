@@ -16,7 +16,7 @@ export class KompasPaywallVideo {
    * prop paywall_subscription_package = The name of the subscription package viewed by user
    * prop paywall_subscription_id = The ID of the subscription package viewed by user
    * prop paywall_subscription_price = The price of the subscriprtion package viewed by user
-   * prop paywall_position = The position of ther subscription package viewed by user
+   * prop paywall_position = The position of the subscription package viewed by user
    * prop page_type = Type of the page
    * prop content_id = ID of article (slug)
    * prop content_type = Whether it's free article or paid article
@@ -105,7 +105,7 @@ export class KompasPaywallVideo {
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
       page_domain: this.tracker_page_domain,
-      metered_wall_type: this.tracker_metered_wall_type,
+      metered_wall_type: this.tracker_metered_wall_type || 'HP',
       metered_wall_balance: this.tracker_metered_wall_balance,
     })
   }
@@ -134,7 +134,7 @@ export class KompasPaywallVideo {
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
       page_domain: this.tracker_page_domain,
-      metered_wall_type: this.tracker_metered_wall_type,
+      metered_wall_type: this.tracker_metered_wall_type || 'HP',
       metered_wall_balance: this.tracker_metered_wall_balance,
     })
   }
