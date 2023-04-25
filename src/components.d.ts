@@ -278,7 +278,7 @@ export namespace Components {
          */
         "isLogin": boolean;
         "paywall_location": string;
-        "paywall_position": number;
+        "paywall_position": string;
         "paywall_subscription_id": string;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
@@ -700,7 +700,7 @@ declare namespace LocalJSX {
          */
         "isLogin"?: boolean;
         "paywall_location"?: string;
-        "paywall_position"?: number;
+        "paywall_position"?: string;
         "paywall_subscription_id"?: string;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
