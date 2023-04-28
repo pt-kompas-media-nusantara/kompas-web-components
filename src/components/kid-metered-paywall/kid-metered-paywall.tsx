@@ -50,7 +50,7 @@ export class KidMeteredPaywall {
   @Prop() paywall_subscription_package: string = ''
   @Prop() paywall_subscription_id: string = ''
   @Prop() paywall_subscription_price: number = 0
-  @Prop() paywall_position: string = ''
+  @Prop() paywall_position: number = 0
   @Prop() tracker_page_type: string = ''
   @Prop() tracker_content_id: string = ''
   @Prop() tracker_content_title: string = ''
@@ -89,7 +89,7 @@ export class KidMeteredPaywall {
       paywall_subscription_package: this.paywall_subscription_package || '',
       paywall_subscription_id: this.paywall_subscription_id || '',
       paywall_subscription_price: this.paywall_subscription_price || 0,
-      paywall_position: this.paywall_position || '',
+      paywall_position: this.paywall_position || 0,
       page_type: this.tracker_page_type,
       content_id: this.tracker_content_id,
       content_title: this.tracker_content_title,
@@ -110,7 +110,7 @@ export class KidMeteredPaywall {
       paywall_subscription_package: this.paywall_subscription_package || '',
       paywall_subscription_id: this.paywall_subscription_id || '',
       paywall_subscription_price: this.paywall_subscription_price || 0,
-      paywall_position: this.paywall_position || '',
+      paywall_position: this.paywall_position || 0,
       page_type: this.tracker_page_type,
       content_id: this.tracker_content_id,
       content_title: this.tracker_content_title,

@@ -13,7 +13,7 @@ export namespace Components {
          */
         "countdownArticle": number;
         "paywall_location": string;
-        "paywall_position": string;
+        "paywall_position": number;
         "paywall_subscription_id": string;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
@@ -219,7 +219,7 @@ export namespace Components {
         "isLogin": boolean;
         "isWithHeader": boolean;
         "paywall_location": string;
-        "paywall_position": string;
+        "paywall_position": number;
         "paywall_subscription_id": number;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
@@ -248,7 +248,7 @@ export namespace Components {
         "isLogin": boolean;
         "paywallData": PaywallProduct | undefined;
         "paywall_location": string;
-        "paywall_position": string;
+        "paywall_position": number;
         "paywall_subscription_id": number;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
@@ -278,7 +278,7 @@ export namespace Components {
          */
         "isLogin": boolean;
         "paywall_location": string;
-        "paywall_position": string;
+        "paywall_position": number;
         "paywall_subscription_id": string;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
@@ -435,7 +435,7 @@ declare namespace LocalJSX {
          */
         "countdownArticle"?: number;
         "paywall_location"?: string;
-        "paywall_position"?: string;
+        "paywall_position"?: number;
         "paywall_subscription_id"?: string;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
@@ -641,7 +641,7 @@ declare namespace LocalJSX {
         "isLogin"?: boolean;
         "isWithHeader"?: boolean;
         "paywall_location"?: string;
-        "paywall_position"?: string;
+        "paywall_position"?: number;
         "paywall_subscription_id"?: number;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
@@ -670,7 +670,7 @@ declare namespace LocalJSX {
         "isLogin"?: boolean;
         "paywallData"?: PaywallProduct | undefined;
         "paywall_location"?: string;
-        "paywall_position"?: string;
+        "paywall_position"?: number;
         "paywall_subscription_id"?: number;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
@@ -700,7 +700,7 @@ declare namespace LocalJSX {
          */
         "isLogin"?: boolean;
         "paywall_location"?: string;
-        "paywall_position"?: string;
+        "paywall_position"?: number;
         "paywall_subscription_id"?: string;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
