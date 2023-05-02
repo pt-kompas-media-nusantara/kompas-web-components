@@ -53,7 +53,7 @@ export class KompasPaywallBody {
   @Prop() paywall_subscription_package: string = ''
   @Prop() paywall_subscription_id: number = 0
   @Prop() paywall_subscription_price: number = 0
-  @Prop() paywall_position: string = ''
+  @Prop() paywall_position: number = 0
   @Prop() tracker_page_type: string = ''
   @Prop() tracker_content_id: string = ''
   @Prop() tracker_content_title: string = ''
@@ -410,7 +410,7 @@ export class KompasPaywallBody {
           paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12',
           paywall_subscription_id: '9802032',
           paywall_subscription_price: 360000,
-          paywall_position: '1',
+          paywall_position: 1,
           user_type: this.tracker_user_type,
           subscription_status: this.tracker_subscription_status,
           page_domain: this.tracker_page_domain,
@@ -422,7 +422,7 @@ export class KompasPaywallBody {
           paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1',
           paywall_subscription_id: '9802035',
           paywall_subscription_price: 50000,
-          paywall_position: '2',
+          paywall_position: 2,
           user_type: this.tracker_user_type,
           subscription_status: this.tracker_subscription_status,
           page_domain: this.tracker_page_domain,
@@ -431,7 +431,7 @@ export class KompasPaywallBody {
         }
       ]
     }
-  
+
     if (this.type === 'epaper') {
       gtmParams.impressions[0]['epaper_edition'] = this.tracker_epaper_edition
       gtmParams.impressions[1]['epaper_edition'] = this.tracker_epaper_edition
@@ -441,17 +441,17 @@ export class KompasPaywallBody {
       gtmParams.impressions[0]['content_title'] = this.tracker_content_title
       gtmParams.impressions[0]['content_category'] = this.tracker_content_category
       gtmParams.impressions[0]['content_type'] = this.tracker_content_type
-  
+
       gtmParams.impressions[1]['page_type'] = this.tracker_page_type
       gtmParams.impressions[1]['content_id'] = this.tracker_content_id
       gtmParams.impressions[1]['content_title'] = this.tracker_content_title
       gtmParams.impressions[1]['content_category'] = this.tracker_content_category
       gtmParams.impressions[1]['content_type'] = this.tracker_content_type
     }
-  
+
     window.dataLayer.push(gtmParams)
   }
-  
+
 
   private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: string): void => {
     const gtmParams: Record<string, any> = {
@@ -533,7 +533,7 @@ export class KompasPaywallBody {
         script.defer = true
         script.onload  = this.subscribeWithGoogleButton()
         head.appendChild(script)
-      } 
+      }
     }
   }
 

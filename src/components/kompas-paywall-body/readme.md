@@ -13,7 +13,7 @@
 | `isLogin`                      | `is-login`                     |             | `boolean`               | `false`     |
 | `paywallData`                  | --                             |             | `PaywallProduct`        | `undefined` |
 | `paywall_location`             | `paywall_location`             |             | `string`                | `''`        |
-| `paywall_position`             | `paywall_position`             |             | `string`                | `''`        |
+| `paywall_position`             | `paywall_position`             |             | `number`                | `0`        |
 | `paywall_subscription_id`      | `paywall_subscription_id`      |             | `number`                | `0`         |
 | `paywall_subscription_package` | `paywall_subscription_package` |             | `string`                | `''`        |
 | `paywall_subscription_price`   | `paywall_subscription_price`   |             | `number`                | `0`         |
