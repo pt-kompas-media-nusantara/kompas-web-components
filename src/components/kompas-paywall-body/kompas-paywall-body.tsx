@@ -94,7 +94,7 @@ export class KompasPaywallBody {
             </p>
         </div>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12', '9802032', 360000, '1')} class="h-auto bg-green-500 rounded mr-3" >
+      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-3" >
         <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
           Langganan
         </h6>
@@ -117,7 +117,7 @@ export class KompasPaywallBody {
           / {product.periode}
         </h6>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1', '9802035', 50000, '2')} class="h-auto bg-white border border-green-500 rounded" >
+      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1', '9802035', 50000, 2)} class="h-auto bg-white border border-green-500 rounded" >
         <h6 class="text-xs md:text-base text-green-500 font-bold py-2 px-4">
           Langganan
         </h6>
@@ -375,7 +375,7 @@ export class KompasPaywallBody {
     this.sendDataLayeronHelpDesk()
     window.open("https://api.whatsapp.com/send/?phone=6281290050800&text=Halo,%20saya%20perlu%20informasi%20mengenai%20kompas.id")
   }
-  private redirectToCheckout = (url: string, name: string, id:string, price: number, position: string): void => {
+  private redirectToCheckout = (url: string, name: string, id:string, price: number, position: number): void => {
     this.sendDataLayeronButtonBuyPackage(name, id, price, position)
     const originHost: string = encodeURIComponent(window.location.href)
     const directUrlCheckout: string = url + originHost
@@ -453,7 +453,7 @@ export class KompasPaywallBody {
   }
 
 
-  private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: string): void => {
+  private sendDataLayeronButtonBuyPackage = (name: string, id:string, price: number, position: number): void => {
     const gtmParams: Record<string, any> = {
       event: 'subscribe_button_clicked',
       paywall_location: this.paywall_location,
@@ -476,6 +476,7 @@ export class KompasPaywallBody {
       gtmParams['content_type'] = this.tracker_content_type
       gtmParams['page_type'] = this.tracker_page_type
     }
+
     window.dataLayer.push(gtmParams)
   }
 
