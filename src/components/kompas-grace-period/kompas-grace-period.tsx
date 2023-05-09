@@ -79,14 +79,12 @@ export class KompasGracePeriod {
   }
 
   private gracePeriodTemplate = (): void => (
-    <div class="mt-4">
-      <div class="flex flex-col md:flex-row w-full bg-orange-100 rounded-xl justify-end py-4 md:space-x-4 px-4 bottom-0">
-        <div class="text-grey-600 text-sm md:text-base self-center text-left">{this.getCountdownGracePeriod()}</div>
-      </div>
-      <div class="self-center w-full pt-4 md:pt-0">
-        <button onClick={this.redirectToBerlangganan} class="w-full rounded-lg px-4 py-3 mt-4 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">
-          Perbarui Langganan
-        </button>
+    <div class="flex flex-col md:flex-row w-full bg-orange-100 rounded-xl justify-end py-4 md:space-x-4 px-4 bottom-0">
+      <div class="text-grey-600 text-sm md:text-base self-center text-left">{this.getCountdownGracePeriod()}</div>
+        <div class="flex self-center w-full md:w-1/2 justify-end pt-4 md:pt-0">
+          <button onClick={this.redirectToBerlangganan} class="bg-green-500 p-2 px-5 rounded-md font-bold text-grey-100 text-sm md:text-base w-full md:w-auto">
+            Perbarui Langganan
+          </button>
       </div>
     </div>
   )
