@@ -413,7 +413,7 @@ export class KompasPaywallBody {
           paywall_position: 1,
           user_type: this.tracker_user_type,
           subscription_status: this.tracker_subscription_status,
-          page_domain: this.tracker_page_domain,
+          page_domain: this.tracker_page_domain || 'Kompas.id',
           metered_wall_type: this.tracker_metered_wall_type || 'HP',
           metered_wall_balance: this.tracker_metered_wall_balance
         },
@@ -425,7 +425,7 @@ export class KompasPaywallBody {
           paywall_position: 2,
           user_type: this.tracker_user_type,
           subscription_status: this.tracker_subscription_status,
-          page_domain: this.tracker_page_domain,
+          page_domain: this.tracker_page_domain || 'Kompas.id',
           metered_wall_type: this.tracker_metered_wall_type || 'HP',
           metered_wall_balance: this.tracker_metered_wall_balance
         }
@@ -439,13 +439,13 @@ export class KompasPaywallBody {
       gtmParams.impressions[0]['page_type'] = this.tracker_page_type
       gtmParams.impressions[0]['content_id'] = this.tracker_content_id
       gtmParams.impressions[0]['content_title'] = this.tracker_content_title
-      gtmParams.impressions[0]['content_category'] = this.tracker_content_category
+      gtmParams.impressions[0]['content_categories'] = this.tracker_content_category
       gtmParams.impressions[0]['content_type'] = this.tracker_content_type
 
       gtmParams.impressions[1]['page_type'] = this.tracker_page_type
       gtmParams.impressions[1]['content_id'] = this.tracker_content_id
       gtmParams.impressions[1]['content_title'] = this.tracker_content_title
-      gtmParams.impressions[1]['content_category'] = this.tracker_content_category
+      gtmParams.impressions[1]['content_categories'] = this.tracker_content_category
       gtmParams.impressions[1]['content_type'] = this.tracker_content_type
     }
 
@@ -464,7 +464,7 @@ export class KompasPaywallBody {
       user_type: this.tracker_user_type,
       epaper_edition: this.tracker_epaper_edition,
       subscription_status: this.tracker_subscription_status,
-      page_domain: this.tracker_page_domain,
+      page_domain: this.tracker_page_domain|| 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'HP',
       metered_wall_balance: this.tracker_metered_wall_balance,
     }
@@ -472,7 +472,7 @@ export class KompasPaywallBody {
     if (this.type !== 'epaper') {
       gtmParams['content_title'] = this.tracker_page_type
       gtmParams['content_id'] = this.tracker_content_id
-      gtmParams['content_category'] = this.tracker_content_category
+      gtmParams['content_categories'] = this.tracker_content_category
       gtmParams['content_type'] = this.tracker_content_type
       gtmParams['page_type'] = this.tracker_page_type
     }

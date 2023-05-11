@@ -104,7 +104,7 @@ export class KompasPaywallVideo {
       paywall_position: this.paywall_position,
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
-      page_domain: this.tracker_page_domain,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'HP',
       metered_wall_balance: this.tracker_metered_wall_balance,
     })
@@ -129,11 +129,11 @@ export class KompasPaywallVideo {
       page_type: this.tracker_page_type,
       content_id: this.tracker_content_id,
       content_title: this.tracker_content_title,
-      content_category: this.tracker_content_category,
+      content_categories: this.tracker_content_category,
       content_type: this.tracker_content_type,
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
-      page_domain: this.tracker_page_domain,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'HP',
       metered_wall_balance: this.tracker_metered_wall_balance,
     })
