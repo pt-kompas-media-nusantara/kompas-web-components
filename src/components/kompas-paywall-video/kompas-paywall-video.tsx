@@ -102,6 +102,7 @@ export class KompasPaywallVideo {
       paywall_subscription_id: this.paywall_subscription_id,
       paywall_subscription_price: this.paywall_subscription_price,
       paywall_position: this.paywall_position,
+      content_categories: this.tracker_content_category,
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
       page_domain: this.tracker_page_domain || 'Kompas.id',
