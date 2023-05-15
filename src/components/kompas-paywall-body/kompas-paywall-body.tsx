@@ -474,6 +474,8 @@ export class KompasPaywallBody {
       gtmParams['content_categories'] = this.tracker_content_category
       gtmParams['content_type'] = this.tracker_content_type
       gtmParams['page_type'] = this.tracker_page_type
+    } else {
+      gtmParams['epaper_edition'] = this.tracker_epaper_edition
     }
 
     window.dataLayer.push(gtmParams)
