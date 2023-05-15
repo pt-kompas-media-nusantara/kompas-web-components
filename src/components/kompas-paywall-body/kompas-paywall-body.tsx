@@ -462,7 +462,6 @@ export class KompasPaywallBody {
       paywall_subscription_price: price,
       paywall_position: position,
       user_type: this.tracker_user_type,
-      epaper_edition: this.tracker_epaper_edition,
       subscription_status: this.tracker_subscription_status,
       page_domain: this.tracker_page_domain|| 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'HP',
@@ -475,6 +474,8 @@ export class KompasPaywallBody {
       gtmParams['content_categories'] = this.tracker_content_category
       gtmParams['content_type'] = this.tracker_content_type
       gtmParams['page_type'] = this.tracker_page_type
+    } else {
+      gtmParams['epaper_edition'] = this.tracker_epaper_edition
     }
 
     window.dataLayer.push(gtmParams)
