@@ -38,7 +38,7 @@ export class KompasPaywallVideo {
   @Prop() tracker_page_type: string = ''
   @Prop() tracker_content_id: string = ''
   @Prop() tracker_content_title: string = ''
-  @Prop() tracker_content_category: string = ''
+  @Prop() tracker_content_categories: string = ''
   @Prop() tracker_content_type: string = ''
   @Prop() tracker_user_type: string = ''
   @Prop() tracker_subscription_status: string = ''
@@ -102,9 +102,10 @@ export class KompasPaywallVideo {
       paywall_subscription_id: this.paywall_subscription_id,
       paywall_subscription_price: this.paywall_subscription_price,
       paywall_position: this.paywall_position,
+      content_categories: this.tracker_content_categories,
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
-      page_domain: this.tracker_page_domain,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'HP',
       metered_wall_balance: this.tracker_metered_wall_balance,
     })
@@ -129,11 +130,11 @@ export class KompasPaywallVideo {
       page_type: this.tracker_page_type,
       content_id: this.tracker_content_id,
       content_title: this.tracker_content_title,
-      content_category: this.tracker_content_category,
+      content_categories: this.tracker_content_categories,
       content_type: this.tracker_content_type,
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
-      page_domain: this.tracker_page_domain,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'HP',
       metered_wall_balance: this.tracker_metered_wall_balance,
     })

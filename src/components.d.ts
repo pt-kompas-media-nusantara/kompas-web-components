@@ -17,7 +17,7 @@ export namespace Components {
         "paywall_subscription_id": string;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
-        "tracker_content_category": string;
+        "tracker_content_categories": string;
         "tracker_content_id": string;
         "tracker_content_title": string;
         "tracker_content_type": string;
@@ -282,7 +282,7 @@ export namespace Components {
         "paywall_subscription_id": string;
         "paywall_subscription_package": string;
         "paywall_subscription_price": number;
-        "tracker_content_category": string;
+        "tracker_content_categories": string;
         "tracker_content_id": string;
         "tracker_content_title": string;
         "tracker_content_type": string;
@@ -439,7 +439,7 @@ declare namespace LocalJSX {
         "paywall_subscription_id"?: string;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
-        "tracker_content_category"?: string;
+        "tracker_content_categories"?: string;
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
         "tracker_content_type"?: string;
@@ -704,7 +704,7 @@ declare namespace LocalJSX {
         "paywall_subscription_id"?: string;
         "paywall_subscription_package"?: string;
         "paywall_subscription_price"?: number;
-        "tracker_content_category"?: string;
+        "tracker_content_categories"?: string;
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
         "tracker_content_type"?: string;

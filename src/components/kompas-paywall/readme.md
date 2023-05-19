@@ -121,7 +121,7 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 | `isLogin`                      | `is-login`                     |             | `boolean`               | `false`     |
 | `isWithHeader`                 | `is-with-header`               |             | `boolean`               | `false`     |
 | `paywall_location`             | `paywall_location`             |             | `string`                | `''`        |
-| `paywall_position`             | `paywall_position`             |             | `number`                | `0`        |
+| `paywall_position`             | `paywall_position`             |             | `number`                | `0`         |
 | `paywall_subscription_id`      | `paywall_subscription_id`      |             | `number`                | `0`         |
 | `paywall_subscription_package` | `paywall_subscription_package` |             | `string`                | `''`        |
 | `paywall_subscription_price`   | `paywall_subscription_price`   |             | `number`                | `0`         |
