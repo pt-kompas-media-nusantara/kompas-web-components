@@ -3,8 +3,8 @@
  * command purge css
  */
 
-import { Component, h, State, Prop } from '@stencil/core'
-import { deviceType } from '../../utils/deviceType'
+import { Component, h, State, Prop } from '@stencil/core';
+import { deviceType } from '../../utils/deviceType';
 
 @Component({
   tag: 'kompas-grace-period',
@@ -48,8 +48,8 @@ export class KompasGracePeriod {
     } else {
       return (
         <p>
-          Masa tenggang langganan Anda tersisa <b class="text-orange-500">{maxGracePeriod - totalGracePeriod + 1} hari lagi</b>. Segera perbarui paket langganan untuk tetap mengakses
-          konten premium tanpa batas.
+          Masa tenggang langganan Anda tersisa <b class="text-orange-500">{maxGracePeriod - totalGracePeriod + 1} hari lagi</b>. Segera perbarui paket langganan untuk tetap
+          mengakses konten premium tanpa batas.
         </p>
       )
     }
