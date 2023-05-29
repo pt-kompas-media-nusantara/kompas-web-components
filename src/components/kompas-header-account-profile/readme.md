@@ -20,9 +20,14 @@
 
  - [kompas-header-account](../kompas-header-account)
 
+### Depends on
+
+- [kompas-grace-period](../kompas-grace-period)
+
 ### Graph
 ```mermaid
 graph TD;
+  kompas-header-account-profile --> kompas-grace-period
   kompas-header-account --> kompas-header-account-profile
   style kompas-header-account-profile fill:#f9f,stroke:#333,stroke-width:4px
 ```

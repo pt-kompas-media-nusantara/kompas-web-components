@@ -31,7 +31,7 @@ import { deviceType } from '../../utils/deviceType'
   * prop tracker_content_id = ID of article (slug)
   * prop tracker_content_type = Whether it's free article or paid article
   * prop tracker_content_title = The title of article
-  * prop tracker_content_category = The category of the content
+  * prop tracker_content_categories = The category of the content
   * prop tracker_user_type = Type of user based on their subscription
   * prop tracker_subscription_status = Status of their subscription
   * prop tracker_page_domain = Page Domain
@@ -57,7 +57,7 @@ export class KompasPaywallBody {
   @Prop() tracker_page_type: string = ''
   @Prop() tracker_content_id: string = ''
   @Prop() tracker_content_title: string = ''
-  @Prop() tracker_content_category: string = ''
+  @Prop() tracker_content_categories: string = ''
   @Prop() tracker_content_type: string = ''
   @Prop() tracker_user_type: string = ''
   @Prop() tracker_subscription_status: string = ''
@@ -439,13 +439,13 @@ export class KompasPaywallBody {
       gtmParams.impressions[0]['page_type'] = this.tracker_page_type
       gtmParams.impressions[0]['content_id'] = this.tracker_content_id
       gtmParams.impressions[0]['content_title'] = this.tracker_content_title
-      gtmParams.impressions[0]['content_categories'] = this.tracker_content_category
+      gtmParams.impressions[0]['content_categories'] = this.tracker_content_categories
       gtmParams.impressions[0]['content_type'] = this.tracker_content_type
 
       gtmParams.impressions[1]['page_type'] = this.tracker_page_type
       gtmParams.impressions[1]['content_id'] = this.tracker_content_id
       gtmParams.impressions[1]['content_title'] = this.tracker_content_title
-      gtmParams.impressions[1]['content_categories'] = this.tracker_content_category
+      gtmParams.impressions[1]['content_categories'] = this.tracker_content_categories
       gtmParams.impressions[1]['content_type'] = this.tracker_content_type
     }
 
@@ -471,7 +471,7 @@ export class KompasPaywallBody {
     if (this.type !== 'epaper') {
       gtmParams['content_title'] = this.tracker_page_type
       gtmParams['content_id'] = this.tracker_content_id
-      gtmParams['content_categories'] = this.tracker_content_category
+      gtmParams['content_categories'] = this.tracker_content_categories
       gtmParams['content_type'] = this.tracker_content_type
       gtmParams['page_type'] = this.tracker_page_type
     } else {

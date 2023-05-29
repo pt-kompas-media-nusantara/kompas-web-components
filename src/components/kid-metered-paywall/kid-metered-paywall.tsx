@@ -37,7 +37,7 @@ export class KidMeteredPaywall {
    * prop tracker_content_id = ID of article (slug)
    * prop tracker_content_type = Whether it's free article or paid article
    * prop tracker_content_title = The title of article
-   * prop tracker_content_category = The category of the content
+   * prop tracker_content_categories = The category of the content
    * prop tracker_user_type = Type of user based on their subscription
    * prop tracker_subscription_status = Status of their subscription
    * prop tracker_page_domain = Page Domain
