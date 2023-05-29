@@ -226,7 +226,7 @@ export namespace Components {
         "subscriptionStatus": string;
         "swgEnable": boolean;
         "textHeader": string;
-        "tracker_content_category": string;
+        "tracker_content_categories": string;
         "tracker_content_id": string;
         "tracker_content_title": string;
         "tracker_content_type": string;
@@ -255,7 +255,7 @@ export namespace Components {
         "slug": string;
         "subscriptionStatus": string;
         "swgEnable": boolean;
-        "tracker_content_category": string;
+        "tracker_content_categories": string;
         "tracker_content_id": string;
         "tracker_content_title": string;
         "tracker_content_type": string;
@@ -648,7 +648,7 @@ declare namespace LocalJSX {
         "subscriptionStatus"?: string;
         "swgEnable"?: boolean;
         "textHeader"?: string;
-        "tracker_content_category"?: string;
+        "tracker_content_categories"?: string;
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
         "tracker_content_type"?: string;
@@ -677,7 +677,7 @@ declare namespace LocalJSX {
         "slug"?: string;
         "subscriptionStatus"?: string;
         "swgEnable"?: boolean;
-        "tracker_content_category"?: string;
+        "tracker_content_categories"?: string;
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
         "tracker_content_type"?: string;

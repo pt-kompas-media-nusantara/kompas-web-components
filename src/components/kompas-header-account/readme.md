@@ -210,6 +210,7 @@ graph TD;
   kompas-header-account --> kompas-header-account-profile
   kompas-header-account --> kompas-header-account-menu
   kompas-header-account --> kompas-header-account-help-center
+  kompas-header-account-profile --> kompas-grace-period
   style kompas-header-account fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
