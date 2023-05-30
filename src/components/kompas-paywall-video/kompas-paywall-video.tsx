@@ -21,7 +21,7 @@ export class KompasPaywallVideo {
    * prop content_id = ID of article (slug)
    * prop content_type = Whether it's free article or paid article
    * prop content_title = The title of article
-   * prop content_category = The category of the content
+   * prop tracker_content_categories = The category of the content
    * prop user_type = Type of user based on their subscription
    * prop subscription_status = Status of their subscription
    * prop page_domain = Page Domain
