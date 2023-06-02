@@ -22,6 +22,11 @@ export class KompasHeaderAccountProfile {
    */
   @Prop() subscriptionUrl: string = 'https://www.kompas.id/berlangganan';
 
+  /**
+   * Grace Period
+   */
+  @Prop() totalGracePeriod: number;
+
   render() {
     /**
      * Skeleton Loading when data is not ready yet
@@ -46,9 +51,25 @@ export class KompasHeaderAccountProfile {
      * Profile Content
      */
     const profileContent = () => {
+            /**
+       * Expired Button Element
+       */
+            const subscribeButton = () => {
+              if(!this.userData?.updateMembership) return
+              const handleSubscribe = () => {
+                window.location.href = this.subscriptionUrl
+              }
+      
+              return (
+                <div class="w-full">
+                  <button onClick={()=> handleSubscribe()} class="w-full rounded-lg px-4 py-3 mt-4 h-10 flex justify-center items-center bg-green-500 text-grey-100 font-bold text-base focus:outline-none">{ this.userData?.updateMembership }</button>
+                </div>
+              )
+            }
       /**
        * expired Info Element
        */
+      
       const expiredInfo = () => {
         const isNearExpired = this.userData?.isNearExpired;
         const expiredTextColor = isNearExpired ? `text-orange-400` : `text-grey-600`;
@@ -84,9 +105,12 @@ export class KompasHeaderAccountProfile {
             </div>
           </div>
 
-          <div>
-            <kompas-grace-period totalGracePeriod={7} />
+          <div class="mt-4">
+            <kompas-grace-period totalGracePeriod={this.totalGracePeriod} is-coloumn={true} isShowButton={true}/>
           </div>
+
+          {/* subscribe button element */}
+          {subscribeButton()}
         </div>
       );
     };

@@ -121,6 +121,8 @@ export namespace Components {
         "wordingMessage": string;
     }
     interface KompasGracePeriod {
+        "isColoumn": boolean;
+        "isShowButton": boolean;
         /**
           * prop totalGracePeriod untuk menghitung berapa hari grace period user.
          */
@@ -163,6 +165,7 @@ export namespace Components {
           * Subscription Url
          */
         "subscriptionUrl": string;
+        "totalGracePeriod": number;
         /**
           * Value consist of User Data
          */
@@ -205,6 +208,10 @@ export namespace Components {
           * Subscription Url
          */
         "subscriptionUrl": string;
+        /**
+          * Grace Period
+         */
+        "totalGracePeriod": number;
         /**
           * User Data
          */
@@ -543,6 +550,8 @@ declare namespace LocalJSX {
         "wordingMessage"?: string;
     }
     interface KompasGracePeriod {
+        "isColoumn"?: boolean;
+        "isShowButton"?: boolean;
         /**
           * prop totalGracePeriod untuk menghitung berapa hari grace period user.
          */
@@ -585,6 +594,7 @@ declare namespace LocalJSX {
           * Subscription Url
          */
         "subscriptionUrl"?: string;
+        "totalGracePeriod"?: number;
         /**
           * Value consist of User Data
          */
@@ -627,6 +637,10 @@ declare namespace LocalJSX {
           * Subscription Url
          */
         "subscriptionUrl"?: string;
+        /**
+          * Grace Period
+         */
+        "totalGracePeriod"?: number;
         /**
           * User Data
          */
