@@ -31,11 +31,11 @@ export class KompasGracePeriod {
    */
   @Prop() totalGracePeriod: number = 0;
     /**
-   * prop totalGracePeriod untuk menghitung berapa hari grace period user.
+   * prop isColoumn untuk merubah flex-column pada header account profile
    */
   @Prop() isColoumn: boolean = false;
     /**
-   * prop totalGracePeriod untuk menghitung berapa hari grace period user.
+   * prop isShowButton untuk nampilin button perbarui langganan
    */
   @Prop() isShowButton: boolean = false;
   
