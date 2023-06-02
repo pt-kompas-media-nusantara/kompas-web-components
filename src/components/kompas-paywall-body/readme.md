@@ -20,7 +20,7 @@
 | `slug`                         | `slug`                         |             | `string`                | `""`        |
 | `subscriptionStatus`           | `subscription-status`          |             | `string`                | `''`        |
 | `swgEnable`                    | `swg-enable`                   |             | `boolean`               | `false`     |
-| `tracker_content_category`     | `tracker_content_category`     |             | `string`                | `''`        |
+| `tracker_content_categories`   | `tracker_content_categories`   |             | `string`                | `''`        |
 | `tracker_content_id`           | `tracker_content_id`           |             | `string`                | `''`        |
 | `tracker_content_title`        | `tracker_content_title`        |             | `string`                | `''`        |
 | `tracker_content_type`         | `tracker_content_type`         |             | `string`                | `''`        |

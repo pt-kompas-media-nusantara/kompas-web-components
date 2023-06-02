@@ -8,21 +8,21 @@ Ini adalah redesign komponen _paywall_ yang digunakan pada [epaper.kompas.id](ht
 
 Selalu menggunakan versi terbaru:
 ```html
-<script src="https://unpkg.com/@kompas/web-components@latest" type="module" async defer></script>
+<script src="https://unpkg.com/@kompasid/web-components@latest" type="module" async defer></script>
 ```
 atau menggunakan versi tertentu, saat ini belum disarankan:
 ```html
-<script src="https://unpkg.com/@kompas/web-components@0.0.1-alpha-5" type="module" async defer></script>
+<script src="https://unpkg.com/@kompasid/web-components@0.0.1-alpha-5" type="module" async defer></script>
 ```
 
 ### - NPM
 ```bash
-npm i -D @kompas/web-components
+npm i -D @kompasid/web-components
 ```
 
 ### - Yarn
 ```bash
-yarn add -D @kompas/web-components
+yarn add -D @kompasid/web-components
 ```
 
 ## Penggunaan
@@ -37,7 +37,7 @@ import App from "./App.vue";
 import {
   applyPolyfills,
   defineCustomElements,
-} from "@kompas/web-components/loader";
+} from "@kompasid/web-components/loader";
 
 Vue.config.productionTip = false;
 
@@ -63,11 +63,11 @@ export default {
     'nuxt-stencil'
   ],
   stencil: {
-    lib: '@kompas/web-components',
+    lib: '@kompasid/web-components',
     prefix: 'kompas-',
     renderOptions: {},
-    hydratePath: '@kompas/web-components/hydrate',
-    loaderPath: '@kompas/web-components/loader',
+    hydratePath: '@kompasid/web-components/hydrate',
+    loaderPath: '@kompasid/web-components/loader',
     ignoredElements: null
   },
 }
@@ -128,7 +128,7 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 | `subscriptionStatus`           | `subscription-status`          |             | `string`                | `''`        |
 | `swgEnable`                    | `swg-enable`                   |             | `boolean`               | `false`     |
 | `textHeader`                   | `text-header`                  |             | `string`                | `''`        |
-| `tracker_content_category`     | `tracker_content_category`     |             | `string`                | `''`        |
+| `tracker_content_categories`   | `tracker_content_categories`   |             | `string`                | `''`        |
 | `tracker_content_id`           | `tracker_content_id`           |             | `string`                | `''`        |
 | `tracker_content_title`        | `tracker_content_title`        |             | `string`                | `''`        |
 | `tracker_content_type`         | `tracker_content_type`         |             | `string`                | `''`        |
