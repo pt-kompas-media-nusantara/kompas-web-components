@@ -78,6 +78,17 @@ export class KompasHeaderAccountProfile {
       };
 
       /**
+       * expired Info Element
+       */
+      
+      const activeInfo = () => {
+        const isNearExpired = this.userData?.isNearExpired;
+        const expiredTextColor = isNearExpired ? `text-orange-400` : `text-grey-600`;
+
+        return <p class={`capitalize font-bold text-sm ${expiredTextColor}`}>{this.userData?.activeInfo}</p>;
+      };
+
+      /**
        * membership icon element, show if isMebership has truthy value
        */
       const membershipIcon = () => {
@@ -100,7 +111,7 @@ export class KompasHeaderAccountProfile {
 
             <div class="flex flex-col text-left">
               <p class="capitalize font-bold text-base text-blue-600">{truncate(this.userData?.userName, 25)}</p>
-              <p class="capitalize text-sm text-grey-600">{this.userData?.activeInfo}</p>
+              {activeInfo()}
               {expiredInfo()}
             </div>
           </div>

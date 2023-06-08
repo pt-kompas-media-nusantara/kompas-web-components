@@ -121,7 +121,13 @@ export namespace Components {
         "wordingMessage": string;
     }
     interface KompasGracePeriod {
+        /**
+          * prop isColoumn untuk merubah flex-column pada header account profile
+         */
         "isColoumn": boolean;
+        /**
+          * prop isShowButton untuk nampilin button perbarui langganan
+         */
         "isShowButton": boolean;
         /**
           * prop totalGracePeriod untuk menghitung berapa hari grace period user.
@@ -550,7 +556,13 @@ declare namespace LocalJSX {
         "wordingMessage"?: string;
     }
     interface KompasGracePeriod {
+        /**
+          * prop isColoumn untuk merubah flex-column pada header account profile
+         */
         "isColoumn"?: boolean;
+        /**
+          * prop isShowButton untuk nampilin button perbarui langganan
+         */
         "isShowButton"?: boolean;
         /**
           * prop totalGracePeriod untuk menghitung berapa hari grace period user.
