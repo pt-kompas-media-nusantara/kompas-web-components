@@ -117,7 +117,7 @@ export class KompasHeaderAccountProfile {
           </div>
 
           <div class="mt-4">
-            <kompas-grace-period totalGracePeriod={this.totalGracePeriod} is-coloumn={true} isShowButton={true}/>
+            <kompas-grace-period totalGracePeriod={this.totalGracePeriod} isColoumn={true} isShowButton={true}/>
           </div>
 
           {/* subscribe button element */}
