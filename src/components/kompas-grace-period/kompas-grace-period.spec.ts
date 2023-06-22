@@ -58,7 +58,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -87,7 +87,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -116,7 +116,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -145,7 +145,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -174,7 +174,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -203,7 +203,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -233,7 +233,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>

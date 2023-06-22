@@ -71,6 +71,7 @@ export class KompasHeaderAccount {
    */
   @Prop() subscriptionUrl: string
 
+  @Prop() totalGracePeriod: number
 
   /**
    * STATES
@@ -161,6 +162,7 @@ export class KompasHeaderAccount {
             user-initial-name={this.getInitialUserName()}
             userData={this.formattedUserData}
             subscription-url={this.subscriptionUrl}
+            total-grace-period={this.totalGracePeriod}
           />
           <div class="pl-4 pr-3 py-4">
             <kompas-header-account-menu
