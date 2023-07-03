@@ -469,7 +469,7 @@ export class KompasPaywallBody {
     }
 
     if (this.type !== 'epaper') {
-      gtmParams['content_title'] = this.tracker_page_type
+      gtmParams['content_title'] = this.tracker_content_title
       gtmParams['content_id'] = this.tracker_content_id
       gtmParams['content_categories'] = this.tracker_content_categories
       gtmParams['content_type'] = this.tracker_content_type
