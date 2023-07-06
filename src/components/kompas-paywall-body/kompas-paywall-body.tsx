@@ -366,7 +366,7 @@ export class KompasPaywallBody {
     return 'Rp ' + roundedValue.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
   private redirectToRegister = (): void => {
-    const loginHost: string = 'https://account.kompas.id/register'
+    const loginHost: string = 'https://account.kompas.id/login'
     const nextParams: string = encodeURIComponent(window.location.href)
     const directUrlRegister: string = `${loginHost}?next=${nextParams}?status=sukses_login&status_login=login`
     window.location.href = directUrlRegister
@@ -406,7 +406,7 @@ export class KompasPaywallBody {
       event: 'paywall_viewed',
       impressions: [
         {
-          paywall_location: this.paywall_location || 'Epaper Detail Page',
+          paywall_location: this.paywall_location || '',
           paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12',
           paywall_subscription_id: '9802032',
           paywall_subscription_price: 360000,
@@ -418,7 +418,7 @@ export class KompasPaywallBody {
           metered_wall_balance: this.tracker_metered_wall_balance
         },
         {
-          paywall_location: this.paywall_location || 'Epaper Detail Page',
+          paywall_location: this.paywall_location || '',
           paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1',
           paywall_subscription_id: '9802035',
           paywall_subscription_price: 50000,
@@ -469,7 +469,7 @@ export class KompasPaywallBody {
     }
 
     if (this.type !== 'epaper') {
-      gtmParams['content_title'] = this.tracker_page_type
+      gtmParams['content_title'] = this.tracker_content_title
       gtmParams['content_id'] = this.tracker_content_id
       gtmParams['content_categories'] = this.tracker_content_categories
       gtmParams['content_type'] = this.tracker_content_type

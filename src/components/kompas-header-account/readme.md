@@ -193,6 +193,7 @@ Gambaran terkait detail diatas adalah seperti dibawah ini:
 | `readLaterUrl`          | `read-later-url`      | Read Later Url                                                 | `string` | `undefined` |
 | `sidebarTopSpacing`     | `sidebar-top-spacing` | Value to Add spacing on top of sidebar (will convert to pixel) | `number` | `0`         |
 | `subscriptionUrl`       | `subscription-url`    | Subscription Url                                               | `string` | `undefined` |
+| `totalGracePeriod`      | `total-grace-period`  |                                                                | `number` | `undefined` |
 | `userData` _(required)_ | `user-data`           | Value consist of User Data                                     | `any`    | `undefined` |
 
 
