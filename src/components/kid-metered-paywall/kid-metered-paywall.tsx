@@ -85,7 +85,7 @@ export class KidMeteredPaywall {
   private dataLayeronLanggananButton = (): void => {
     window.dataLayer.push({
       event: 'subscribe_button_clicked',
-      paywall_location: this.paywall_location || 'Article Detail Page',
+      paywall_location: this.paywall_location || '',
       paywall_subscription_package: this.paywall_subscription_package || '',
       paywall_subscription_id: this.paywall_subscription_id || '',
       paywall_subscription_price: this.paywall_subscription_price || 0,
@@ -106,7 +106,7 @@ export class KidMeteredPaywall {
   private dataLayeronMeteredPaywall = (): void => {
     window.dataLayer.push({
       event: 'paywall_viewed',
-      paywall_location: this.paywall_location || 'Article Detail Page',
+      paywall_location: this.paywall_location || '',
       paywall_subscription_package: this.paywall_subscription_package || '',
       paywall_subscription_id: this.paywall_subscription_id || '',
       paywall_subscription_price: this.paywall_subscription_price || 0,

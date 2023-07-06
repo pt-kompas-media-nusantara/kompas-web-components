@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property                | Attribute           | Description       | Type     | Default                                |
-| ----------------------- | ------------------- | ----------------- | -------- | -------------------------------------- |
-| `subscriptionUrl`       | `subscription-url`  | Subscription Url  | `string` | `'https://www.kompas.id/berlangganan'` |
-| `userData` _(required)_ | `user-data`         | User Data         | `any`    | `undefined`                            |
-| `userInitialName`       | `user-initial-name` | User Initial Name | `string` | `undefined`                            |
+| Property                | Attribute            | Description       | Type     | Default                                |
+| ----------------------- | -------------------- | ----------------- | -------- | -------------------------------------- |
+| `subscriptionUrl`       | `subscription-url`   | Subscription Url  | `string` | `'https://www.kompas.id/berlangganan'` |
+| `totalGracePeriod`      | `total-grace-period` | Grace Period      | `number` | `undefined`                            |
+| `userData` _(required)_ | `user-data`          | User Data         | `any`    | `undefined`                            |
+| `userInitialName`       | `user-initial-name`  | User Initial Name | `string` | `undefined`                            |
 
 
 ## Dependencies
