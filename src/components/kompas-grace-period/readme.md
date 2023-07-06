@@ -7,9 +7,11 @@
 
 ## Properties
 
-| Property           | Attribute            | Description                                                           | Type     | Default |
-| ------------------ | -------------------- | --------------------------------------------------------------------- | -------- | ------- |
-| `totalGracePeriod` | `total-grace-period` | prop totalGracePeriod untuk menghitung berapa hari grace period user. | `number` | `0`     |
+| Property           | Attribute            | Description                                                           | Type      | Default |
+| ------------------ | -------------------- | --------------------------------------------------------------------- | --------- | ------- |
+| `isColoumn`        | `is-coloumn`         | prop isColoumn untuk merubah flex-column pada header account profile  | `boolean` | `false` |
+| `isShowButton`     | `is-show-button`     | prop isShowButton untuk nampilin button perbarui langganan            | `boolean` | `false` |
+| `totalGracePeriod` | `total-grace-period` | prop totalGracePeriod untuk menghitung berapa hari grace period user. | `number`  | `0`     |
 
 
 ## Dependencies
