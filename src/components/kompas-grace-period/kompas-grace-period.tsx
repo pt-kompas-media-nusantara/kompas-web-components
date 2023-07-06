@@ -47,8 +47,7 @@ export class KompasGracePeriod {
    */
   private getCountdownGracePeriod(): void {
     const totalGracePeriod = this.totalGracePeriod;
-    const maxGracePeriod = this.maxGracePeriod;
-    if (totalGracePeriod === 7) {
+    if (totalGracePeriod === 1) {
       return (
         <p>
           Anda dalam <b class="text-orange-500"> hari terakhir</b> masa tenggang langganan. Segera perbarui paket langganan untuk tetap mengakses konten premium tanpa batas.
@@ -57,7 +56,7 @@ export class KompasGracePeriod {
     } else {
       return (
         <p>
-          Masa tenggang langganan Anda tersisa <b class="text-orange-500">{maxGracePeriod - totalGracePeriod + 1} hari lagi</b>. Segera perbarui paket langganan untuk tetap
+          Masa tenggang langganan Anda tersisa <b class="text-orange-500">{totalGracePeriod} hari lagi</b>. Segera perbarui paket langganan untuk tetap
           mengakses konten premium tanpa batas.
         </p>
       );
