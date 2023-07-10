@@ -135,18 +135,12 @@ export class KompasPaywallBody {
 
   private authRegister = (): void => (
     <div class="flex flex-row text-white py-2.5 space-x-8 self-center">
-      <div class="flex flex-col">
-        <b class="hidden md:block text-sm text-white">Sudah berlangganan Kompas Premium?</b>
-        <b class="md:hidden text-xs text-white">Sudah berlangganan?</b>
-        <p class="hidden md:block text-sm text-white">
-          Masuk ke akun anda untuk lanjut baca.
-        </p>
-        <p class="text-xs md:hidden text-white">
-          Masuk untuk lanjut baca.
-        </p>
+      <div class="flex flex-col text-left text-xs text-white">
+        <b>Sudah berlangganan Kompas.id?</b>
+        <p>Masuk untuk lanjut membaca.</p>
       </div>
       <button onClick={() => this.redirectToRegister()} class="h-auto bg-grey-100 rounded mr-3" >
-        <p class="text-xs md:text-base text-blue-600 font-bold py-2 px-4">
+        <p class="text-xs md:text-sm text-blue-600 font-bold py-2 px-4">
           Masuk / Daftar
         </p>
       </button>
