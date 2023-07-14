@@ -99,7 +99,7 @@ export class KidMeteredPaywall {
       subscription_status: this.tracker_subscription_status,
       page_domain: this.tracker_page_domain || 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'MP',
-      metered_wall_balance: this.maxQuota - this.countdownArticle
+      metered_wall_balance: (this.maxQuota - this.countdownArticle) + 1
     })
   }
 
@@ -120,7 +120,7 @@ export class KidMeteredPaywall {
       subscription_status: this.tracker_subscription_status,
       page_domain: this.tracker_page_domain || 'Kompas.id',
       metered_wall_type: this.tracker_metered_wall_type || 'MP',
-      metered_wall_balance: this.maxQuota - this.countdownArticle
+      metered_wall_balance: (this.maxQuota - this.countdownArticle) + 1
     })
   }
 
