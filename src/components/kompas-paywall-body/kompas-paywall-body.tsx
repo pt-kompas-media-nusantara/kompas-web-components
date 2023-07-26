@@ -78,7 +78,7 @@ export class KompasPaywallBody {
   buttonElement!: HTMLButtonElement
 
   private primaryPackages = (product: Product): void => (
-    <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-md md:w-4/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
+    <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
       <div class="flex flex-col py-3 px-4">
         <div class="flex flex-none items-center">
           <h5 class="text-base md:text-lg font-bold text-orange-400">
@@ -94,7 +94,7 @@ export class KompasPaywallBody {
             </p>
         </div>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-3" >
+      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-4" >
         <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
           Langganan
         </h6>
@@ -108,7 +108,7 @@ export class KompasPaywallBody {
   )
 
   private secondaryPackages = (product: Product): void => (
-    <div class="flex  flex-wrap justify-between bg-white py-3 px-4 rounded md:mx-0 w-full max-w-xs md:max-w-md md:w-4/5 mt-3 md:mt-4">
+    <div class="flex  flex-wrap justify-between bg-white py-3 px-4 rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-3 md:mt-4">
       <div class="flex items-center">
         <h5 class="text-base md:text-lg font-bold text-orange-400">
           {this.getRupiahFormat(product.price)}
@@ -134,7 +134,7 @@ export class KompasPaywallBody {
   )
 
   private authRegister = (): void => (
-    <div class="flex flex-row text-white px-4 py-2.5 space-x-8 md:space-x-24 self-center">
+    <div class="flex flex-row text-white px-2 py-2.5 space-x-4 md:space-x-8 self-center">
       <div class="flex flex-col text-left text-xs md:text-sm text-white">
         <b>Sudah berlangganan Kompas.id?</b>
         <p>Masuk untuk lanjut membaca.</p>
@@ -189,14 +189,14 @@ export class KompasPaywallBody {
   )
 
   private paymentDesktopSection = (data: Array<PaymentImage>): void => (
-    <div class="hidden md:flex w-full md:max-w-xs lg:max-w-md items-center justify-evenly flex-wrap">
-      {data.map((item) => (<img class="object-cover w-16 h-9" src={item.link} alt={`${item.name}-logo-payment`} />))}
+    <div class="hidden md:flex w-full md:max-w-sm items-center justify-center flex-wrap">
+      {data.map((item) => (<img class="object-cover w-15 h-10" src={item.link} alt={`${item.name}-logo-payment`} />))}
     </div>
   )
 
   private paymentMobileSection = (data: Array<PaymentImage>): void => (
-    <div class="grid md:hidden items-center grid-flow-col grid-cols-auto grid-rows-1 gap-4 mt-4 mx-4">
-      {data.map((item) => (<img class="" src={item.link} alt={`${item.name}-logo-payment`} />))}
+    <div class="grid md:hidden items-center grid-flow-col grid-cols-auto grid-rows-1 mt-4 mx-4">
+      {data.map((item) => (<img class="w-16" src={item.link} alt={`${item.name}-logo-payment`} />))}
       <button onClick={() => this.paymentExtensionHandler()} class="text-xs md:text-sm text-blue-600 font-bold" >+9 lainnya </button>
     </div>
   )
