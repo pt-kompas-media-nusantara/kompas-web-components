@@ -134,7 +134,7 @@ export class KompasPaywallBody {
   )
 
   private authRegister = (): void => (
-    <div class="flex flex-row text-white py-2.5 space-x-24 self-center">
+    <div class="flex flex-row text-white px-4 py-2.5 space-x-8 md:space-x-24 self-center">
       <div class="flex flex-col text-left text-xs md:text-sm text-white">
         <b>Sudah berlangganan Kompas.id?</b>
         <p>Masuk untuk lanjut membaca.</p>
