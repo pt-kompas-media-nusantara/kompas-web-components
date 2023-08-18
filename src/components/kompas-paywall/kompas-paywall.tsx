@@ -125,36 +125,36 @@ export class KompasPaywall {
         },
         payment: {
           desktop: [
-            { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-            { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-            { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
-            { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-            { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-            { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-            { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" },
-            { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-            { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-            { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-            { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-            { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-            { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" }
+            { name: "gopay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay${this.darkUrl}.svg` },
+            { name: "ovo", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo${this.darkUrl}.svg` },
+            { name: "mastercard", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard${this.darkUrl}.svg` },
+            { name: "bri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri${this.darkUrl}.svg` },
+            { name: "bcaklikpay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay${this.darkUrl}.svg` },
+            { name: "indomaret", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret${this.darkUrl}.svg` },
+            { name: "jcb", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb${this.darkUrl}.svg` },
+            { name: "dana", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana${this.darkUrl}.svg` },
+            { name: "visa", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa${this.darkUrl}.svg` },
+            { name: "mandiri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri${this.darkUrl}.svg` },
+            { name: "bca", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca${this.darkUrl}.svg` },
+            { name: "bni", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni${this.darkUrl}.svg` },
+            { name: "akulaku", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku${this.darkUrl}.svg` }
           ],
           mobile: [
-            { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-            { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-            { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-            { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
+            { name: "gopay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay${this.darkUrl}.svg` },
+            { name: "ovo", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo${this.darkUrl}.svg` },
+            { name: "visa", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa${this.darkUrl}.svg` },
+            { name: "mastercard", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard${this.darkUrl}.svg` },
           ],
           ekstension: [
-            { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-            { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-            { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-            { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-            { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" },
-            { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-            { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-            { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-            { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" }
+            { name: "dana", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana${this.darkUrl}.svg` },
+            { name: "mandiri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri${this.darkUrl}.svg` },
+            { name: "bri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri${this.darkUrl}.svg` },
+            { name: "bcaklikpay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay${this.darkUrl}.svg` },
+            { name: "akulaku", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku${this.darkUrl}.svg` },
+            { name: "bni", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni${this.darkUrl}.svg` },
+            { name: "indomaret", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret${this.darkUrl}.svg` },
+            { name: "bca", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca${this.darkUrl}.svg` },
+            { name: "jcb", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb${this.darkUrl}.svg` }
           ]
         }
       }
@@ -164,6 +164,10 @@ export class KompasPaywall {
     } catch (error) {
       throw new Error(`${error.status} Ada galat saat memproses permintaan.`)
     }
+  }
+
+  get darkUrl () {
+    return this.theme === 'dark' ? '-dark' : ''
   }
 
 
