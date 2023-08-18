@@ -239,6 +239,7 @@ export namespace Components {
         "subscriptionStatus": string;
         "swgEnable": boolean;
         "textHeader": string;
+        "theme": string;
         "tracker_content_categories": string;
         "tracker_content_id": string;
         "tracker_content_title": string;
@@ -255,6 +256,7 @@ export namespace Components {
     }
     interface KompasPaywallBannerRegistration {
         "bannerData": Registration | undefined;
+        "theme": string;
     }
     interface KompasPaywallBody {
         "countdownArticle": number;
@@ -268,6 +270,7 @@ export namespace Components {
         "slug": string;
         "subscriptionStatus": string;
         "swgEnable": boolean;
+        "theme": string;
         "tracker_content_categories": string;
         "tracker_content_id": string;
         "tracker_content_title": string;
@@ -284,6 +287,7 @@ export namespace Components {
     }
     interface KompasPaywallInformationHeader {
         "text": string;
+        "theme": string;
     }
     interface KompasPaywallVideo {
         /**
@@ -674,6 +678,7 @@ declare namespace LocalJSX {
         "subscriptionStatus"?: string;
         "swgEnable"?: boolean;
         "textHeader"?: string;
+        "theme"?: string;
         "tracker_content_categories"?: string;
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
@@ -690,6 +695,7 @@ declare namespace LocalJSX {
     }
     interface KompasPaywallBannerRegistration {
         "bannerData"?: Registration | undefined;
+        "theme"?: string;
     }
     interface KompasPaywallBody {
         "countdownArticle"?: number;
@@ -703,6 +709,7 @@ declare namespace LocalJSX {
         "slug"?: string;
         "subscriptionStatus"?: string;
         "swgEnable"?: boolean;
+        "theme"?: string;
         "tracker_content_categories"?: string;
         "tracker_content_id"?: string;
         "tracker_content_title"?: string;
@@ -719,6 +726,7 @@ declare namespace LocalJSX {
     }
     interface KompasPaywallInformationHeader {
         "text"?: string;
+        "theme"?: string;
     }
     interface KompasPaywallVideo {
         /**

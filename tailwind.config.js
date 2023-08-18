@@ -1,12 +1,18 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     colors: {
       brand: {
         1: '#00559A',
         2: '#00447B'
       },
+      dark: {
+        1: '#252525',
+        2: '#1E1E1E'
+      },
+      white: '#FFFFFF',
+      black: '#000000',
       blue: {
         100: '#E1F0FF',
         200: '#93C8FD',

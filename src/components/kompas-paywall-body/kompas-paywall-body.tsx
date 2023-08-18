@@ -38,6 +38,7 @@ import { deviceType } from '../../utils/deviceType'
   * prop tracker_metered_wall_type = The type of Metered Wall
   * prop tracker_metered_wall_balance = The balance of their metered wall
   * prop tracker_metered_wall_balance = The edition of epaper viewed by user
+  * prop theme = The theme of the paywall component
 */
 
 export class KompasPaywallBody {
@@ -65,6 +66,7 @@ export class KompasPaywallBody {
   @Prop() tracker_metered_wall_type: string = ''
   @Prop() tracker_metered_wall_balance: number = 0
   @Prop() tracker_epaper_edition: string = ''
+  @Prop() theme: string = ''
   @State() isExtensionsOpened: boolean = false
   @State() kompasAkunHost: string = 'https://akun.kompas.id'
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
@@ -78,24 +80,24 @@ export class KompasPaywallBody {
   buttonElement!: HTMLButtonElement
 
   private primaryPackages = (product: Product): void => (
-    <div class="flex flex-wrap justify-between items-center bg-white rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative">
+    <div class={`flex flex-wrap justify-between items-center ${this.isDark ? 'bg-grey-600' : 'bg-white'} rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative`}>
       <div class="flex flex-col py-3 px-4">
         <div class="flex flex-none items-center">
           <h5 class="text-base md:text-lg font-bold text-orange-400">
             {this.getRupiahFormat(product.price)}
           </h5>
-          <h6 class="text-xs md:text-base font-bold pl-1">
+          <h6 class={`text-xs md:text-base ${ this.isDark && 'text-white'} font-bold pl-1`}>
             / {product.periode}
           </h6>
         </div>
         <div class="flex items-center">
-            <p class="text-xs">
+            <p class={`text-xs ${this.isDark && 'text-white'}`}>
             hanya <span class="text-orange-400">Rp 30.000</span> / bulan
             </p>
         </div>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12', '9802032', 360000, 1)} class="h-auto bg-green-500 rounded mr-4" >
-        <h6 class="text-xs md:text-base text-white font-bold py-2 px-4">
+      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12', '9802032', 360000, 1)} class={`h-auto ${this.isDark ? 'bg-green-300 border border-green-400' : 'bg-green-500'} rounded mr-4`} >
+        <h6 class={`text-xs md:text-base ${this.isDark ? 'text-black' : 'text-white'} font-bold py-2 px-4`}>
           Langganan
         </h6>
       </button >
@@ -108,17 +110,17 @@ export class KompasPaywallBody {
   )
 
   private secondaryPackages = (product: Product): void => (
-    <div class="flex  flex-wrap justify-between bg-white py-3 px-4 rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-3 md:mt-4">
+    <div class={`flex  flex-wrap justify-between ${this.isDark ? 'bg-grey-600' : 'bg-white'} py-3 px-4 rounded md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-3 md:mt-4`}>
       <div class="flex items-center">
         <h5 class="text-base md:text-lg font-bold text-orange-400">
           {this.getRupiahFormat(product.price)}
         </h5>
-        <h6 class=" text-xs md:text-base font-bold pl-1">
+        <h6 class={`text-xs md:text-base ${this.isDark && 'text-white'} font-bold pl-1`}>
           / {product.periode}
         </h6>
       </div>
-      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1', '9802035', 50000, 2)} class="h-auto bg-white border border-green-500 rounded" >
-        <h6 class="text-xs md:text-base text-green-500 font-bold py-2 px-4">
+      <button onClick={() => this.redirectToCheckout(product.url, 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1', '9802035', 50000, 2)} class={`h-auto ${!this.isDark && 'bg-white'} border border-green-500 rounded`} >
+        <h6 class={`text-xs md:text-base ${this.isDark ? 'text-green-300' : 'text-green-500'} font-bold py-2 px-4`}>
           Langganan
         </h6>
       </button>
@@ -127,7 +129,7 @@ export class KompasPaywallBody {
 
   private helpDesk = (): void => (
     <div class="py-2.5 text-white self-center text-xs md:text-sm">
-      Mengalami masalah? Hubungi <button onClick={() => this.redirectToHelpdesk()} class="font-bold underline">
+      Mengalami masalah? Hubungi <button onClick={() => this.redirectToHelpdesk()} class={`font-bold ${this.isDark && 'text-blue-300'} underline`}>
         Layanan Pelanggan.
       </button>
     </div>
@@ -139,15 +141,15 @@ export class KompasPaywallBody {
         <b>Sudah berlangganan Kompas.id?</b>
         <p>Masuk untuk lanjut membaca.</p>
       </div>
-      <button onClick={() => this.redirectToRegister()} class="h-auto bg-grey-100 rounded mr-3" >
-        <p class="text-xs md:text-sm text-blue-600 font-bold py-2 px-4">
+      <button onClick={() => this.redirectToRegister()} class={`h-auto ${this.isDark ? 'bg-blue-300' : 'bg-grey-100'} rounded mr-3`} >
+        <p class={`text-xs md:text-sm ${this.isDark ? 'text-black' : 'text-blue-600'} font-bold py-2 px-4`}>
           Masuk / Daftar
         </p>
       </button>
     </div>
   )
   private userAction = (isLogin: boolean, type: 'epaper' | 'reguler'): void => (
-    <div class="flex h-20 bg-blue-600 w-full justify-evenly rounded-b mt-6 md:mt-8 relative">
+    <div class={`flex h-20 ${this.isDark ? 'bg-dark-2' : 'bg-blue-600'} w-full justify-evenly rounded-b mt-6 md:mt-8 relative`}>
       {isLogin || (type !== 'epaper') ? this.helpDesk() : this.authRegister()}
     </div >
   )
@@ -164,7 +166,7 @@ export class KompasPaywallBody {
   private headerSection = (type: 'epaper' | 'reguler'): void => (
     <div class="flex w-full items-center">
       {type === 'epaper' ? <button onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} /> : ''}
-      <h4 class="text-base md:text-xl text-center font-bold font-serif tracking-wide md:tracking-normal w-full">Langganan untuk Lanjut Membaca</h4>
+      <h4 class={`text-base md:text-xl ${this.isDark && 'text-white'} text-center font-bold font-serif tracking-wide md:tracking-normal w-full`}>Langganan untuk Lanjut Membaca</h4>
     </div>
   )
 
@@ -174,7 +176,7 @@ export class KompasPaywallBody {
         {data.map((item) => (
           <div class="flex items-center">
             <div class="icon-xs icon-green-500" innerHTML={check}></div>
-            <h6 class="text-xs md:text-base ml-0.5 md:ml-1">{item}</h6>
+            <h6 class={`text-xs md:text-base ${this.isDark && 'text-white'} ml-0.5 md:ml-1`}>{item}</h6>
           </div>
         ))}
       </div>
@@ -183,7 +185,7 @@ export class KompasPaywallBody {
 
   private packagesSection = (data: Packages): void => (
     <div class="flex flex-col w-full items-center mt-8 lg:mt-2 px-2 ">
-      <h6 class="text-sm md:text-base font-bold"> {data.title} </h6>
+      <h6 class={`text-sm md:text-base ${this.isDark && 'text-white'} font-bold`}> {data.title} </h6>
       {data.memberships.map((item) => (item.isHighlight ? this.primaryPackages(item) : this.secondaryPackages(item)))}
     </div>
   )
@@ -223,7 +225,7 @@ export class KompasPaywallBody {
 
   private informationPackages = (): void => (
     <div class="mt-4 flex justify-center">
-      <button onClick={() => this.redirectToSubscriber()} class="text-sm md:text-base font-bold underline text-blue-600" >
+      <button onClick={() => this.redirectToSubscriber()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
         Lihat Paket Lainnya
       </button>
     </div>
@@ -238,6 +240,9 @@ export class KompasPaywallBody {
 
   get redirectToLogin() {
     return `${this.kompasLoginHost}?next=${encodeURIComponent(this.selfHost + location.pathname)}`
+  }
+  get isDark() {
+    return this.theme === 'dark'
   }
   private getRegisterToken = async (path: string, payload: any): Promise<string> => {
     return await fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
@@ -533,12 +538,20 @@ export class KompasPaywallBody {
     }
   }
 
+  componentWillRender () {
+    if (this.theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }
+
   render() {
     return (
         <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
         <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm px-4 md:px-0 my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
-          <div class="flex w-full flex-col items-center justify-center bg-blue-100 rounded pt-6 md:pt-8 relative">
+          <div class={`flex w-full flex-col items-center justify-center ${this.isDark ? 'bg-dark-1' : 'bg-blue-100'}  rounded pt-6 md:pt-8 relative`}>
             {this.headerSection(this.type)}
             {this.descriptionSection(this.paywallData.informations.description)}
             {this.packagesSection(this.paywallData.packages)}
