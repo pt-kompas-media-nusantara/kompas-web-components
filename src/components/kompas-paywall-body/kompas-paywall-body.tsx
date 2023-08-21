@@ -149,7 +149,7 @@ export class KompasPaywallBody {
     </div>
   )
   private userAction = (isLogin: boolean, type: 'epaper' | 'reguler'): void => (
-    <div class={`flex h-20 ${this.isDark ? 'bg-dark-2' : 'bg-blue-600'} w-full justify-evenly rounded-b mt-6 md:mt-8 relative`}>
+    <div class={`flex h-20 ${this.isDark ? 'bg-dark-4' : 'bg-blue-600'} w-full justify-evenly rounded-b mt-6 md:mt-8 relative`}>
       {isLogin || (type !== 'epaper') ? this.helpDesk() : this.authRegister()}
     </div >
   )
@@ -192,7 +192,7 @@ export class KompasPaywallBody {
 
   private paymentDesktopSection = (data: Array<PaymentImage>): void => (
     <div class="hidden md:flex w-full md:max-w-sm items-center justify-center flex-wrap">
-      {data.map((item) => (<img class="object-cover w-15 h-10" src={item.link} alt={`${item.name}-logo-payment`} />))}
+      {data.map((item) => (<img class={`object-cover ${this.isDark ? 'h-9' : 'h-10'}`} src={item.link} alt={`${item.name}-logo-payment`} />))}
     </div>
   )
 
@@ -232,9 +232,9 @@ export class KompasPaywallBody {
   )
   private separatorLine = (): void => (
     <div class="flex flex-row w-full justify-center">
-      <div class="border-b-2 border-blue-200 w-1/4 my-4 flex justify-center" />
-      <p class="px-4 pt-1">atau</p>
-      <div class="border-b-2 border-blue-200 w-1/4 my-4 flex justify-center" />
+      <div class={`border-b-2 ${this.isDark ? 'border-dark-2' : 'border-blue-200'} w-1/4 my-4 flex justify-center`} />
+      <p class={`px-4 pt-1 ${this.isDark && 'text-dark-1'}`}>atau</p>
+      <div class={`border-b-2 ${this.isDark ? 'border-dark-2' : 'border-blue-200'} w-1/4 my-4 flex justify-center`} />
     </div>
   )
 
@@ -548,10 +548,10 @@ export class KompasPaywallBody {
 
   render() {
     return (
-        <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'bg-white wrapper-body'}>
+        <div class={this.type === 'epaper' ? 'bg-transparent wrapper-body' : 'wrapper-body'}>
         <div class="flex flex-col  justify-center items-center w-full max-w-screen-sm px-4 md:px-0 my-5 relative">
           {this.type === 'epaper' ? this.topNavigator() : ''}
-          <div class={`flex w-full flex-col items-center justify-center ${this.isDark ? 'bg-dark-1' : 'bg-blue-100'}  rounded pt-6 md:pt-8 relative`}>
+          <div class={`flex w-full flex-col items-center justify-center ${this.isDark ? 'bg-dark-3' : 'bg-blue-100'}  rounded pt-6 md:pt-8 relative`}>
             {this.headerSection(this.type)}
             {this.descriptionSection(this.paywallData.informations.description)}
             {this.packagesSection(this.paywallData.packages)}
