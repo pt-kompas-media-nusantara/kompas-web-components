@@ -10,6 +10,7 @@
 | Property     | Attribute | Description | Type           | Default     |
 | ------------ | --------- | ----------- | -------------- | ----------- |
 | `bannerData` | --        |             | `Registration` | `undefined` |
+| `theme`      | `theme`   |             | `string`       | `''`        |
 
 
 ## Dependencies

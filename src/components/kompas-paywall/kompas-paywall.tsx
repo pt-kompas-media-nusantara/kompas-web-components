@@ -35,6 +35,7 @@ export class KompasPaywall {
     * prop metered_wall_type = The type of Metered Wall
     * prop metered_wall_balance = The balance of their metered wall
     * prop epaper_edition = The edition of epaper viewed by user
+    * prop theme = The theme of the paywall component
   */
 
   @State() paywallData: PaywallProduct | undefined = undefined // add interface type
@@ -64,6 +65,7 @@ export class KompasPaywall {
   @Prop() tracker_metered_wall_type: string = ''
   @Prop() tracker_metered_wall_balance: number = 0
   @Prop() tracker_epaper_edition: string = ''
+  @Prop() theme: string = ''
 
   async componentWillRender() {
     try {
@@ -123,36 +125,36 @@ export class KompasPaywall {
         },
         payment: {
           desktop: [
-            { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-            { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-            { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
-            { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-            { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-            { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-            { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" },
-            { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-            { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-            { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-            { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-            { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-            { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" }
+            { name: "gopay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay${this.darkUrl}.svg` },
+            { name: "ovo", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo${this.darkUrl}.svg` },
+            { name: "mastercard", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard${this.darkUrl}.svg` },
+            { name: "bri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri${this.darkUrl}.svg` },
+            { name: "bcaklikpay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay${this.darkUrl}.svg` },
+            { name: "indomaret", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret${this.darkUrl}.svg` },
+            { name: "jcb", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb${this.darkUrl}.svg` },
+            { name: "dana", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana${this.darkUrl}.svg` },
+            { name: "visa", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa${this.darkUrl}.svg` },
+            { name: "mandiri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri${this.darkUrl}.svg` },
+            { name: "bca", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca${this.darkUrl}.svg` },
+            { name: "bni", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni${this.darkUrl}.svg` },
+            { name: "akulaku", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku${this.darkUrl}.svg` }
           ],
           mobile: [
-            { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-            { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-            { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-            { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
+            { name: "gopay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay${this.darkUrl}.svg` },
+            { name: "ovo", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo${this.darkUrl}.svg` },
+            { name: "visa", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa${this.darkUrl}.svg` },
+            { name: "mastercard", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard${this.darkUrl}.svg` },
           ],
           ekstension: [
-            { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-            { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-            { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-            { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-            { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" },
-            { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-            { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-            { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-            { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" }
+            { name: "dana", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana${this.darkUrl}.svg` },
+            { name: "mandiri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri${this.darkUrl}.svg` },
+            { name: "bri", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri${this.darkUrl}.svg` },
+            { name: "bcaklikpay", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay${this.darkUrl}.svg` },
+            { name: "akulaku", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku${this.darkUrl}.svg` },
+            { name: "bni", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni${this.darkUrl}.svg` },
+            { name: "indomaret", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret${this.darkUrl}.svg` },
+            { name: "bca", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca${this.darkUrl}.svg` },
+            { name: "jcb", link: `https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb${this.darkUrl}.svg` }
           ]
         }
       }
@@ -164,13 +166,17 @@ export class KompasPaywall {
     }
   }
 
+  get darkUrl () {
+    return this.theme === 'dark' ? '-dark' : ''
+  }
+
 
   private transitionBox = (): void => (
     <div class="transparent-linear h-20 -mt-24 z-0 w-full " />
   )
 
   private renderEpaperPaywallSection = (): void => (
-    <kompas-paywall-body paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_categories={this.tracker_content_categories} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_epaper_edition={this.tracker_epaper_edition} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} tracker_content_type={this.tracker_content_type} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
+    <kompas-paywall-body paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_categories={this.tracker_content_categories} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_epaper_edition={this.tracker_epaper_edition} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} tracker_content_type={this.tracker_content_type} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid} theme={this.theme}></kompas-paywall-body>
   )
 
   private renderRegularPaywallSection = (): void => {
@@ -181,8 +187,8 @@ export class KompasPaywall {
           {this.transitionBox()}
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
-              <kompas-paywall-information-header text={this.textHeader || defaultHeaderText}></kompas-paywall-information-header>
-              <kompas-paywall-body paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_categories={this.tracker_content_categories} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_epaper_edition={this.tracker_epaper_edition} tracker_metered_wall_balance={this.tracker_metered_wall_balance} tracker_content_type={this.tracker_content_type} swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
+              <kompas-paywall-information-header text={this.textHeader || defaultHeaderText} theme={this.theme}></kompas-paywall-information-header>
+              <kompas-paywall-body paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_categories={this.tracker_content_categories} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_epaper_edition={this.tracker_epaper_edition} tracker_metered_wall_balance={this.tracker_metered_wall_balance} tracker_content_type={this.tracker_content_type} swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid} theme={this.theme}></kompas-paywall-body>
             </div>
           </div>
         </div>
@@ -193,8 +199,8 @@ export class KompasPaywall {
           {this.transitionBox()}
           <div class="flex flex-col bg-white items-center justify-center mx-4 md:mx-0">
             <div class="flex flex-col w-full max-w-screen-md my-5">
-              <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register}></kompas-paywall-banner-registration>
-              <kompas-paywall-body tracker_content_type={this.tracker_content_type} paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_categories={this.tracker_content_categories} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_epaper_edition={this.tracker_epaper_edition} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid}></kompas-paywall-body>
+              <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register} theme={this.theme}></kompas-paywall-banner-registration>
+              <kompas-paywall-body tracker_content_type={this.tracker_content_type} paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_categories={this.tracker_content_categories} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_epaper_edition={this.tracker_epaper_edition} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid} theme={this.theme}></kompas-paywall-body>
             </div>
           </div>
         </div>
