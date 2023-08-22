@@ -3,6 +3,11 @@
   background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #fff);
 }
 
+.transparent-linear-dark {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 18%, 0)), to(#121212));
+  background-image: linear-gradient(180deg, hsla(0, 0%, 18%, 0), #121212);
+}
+
 .text-transition {
   @apply w-full;
   @apply h-20;
