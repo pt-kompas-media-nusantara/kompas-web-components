@@ -1,0 +1,30 @@
+.body {
+  position: sticky;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.bg--gray {
+  background-color: #f4f4f4;
+  opacity: 1;
+}
+
+.icon {
+  @apply h-3 w-3;
+
+  &.lg {
+    @apply h-6;
+
+    & svg {
+      @apply h-6;
+    }
+  }
+
+  &-brand-1 {
+    @apply text-brand-1;
+    & svg {
+      @apply fill-current;
+    }
+  }
+}
