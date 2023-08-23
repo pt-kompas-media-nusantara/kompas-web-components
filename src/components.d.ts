@@ -227,6 +227,12 @@ export namespace Components {
          */
         "userInitialName": string;
     }
+    interface KompasMeteredRegister {
+        /**
+          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
+         */
+        "countdownArticle": number;
+    }
     interface KompasPaywall {
         "countdownArticle": number;
         "isLogin": boolean;
@@ -388,6 +394,12 @@ declare global {
         prototype: HTMLKompasHeaderAccountProfileElement;
         new (): HTMLKompasHeaderAccountProfileElement;
     };
+    interface HTMLKompasMeteredRegisterElement extends Components.KompasMeteredRegister, HTMLStencilElement {
+    }
+    var HTMLKompasMeteredRegisterElement: {
+        prototype: HTMLKompasMeteredRegisterElement;
+        new (): HTMLKompasMeteredRegisterElement;
+    };
     interface HTMLKompasPaywallElement extends Components.KompasPaywall, HTMLStencilElement {
     }
     var HTMLKompasPaywallElement: {
@@ -437,6 +449,7 @@ declare global {
         "kompas-header-account-help-center": HTMLKompasHeaderAccountHelpCenterElement;
         "kompas-header-account-menu": HTMLKompasHeaderAccountMenuElement;
         "kompas-header-account-profile": HTMLKompasHeaderAccountProfileElement;
+        "kompas-metered-register": HTMLKompasMeteredRegisterElement;
         "kompas-paywall": HTMLKompasPaywallElement;
         "kompas-paywall-banner-registration": HTMLKompasPaywallBannerRegistrationElement;
         "kompas-paywall-body": HTMLKompasPaywallBodyElement;
@@ -666,6 +679,12 @@ declare namespace LocalJSX {
          */
         "userInitialName"?: string;
     }
+    interface KompasMeteredRegister {
+        /**
+          * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
+         */
+        "countdownArticle"?: number;
+    }
     interface KompasPaywall {
         "countdownArticle"?: number;
         "isLogin"?: boolean;
@@ -766,6 +785,7 @@ declare namespace LocalJSX {
         "kompas-header-account-help-center": KompasHeaderAccountHelpCenter;
         "kompas-header-account-menu": KompasHeaderAccountMenu;
         "kompas-header-account-profile": KompasHeaderAccountProfile;
+        "kompas-metered-register": KompasMeteredRegister;
         "kompas-paywall": KompasPaywall;
         "kompas-paywall-banner-registration": KompasPaywallBannerRegistration;
         "kompas-paywall-body": KompasPaywallBody;
@@ -790,6 +810,7 @@ declare module "@stencil/core" {
             "kompas-header-account-help-center": LocalJSX.KompasHeaderAccountHelpCenter & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountHelpCenterElement>;
             "kompas-header-account-menu": LocalJSX.KompasHeaderAccountMenu & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountMenuElement>;
             "kompas-header-account-profile": LocalJSX.KompasHeaderAccountProfile & JSXBase.HTMLAttributes<HTMLKompasHeaderAccountProfileElement>;
+            "kompas-metered-register": LocalJSX.KompasMeteredRegister & JSXBase.HTMLAttributes<HTMLKompasMeteredRegisterElement>;
             "kompas-paywall": LocalJSX.KompasPaywall & JSXBase.HTMLAttributes<HTMLKompasPaywallElement>;
             "kompas-paywall-banner-registration": LocalJSX.KompasPaywallBannerRegistration & JSXBase.HTMLAttributes<HTMLKompasPaywallBannerRegistrationElement>;
             "kompas-paywall-body": LocalJSX.KompasPaywallBody & JSXBase.HTMLAttributes<HTMLKompasPaywallBodyElement>;
