@@ -199,15 +199,15 @@ export class KompasPaywallBody {
   private paymentMobileSection = (data: Array<PaymentImage>): void => (
     <div class="grid md:hidden items-center grid-flow-col grid-cols-auto grid-rows-1 mt-4 mx-4">
       {data.map((item) => (<img class="w-16" src={item.link} alt={`${item.name}-logo-payment`} />))}
-      <button onClick={() => this.paymentExtensionHandler()} class="text-xs md:text-sm text-blue-600 font-bold" >+9 lainnya </button>
+      <button onClick={() => this.paymentExtensionHandler()} class={`text-xs md:text-sm ${this.isDark ? 'text-blue-300' : 'text-blue-600'} font-bold`} >+9 lainnya </button>
     </div>
   )
 
   private paymentMobileExtension = (data: Array<PaymentImage>) => (
-    <div class="w-full bottom-0 max-w-xs mb-1 ml-8 md:hidden absolute px-4">
-      <div class="bg-white border-white w-full rounded p-3 max-w-xs">
+    <div class={`w-full ${this.isDark ? '-bottom-6' : 'bottom-0'} max-w-xs mb-1 ml-8 md:hidden absolute px-4`}>
+      <div class={`w-full ${this.isDark ? 'bg-dark-6 border-dark-6' : 'bg-white border-white'} rounded p-3 max-w-xs`}>
         <svg
-          class="right-0 text-white h-4 mr-10 -mt-7 border-white z-0 transform rotate-180 absolute"
+          class={`right-0 ${this.isDark ? 'text-dark-6 border-dark-6' : 'text-white border-white '} h-4 mr-10 -mt-7 z-0 transform rotate-180 absolute`}
           x="0px"
           y="0px"
           viewBox="0 0 255 255"
