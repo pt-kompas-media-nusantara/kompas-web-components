@@ -28,7 +28,7 @@ export class KompasMeteredRegister {
     if (!this.isExpandBanner) {
       return (
         <Fragment>
-          <div class="text-base md:text-lg text-center md:text-left font-lora mb-3 md:mb-0 px-8 md:px-0">
+          <div class="text-base md:text-lg font-lora mb-3 mt-1 md:mb-0 md:mt-0 pr-14 md:px-0">
             {this.countdownArticle > 1 ? (
               <b>Dukung Jurnalisme Berkualitas dengan Mendaftar Akun Kompas.id.</b>
             ) : (
@@ -43,8 +43,8 @@ export class KompasMeteredRegister {
     } else {
       return (
         <Fragment>
-          <div class="flex flex-col-reverse md:flex-row justify-center gap-8">
-            <div class="flex flex-col justify-evenly text-center md:text-left md:w-5/12 gap-2">
+          <div class="flex flex-col-reverse md:flex-row justify-center gap-4 md:gap-8">
+            <div class="flex flex-col justify-evenly text-center md:text-left md:w-5/12 gap-4 md:gap-2">
               <p class="text-lg md:text-2xl font-lora">
                 {this.countdownArticle > 1 ? (
                   <b>Tertarik dengan Artikel Ini? Daftar untuk Akses Artikel Menarik Lainnya</b>
@@ -87,7 +87,7 @@ export class KompasMeteredRegister {
   private bannerTemplate = (): void => {
     return (
       <Fragment>
-        <div class="block md:flex items-center justify-center gap-8 text-grey-600 text-sm md:text-lg self-center text-left ml-auto">{this.bannerContent()}</div>
+        <div class="block lg:flex items-center justify-center gap-8 text-grey-600 text-sm md:text-lg self-center text-left ml-auto">{this.bannerContent()}</div>
       </Fragment>
     );
   };
@@ -113,12 +113,12 @@ export class KompasMeteredRegister {
       <Host>
         {this.isShowBanner ? (
           <div class="sticky bottom-0 w-full h-full">
-            <div class={`w-full bg-blue-100 px-4 lg:px-0 bottom-0 py-4`}>
-              <div class="flex max-w-7xl m-auto justify-center relative">
+            <div class={`w-full bg-blue-100 px-4 xl:px-0 bottom-0 py-4`}>
+              <div class="flex lg:max-w-7xl m-auto justify-center relative">
                 <div class="flex flex-col">{this.bannerTemplate()}</div>
                 <div class="absolute right-0 top-0.5">
-                  <button onClick={this.triggerExpandBanner} class="bg--gray p-2.5 rounded-md ">
-                    <div class={`icon icon-brand-1 ${this.isExpandBanner && 'chevron-down'}`} innerHTML={chevronUp}></div>
+                  <button onClick={this.triggerExpandBanner} class="bg-blue-200 p-2.5 rounded-md ">
+                    <div class={`icon icon-blue-600 ${this.isExpandBanner && 'chevron-down'}`} innerHTML={chevronUp}></div>
                   </button>
                 </div>
               </div>
