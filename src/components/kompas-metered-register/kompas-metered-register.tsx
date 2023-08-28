@@ -100,7 +100,7 @@ export class KompasMeteredRegister {
     this.isExpandBanner = !this.isExpandBanner;
   };
 
-  componentDidLoad() {
+  componentWillLoad() {
     const getCountdown = this.countdownArticle;
     if (!getCountdown) {
       this.isShowBanner = false;
