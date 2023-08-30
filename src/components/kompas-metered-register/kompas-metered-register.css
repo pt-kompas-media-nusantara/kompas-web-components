@@ -1,0 +1,37 @@
+.body {
+  position: sticky;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.chevron-down {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transition: transform 0.2s ease-out;
+}
+
+.icon {
+  @apply h-3 w-3;
+
+  &.lg {
+    @apply h-6;
+
+    & svg {
+      @apply h-6;
+    }
+  }
+
+  &-blue-600 {
+    @apply text-blue-600;
+    & svg {
+      @apply fill-current;
+    }
+  }
+}
+
+@screen sm {
+  .banner-opened {
+    height: 400px;
+  }
+}

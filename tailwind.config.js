@@ -5,7 +5,7 @@ module.exports = {
     colors: {
       brand: {
         1: '#00559A',
-        2: '#00447B'
+        2: '#00447B',
       },
       dark: {
         1: '#A0A0A0',
@@ -13,7 +13,6 @@ module.exports = {
         3: '#252525',
         4: '#1E1E1E',
         5: '#121212',
-        6: '#2E2E2E'
       },
       white: '#FFFFFF',
       black: '#000000',
@@ -24,7 +23,7 @@ module.exports = {
         400: '#057DF4',
         500: '#0468CB',
         600: '#0356A8',
-        700: '#023B73'
+        700: '#023B73',
       },
       grey: {
         100: '#FFFFFF',
@@ -33,7 +32,7 @@ module.exports = {
         400: '#999999',
         500: '#666666',
         600: '#333333',
-        700: '#000000'
+        700: '#000000',
       },
       green: {
         100: '#EEFCD2',
@@ -42,7 +41,7 @@ module.exports = {
         400: '#6AC322',
         500: '#50A718',
         600: '#3A8C11',
-        700: '#1A5D06'
+        700: '#1A5D06',
       },
       orange: {
         100: '#FFEECC',
@@ -51,7 +50,7 @@ module.exports = {
         400: '#FF7A00',
         500: '#DB5D00',
         600: '#B74400',
-        700: '#7A2100'
+        700: '#7A2100',
       },
       red: {
         100: '#FEE1CF',
@@ -60,7 +59,7 @@ module.exports = {
         400: '#F32013',
         500: '#D00D12',
         600: '#AE091B',
-        700: '#740322'
+        700: '#740322',
       },
       yellow: {
         100: '#FFF9CC',
@@ -69,15 +68,15 @@ module.exports = {
         400: '#FFCC00',
         500: '#DBAA00',
         600: '#B78B00',
-        700: '#7A5700'
-      }
+        700: '#7A5700',
+      },
     },
     extend: {
       spacing: {
-        76: '19rem'
+        76: '19rem',
       },
       rotate: {
-        55: '55deg'
+        55: '55deg',
       },
       fontSize: {
         xxs: '0.625rem',
@@ -85,12 +84,13 @@ module.exports = {
       // Add custom font famliy
       fontFamily: {
         'pt-sans': ['"PT Sans"', 'Arial', 'Verdana', 'Helvetica', 'sans-serif'],
+        'lora': ['Lora', 'serif'],
       },
       width: {
-        '106': '32rem'
-      }
+        106: '32rem',
+      },
     },
   },
   variants: {},
   plugins: [],
-}
+};
