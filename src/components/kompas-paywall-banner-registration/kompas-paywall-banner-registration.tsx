@@ -12,11 +12,19 @@ export class KompasPaywallBannerRegistration {
   @Prop() bannerData: Registration | undefined = undefined
   @Prop() theme: string = ''
 
-  private redirectToRegister = (): void => {
+  private redirectToLogin = (): void => {
     this.sendDataLayer('registrationOfferClick')
     const loginHost: string = 'https://account.kompas.id/login'
     const nextParams: string = encodeURIComponent(window.location.href)
-    const directUrlRegister: string = `${loginHost}?next=${nextParams}`
+    const directUrlLogin: string = `${loginHost}?next=${nextParams}`
+    window.location.href = directUrlLogin
+  }
+
+  private redirectToRegister = (): void => {
+    this.sendDataLayer('registrationOfferClick')
+    const loginHost: string = 'https://account.kompas.id/register'
+    const nextParams: string = encodeURIComponent(window.location.href)
+    const directUrlRegister: string = `${loginHost}?next=${nextParams}?status=sukses_login&status_login=login&loc=hard_paywall`
     window.location.href = directUrlRegister
   }
 
@@ -51,7 +59,7 @@ export class KompasPaywallBannerRegistration {
         </div>
         <div class="border-b-2 border-grey-200 w-32 md:w-40 my-6" />
         <div>
-          <h6 class={`${this.isDark && 'text-white'}`}>Sudah punya akun? <button onClick={() => this.redirectToRegister()} class={`font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`}>Silakan Masuk</button></h6>
+          <h6 class={`${this.isDark && 'text-white'}`}>Sudah punya akun? <button onClick={() => this.redirectToLogin()} class={`font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`}>Silakan Masuk</button></h6>
         </div>
       </div>
     )
