@@ -22,9 +22,9 @@ export class KompasPaywallBannerRegistration {
 
   private redirectToRegister = (): void => {
     this.sendDataLayer('registrationOfferClick')
-    const loginHost: string = 'https://account.kompas.id/register'
+    const registerHost: string = 'https://account.kompas.id/register'
     const nextParams: string = encodeURIComponent(window.location.href)
-    const directUrlRegister: string = `${loginHost}?next=${nextParams}?status=sukses_login&status_login=login&loc=hard_paywall`
+    const directUrlRegister: string = `${registerHost}?next=${nextParams}?status=sukses_login&status_login=login&loc=hard_paywall`
     window.location.href = directUrlRegister
   }
 
