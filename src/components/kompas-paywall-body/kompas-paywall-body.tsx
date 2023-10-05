@@ -365,7 +365,7 @@ export class KompasPaywallBody {
     return 'Rp ' + roundedValue.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
   }
   private redirectToRegister = (): void => {
-    const loginHost: string = 'https://account.kompas.id/login'
+    const loginHost: string = 'https://account.kompas.id/register'
     const nextParams: string = encodeURIComponent(window.location.href)
     const directUrlRegister: string = `${loginHost}?next=${nextParams}?status=sukses_login&status_login=login`
     window.location.href = directUrlRegister
