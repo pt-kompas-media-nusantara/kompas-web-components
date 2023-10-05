@@ -146,7 +146,7 @@ export class KompasPaywallVideo {
 
   private redirectToLogin = (triggerClick: string): void => {
     this.sendDataLayeronButtonLogin(triggerClick)
-    window.open(this.loginUrl, '_blank')
+    window.open(this.registerUrl, '_blank')
   }
 
   private redirectToBerlangganan = (): void => {
