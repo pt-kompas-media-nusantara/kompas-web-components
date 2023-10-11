@@ -236,6 +236,24 @@ export namespace Components {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle": number;
+        "tracker_content_authors": string;
+        "tracker_content_categories": string;
+        "tracker_content_editors": string;
+        "tracker_content_id": string;
+        "tracker_content_published_date": string;
+        "tracker_content_tags": string;
+        "tracker_content_title": string;
+        "tracker_content_type": string;
+        "tracker_metered_wall_balance": Number;
+        "tracker_metered_wall_type": string;
+        "tracker_page_domain": string;
+        /**
+          * prop tracker_page_title = Title of the page prop tracker_page_type = Type of the page prop tracker_content_type = Whether it's a free article or paid article (will only be sent if the user views article detail page) prop tracker_content_id = The ID for the article (will only be sent if the user views article detail page) prop tracker_content_title = The title of the article (will only be sent if the user views article detail page) prop tracker_content_authors = Name of the authors (will only be sent if the user views article detail page) prop tracker_content_editors = Name of the editors (will only be sent if the user views article detail page) prop tracker_content_tags = Tags inside the article (will only be sent if the user views article detail page) prop tracker_content_published_date = The published date (will only be sent if the user views article detail page) prop tracker_content_categories = The main category the content belongs to prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_metered_wall_type = The type of Metered Wall prop tracker_metered_wall_balance = The balance of their metered wall prop tracker_page_domain = Page Domain
+         */
+        "tracker_page_title": string;
+        "tracker_page_type": string;
+        "tracker_subscription_status": string;
+        "tracker_user_type": string;
     }
     interface KompasPaywall {
         "countdownArticle": number;
@@ -692,6 +710,24 @@ declare namespace LocalJSX {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle"?: number;
+        "tracker_content_authors"?: string;
+        "tracker_content_categories"?: string;
+        "tracker_content_editors"?: string;
+        "tracker_content_id"?: string;
+        "tracker_content_published_date"?: string;
+        "tracker_content_tags"?: string;
+        "tracker_content_title"?: string;
+        "tracker_content_type"?: string;
+        "tracker_metered_wall_balance"?: Number;
+        "tracker_metered_wall_type"?: string;
+        "tracker_page_domain"?: string;
+        /**
+          * prop tracker_page_title = Title of the page prop tracker_page_type = Type of the page prop tracker_content_type = Whether it's a free article or paid article (will only be sent if the user views article detail page) prop tracker_content_id = The ID for the article (will only be sent if the user views article detail page) prop tracker_content_title = The title of the article (will only be sent if the user views article detail page) prop tracker_content_authors = Name of the authors (will only be sent if the user views article detail page) prop tracker_content_editors = Name of the editors (will only be sent if the user views article detail page) prop tracker_content_tags = Tags inside the article (will only be sent if the user views article detail page) prop tracker_content_published_date = The published date (will only be sent if the user views article detail page) prop tracker_content_categories = The main category the content belongs to prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_metered_wall_type = The type of Metered Wall prop tracker_metered_wall_balance = The balance of their metered wall prop tracker_page_domain = Page Domain
+         */
+        "tracker_page_title"?: string;
+        "tracker_page_type"?: string;
+        "tracker_subscription_status"?: string;
+        "tracker_user_type"?: string;
     }
     interface KompasPaywall {
         "countdownArticle"?: number;

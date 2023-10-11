@@ -46,6 +46,39 @@ export class KompasMeteredRegister {
    */
   @Prop() content: any;
 
+  /**
+   * prop tracker_page_title = Title of the page
+   * prop tracker_page_type = Type of the page
+   * prop tracker_content_type = Whether it's a free article or paid article (will only be sent if the user views article detail page)
+   * prop tracker_content_id = The ID for the article (will only be sent if the user views article detail page)
+   * prop tracker_content_title = The title of the article (will only be sent if the user views article detail page)
+   * prop tracker_content_authors = Name of the authors (will only be sent if the user views article detail page)
+   * prop tracker_content_editors = Name of the editors (will only be sent if the user views article detail page)
+   * prop tracker_content_tags = Tags inside the article (will only be sent if the user views article detail page)
+   * prop tracker_content_published_date = The published date (will only be sent if the user views article detail page)
+   * prop tracker_content_categories = The main category the content belongs to
+   * prop tracker_user_type = Type of user based on their subscription
+   * prop tracker_subscription_status = Status of their subscription
+   * prop tracker_metered_wall_type = The type of Metered Wall
+   * prop tracker_metered_wall_balance = The balance of their metered wall
+   * prop tracker_page_domain = Page Domain
+   */
+  @Prop() tracker_page_title: string;
+  @Prop() tracker_page_type: string;
+  @Prop() tracker_content_type: string;
+  @Prop() tracker_content_id: string;
+  @Prop() tracker_content_title: string;
+  @Prop() tracker_content_authors: string;
+  @Prop() tracker_content_editors: string;
+  @Prop() tracker_content_tags: string;
+  @Prop() tracker_content_published_date: string;
+  @Prop() tracker_content_categories: string;
+  @Prop() tracker_user_type: string;
+  @Prop() tracker_subscription_status: string;
+  @Prop() tracker_metered_wall_type: string;
+  @Prop() tracker_metered_wall_balance: Number;
+  @Prop() tracker_page_domain: string;
+
   // Fungsi untuk mengeset template yang akan di render
   private setTemplate(prop: string, mode: string = 'default'): string {
     let template = '';
@@ -58,6 +91,7 @@ export class KompasMeteredRegister {
     }
     return template;
   }
+
   /**
    * mengelola tampilan pada section metered register
    */
@@ -123,6 +157,28 @@ export class KompasMeteredRegister {
       return;
     }
   }
+
+  // Fungsi untuk mengirim event ke datalayer
+  private pushToDataLayer = (eventName: string): void => {
+    window.dataLayer.push({
+      event: eventName,
+      page_title: this.tracker_page_title,
+      page_type: this.tracker_page_type,
+      content_type: this.tracker_content_type,
+      content_id: this.tracker_content_id,
+      content_title: this.tracker_content_title,
+      content_authors: this.tracker_content_authors,
+      content_editors: this.tracker_content_editors,
+      content_tags: this.tracker_content_tags,
+      content_published_date: this.tracker_content_published_date,
+      content_categories: this.tracker_content_categories,
+      user_type: this.tracker_user_type || 'G',
+      subscription_status: this.tracker_subscription_status || '',
+      metered_wall_type: this.tracker_metered_wall_type || 'MRW',
+      metered_wall_balance: this.tracker_metered_wall_balance || 0,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
+    });
+  };
 
   render() {
     return (
