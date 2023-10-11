@@ -229,6 +229,10 @@ export namespace Components {
     }
     interface KompasMeteredRegister {
         /**
+          * prop content untuk menampilkan teks dimanis.
+         */
+        "content": any;
+        /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle": number;
@@ -680,6 +684,10 @@ declare namespace LocalJSX {
         "userInitialName"?: string;
     }
     interface KompasMeteredRegister {
+        /**
+          * prop content untuk menampilkan teks dimanis.
+         */
+        "content"?: any;
         /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */

@@ -1,5 +1,6 @@
 import { Component, h, State, Prop, Fragment, Host } from '@stencil/core';
 import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg';
+import { meteredRegisterContent } from './types';
 
 @Component({
   tag: 'kompas-metered-register',
@@ -16,11 +17,47 @@ export class KompasMeteredRegister {
   @State() registerUrl: string = 'https://account.kompas.cloud/register';
   @State() isShowBanner: boolean = true;
   @State() isExpandBanner: boolean = false;
+
+  // Initial content template
+  @State() initialTemplate: Record<string, any> = {
+    expand: {
+      lastArticle: {
+        title: '<span>Anda Sedang Membaca <b>Artikel Premium Gratis Terakhir</b> dari Kompas.id</span>',
+        description: '<span>Ayo daftar akun untuk akses ke beragam artikel dan fitur premium. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>',
+      },
+      title: '<b>Tertarik dengan Artikel Ini? Daftar untuk Akses Artikel Menarik Lainnya</b>',
+      description: '<span>Dapatkan akses ke beragam konten dan fitur premium Kompas.id. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>',
+    },
+    default: {
+      lastArticle: {
+        title: '<span>Ini Adalah <b>Artikel Gratis Terakhir</b> Anda. <b>Daftar Akun untuk Terus Membaca.</b></span>',
+      },
+      title: '<b>Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.</b>',
+    },
+  };
+  @State() customTemplate: meteredRegisterContent;
+
   /**
    * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
    */
   @Prop() countdownArticle: number = 0;
+  /**
+   * prop content untuk menampilkan teks dimanis.
+   */
+  @Prop() content: any;
 
+  // Fungsi untuk mengeset template yang akan di render
+  private setTemplate(prop: string, mode: string = 'default'): string {
+    let template = '';
+    if (this.customTemplate && this.customTemplate?.[mode]?.hasOwnProperty(prop)) {
+      template = this.customTemplate[mode][prop];
+    } else if (this.countdownArticle > 1) {
+      template = this.initialTemplate.default[prop];
+    } else {
+      template = this.initialTemplate.default.lastArticle[prop];
+    }
+    return template;
+  }
   /**
    * mengelola tampilan pada section metered register
    */
@@ -28,15 +65,7 @@ export class KompasMeteredRegister {
     if (!this.isExpandBanner) {
       return (
         <Fragment>
-          <div class="text-base md:text-lg font-lora mb-3 mt-1 md:mb-0 md:mt-0 pr-14 md:px-0">
-            {this.countdownArticle > 1 ? (
-              <b>Dukung Jurnalisme Berkualitas dengan Mendaftar Akun Kompas.id.</b>
-            ) : (
-              <span>
-                Ini Adalah <b>Artikel Gratis Terakhir</b> Anda. <b>Daftar Akun untuk Terus Membaca.</b>
-              </span>
-            )}
-          </div>
+          <div class="text-base md:text-lg font-lora mb-3 mt-1 md:mb-0 md:mt-0 pr-14 md:px-0" innerHTML={this.setTemplate('title')}></div>
           <div class="md:self-center">{this.registerButtonTemplate()}</div>
         </Fragment>
       );
@@ -45,23 +74,8 @@ export class KompasMeteredRegister {
         <Fragment>
           <div class="flex flex-col-reverse md:flex-row justify-center gap-4 md:gap-8">
             <div class="flex flex-col justify-evenly text-center md:text-left md:w-5/12 gap-4 md:gap-2">
-              <p class="text-lg md:text-2xl font-lora">
-                {this.countdownArticle > 1 ? (
-                  <b>Tertarik dengan Artikel Ini? Daftar untuk Akses Artikel Menarik Lainnya</b>
-                ) : (
-                  <span>
-                    Anda Sedang Membaca <b>Artikel Premium Gratis Terakhir</b> dari Kompas.id
-                  </span>
-                )}
-              </p>
-              <p class="text-sm md:text-base">
-                {this.countdownArticle > 1 ? (
-                  <Fragment>Dapatkan akses ke beragam konten dan fitur premium Kompas.id.</Fragment>
-                ) : (
-                  <Fragment>Ayo daftar akun untuk akses ke beragam artikel dan fitur premium.</Fragment>
-                )}{' '}
-                Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.
-              </p>
+              <p class="text-lg md:text-2xl font-lora" innerHTML={this.setTemplate('title', 'expand')}></p>
+              <p class="text-sm md:text-base" innerHTML={this.setTemplate('description', 'expand')}></p>
               <div class="md:self-start">{this.registerButtonTemplate()}</div>
             </div>
             <div class="flex justify-center">
@@ -101,6 +115,8 @@ export class KompasMeteredRegister {
   };
 
   componentWillLoad() {
+    // parse content props
+    if (this.content) this.customTemplate = JSON.parse(this.content);
     const getCountdown = this.countdownArticle;
     if (!getCountdown) {
       this.isShowBanner = false;
@@ -117,7 +133,7 @@ export class KompasMeteredRegister {
               <div class="flex lg:max-w-7xl m-auto justify-center relative">
                 <div class="flex flex-col">{this.bannerTemplate()}</div>
                 <div class="absolute right-0 top-0.5">
-                  <button onClick={this.triggerExpandBanner} class="bg-blue-200 p-2.5 rounded-md ">
+                  <button onClick={this.triggerExpandBanner} class="bg-blue-200 p-2.5 rounded-md">
                     <div class={`icon icon-blue-600 ${this.isExpandBanner && 'chevron-down'}`} innerHTML={chevronUp}></div>
                   </button>
                 </div>
