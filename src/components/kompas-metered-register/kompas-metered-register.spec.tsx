@@ -4,6 +4,15 @@ jest.mock('../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg
 import { newSpecPage } from '@stencil/core/testing';
 import { KompasMeteredRegister } from './kompas-metered-register';
 
+beforeAll(() => {
+  Object.defineProperty(window, 'dataLayer', {
+    value: {
+      push: jest.fn(),
+    },
+  });
+  jest.spyOn(window.dataLayer, 'push').mockImplementation(() => jest.fn());
+});
+
 describe('kompas-metered-register', () => {
   // countdown-article = 0 or nothing passed
   it('should renders nothing', async () => {
