@@ -244,7 +244,7 @@ export namespace Components {
         "tracker_content_tags": string;
         "tracker_content_title": string;
         "tracker_content_type": string;
-        "tracker_metered_wall_balance": Number;
+        "tracker_metered_wall_balance": number;
         "tracker_metered_wall_type": string;
         "tracker_page_domain": string;
         /**
@@ -718,7 +718,7 @@ declare namespace LocalJSX {
         "tracker_content_tags"?: string;
         "tracker_content_title"?: string;
         "tracker_content_type"?: string;
-        "tracker_metered_wall_balance"?: Number;
+        "tracker_metered_wall_balance"?: number;
         "tracker_metered_wall_type"?: string;
         "tracker_page_domain"?: string;
         /**

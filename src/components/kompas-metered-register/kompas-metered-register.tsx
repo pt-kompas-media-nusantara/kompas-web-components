@@ -14,7 +14,7 @@ export class KompasMeteredRegister {
   /**
    * state registerUrl untuk memberikan link kemana user akan dialihkan.
    */
-  @State() registerUrl: string = 'https://account.kompas.cloud/register';
+  @State() registerUrl: string = 'https://account.kompas.id/register';
   @State() isShowBanner: boolean = true;
   @State() isExpandBanner: boolean = false;
 
@@ -76,7 +76,7 @@ export class KompasMeteredRegister {
   @Prop() tracker_user_type: string;
   @Prop() tracker_subscription_status: string;
   @Prop() tracker_metered_wall_type: string;
-  @Prop() tracker_metered_wall_balance: Number;
+  @Prop() tracker_metered_wall_balance: number = 0;
   @Prop() tracker_page_domain: string;
 
   // Fungsi untuk mengeset template yang akan di render
@@ -141,22 +141,14 @@ export class KompasMeteredRegister {
   };
 
   private redirectToRegister = (): void => {
+    this.pushToDataLayer('mrw_clicked');
     window.location.href = this.registerUrl;
   };
 
   private triggerExpandBanner = (): void => {
     this.isExpandBanner = !this.isExpandBanner;
+    !this.isExpandBanner && this.pushToDataLayer('mrw_closed');
   };
-
-  componentWillLoad() {
-    // parse content props
-    if (this.content) this.customTemplate = JSON.parse(this.content);
-    const getCountdown = this.countdownArticle;
-    if (!getCountdown) {
-      this.isShowBanner = false;
-      return;
-    }
-  }
 
   // Fungsi untuk mengirim event ke datalayer
   private pushToDataLayer = (eventName: string): void => {
@@ -175,10 +167,24 @@ export class KompasMeteredRegister {
       user_type: this.tracker_user_type || 'G',
       subscription_status: this.tracker_subscription_status || '',
       metered_wall_type: this.tracker_metered_wall_type || 'MRW',
-      metered_wall_balance: this.tracker_metered_wall_balance || 0,
+      metered_wall_balance: this.tracker_metered_wall_balance,
       page_domain: this.tracker_page_domain || 'Kompas.id',
     });
   };
+
+  componentWillLoad() {
+    // parse content props
+    if (this.content) this.customTemplate = JSON.parse(this.content);
+    const getCountdown = this.countdownArticle;
+    if (!getCountdown) {
+      this.isShowBanner = false;
+      return;
+    }
+  }
+
+  componentDidLoad() {
+    this.isShowBanner && this.pushToDataLayer('mrw_viewed');
+  }
 
   render() {
     return (
