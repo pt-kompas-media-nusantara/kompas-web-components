@@ -14,7 +14,7 @@ export class KompasMeteredRegister {
   /**
    * state registerUrl untuk memberikan link kemana user akan dialihkan.
    */
-  @State() registerUrl: string = 'https://account.kompas.id/register';
+  @State() registerUrl: string = 'https://account.kompas.id/register?loc=metered_register_wall';
   /**
    * state isShowBanner untuk memunculkan component.
    */
