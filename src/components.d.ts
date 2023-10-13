@@ -229,30 +229,68 @@ export namespace Components {
     }
     interface KompasMeteredRegister {
         /**
-          * prop content untuk menampilkan teks dimanis.
-         */
-        "content": any;
-        /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle": number;
+        /**
+          * Name of the authors (will only be sent if the user views article detail page)
+         */
         "tracker_content_authors": string;
+        /**
+          * The main category the content belongs to
+         */
         "tracker_content_categories": string;
+        /**
+          * Name of the editors (will only be sent if the user views article detail page)
+         */
         "tracker_content_editors": string;
+        /**
+          * The ID for the article (will only be sent if the user views article detail page)
+         */
         "tracker_content_id": string;
+        /**
+          * The published date (will only be sent if the user views article detail page)
+         */
         "tracker_content_published_date": string;
+        /**
+          * Tags inside the article (will only be sent if the user views article detail page)
+         */
         "tracker_content_tags": string;
+        /**
+          * The title of the article (will only be sent if the user views article detail page)
+         */
         "tracker_content_title": string;
+        /**
+          * Whether it's a free article or paid article (will only be sent if the user views article detail page)
+         */
         "tracker_content_type": string;
+        /**
+          * The balance of their metered wall
+         */
         "tracker_metered_wall_balance": number;
+        /**
+          * The type of Metered Wall
+         */
         "tracker_metered_wall_type": string;
+        /**
+          * Page Domain
+         */
         "tracker_page_domain": string;
         /**
-          * prop tracker_page_title = Title of the page prop tracker_page_type = Type of the page prop tracker_content_type = Whether it's a free article or paid article (will only be sent if the user views article detail page) prop tracker_content_id = The ID for the article (will only be sent if the user views article detail page) prop tracker_content_title = The title of the article (will only be sent if the user views article detail page) prop tracker_content_authors = Name of the authors (will only be sent if the user views article detail page) prop tracker_content_editors = Name of the editors (will only be sent if the user views article detail page) prop tracker_content_tags = Tags inside the article (will only be sent if the user views article detail page) prop tracker_content_published_date = The published date (will only be sent if the user views article detail page) prop tracker_content_categories = The main category the content belongs to prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_metered_wall_type = The type of Metered Wall prop tracker_metered_wall_balance = The balance of their metered wall prop tracker_page_domain = Page Domain
+          * Title of the page
          */
         "tracker_page_title": string;
+        /**
+          * Type of the page
+         */
         "tracker_page_type": string;
+        /**
+          * Status of their subscription
+         */
         "tracker_subscription_status": string;
+        /**
+          * Type of user based on their subscription
+         */
         "tracker_user_type": string;
     }
     interface KompasPaywall {
@@ -703,30 +741,68 @@ declare namespace LocalJSX {
     }
     interface KompasMeteredRegister {
         /**
-          * prop content untuk menampilkan teks dimanis.
-         */
-        "content"?: any;
-        /**
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle"?: number;
+        /**
+          * Name of the authors (will only be sent if the user views article detail page)
+         */
         "tracker_content_authors"?: string;
+        /**
+          * The main category the content belongs to
+         */
         "tracker_content_categories"?: string;
+        /**
+          * Name of the editors (will only be sent if the user views article detail page)
+         */
         "tracker_content_editors"?: string;
+        /**
+          * The ID for the article (will only be sent if the user views article detail page)
+         */
         "tracker_content_id"?: string;
+        /**
+          * The published date (will only be sent if the user views article detail page)
+         */
         "tracker_content_published_date"?: string;
+        /**
+          * Tags inside the article (will only be sent if the user views article detail page)
+         */
         "tracker_content_tags"?: string;
+        /**
+          * The title of the article (will only be sent if the user views article detail page)
+         */
         "tracker_content_title"?: string;
+        /**
+          * Whether it's a free article or paid article (will only be sent if the user views article detail page)
+         */
         "tracker_content_type"?: string;
+        /**
+          * The balance of their metered wall
+         */
         "tracker_metered_wall_balance"?: number;
+        /**
+          * The type of Metered Wall
+         */
         "tracker_metered_wall_type"?: string;
+        /**
+          * Page Domain
+         */
         "tracker_page_domain"?: string;
         /**
-          * prop tracker_page_title = Title of the page prop tracker_page_type = Type of the page prop tracker_content_type = Whether it's a free article or paid article (will only be sent if the user views article detail page) prop tracker_content_id = The ID for the article (will only be sent if the user views article detail page) prop tracker_content_title = The title of the article (will only be sent if the user views article detail page) prop tracker_content_authors = Name of the authors (will only be sent if the user views article detail page) prop tracker_content_editors = Name of the editors (will only be sent if the user views article detail page) prop tracker_content_tags = Tags inside the article (will only be sent if the user views article detail page) prop tracker_content_published_date = The published date (will only be sent if the user views article detail page) prop tracker_content_categories = The main category the content belongs to prop tracker_user_type = Type of user based on their subscription prop tracker_subscription_status = Status of their subscription prop tracker_metered_wall_type = The type of Metered Wall prop tracker_metered_wall_balance = The balance of their metered wall prop tracker_page_domain = Page Domain
+          * Title of the page
          */
         "tracker_page_title"?: string;
+        /**
+          * Type of the page
+         */
         "tracker_page_type"?: string;
+        /**
+          * Status of their subscription
+         */
         "tracker_subscription_status"?: string;
+        /**
+          * Type of user based on their subscription
+         */
         "tracker_user_type"?: string;
     }
     interface KompasPaywall {

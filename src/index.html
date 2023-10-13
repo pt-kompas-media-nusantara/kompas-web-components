@@ -191,19 +191,6 @@
   </body>
 </html>
 <script>
-  document.querySelector('kompas-metered-register').setAttribute(
-    'content',
-    JSON.stringify({
-      expand: {
-        title: '<p>Test Custom <b>text untuk metered </b> pada saat expand </p>',
-        description: '<p>Test Custom <b>text untuk metered </b> pada saat expand </p>',
-      },
-      default: {
-        title: '<p>Test Custom <b>text untuk metered </b> pada saat mode default </p>',
-      },
-    }),
-  );
-
   setTimeout(() => {
     document.querySelector('kompas-header-account').setAttribute(
       'user-data',

@@ -15,79 +15,109 @@ export class KompasMeteredRegister {
    * state registerUrl untuk memberikan link kemana user akan dialihkan.
    */
   @State() registerUrl: string = 'https://account.kompas.id/register';
+  /**
+   * state isShowBanner untuk memunculkan component.
+   */
   @State() isShowBanner: boolean = true;
+  /**
+   * state isExpandBanner untuk menentukan apakah component sedang dalam mode expand.
+   */
   @State() isExpandBanner: boolean = false;
-
-  // Initial content template
-  @State() initialTemplate: Record<string, any> = {
-    expand: {
-      lastArticle: {
-        title: '<span>Anda Sedang Membaca <b>Artikel Premium Gratis Terakhir</b> dari Kompas.id</span>',
-        description: '<span>Ayo daftar akun untuk akses ke beragam artikel dan fitur premium. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>',
-      },
-      title: '<b>Tertarik dengan Artikel Ini? Daftar untuk Akses Artikel Menarik Lainnya</b>',
-      description: '<span>Dapatkan akses ke beragam konten dan fitur premium Kompas.id. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>',
-    },
-    default: {
-      lastArticle: {
-        title: '<span>Ini Adalah <b>Artikel Gratis Terakhir</b> Anda. <b>Daftar Akun untuk Terus Membaca.</b></span>',
-      },
-      title: '<b>Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.</b>',
-    },
-  };
-  @State() customTemplate: meteredRegisterContent;
+  /**
+   * state textTemplate untuk menyimpan template yang di berikan.
+   */
+  @State() textTemplate: meteredRegisterContent;
 
   /**
    * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
    */
   @Prop() countdownArticle: number = 0;
-  /**
-   * prop content untuk menampilkan teks dimanis.
-   */
-  @Prop() content: any;
 
   /**
-   * prop tracker_page_title = Title of the page
-   * prop tracker_page_type = Type of the page
-   * prop tracker_content_type = Whether it's a free article or paid article (will only be sent if the user views article detail page)
-   * prop tracker_content_id = The ID for the article (will only be sent if the user views article detail page)
-   * prop tracker_content_title = The title of the article (will only be sent if the user views article detail page)
-   * prop tracker_content_authors = Name of the authors (will only be sent if the user views article detail page)
-   * prop tracker_content_editors = Name of the editors (will only be sent if the user views article detail page)
-   * prop tracker_content_tags = Tags inside the article (will only be sent if the user views article detail page)
-   * prop tracker_content_published_date = The published date (will only be sent if the user views article detail page)
-   * prop tracker_content_categories = The main category the content belongs to
-   * prop tracker_user_type = Type of user based on their subscription
-   * prop tracker_subscription_status = Status of their subscription
-   * prop tracker_metered_wall_type = The type of Metered Wall
-   * prop tracker_metered_wall_balance = The balance of their metered wall
-   * prop tracker_page_domain = Page Domain
+   * Title of the page
    */
   @Prop() tracker_page_title: string;
+
+  /**
+   * Type of the page
+   */
   @Prop() tracker_page_type: string;
+
+  /**
+   * Whether it's a free article or paid article (will only be sent if the user views article detail page)
+   */
   @Prop() tracker_content_type: string;
+
+  /**
+   * The ID for the article (will only be sent if the user views article detail page)
+   */
   @Prop() tracker_content_id: string;
+
+  /**
+   * The title of the article (will only be sent if the user views article detail page)
+   */
   @Prop() tracker_content_title: string;
+
+  /**
+   * Name of the authors (will only be sent if the user views article detail page)
+   */
   @Prop() tracker_content_authors: string;
+
+  /**
+   * Name of the editors (will only be sent if the user views article detail page)
+   */
   @Prop() tracker_content_editors: string;
+
+  /**
+   * Tags inside the article (will only be sent if the user views article detail page)
+   */
   @Prop() tracker_content_tags: string;
+
+  /**
+   * The published date (will only be sent if the user views article detail page)
+   */
   @Prop() tracker_content_published_date: string;
+
+  /**
+   * The main category the content belongs to
+   */
   @Prop() tracker_content_categories: string;
+
+  /**
+   * Type of user based on their subscription
+   */
   @Prop() tracker_user_type: string;
+
+  /**
+   * Status of their subscription
+   */
   @Prop() tracker_subscription_status: string;
+
+  /**
+   * The type of Metered Wall
+   */
   @Prop() tracker_metered_wall_type: string;
+
+  /**
+   * The balance of their metered wall
+   */
   @Prop() tracker_metered_wall_balance: number = 0;
+
+  /**
+   * Page Domain
+   */
   @Prop() tracker_page_domain: string;
 
-  // Fungsi untuk mengeset template yang akan di render
+  /**
+   * menentukan template yang akan di render
+   */
   private setTemplate(prop: string, mode: string = 'default'): string {
     let template = '';
-    if (this.customTemplate && this.customTemplate?.[mode]?.hasOwnProperty(prop)) {
-      template = this.customTemplate[mode][prop];
-    } else if (this.countdownArticle > 1) {
-      template = this.initialTemplate.default[prop];
+
+    if (this.countdownArticle > 1) {
+      template = this.textTemplate[mode]?.[prop] || '';
     } else {
-      template = this.initialTemplate.default.lastArticle[prop];
+      template = this.textTemplate[mode]?.lastArticle?.[prop] || '';
     }
     return template;
   }
@@ -140,17 +170,25 @@ export class KompasMeteredRegister {
     );
   };
 
+  /**
+   * mengarahkan ke page register
+   */
   private redirectToRegister = (): void => {
     this.pushToDataLayer('mrw_clicked');
     window.location.href = this.registerUrl;
   };
 
+  /**
+   * toggle isExpandBanner flag
+   */
   private triggerExpandBanner = (): void => {
     this.isExpandBanner = !this.isExpandBanner;
     !this.isExpandBanner && this.pushToDataLayer('mrw_closed');
   };
 
-  // Fungsi untuk mengirim event ke datalayer
+  /**
+   * mengirim event ke datalayer
+   */
   private pushToDataLayer = (eventName: string): void => {
     window.dataLayer.push({
       event: eventName,
@@ -172,9 +210,19 @@ export class KompasMeteredRegister {
     });
   };
 
-  componentWillLoad() {
+  async componentWillLoad() {
     // parse content props
-    if (this.content) this.customTemplate = JSON.parse(this.content);
+    const req = await fetch(`https://d3w4qaq4xm1ncv.cloudfront.net/assets/register_wall.json`);
+
+    if (req.status !== 200) {
+      throw new Error(`${req.status} Ada galat saat memproses permintaan.`);
+    }
+
+    /**
+     * fetch() mendapatkan respons 200
+     */
+    this.textTemplate = await req.json();
+
     const getCountdown = this.countdownArticle;
     if (!getCountdown) {
       this.isShowBanner = false;
