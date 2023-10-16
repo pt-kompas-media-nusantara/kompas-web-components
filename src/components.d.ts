@@ -232,6 +232,66 @@ export namespace Components {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle": number;
+        /**
+          * Name of the authors (will only be sent if the user views article detail page)
+         */
+        "tracker_content_authors": string;
+        /**
+          * The main category the content belongs to
+         */
+        "tracker_content_categories": string;
+        /**
+          * Name of the editors (will only be sent if the user views article detail page)
+         */
+        "tracker_content_editors": string;
+        /**
+          * The ID for the article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_id": string;
+        /**
+          * The published date (will only be sent if the user views article detail page)
+         */
+        "tracker_content_published_date": string;
+        /**
+          * Tags inside the article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_tags": string;
+        /**
+          * The title of the article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_title": string;
+        /**
+          * Whether it's a free article or paid article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_type": string;
+        /**
+          * The balance of their metered wall
+         */
+        "tracker_metered_wall_balance": number;
+        /**
+          * The type of Metered Wall
+         */
+        "tracker_metered_wall_type": string;
+        /**
+          * Page Domain
+         */
+        "tracker_page_domain": string;
+        /**
+          * Title of the page
+         */
+        "tracker_page_title": string;
+        /**
+          * Type of the page
+         */
+        "tracker_page_type": string;
+        /**
+          * Status of their subscription
+         */
+        "tracker_subscription_status": string;
+        /**
+          * Type of user based on their subscription
+         */
+        "tracker_user_type": string;
     }
     interface KompasPaywall {
         "countdownArticle": number;
@@ -684,6 +744,66 @@ declare namespace LocalJSX {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle"?: number;
+        /**
+          * Name of the authors (will only be sent if the user views article detail page)
+         */
+        "tracker_content_authors"?: string;
+        /**
+          * The main category the content belongs to
+         */
+        "tracker_content_categories"?: string;
+        /**
+          * Name of the editors (will only be sent if the user views article detail page)
+         */
+        "tracker_content_editors"?: string;
+        /**
+          * The ID for the article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_id"?: string;
+        /**
+          * The published date (will only be sent if the user views article detail page)
+         */
+        "tracker_content_published_date"?: string;
+        /**
+          * Tags inside the article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_tags"?: string;
+        /**
+          * The title of the article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_title"?: string;
+        /**
+          * Whether it's a free article or paid article (will only be sent if the user views article detail page)
+         */
+        "tracker_content_type"?: string;
+        /**
+          * The balance of their metered wall
+         */
+        "tracker_metered_wall_balance"?: number;
+        /**
+          * The type of Metered Wall
+         */
+        "tracker_metered_wall_type"?: string;
+        /**
+          * Page Domain
+         */
+        "tracker_page_domain"?: string;
+        /**
+          * Title of the page
+         */
+        "tracker_page_title"?: string;
+        /**
+          * Type of the page
+         */
+        "tracker_page_type"?: string;
+        /**
+          * Status of their subscription
+         */
+        "tracker_subscription_status"?: string;
+        /**
+          * Type of user based on their subscription
+         */
+        "tracker_user_type"?: string;
     }
     interface KompasPaywall {
         "countdownArticle"?: number;

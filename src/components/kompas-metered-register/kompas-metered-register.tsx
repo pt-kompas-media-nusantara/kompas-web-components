@@ -1,5 +1,6 @@
 import { Component, h, State, Prop, Fragment, Host } from '@stencil/core';
 import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg';
+import { meteredRegisterContent } from './types';
 
 @Component({
   tag: 'kompas-metered-register',
@@ -13,13 +14,113 @@ export class KompasMeteredRegister {
   /**
    * state registerUrl untuk memberikan link kemana user akan dialihkan.
    */
-  @State() registerUrl: string = 'https://account.kompas.cloud/register';
+  @State() registerUrl: string = 'https://account.kompas.id/register?loc=metered_register_wall';
+  /**
+   * state isShowBanner untuk memunculkan component.
+   */
   @State() isShowBanner: boolean = true;
+  /**
+   * state isExpandBanner untuk menentukan apakah component sedang dalam mode expand.
+   */
   @State() isExpandBanner: boolean = false;
+  /**
+   * state textTemplate untuk menyimpan template yang di berikan.
+   */
+  @State() textTemplate: meteredRegisterContent;
+
   /**
    * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
    */
   @Prop() countdownArticle: number = 0;
+
+  /**
+   * Title of the page
+   */
+  @Prop() tracker_page_title: string;
+
+  /**
+   * Type of the page
+   */
+  @Prop() tracker_page_type: string;
+
+  /**
+   * Whether it's a free article or paid article (will only be sent if the user views article detail page)
+   */
+  @Prop() tracker_content_type: string;
+
+  /**
+   * The ID for the article (will only be sent if the user views article detail page)
+   */
+  @Prop() tracker_content_id: string;
+
+  /**
+   * The title of the article (will only be sent if the user views article detail page)
+   */
+  @Prop() tracker_content_title: string;
+
+  /**
+   * Name of the authors (will only be sent if the user views article detail page)
+   */
+  @Prop() tracker_content_authors: string;
+
+  /**
+   * Name of the editors (will only be sent if the user views article detail page)
+   */
+  @Prop() tracker_content_editors: string;
+
+  /**
+   * Tags inside the article (will only be sent if the user views article detail page)
+   */
+  @Prop() tracker_content_tags: string;
+
+  /**
+   * The published date (will only be sent if the user views article detail page)
+   */
+  @Prop() tracker_content_published_date: string;
+
+  /**
+   * The main category the content belongs to
+   */
+  @Prop() tracker_content_categories: string;
+
+  /**
+   * Type of user based on their subscription
+   */
+  @Prop() tracker_user_type: string;
+
+  /**
+   * Status of their subscription
+   */
+  @Prop() tracker_subscription_status: string;
+
+  /**
+   * The type of Metered Wall
+   */
+  @Prop() tracker_metered_wall_type: string;
+
+  /**
+   * The balance of their metered wall
+   */
+  @Prop() tracker_metered_wall_balance: number = 0;
+
+  /**
+   * Page Domain
+   */
+  @Prop() tracker_page_domain: string;
+
+  /**
+   * menentukan template yang akan di render
+   */
+  private setTemplate(prop: string, mode: string = 'default'): string {
+    let template = '';
+
+    if (this.countdownArticle > 1) {
+      template = this.textTemplate[mode]?.[prop] || '';
+    } else {
+      template = this.textTemplate[mode]?.lastArticle?.[prop] || '';
+    }
+    return template;
+  }
 
   /**
    * mengelola tampilan pada section metered register
@@ -28,15 +129,7 @@ export class KompasMeteredRegister {
     if (!this.isExpandBanner) {
       return (
         <Fragment>
-          <div class="text-base md:text-lg font-lora mb-3 mt-1 md:mb-0 md:mt-0 pr-14 md:px-0">
-            {this.countdownArticle > 1 ? (
-              <b>Dukung Jurnalisme Berkualitas dengan Mendaftar Akun Kompas.id.</b>
-            ) : (
-              <span>
-                Ini Adalah <b>Artikel Gratis Terakhir</b> Anda. <b>Daftar Akun untuk Terus Membaca.</b>
-              </span>
-            )}
-          </div>
+          <div class="text-base md:text-lg font-lora mb-3 mt-1 md:mb-0 md:mt-0 pr-14 md:px-0" innerHTML={this.setTemplate('title')}></div>
           <div class="md:self-center">{this.registerButtonTemplate()}</div>
         </Fragment>
       );
@@ -45,23 +138,8 @@ export class KompasMeteredRegister {
         <Fragment>
           <div class="flex flex-col-reverse md:flex-row justify-center gap-4 md:gap-8">
             <div class="flex flex-col justify-evenly text-center md:text-left md:w-5/12 gap-4 md:gap-2">
-              <p class="text-lg md:text-2xl font-lora">
-                {this.countdownArticle > 1 ? (
-                  <b>Tertarik dengan Artikel Ini? Daftar untuk Akses Artikel Menarik Lainnya</b>
-                ) : (
-                  <span>
-                    Anda Sedang Membaca <b>Artikel Premium Gratis Terakhir</b> dari Kompas.id
-                  </span>
-                )}
-              </p>
-              <p class="text-sm md:text-base">
-                {this.countdownArticle > 1 ? (
-                  <Fragment>Dapatkan akses ke beragam konten dan fitur premium Kompas.id.</Fragment>
-                ) : (
-                  <Fragment>Ayo daftar akun untuk akses ke beragam artikel dan fitur premium.</Fragment>
-                )}{' '}
-                Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.
-              </p>
+              <p class="text-lg md:text-2xl font-lora" innerHTML={this.setTemplate('title', 'expand')}></p>
+              <p class="text-sm md:text-base" innerHTML={this.setTemplate('description', 'expand')}></p>
               <div class="md:self-start">{this.registerButtonTemplate()}</div>
             </div>
             <div class="flex justify-center">
@@ -92,20 +170,68 @@ export class KompasMeteredRegister {
     );
   };
 
+  /**
+   * mengarahkan ke page register
+   */
   private redirectToRegister = (): void => {
+    this.pushToDataLayer('mrw_clicked');
     window.location.href = this.registerUrl;
   };
 
+  /**
+   * toggle isExpandBanner flag
+   */
   private triggerExpandBanner = (): void => {
     this.isExpandBanner = !this.isExpandBanner;
+    !this.isExpandBanner && this.pushToDataLayer('mrw_closed');
   };
 
-  componentWillLoad() {
+  /**
+   * mengirim event ke datalayer
+   */
+  private pushToDataLayer = (eventName: string): void => {
+    window.dataLayer.push({
+      event: eventName,
+      page_title: this.tracker_page_title,
+      page_type: this.tracker_page_type,
+      content_type: this.tracker_content_type,
+      content_id: this.tracker_content_id,
+      content_title: this.tracker_content_title,
+      content_authors: this.tracker_content_authors,
+      content_editors: this.tracker_content_editors,
+      content_tags: this.tracker_content_tags,
+      content_published_date: this.tracker_content_published_date,
+      content_categories: this.tracker_content_categories,
+      user_type: this.tracker_user_type || 'G',
+      subscription_status: this.tracker_subscription_status || '',
+      metered_wall_type: this.tracker_metered_wall_type || 'MRW',
+      metered_wall_balance: this.tracker_metered_wall_balance,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
+    });
+  };
+
+  async componentWillLoad() {
+    // parse content props
+    const req = await fetch(`https://d3w4qaq4xm1ncv.cloudfront.net/assets/register_wall.json`);
+
+    if (req.status !== 200) {
+      throw new Error(`${req.status} Ada galat saat memproses permintaan.`);
+    }
+
+    /**
+     * fetch() mendapatkan respons 200
+     */
+    this.textTemplate = await req.json();
+
     const getCountdown = this.countdownArticle;
     if (!getCountdown) {
       this.isShowBanner = false;
       return;
     }
+  }
+
+  componentDidLoad() {
+    this.isShowBanner && this.pushToDataLayer('mrw_viewed');
   }
 
   render() {
@@ -117,7 +243,7 @@ export class KompasMeteredRegister {
               <div class="flex lg:max-w-7xl m-auto justify-center relative">
                 <div class="flex flex-col">{this.bannerTemplate()}</div>
                 <div class="absolute right-0 top-0.5">
-                  <button onClick={this.triggerExpandBanner} class="bg-blue-200 p-2.5 rounded-md ">
+                  <button onClick={this.triggerExpandBanner} class="bg-blue-200 p-2.5 rounded-md">
                     <div class={`icon icon-blue-600 ${this.isExpandBanner && 'chevron-down'}`} innerHTML={chevronUp}></div>
                   </button>
                 </div>

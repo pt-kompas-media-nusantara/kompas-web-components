@@ -4,9 +4,47 @@ jest.mock('../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg
 import { newSpecPage } from '@stencil/core/testing';
 import { KompasMeteredRegister } from './kompas-metered-register';
 
+// Mock Fetch
+function mockFetchWithResponse(responseStatus, responseData) {
+  globalThis.fetch = jest.fn().mockResolvedValue({
+    status: responseStatus,
+    json: async () => responseData,
+  });
+}
+
+// Mock Success Fetch
+function mockFecthWithSuccessfulResponse() {
+  mockFetchWithResponse(200, {
+    expand: {
+      lastArticle: {
+        title: '<span>Anda Sedang Membaca <b>Artikel Premium Gratis Terakhir</b> dari Kompas.id</span>',
+        description: '<span>Ayo daftar akun untuk akses ke beragam artikel dan fitur premium. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>',
+      },
+      title: '<b>Tertarik dengan Artikel Ini? Daftar untuk Akses Artikel Menarik Lainnya</b>',
+      description: '<span>Dapatkan akses ke beragam konten dan fitur premium Kompas.id. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>',
+    },
+    default: {
+      lastArticle: {
+        title: '<span>Ini Adalah <b>Artikel Gratis Terakhir</b> Anda. <b>Daftar Akun untuk Terus Membaca.</b></span>',
+      },
+      title: '<b>Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.</b>',
+    },
+  });
+}
+
+beforeAll(() => {
+  Object.defineProperty(window, 'dataLayer', {
+    value: {
+      push: jest.fn(),
+    },
+  });
+  jest.spyOn(window.dataLayer, 'push').mockImplementation(() => jest.fn());
+});
+
 describe('kompas-metered-register', () => {
   // countdown-article = 0 or nothing passed
   it('should renders nothing', async () => {
+    mockFecthWithSuccessfulResponse();
     const page = await newSpecPage({
       components: [KompasMeteredRegister],
       html: `<kompas-metered-register></kompas-metered-register>`,
@@ -21,6 +59,7 @@ describe('kompas-metered-register', () => {
 
   // countdown-article = 1
   it('should renders content for last article quota', async () => {
+    mockFecthWithSuccessfulResponse();
     const page = await newSpecPage({
       components: [KompasMeteredRegister],
       html: `<kompas-metered-register countdown-article=1></kompas-metered-register>`,
@@ -67,6 +106,7 @@ describe('kompas-metered-register', () => {
 
   // countdown-article = 2 ( > 1 )
   it('should renders content for article quota more than one', async () => {
+    mockFecthWithSuccessfulResponse();
     const page = await newSpecPage({
       components: [KompasMeteredRegister],
       html: `<kompas-metered-register countdown-article=2></kompas-metered-register>`,
@@ -81,7 +121,7 @@ describe('kompas-metered-register', () => {
                   <div class="block gap-8 items-center justify-center lg:flex md:text-lg ml-auto self-center text-grey-600 text-left text-sm">
                     <div class="font-lora mb-3 md:mb-0 md:mt-0 md:px-0 md:text-lg mt-1 pr-14 text-base">
                       <b>
-                        Dukung Jurnalisme Berkualitas dengan Mendaftar Akun Kompas.id.
+                        Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.
                       </b>
                     </div>
                     <div class="md:self-center">
