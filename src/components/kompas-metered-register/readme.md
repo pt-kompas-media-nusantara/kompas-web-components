@@ -20,8 +20,32 @@ Anda perlu meletakkan _tag_ komponen `<kompas-metered-register />` pada halaman 
   1 => akan menampilkan text artikel terakhir
   lebih dari 1 => akan menampilkan normal text
 
-<!-- Auto Generated Below -->
+### Catatan
 
+Text pada komponen ini dapat di update dengan mengubah value dari url https://d3w4qaq4xm1ncv.cloudfront.net/assets/register_wall.json
+
+Dengan format dibawah ini:
+
+```javascript
+{
+  "expand": {
+    "lastArticle": {
+      "title": "<span>Anda Sedang Membaca <b>Artikel Premium Gratis Terakhir</b> dari Kompas.id</span>",
+      "description": "<span>Ayo daftar akun untuk akses ke beragam artikel dan fitur premium. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>"
+    },
+    "title": "<b>Tertarik dengan Artikel Ini? Daftar untuk Akses Artikel Menarik Lainnya</b>",
+    "description": "<span>Dapatkan akses ke beragam konten dan fitur premium Kompas.id. Anda juga mendukung jurnalisme berkualitas dengan mendaftar akun.</span>"
+  },
+  "default": {
+    "lastArticle": {
+      "title": "<span>Ini Adalah <b>Artikel Gratis Terakhir</b> Anda. <b>Daftar Akun untuk Terus Membaca.</b></span>"
+    },
+    "title": "<b>Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.</b>"
+  }
+}
+```
+
+<!-- Auto Generated Below -->
 
 ## Properties
 
@@ -44,7 +68,6 @@ Anda perlu meletakkan _tag_ komponen `<kompas-metered-register />` pada halaman 
 | `tracker_subscription_status`    | `tracker_subscription_status`    | Status of their subscription                                                                          | `string` | `undefined` |
 | `tracker_user_type`              | `tracker_user_type`              | Type of user based on their subscription                                                              | `string` | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Terbikin oleh tim front-end kompas.id*
+_Terbikin oleh tim front-end kompas.id_
