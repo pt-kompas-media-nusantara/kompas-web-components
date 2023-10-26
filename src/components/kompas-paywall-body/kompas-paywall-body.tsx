@@ -377,7 +377,8 @@ export class KompasPaywallBody {
   private redirectToCheckout = (url: string, name: string, id:string, price: number, position: number): void => {
     this.sendDataLayeronButtonBuyPackage(name, id, price, position)
     const originHost: string = encodeURIComponent(window.location.href)
-    const directUrlCheckout: string = url + originHost
+    const source: string = this.type === 'epaper'? 'epaper' : ''
+    const directUrlCheckout: string = `${url}${originHost}&source=${source}`
     window.open(directUrlCheckout)
   }
   private redirectToSubscriber = (): void => {
