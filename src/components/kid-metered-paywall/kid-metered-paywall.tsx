@@ -18,7 +18,7 @@ export class KidMeteredPaywall {
   /**
    * state maxQuota untuk menghandle maksimal artikel yang user bisa baca.
    */
-  @State() maxQuota: number = 5
+  @State() maxQuota: number = 3
     /**
    * state subscriptionUrl untuk memberikan link kemana user akan dialihkan.
    */
