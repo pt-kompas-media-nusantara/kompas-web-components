@@ -22,7 +22,7 @@ export class KompasMeteredRegister {
   /**
    * state isExpandBanner untuk menentukan apakah component sedang dalam mode expand.
    */
-  @State() isExpandBanner: boolean = false;
+  @State() isExpandBanner: boolean = true;
   /**
    * state textTemplate untuk menyimpan template yang di berikan.
    */
@@ -32,6 +32,11 @@ export class KompasMeteredRegister {
    * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
    */
   @Prop() countdownArticle: number = 0;
+
+  /**
+   * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
+   */
+  @Prop() defaultExpandBanner: boolean = true;
 
   /**
    * Title of the page
@@ -227,6 +232,8 @@ export class KompasMeteredRegister {
     if (!getCountdown) {
       this.isShowBanner = false;
       return;
+    } else {
+      this.isExpandBanner = this.defaultExpandBanner;
     }
   }
 

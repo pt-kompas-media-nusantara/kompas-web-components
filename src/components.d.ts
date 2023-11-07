@@ -233,6 +233,10 @@ export namespace Components {
          */
         "countdownArticle": number;
         /**
+          * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
+         */
+        "defaultExpandBanner": boolean;
+        /**
           * Name of the authors (will only be sent if the user views article detail page)
          */
         "tracker_content_authors": string;
@@ -744,6 +748,10 @@ declare namespace LocalJSX {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle"?: number;
+        /**
+          * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
+         */
+        "defaultExpandBanner"?: boolean;
         /**
           * Name of the authors (will only be sent if the user views article detail page)
          */
