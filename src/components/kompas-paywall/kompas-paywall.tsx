@@ -81,10 +81,10 @@ export class KompasPaywall {
         informations: {
           title: 'Langganan untuk Lanjut Membaca',
           description: [
-            "Akses tak terbatas Kompas.id (web & app)",
-            "Berita digital tanpa iklan pop-up",
-            "30 arsip terbaru ePaper Kompas",
-            "Artikel  Opini eksklusif",
+            "Akses seluruh konten Kompas.id web dan aplikasi",
+            "ePaper hingga 30 edisi terakhir",
+            "Artikel Riset dan Opini eksklusif dari para ahli",
+            "Buku digital tiap bulannya di aplikasi ",
           ],
           register: {
             img: 'https://www.kompas.id/img/backgrounds/ilustrasi-banner-registration.png',
@@ -199,7 +199,6 @@ export class KompasPaywall {
           {this.transitionBox()}
           <div class={`flex flex-col ${this.theme === 'dark' ? 'bg-dark-5' : 'bg-white'} items-center justify-center mx-4 md:mx-0`}>
             <div class="flex flex-col w-full max-w-screen-md my-5">
-              <kompas-paywall-banner-registration bannerData={this.paywallData.informations.register} theme={this.theme}></kompas-paywall-banner-registration>
               <kompas-paywall-body tracker_content_type={this.tracker_content_type} paywall_location={this.paywall_location} paywall_subscription_package={this.paywall_subscription_package} paywall_subscription_id={this.paywall_subscription_id} paywall_subscription_price={this.paywall_subscription_price} paywall_position={this.paywall_position} tracker_page_type={this.tracker_page_type} tracker_content_id={this.tracker_content_id} tracker_content_title={this.tracker_content_title} tracker_content_categories={this.tracker_content_categories} tracker_user_type={this.tracker_user_type} tracker_subscription_status={this.tracker_subscription_status} tracker_epaper_edition={this.tracker_epaper_edition} tracker_page_domain={this.tracker_page_domain} tracker_metered_wall_type={this.tracker_metered_wall_type} tracker_metered_wall_balance={this.tracker_metered_wall_balance} swgEnable={this.swgEnable} isLogin={this.isLogin} type={this.type} countdownArticle={this.countdownArticle} paywallData={this.paywallData} subscriptionStatus={this.subscriptionStatus} userGuid={this.userGuid} theme={this.theme}></kompas-paywall-body>
             </div>
           </div>
