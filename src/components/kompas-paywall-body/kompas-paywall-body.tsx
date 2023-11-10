@@ -202,7 +202,7 @@ export class KompasPaywallBody {
 
   private informationPackages = (): void => (
     <div class="mt-4 flex justify-center">
-      <button onClick={() => this.redirectToSubscriber()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
+      <button onClick={this.otherPackagesClicked} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
         Lihat Paket Lainnya
       </button>
     </div>
@@ -398,18 +398,14 @@ export class KompasPaywallBody {
     window.history.back()
   }
 
-  private sendDataLayer = (): void => {
-    window.dataLayer.push({
-      event: 'halamanBerlanggananClick',
-      subscriptionStatus: this.subscriptionStatus,
-      GUID: this.userGuid,
-      interface: deviceType()
-    })
+  private otherPackagesClicked = () => {
+    this.sendDataLayerOtherPakcagesClicked()
+    this.redirectToSubscriber()
   }
 
-  private sendDataLayeronPaywallBody = (): void => {
+  private generalPaywallDataLayer = (event: string): Record<string, any> => {
     const gtmParams: Record<string, any> = {
-      event: 'paywall_viewed',
+      event,
       impressions: [
         {
           paywall_location: this.paywall_location || '',
@@ -455,6 +451,20 @@ export class KompasPaywallBody {
       gtmParams.impressions[1]['content_type'] = this.tracker_content_type
     }
 
+    return gtmParams
+  }
+
+  private sendDataLayer = (): void => {
+    window.dataLayer.push({
+      event: 'halamanBerlanggananClick',
+      subscriptionStatus: this.subscriptionStatus,
+      GUID: this.userGuid,
+      interface: deviceType()
+    })
+  }
+
+  private sendDataLayeronPaywallBody = (): void => {
+    const gtmParams = this.generalPaywallDataLayer('paywall_viewed')
     window.dataLayer.push(gtmParams)
   }
 
@@ -494,6 +504,11 @@ export class KompasPaywallBody {
       GUID: this.userGuid,
       interface: deviceType()
     })
+  }
+
+  private sendDataLayerOtherPakcagesClicked = (): void => {
+    const gtmParams = this.generalPaywallDataLayer('other_packages_clicked')
+    window.dataLayer.push(gtmParams)
   }
 
   get listDataLayer() {
