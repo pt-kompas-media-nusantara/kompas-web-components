@@ -86,12 +86,12 @@ export class KompasPaywallBody {
           <h5 class="text-base md:text-lg font-bold text-orange-400">
             {this.getRupiahFormat(product.price)}
           </h5>
-          <h6 class={`text-xs md:text-base ${ this.isDark && 'text-white'} font-bold pl-1`}>
+          <h6 class={`text-xs md:text-base ${this.isDark && 'text-dark-6'} font-bold pl-1`}>
             / {product.periode}
           </h6>
         </div>
         <div class="flex items-center">
-            <p class={`text-xs ${this.isDark && 'text-white'}`}>
+            <p class={`text-xs ${this.isDark && 'text-dark-6'}`}>
             hanya <span class="text-orange-400">Rp 30.000</span> / bulan
             </p>
         </div>
@@ -115,7 +115,7 @@ export class KompasPaywallBody {
         <h5 class="text-base md:text-lg font-bold text-orange-400">
           {this.getRupiahFormat(product.price)}
         </h5>
-        <h6 class={`text-xs md:text-base ${this.isDark && 'text-white'} font-bold pl-1`}>
+        <h6 class={`text-xs md:text-base ${this.isDark && 'text-dark-6'} font-bold pl-1`}>
           / {product.periode}
         </h6>
       </div>
@@ -128,8 +128,8 @@ export class KompasPaywallBody {
   )
 
   private helpDesk = (): void => (
-    <div class="text-white self-center text-xs md:text-sm">
-      Butuh bantuan? Hubungi <button onClick={() => this.redirectToHelpdesk()} class={`font-bold ${this.isDark && 'text-blue-300'} underline`}>
+    <div class={`${this.isDark ? 'text-dark-6' : 'text-white'} self-center text-xs md:text-sm`}>
+      Butuh bantuan? Hubungi <button onClick={this.customerServiceClicked} class={`font-bold underline`}>
         Layanan Pelanggan.
       </button>
     </div>
@@ -166,7 +166,7 @@ export class KompasPaywallBody {
       <div class="flex flex-col space-y-2 mt-2.5 md:mt-3">
         {data.map((item) => (
           <div class="flex items-center">
-            <div class="icon-xs icon-green-500" innerHTML={check}></div>
+            <div class={`icon-xs ${this.isDark ? 'icon-green-400' : 'icon-green-500'}`} innerHTML={check}></div>
             <h6 class={`text-xs md:text-base ${this.isDark && 'text-white'} ml-0.5 md:ml-1`}>{item}</h6>
           </div>
         ))}
@@ -218,7 +218,7 @@ export class KompasPaywallBody {
       <button onClick={() => this.redirectToLogin()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
         Masuk
       </button>
-      <span> jika sudah berlangganan.</span>
+      <span class={`${this.isDark && 'text-white'}`}> jika sudah berlangganan.</span>
     </div>
   )
 
@@ -228,14 +228,14 @@ export class KompasPaywallBody {
         <button onClick={() => this.redirectToRegister()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
           Daftar
         </button>
-        <span> untuk kuota artikel gratis</span>
+        <span class={`${this.isDark && 'text-white'}`}> untuk kuota artikel gratis</span>
       </div>
       <div>
-        <span>atau </span>
+        <span class={`${this.isDark && 'text-white'}`}>atau </span>
         <button onClick={() => this.redirectToLogin()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
           Masuk
         </button>
-        <span> jika sudah punya akun.</span>
+        <span class={`${this.isDark && 'text-white'}`}> jika sudah punya akun.</span>
       </div>
     </div>
   )
@@ -328,10 +328,20 @@ export class KompasPaywallBody {
       // set entitlement
       subscriptions.setOnEntitlementsResponse(() => {
         // subscriptions attach button
-        subscriptions.attachButton(this.buttonElement, { theme: 'light', lang: 'en' }, () => {
+        subscriptions.attachButton(this.buttonElement, { theme: 'light', lang: 'en' }, async () => {
           subscriptions.showOffers({ isClosable: true })
           subscriptions.setOnLoginRequest(() => {
             window.location.href = this.loginUrl
+          })
+          const offers = await subscriptions.getOffers()
+          subscriptions.setOnFlowStarted((callback: any) => {
+            if (callback.flow === 'showOffers') {
+              window.dataLayer.push(this.swgPackageViewedDataLayer(offers))
+            } else if (callback.flow === 'subscribe') {
+              const selectedOfferSkuId = callback.data.skuId
+              const selectedOffer = offers.find((offer: any) => offer.skuId === selectedOfferSkuId)
+              window.dataLayer.push(this.swgSubscribeButtonClicked(selectedOffer, offers.indexOf(selectedOffer)))
+            }
           })
           subscriptions.setOnPaymentResponse(async (paymentResponse: any) => {
             const response = await paymentResponse
@@ -399,59 +409,81 @@ export class KompasPaywallBody {
   }
 
   private otherPackagesClicked = () => {
-    this.sendDataLayerOtherPakcagesClicked()
+    this.sendDataLayerOtherPackagesClicked()
     this.redirectToSubscriber()
   }
 
-  private generalPaywallDataLayer = (event: string): Record<string, any> => {
+  private customerServiceClicked = () => {
+    this.sendDataLayerCustomerServiceClicked()
+    this.redirectToHelpdesk()
+  }
+
+  private buildGtmParams(event: string, impressions: Record<string, any>[], index: number = 0) {
     const gtmParams: Record<string, any> = {
       event,
-      impressions: [
-        {
-          paywall_location: this.paywall_location || '',
-          paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12',
-          paywall_subscription_id: '9802032',
-          paywall_subscription_price: 360000,
-          paywall_position: 1,
-          user_type: this.tracker_user_type,
-          subscription_status: this.tracker_subscription_status,
-          page_domain: this.tracker_page_domain || 'Kompas.id',
-          metered_wall_type: this.tracker_metered_wall_type || 'HP',
-          metered_wall_balance: this.tracker_metered_wall_balance
-        },
-        {
-          paywall_location: this.paywall_location || '',
-          paywall_subscription_package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1',
-          paywall_subscription_id: '9802035',
-          paywall_subscription_price: 50000,
-          paywall_position: 2,
-          user_type: this.tracker_user_type,
-          subscription_status: this.tracker_subscription_status,
-          page_domain: this.tracker_page_domain || 'Kompas.id',
-          metered_wall_type: this.tracker_metered_wall_type || 'HP',
-          metered_wall_balance: this.tracker_metered_wall_balance
-        }
-      ]
-    }
-
-    if (this.type === 'epaper') {
-      gtmParams.impressions[0]['epaper_edition'] = this.tracker_epaper_edition
-      gtmParams.impressions[1]['epaper_edition'] = this.tracker_epaper_edition
-    } else {
-      gtmParams.impressions[0]['page_type'] = this.tracker_page_type
-      gtmParams.impressions[0]['content_id'] = this.tracker_content_id
-      gtmParams.impressions[0]['content_title'] = this.tracker_content_title
-      gtmParams.impressions[0]['content_categories'] = this.tracker_content_categories
-      gtmParams.impressions[0]['content_type'] = this.tracker_content_type
-
-      gtmParams.impressions[1]['page_type'] = this.tracker_page_type
-      gtmParams.impressions[1]['content_id'] = this.tracker_content_id
-      gtmParams.impressions[1]['content_title'] = this.tracker_content_title
-      gtmParams.impressions[1]['content_categories'] = this.tracker_content_categories
-      gtmParams.impressions[1]['content_type'] = this.tracker_content_type
+      impressions: impressions.map((impression, i) => ({
+        paywall_location: this.paywall_location || '',
+        paywall_subscription_package: impression.package,
+        paywall_subscription_id: impression.subscription_id,
+        paywall_subscription_price: parseFloat(impression.price.replace(/[^0-9.]/g, '')),
+        paywall_position: index + i + 1,
+        user_type: this.tracker_user_type,
+        subscription_status: this.tracker_subscription_status,
+        page_domain: this.tracker_page_domain || 'Kompas.id',
+        metered_wall_type: this.tracker_metered_wall_type || 'HP',
+        metered_wall_balance: this.tracker_metered_wall_balance,
+        ...(this.type === 'epaper'
+          ? { epaper_edition: this.tracker_epaper_edition }
+          : {
+              page_type: this.tracker_page_type,
+              content_id: this.tracker_content_id,
+              content_title: this.tracker_content_title,
+              content_categories: this.tracker_content_categories,
+              content_type: this.tracker_content_type
+            })
+      }))
     }
 
     return gtmParams
+  }
+
+  private generalPaywallDataLayer = (event: string): Record<string, any> => {
+    const impressions = [
+      {
+        package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 12',
+        subscription_id: '9802032',
+        price: '360000'
+      },
+      {
+        package: 'Cash-B2C-Halaman Berlangganan-Reguler_Digital-KDP 1',
+        subscription_id: '9802035',
+        price: '50000'
+      }
+    ]
+
+    return this.buildGtmParams(event, impressions)
+  }
+
+  private swgPackageViewedDataLayer = (data: any): Record<string, any> => {
+    const impressions = data.map((item: { title: string, skuId: string, price: string }) => ({
+      package: item.title,
+      subscription_id: item.skuId,
+      price: item.price
+    }))
+
+    return this.buildGtmParams('subscription_package_viewed', impressions)
+  }
+
+  private swgSubscribeButtonClicked(item: any, index: number) {
+    const impressions = [
+      {
+        package: item.title,
+        subscription_id: item.skuId,
+        price: item.price
+      }
+    ]
+
+    return this.buildGtmParams('subscribe_button_clicked', impressions, index)
   }
 
   private sendDataLayer = (): void => {
@@ -506,8 +538,13 @@ export class KompasPaywallBody {
     })
   }
 
-  private sendDataLayerOtherPakcagesClicked = (): void => {
+  private sendDataLayerOtherPackagesClicked = (): void => {
     const gtmParams = this.generalPaywallDataLayer('other_packages_clicked')
+    window.dataLayer.push(gtmParams)
+  }
+
+  private sendDataLayerCustomerServiceClicked = (): void => {
+    const gtmParams = this.generalPaywallDataLayer('customer_service_clicked')
     window.dataLayer.push(gtmParams)
   }
 
@@ -581,14 +618,17 @@ export class KompasPaywallBody {
             {this.swgEnable && this.separatorLine()}
             {this.swgEnable && (
               <button
-                class="border-2 bg-grey-100 border-grey-100 rounded-lg px-6 shadow-sm flex flex-row py-2 mt-1"
+                class={`${this.isDark ? 'bg-grey-600' : 'border-2 bg-grey-100 border-grey-100'} rounded-lg px-6 shadow-sm flex flex-row py-2 mt-1`}
                 ref={el => (this.buttonElement = el as HTMLButtonElement)}
               >
-                <p>Subscribe with</p>
-                <img class="pl-2 object-scale-down w-20 pt-0.5" src="https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png"></img>
+                <p class={`${this.isDark && 'text-dark-6'}`}>Subscribe with</p>
+                <img
+                  class="pl-2 object-scale-down w-20 pt-0.5"
+                  src={this.isDark ? 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google-white.png' : 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png'}
+                ></img>
               </button>
             )}
-            {!this.isLogin && <div class={`border-b ${this.isDark ? 'border-dark-2' : 'border-blue-200'} w-1/5 my-4 flex justify-center`} />}
+            {!this.isLogin && <div class={`border-b ${this.isDark ? 'border-dark-7' : 'border-blue-200'} w-1/5 my-4 flex justify-center`} />}
             {!this.isLogin && this.registrationSection(this.type)}
             {this.userAction()}
             {this.sendDataLayeronPaywallBody()}
