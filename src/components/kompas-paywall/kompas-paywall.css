@@ -65,6 +65,14 @@
     }
   }
 
+  &-green-400 {
+    @apply text-green-400;
+
+    & svg {
+      @apply fill-current;
+    }
+  }
+
   &-green-500 {
     @apply text-green-500;
 
