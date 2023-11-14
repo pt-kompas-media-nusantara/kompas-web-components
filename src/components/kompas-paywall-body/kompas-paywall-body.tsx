@@ -156,7 +156,7 @@ export class KompasPaywallBody {
       <div class="flex w-full items-center justify-center">
         {type === 'epaper' ? <button onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} /> : ''}
         <h4 class={`text-base flex self-center md:block md:text-xl ${this.isDark && 'text-white'} text-center font-bold font-serif tracking-wide md:tracking-normal w-4/5 md:w-full`}>{headerSectionText}</h4>
-        {type === 'epaper' ? <div class="w-10" /> : ''}
+        {type === 'epaper' ? <div class="w-10 hidden lg:flex" /> : ''}
       </div>
     )
   }
@@ -223,7 +223,7 @@ export class KompasPaywallBody {
   )
 
   private regulerRegistrationSection = (): void => (
-    <div>
+    <div class="flex flex-col items-center justify-center">
       <div>
         <button onClick={() => this.redirectToRegister()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
           Daftar
