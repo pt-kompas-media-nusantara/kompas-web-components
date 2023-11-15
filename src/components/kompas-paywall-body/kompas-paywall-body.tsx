@@ -475,15 +475,31 @@ export class KompasPaywallBody {
   }
 
   private swgSubscribeButtonClicked(item: any, index: number) {
-    const impressions = [
-      {
-        package: item.title,
-        subscription_id: item.skuId,
-        price: item.price
-      }
-    ]
+    const gtmParams: any = {
+      event: 'subscribe_button_clicked',
+      paywall_location: this.paywall_location || '',
+      paywall_subscription_package: item.title,
+      paywall_subscription_id: item.skuId,
+      paywall_subscription_price: parseFloat(item.price.replace(/[^0-9.]/g, '')),
+      paywall_position: index + 1,
+      user_type: this.tracker_user_type,
+      subscription_status: this.tracker_subscription_status,
+      page_domain: this.tracker_page_domain || 'Kompas.id',
+      metered_wall_type: this.tracker_metered_wall_type || 'HP',
+      metered_wall_balance: this.tracker_metered_wall_balance,
+    }
 
-    return this.buildGtmParams('subscribe_button_clicked', impressions, index)
+    if (this.type === 'epaper') {
+      gtmParams.epaper_edition = this.tracker_epaper_edition
+    } else {
+      gtmParams.page_type = this.tracker_page_type
+      gtmParams.content_id = this.tracker_content_id
+      gtmParams.content_title = this.tracker_content_title
+      gtmParams.content_categories = this.tracker_content_categories
+      gtmParams.content_type = this.tracker_content_type
+    }
+
+    return gtmParams
   }
 
   private sendDataLayer = (): void => {
