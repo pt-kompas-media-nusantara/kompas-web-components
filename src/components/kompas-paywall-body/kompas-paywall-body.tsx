@@ -425,7 +425,7 @@ export class KompasPaywallBody {
         paywall_location: this.paywall_location || '',
         paywall_subscription_package: impression.package,
         paywall_subscription_id: impression.subscription_id,
-        paywall_subscription_price: this.parsePrice(impression.price),
+        paywall_subscription_price: parseFloat(impression.price.replace(/[^0-9.]/g, '')),
         paywall_position: index + i + 1,
         user_type: this.tracker_user_type,
         subscription_status: this.tracker_subscription_status,
@@ -480,7 +480,7 @@ export class KompasPaywallBody {
       paywall_location: this.paywall_location || '',
       paywall_subscription_package: item.title,
       paywall_subscription_id: item.skuId,
-      paywall_subscription_price: this.parsePrice(item.price),
+      paywall_subscription_price: parseFloat(item.price.replace(/[^0-9.]/g, '')),
       paywall_position: index + 1,
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
@@ -571,18 +571,6 @@ export class KompasPaywallBody {
       }
     } else {
       return 'non-login paywall'
-    }
-  }
-
-  private parsePrice (price: string): number {
-    const lowerCasePrice = price.toLowerCase()
-
-    if (lowerCasePrice.startsWith('idr')) {
-      return parseFloat(price.replace(/[^0-9.]/g, ''))
-    } else if (lowerCasePrice.startsWith('rp')) {
-      return parseFloat(price.replace(/[^0-9,]/g, ''))
-    } else {
-      throw new Error('Invalid price format')
     }
   }
 
