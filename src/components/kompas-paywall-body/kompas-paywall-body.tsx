@@ -577,13 +577,11 @@ export class KompasPaywallBody {
   private parsePrice (price: string): number {
     const lowerCasePrice = price.toLowerCase()
 
-    if (lowerCasePrice.startsWith('idr')) {
-      return parseFloat(price.replace(/[^0-9.]/g, ''))
-    } else if (lowerCasePrice.startsWith('rp')) {
+    if (lowerCasePrice.startsWith('rp')) {
       return parseFloat(price.replace(/[^0-9,]/g, ''))
-    } else {
-      throw new Error('Invalid price format')
     }
+
+    return parseFloat(price.replace(/[^0-9.]/g, ''))
   }
 
   private jsonScript = (): any => {
