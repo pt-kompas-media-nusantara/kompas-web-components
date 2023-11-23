@@ -80,7 +80,7 @@ export class KompasPaywallBody {
   buttonElement!: HTMLButtonElement
 
   private primaryPackages = (product: Product): void => (
-    <div class={`flex flex-wrap justify-between items-center ${this.isDark ? 'bg-grey-600' : 'bg-white'} font-pt-sans rounded-lg md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative`}>
+    <div class={`flex flex-wrap justify-between items-center ${this.isDark ? 'bg-grey-600' : 'bg-white'} rounded-lg md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-2.5 md:mt-4 border border-yellow-400 relative`}>
       <div class="flex flex-col py-3 px-4">
         <div class="flex flex-none items-center">
           <h5 class="text-base md:text-lg font-bold text-orange-400">
@@ -110,7 +110,7 @@ export class KompasPaywallBody {
   )
 
   private secondaryPackages = (product: Product): void => (
-    <div class={`flex  flex-wrap justify-between ${this.isDark ? 'bg-grey-600' : 'bg-white'} font-pt-sans py-3 px-4 rounded-lg md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-3 md:mt-4`}>
+    <div class={`flex  flex-wrap justify-between ${this.isDark ? 'bg-grey-600' : 'bg-white'} py-3 px-4 rounded-lg md:mx-0 w-full max-w-xs md:max-w-sm md:w-3/5 mt-3 md:mt-4`}>
       <div class="flex items-center">
         <h5 class="text-base md:text-lg font-bold text-orange-400">
           {this.getRupiahFormat(product.price)}
@@ -128,7 +128,7 @@ export class KompasPaywallBody {
   )
 
   private helpDesk = (): void => (
-    <div class={`font-pt-sans ${this.isDark ? 'text-dark-6' : 'text-white'} self-center text-xs md:text-sm`}>
+    <div class={`${this.isDark ? 'text-dark-6' : 'text-white'} self-center text-xs md:text-sm`}>
       Butuh bantuan? Hubungi <button onClick={this.customerServiceClicked} class={`font-bold underline`}>
         Layanan Pelanggan.
       </button>
@@ -167,7 +167,7 @@ export class KompasPaywallBody {
         {data.map((item) => (
           <div class="flex items-center">
             <div class={`icon-xs ${this.isDark ? 'icon-green-400' : 'icon-green-500'}`} innerHTML={check}></div>
-            <h6 class={`text-xs font-pt-sans md:text-base ${this.isDark ? 'text-white' : 'text-grey-600'} ml-0.5 md:ml-1`}>{item}</h6>
+            <h6 class={`text-xs md:text-base ${this.isDark ? 'text-white' : 'text-grey-600'} ml-0.5 md:ml-1`}>{item}</h6>
           </div>
         ))}
       </div>
@@ -202,20 +202,20 @@ export class KompasPaywallBody {
 
   private informationPackages = (): void => (
     <div class="mt-4 flex justify-center">
-      <button onClick={this.otherPackagesClicked} class={`text-sm md:text-base font-pt-sans font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
+      <button onClick={this.otherPackagesClicked} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
         Lihat Paket Lainnya
       </button>
     </div>
   )
   private separatorLine = (): void => (
     <div class="flex flex-row w-full justify-center">
-      <p class={`font-pt-sans px-4 pt-1 ${this.isDark ? 'text-dark-1' : 'text-grey-500'}`}>atau</p>
+      <p class={`px-4 pt-1 ${this.isDark ? 'text-dark-1' : 'text-grey-500'}`}>atau</p>
     </div>
   )
 
   private epaperRegistrationSection = (): void => (
     <div>
-      <button onClick={() => this.redirectToLogin()} class={`text-sm md:text-base font-pt-sans font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
+      <button onClick={() => this.redirectToLogin()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
         Masuk
       </button>
       <span class={`${this.isDark && 'text-white'}`}> jika sudah berlangganan.</span>
@@ -223,7 +223,7 @@ export class KompasPaywallBody {
   )
 
   private regulerRegistrationSection = (): void => (
-    <div class="flex flex-col items-center justify-center font-pt-sans">
+    <div class="flex flex-col items-center justify-center">
       <div>
         <button onClick={() => this.redirectToRegister()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
           Daftar
@@ -668,7 +668,7 @@ export class KompasPaywallBody {
                 class={`${this.isDark ? 'bg-grey-600' : 'border-2 bg-grey-100 border-grey-100'} rounded-lg px-6 shadow-sm flex flex-row py-2 mt-1`}
                 ref={el => (this.buttonElement = el as HTMLButtonElement)}
               >
-                <p class={`font-pt-sans ${this.isDark ? 'text-dark-6' : 'text-grey-500'}`}>Subscribe with</p>
+                <p class={`${this.isDark ? 'text-dark-6' : 'text-grey-500'}`}>Subscribe with</p>
                 <img
                   class="pl-2 object-scale-down w-20 pt-0.5"
                   src={this.isDark ? 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google-white.png' : 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png'}
