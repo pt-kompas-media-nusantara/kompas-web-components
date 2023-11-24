@@ -70,8 +70,8 @@ export class KidMeteredPaywall {
   private getCountdownArticle(): void {
     const getCountdown = this.countdownArticle
     const maxQuota = this.maxQuota
-    if (getCountdown > 0 && getCountdown < maxQuota) {
-      return <p>Anda memiliki sisa <b>{maxQuota - getCountdown} dari {maxQuota}</b> artikel premium gratis bulan ini. Langganan untuk akses tanpa batas</p>
+    if (getCountdown > 1 && getCountdown <= maxQuota) {
+      return <p>Anda memiliki sisa <b>{getCountdown - 1} dari {maxQuota}</b> artikel premium gratis bulan ini. Langganan untuk akses tanpa batas</p>
     } else {
       return <p>Anda sedang membaca <b>artikel gratis terakhir bulan ini.</b> Langganan untuk akses tanpa batas</p>
     }

@@ -155,7 +155,7 @@ export class KompasPaywallBody {
     return (
       <div class="flex w-full items-center justify-center">
         {type === 'epaper' ? <button onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} /> : ''}
-        <h4 class={`text-base flex self-center md:block md:text-xl ${this.isDark && 'text-white'} text-center font-bold font-serif tracking-wide md:tracking-normal w-4/5 md:w-full`}>{headerSectionText}</h4>
+        <h4 class={`text-base flex self-center md:block md:text-xl ${this.isDark ? 'text-white' : 'text-grey-600'} text-center font-lora font-bold tracking-wide md:tracking-normal w-4/5 md:w-full`}>{headerSectionText}</h4>
         {type === 'epaper' ? <div class="w-10 hidden lg:flex" /> : ''}
       </div>
     )
@@ -167,7 +167,7 @@ export class KompasPaywallBody {
         {data.map((item) => (
           <div class="flex items-center">
             <div class={`icon-xs ${this.isDark ? 'icon-green-400' : 'icon-green-500'}`} innerHTML={check}></div>
-            <h6 class={`text-xs md:text-base ${this.isDark && 'text-white'} ml-0.5 md:ml-1`}>{item}</h6>
+            <h6 class={`text-xs md:text-base ${this.isDark ? 'text-white' : 'text-grey-600'} ml-0.5 md:ml-1`}>{item}</h6>
           </div>
         ))}
       </div>
@@ -209,7 +209,7 @@ export class KompasPaywallBody {
   )
   private separatorLine = (): void => (
     <div class="flex flex-row w-full justify-center">
-      <p class={`px-4 pt-1 ${this.isDark && 'text-dark-1'}`}>atau</p>
+      <p class={`px-4 pt-1 ${this.isDark ? 'text-dark-1' : 'text-grey-500'}`}>atau</p>
     </div>
   )
 
@@ -228,14 +228,14 @@ export class KompasPaywallBody {
         <button onClick={() => this.redirectToRegister()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
           Daftar
         </button>
-        <span class={`${this.isDark && 'text-white'}`}> untuk kuota artikel gratis</span>
+        <span class={`${this.isDark ? 'text-white' : 'text-grey-600'}`}> untuk kuota artikel gratis</span>
       </div>
       <div>
-        <span class={`${this.isDark && 'text-white'}`}>atau </span>
+        <span class={`${this.isDark ? 'text-white' : 'text-grey-600'}`}>atau </span>
         <button onClick={() => this.redirectToLogin()} class={`text-sm md:text-base font-bold ${this.isDark ? 'text-blue-300' : 'text-blue-600'} underline`} >
           Masuk
         </button>
-        <span class={`${this.isDark && 'text-white'}`}> jika sudah punya akun.</span>
+        <span class={`${this.isDark ? 'text-white' : 'text-grey-600'}`}> jika sudah punya akun.</span>
       </div>
     </div>
   )
@@ -465,10 +465,10 @@ export class KompasPaywallBody {
   }
 
   private swgPackageViewedDataLayer = (data: any): Record<string, any> => {
-    const impressions = data.map((item: { title: string, skuId: string, price: string }) => ({
+    const impressions = data.map((item: { title: string, skuId: string, price: string, introductoryPrice: string }) => ({
       package: item.title,
       subscription_id: item.skuId,
-      price: item.price
+      price: item.introductoryPrice || item.price
     }))
 
     return this.buildGtmParams('subscription_package_viewed', impressions)
@@ -480,7 +480,7 @@ export class KompasPaywallBody {
       paywall_location: this.paywall_location || '',
       paywall_subscription_package: item.title,
       paywall_subscription_id: item.skuId,
-      paywall_subscription_price: this.parsePrice(item.price),
+      paywall_subscription_price: this.parsePrice(item.introductoryPrice || item.price),
       paywall_position: index + 1,
       user_type: this.tracker_user_type,
       subscription_status: this.tracker_subscription_status,
@@ -609,6 +609,27 @@ export class KompasPaywallBody {
     jsonHead.appendChild(jsonScript)
   }
 
+  componentWillLoad() {
+    const loraCssUrl = 'https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap'
+    const ptSansCssUrl = 'https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap'
+
+    let loraElement = document.querySelector(`link[href="${loraCssUrl}"]`)
+    if (!loraElement) {
+      loraElement = document.createElement('link')
+      loraElement.setAttribute('rel', 'stylesheet')
+      loraElement.setAttribute('href', loraCssUrl)
+      document.head.appendChild(loraElement)
+    }
+
+    let ptSansElement = document.querySelector(`link[href="${ptSansCssUrl}"]`)
+    if (!ptSansElement) {
+      ptSansElement = document.createElement('link')
+      ptSansElement.setAttribute('rel', 'stylesheet')
+      ptSansElement.setAttribute('href', ptSansCssUrl)
+      document.head.appendChild(ptSansElement)
+    }
+  }
+
   componentDidLoad () {
     if (this.swgEnable) {
       this.jsonScript()
@@ -647,7 +668,7 @@ export class KompasPaywallBody {
                 class={`${this.isDark ? 'bg-grey-600' : 'border-2 bg-grey-100 border-grey-100'} rounded-lg px-6 shadow-sm flex flex-row py-2 mt-1`}
                 ref={el => (this.buttonElement = el as HTMLButtonElement)}
               >
-                <p class={`${this.isDark && 'text-dark-6'}`}>Subscribe with</p>
+                <p class={`${this.isDark ? 'text-dark-6' : 'text-grey-500'}`}>Subscribe with</p>
                 <img
                   class="pl-2 object-scale-down w-20 pt-0.5"
                   src={this.isDark ? 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google-white.png' : 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png'}

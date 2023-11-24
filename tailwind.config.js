@@ -86,7 +86,7 @@ module.exports = {
       // Add custom font famliy
       fontFamily: {
         'pt-sans': ['"PT Sans"', 'Arial', 'Verdana', 'Helvetica', 'sans-serif'],
-        'lora': ['Lora', 'serif'],
+        'lora': ['Lora', 'Georgia', 'serif'],
       },
       width: {
         106: '32rem',
