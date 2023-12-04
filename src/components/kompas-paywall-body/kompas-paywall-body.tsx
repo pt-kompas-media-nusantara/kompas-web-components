@@ -86,12 +86,12 @@ export class KompasPaywallBody {
           <h5 class="text-base md:text-lg font-bold text-orange-400">
             {this.getRupiahFormat(product.price)}
           </h5>
-          <h6 class={`text-xs md:text-base ${this.isDark && 'text-dark-6'} font-bold pl-1`}>
+          <h6 class={`text-xs md:text-base ${this.isDark ? 'text-dark-6' : 'text-grey-600'} font-bold pl-1`}>
             / {product.periode}
           </h6>
         </div>
         <div class="flex items-center">
-            <p class={`text-xs ${this.isDark && 'text-dark-6'}`}>
+            <p class={`text-xs ${this.isDark ? 'text-dark-6' : 'text-grey-600'}`}>
             hanya <span class="text-orange-400">Rp 30.000</span> / bulan
             </p>
         </div>
@@ -103,7 +103,7 @@ export class KompasPaywallBody {
       </button >
       <div class="absolute -top-2 left-4">
         <div class="rounded bg-yellow-300 px-2 py-0.5 text-xs">
-          <b>Harga Terbaik</b>
+          <b class="text-grey-600">Harga Terbaik</b>
         </div>
       </div>
     </div>
@@ -115,7 +115,7 @@ export class KompasPaywallBody {
         <h5 class="text-base md:text-lg font-bold text-orange-400">
           {this.getRupiahFormat(product.price)}
         </h5>
-        <h6 class={`text-xs md:text-base ${this.isDark && 'text-dark-6'} font-bold pl-1`}>
+        <h6 class={`text-xs md:text-base ${this.isDark ? 'text-dark-6' : 'text-grey-600'} font-bold pl-1`}>
           / {product.periode}
         </h6>
       </div>

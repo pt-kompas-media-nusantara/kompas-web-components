@@ -81,7 +81,7 @@ export class KompasPaywall {
         informations: {
           title: 'Langganan untuk Lanjut Membaca',
           description: [
-            "Akses seluruh konten Kompas.id web dan aplikasi",
+            "Akses seluruh konten Kompas.id web & aplikasi",
             "ePaper hingga 30 edisi terakhir",
             "Artikel Riset dan Opini eksklusif dari para ahli",
             "Buku digital tiap bulannya di aplikasi ",
