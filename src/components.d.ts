@@ -237,6 +237,10 @@ export namespace Components {
          */
         "defaultExpandBanner": boolean;
         /**
+          * Page Domain
+         */
+        "next_param": string;
+        /**
           * Name of the authors (will only be sent if the user views article detail page)
          */
         "tracker_content_authors": string;
@@ -752,6 +756,10 @@ declare namespace LocalJSX {
           * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
          */
         "defaultExpandBanner"?: boolean;
+        /**
+          * Page Domain
+         */
+        "next_param"?: string;
         /**
           * Name of the authors (will only be sent if the user views article detail page)
          */
