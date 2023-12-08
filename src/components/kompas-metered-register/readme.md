@@ -54,6 +54,7 @@ Dengan format dibawah ini:
 | -------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------- | --------- | ----------- |
 | `countdownArticle`               | `countdown-article`              | prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.                    | `number`  | `0`         |
 | `defaultExpandBanner`            | `default-expand-banner`          | prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.  | `boolean` | `true`      |
+| `next_param`                     | `next_param`                     | Page Domain                                                                                           | `string`  | `undefined` |
 | `tracker_content_authors`        | `tracker_content_authors`        | Name of the authors (will only be sent if the user views article detail page)                         | `string`  | `undefined` |
 | `tracker_content_categories`     | `tracker_content_categories`     | The main category the content belongs to                                                              | `string`  | `undefined` |
 | `tracker_content_editors`        | `tracker_content_editors`        | Name of the editors (will only be sent if the user views article detail page)                         | `string`  | `undefined` |

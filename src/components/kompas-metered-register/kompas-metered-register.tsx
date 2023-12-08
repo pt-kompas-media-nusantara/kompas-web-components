@@ -114,6 +114,11 @@ export class KompasMeteredRegister {
   @Prop() tracker_page_domain: string;
 
   /**
+   * Page Domain
+   */
+  @Prop() next_param: string;
+
+  /**
    * menentukan template yang akan di render
    */
   private setTemplate(prop: string, mode: string = 'default'): string {
@@ -180,7 +185,9 @@ export class KompasMeteredRegister {
    */
   private redirectToRegister = (): void => {
     this.pushToDataLayer('mrw_clicked');
-    window.location.href = this.registerUrl;
+    const newUrl: any = new URL(decodeURIComponent(this.registerUrl));
+    if (this.next_param) newUrl.searchParams.append('next', decodeURIComponent(this.next_param));
+    window.location.href = newUrl.toString();
   };
 
   /**
