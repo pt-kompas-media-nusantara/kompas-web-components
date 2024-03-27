@@ -12,9 +12,9 @@ export class KompasMeteredRegister {
    * state
    */
   /**
-   * state registerUrl untuk memberikan link kemana user akan dialihkan.
+   * state checkoutUrl untuk memberikan link kemana user akan dialihkan.
    */
-  @State() registerUrl: string = 'https://account.kompas.id/register?loc=metered_register_wall';
+  @State() checkoutUrl: string = 'https://checkoutv2.kompas.id/kdp?productId=9802035&coupon=921541e2-5e62-46ca-987e-99ede474598a&referrer=artikel_metered_wall_guest';
   /**
    * state isShowBanner untuk memunculkan component.
    */
@@ -140,7 +140,7 @@ export class KompasMeteredRegister {
       return (
         <Fragment>
           <div class="text-base md:text-lg font-lora mb-3 mt-1 md:mb-0 md:mt-0 pr-14 md:px-0" innerHTML={this.setTemplate('title')}></div>
-          <div class="md:self-center">{this.registerButtonTemplate()}</div>
+          <div class="md:self-center">{this.checkoutButtonTemplate()}</div>
         </Fragment>
       );
     } else {
@@ -150,7 +150,7 @@ export class KompasMeteredRegister {
             <div class="flex flex-col justify-evenly text-center md:text-left md:w-5/12 gap-4 md:gap-2">
               <p class="text-lg md:text-2xl font-lora" innerHTML={this.setTemplate('title', 'expand')}></p>
               <p class="text-sm md:text-base" innerHTML={this.setTemplate('description', 'expand')}></p>
-              <div class="md:self-start">{this.registerButtonTemplate()}</div>
+              <div class="md:self-start">{this.checkoutButtonTemplate()}</div>
             </div>
             <div class="flex justify-center">
               <img src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png" class="h-40 w-40 md:w-full md:h-full" />
@@ -162,12 +162,12 @@ export class KompasMeteredRegister {
   }
 
   /**
-   * template button register
+   * template button checkout promo
    */
-  private registerButtonTemplate = (): void => {
+  private checkoutButtonTemplate = (): void => {
     return (
-      <button onClick={this.redirectToRegister} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
-        Daftar Akun
+      <button onClick={this.redirectToCheckout} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
+        Gunakan Promo
       </button>
     );
   };
@@ -181,11 +181,11 @@ export class KompasMeteredRegister {
   };
 
   /**
-   * mengarahkan ke page register
+   * mengarahkan ke page checkout promo
    */
-  private redirectToRegister = (): void => {
+  private redirectToCheckout = (): void => {
     this.pushToDataLayer('mrw_clicked');
-    const newUrl: any = new URL(decodeURIComponent(this.registerUrl));
+    const newUrl: any = new URL(decodeURIComponent(this.checkoutUrl));
     if (this.next_param) newUrl.searchParams.append('next', decodeURIComponent(this.next_param));
     window.location.href = newUrl.toString();
   };
