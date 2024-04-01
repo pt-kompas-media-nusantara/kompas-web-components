@@ -12,9 +12,9 @@ export class KompasMeteredRegister {
    * state
    */
   /**
-   * state checkoutUrl untuk memberikan link kemana user akan dialihkan.
+   * state registerUrl untuk memberikan link kemana user akan dialihkan.
    */
-  @State() checkoutUrl: string = 'https://checkoutv2.kompas.id/kdp?productId=9802035&coupon=921541e2-5e62-46ca-987e-99ede474598a&referrer=artikel_metered_wall_guest';
+  @State() registerUrl: string = 'https://account.kompas.id/register?loc=metered_register_wall';
   /**
    * state isShowBanner untuk memunculkan component.
    */
@@ -119,6 +119,16 @@ export class KompasMeteredRegister {
   @Prop() next_param: string;
 
   /**
+   * Url promo
+   */
+  @Prop() cta_url: string;
+
+  /**
+   * Button text promo
+   */
+  @Prop() cta_text: string;
+
+  /**
    * menentukan template yang akan di render
    */
   private setTemplate(prop: string, mode: string = 'default'): string {
@@ -140,7 +150,7 @@ export class KompasMeteredRegister {
       return (
         <Fragment>
           <div class="text-base md:text-lg font-lora mb-3 mt-1 md:mb-0 md:mt-0 pr-14 md:px-0" innerHTML={this.setTemplate('title')}></div>
-          <div class="md:self-center">{this.checkoutButtonTemplate()}</div>
+          <div class="md:self-center">{this.registerButtonTemplate()}</div>
         </Fragment>
       );
     } else {
@@ -150,7 +160,7 @@ export class KompasMeteredRegister {
             <div class="flex flex-col justify-evenly text-center md:text-left md:w-5/12 gap-4 md:gap-2">
               <p class="text-lg md:text-2xl font-lora" innerHTML={this.setTemplate('title', 'expand')}></p>
               <p class="text-sm md:text-base" innerHTML={this.setTemplate('description', 'expand')}></p>
-              <div class="md:self-start">{this.checkoutButtonTemplate()}</div>
+              <div class="md:self-start">{this.registerButtonTemplate()}</div>
             </div>
             <div class="flex justify-center">
               <img src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png" class="h-40 w-40 md:w-full md:h-full" />
@@ -162,13 +172,21 @@ export class KompasMeteredRegister {
   }
 
   /**
-   * template button checkout promo
+   * template button register button atau checkout promo
    */
-  private checkoutButtonTemplate = (): void => {
+  private registerButtonTemplate = (): void => {
     return (
-      <button onClick={this.redirectToCheckout} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
-        Gunakan Promo
-      </button>
+      <div>
+        {this.cta_url !== '' ? (
+          <button onClick={this.redirectToRegister} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
+            Daftar Akun
+          </button>
+        ) : (
+        <a href={this.cta_url}>
+          <button class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.cta_text}</button>
+        </a>
+        )}
+      </div>
     );
   };
 
@@ -183,9 +201,9 @@ export class KompasMeteredRegister {
   /**
    * mengarahkan ke page checkout promo
    */
-  private redirectToCheckout = (): void => {
+  private redirectToRegister = (): void => {
     this.pushToDataLayer('mrw_clicked');
-    const newUrl: any = new URL(decodeURIComponent(this.checkoutUrl));
+    const newUrl: any = new URL(decodeURIComponent(this.registerUrl));
     if (this.next_param) newUrl.searchParams.append('next', decodeURIComponent(this.next_param));
     window.location.href = newUrl.toString();
   };

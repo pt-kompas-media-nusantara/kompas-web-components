@@ -13,4 +13,6 @@ export interface meteredRegisterContent {
     };
     title: string;
   };
+  ctaUrl: string,
+  ctaText: string,
 }
