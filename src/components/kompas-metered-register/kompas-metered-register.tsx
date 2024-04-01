@@ -119,6 +119,16 @@ export class KompasMeteredRegister {
   @Prop() next_param: string;
 
   /**
+   * Url promo
+   */
+  @Prop() cta_url: string;
+
+  /**
+   * Button text promo
+   */
+  @Prop() cta_text: string;
+
+  /**
    * menentukan template yang akan di render
    */
   private setTemplate(prop: string, mode: string = 'default'): string {
@@ -162,13 +172,21 @@ export class KompasMeteredRegister {
   }
 
   /**
-   * template button register
+   * template button register button atau checkout promo
    */
   private registerButtonTemplate = (): void => {
     return (
-      <button onClick={this.redirectToRegister} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
-        Daftar Akun
-      </button>
+      <div>
+        {this.cta_url !== '' ? (
+          <button onClick={this.redirectToRegister} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
+            Daftar Akun
+          </button>
+        ) : (
+        <a href={this.cta_url}>
+          <button class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.cta_text}</button>
+        </a>
+        )}
+      </div>
     );
   };
 
@@ -181,7 +199,7 @@ export class KompasMeteredRegister {
   };
 
   /**
-   * mengarahkan ke page register
+   * mengarahkan ke page checkout promo
    */
   private redirectToRegister = (): void => {
     this.pushToDataLayer('mrw_clicked');
