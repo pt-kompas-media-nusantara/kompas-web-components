@@ -178,15 +178,15 @@ export class KompasMeteredRegister {
     return (
       // kondisi cta_url
       <div>
-        {!this.cta_url ? (
+        {!this.textTemplate.ctaUrl ? (
           // kalau cta_url kosong
           <button onClick={this.redirectToRegister} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
             Daftar Akun
           </button>
         ) : (
           // kalau cta_url ada isi
-        <a href={this.cta_url}>
-          <button class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.cta_text}</button>
+        <a href={this.textTemplate.ctaUrl}>
+          <button class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.textTemplate.ctaText}</button>
         </a>
         )}
       </div>
@@ -255,7 +255,6 @@ export class KompasMeteredRegister {
      * fetch() mendapatkan respons 200
      */
     this.textTemplate = await req.json();
-
     const getCountdown = this.countdownArticle;
     if (!getCountdown) {
       this.isShowBanner = false;
