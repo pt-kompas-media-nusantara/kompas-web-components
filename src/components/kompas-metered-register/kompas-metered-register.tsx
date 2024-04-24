@@ -162,7 +162,7 @@ export class KompasMeteredRegister {
               <p class="text-sm md:text-base" innerHTML={this.setTemplate('description', 'expand')}></p>
               <div class="md:self-start">{this.registerButtonTemplate()}</div>
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center md:max-w-[200px] md:max-h-[220px] md:my-auto">
               <img src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png" class="h-40 w-40 md:w-full md:h-full" />
             </div>
           </div>
