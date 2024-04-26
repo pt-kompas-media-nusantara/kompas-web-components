@@ -185,9 +185,7 @@ export class KompasMeteredRegister {
           </button>
         ) : (
           // kalau cta_url ada isi
-        <a href={this.textTemplate.ctaUrl}>
-          <button class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.textTemplate.ctaText}</button>
-        </a>
+          <button onClick={this.redirectToCTAUrl} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.textTemplate.ctaText}</button>
         )}
       </div>
     );
@@ -200,6 +198,11 @@ export class KompasMeteredRegister {
       </Fragment>
     );
   };
+
+  private redirectToCTAUrl = (): void => {
+    this.pushToDataLayer('mrw_clicked');
+    window.location.href = this.textTemplate.ctaUrl
+  }
 
   /**
    * mengarahkan ke page checkout promo
