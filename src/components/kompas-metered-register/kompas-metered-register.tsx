@@ -208,7 +208,7 @@ export class KompasMeteredRegister {
     this.pushToDataLayer('mrw_clicked');
 
     if (newUrl) {
-      newUrl.searchParams.append('next', decodeURIComponent(this.textTemplate.ctaUrl));
+      newUrl.searchParams.append('referrer=', decodeURIComponent(this.textTemplate.ctaUrl));
       window.location.href = newUrl.toString() + params;
     }
   }
