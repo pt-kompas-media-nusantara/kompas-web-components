@@ -199,9 +199,18 @@ export class KompasMeteredRegister {
     );
   };
 
+    /**
+   * mengarahkan ke page checkout promo
+   */
   private redirectToCTAUrl = (): void => {
+    const params = new URLSearchParams(window.location.search);
+    const newUrl: any = new URL(this.textTemplate.ctaUrl);
     this.pushToDataLayer('mrw_clicked');
-    window.location.href = this.textTemplate.ctaUrl
+
+    if (newUrl) {
+      newUrl.searchParams.append('next', decodeURIComponent(this.textTemplate.ctaUrl));
+      window.location.href = newUrl.toString() + params;
+    }
   }
 
   /**
@@ -247,6 +256,7 @@ export class KompasMeteredRegister {
   };
 
   async componentWillLoad() {
+    console.log('this.next_param', this.next_param)
     // parse content props
     const req = await fetch(`https://d3w4qaq4xm1ncv.cloudfront.net/assets/register_wall.json`);
 
