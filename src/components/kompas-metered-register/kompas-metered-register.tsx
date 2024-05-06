@@ -203,13 +203,24 @@ export class KompasMeteredRegister {
    * mengarahkan ke page checkout promo
    */
   private redirectToCTAUrl = (): void => {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.href);
     const newUrl: any = new URL(this.textTemplate.ctaUrl);
+    const referrer = new URLSearchParams(this.textTemplate.ctaUrl).get('referrer');
     this.pushToDataLayer('mrw_clicked');
+    if (!referrer) {
+      newUrl.searchParams.append('referrer=', params);
+      window.location.href = newUrl.toString();
+    } else {
+      // Get the current value of the referrer parameter
+      const currentReferrerValue = newUrl.searchParams.get('referrer');
 
-    if (newUrl) {
-      newUrl.searchParams.append('referrer=', decodeURIComponent(this.textTemplate.ctaUrl));
-      window.location.href = newUrl.toString() + params;
+      // Construct the new value by appending the new referrer value with a comma to the old referrer value
+      const updatedReferrerValue = `${params},${currentReferrerValue}`;
+
+      // Update the referrer parameter with the new value
+      newUrl.searchParams.set('referrer', updatedReferrerValue);
+
+      window.location.href = newUrl.toString();
     }
   }
 
@@ -256,7 +267,6 @@ export class KompasMeteredRegister {
   };
 
   async componentWillLoad() {
-    console.log('this.next_param', this.next_param)
     // parse content props
     const req = await fetch(`https://d3w4qaq4xm1ncv.cloudfront.net/assets/register_wall.json`);
 
