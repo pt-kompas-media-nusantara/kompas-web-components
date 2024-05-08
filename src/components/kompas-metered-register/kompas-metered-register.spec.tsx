@@ -29,6 +29,8 @@ function mockFecthWithSuccessfulResponse() {
       },
       title: '<b>Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.</b>',
     },
+    ctaUrl: 'https://checkoutv2.kompas.id/kdp?productId=9802032&coupon=6f21f128-6e8c-45dc-8e57-98ad7593af1d&referrer=artikel_metered_wall_guest_6mei_meiriah',
+    ctaText: 'Gunakan Promo',
   });
 }
 
@@ -250,5 +252,51 @@ describe('kompas-metered-register', () => {
         </mock:shadow-root>
       </kompas-metered-register>
     `);
+  });
+
+  it('should render the "Daftar Akun" button when ctaUrl is empty', async () => {
+    const page = await newSpecPage({
+      components: [KompasMeteredRegister],
+      html: `<kompas-metered-register></kompas-metered-register>`,
+    });
+    // Wait for component updates
+    await page.waitForChanges();
+    const root = page.root.shadowRoot;
+
+    const button = root.querySelector('button');
+    expect(button).not.toBeNull();
+    expect(button.textContent.trim()).toEqual('Daftar Akun');
+  });
+
+  it('should render the custom button text when ctaUrl is not empty', async () => {
+    const page = await newSpecPage({
+      components: [KompasMeteredRegister],
+      html: `<kompas-metered-register cta-url="https://example.com" cta-text="Custom Text"></kompas-metered-register>`,
+    });
+    await page.waitForChanges();
+    const root = page.root.shadowRoot;
+
+    const button = root.querySelector('button');
+    expect(button).not.toBeNull();
+    expect(button.textContent.trim()).toEqual('Custom Text');
+  });
+
+  it('should call redirectToRegister when "Daftar Akun" button is clicked', async () => {
+  const page = await newSpecPage({
+    components: [KompasMeteredRegister],
+    html: `<kompas-metered-register></kompas-metered-register>`,
+  });
+  await page.waitForChanges();
+  const root = page.root.shadowRoot;
+  const componentInstance = page.rootInstance;
+  const redirectToRegisterSpy = jest.spyOn(componentInstance, 'redirectToRegister');
+
+  // Find the "Daftar Akun" button and click it
+  const button = root.querySelector('button');
+  button.click();
+
+  // Check if redirectToRegister method is called
+  expect(redirectToRegisterSpy).toHaveBeenCalled();
+  redirectToRegisterSpy.mockRestore();
   });
 });
