@@ -29,6 +29,8 @@ function mockFecthWithSuccessfulResponse() {
       },
       title: '<b>Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.</b>',
     },
+    ctaUrl: 'https://checkoutv2.kompas.id/kdp?productId=9802032&coupon=6f21f128-6e8c-45dc-8e57-98ad7593af1d&referrer=artikel_metered_wall_guest_6mei_meiriah',
+    ctaText: 'Gunakan Promo',
   });
 }
 
@@ -250,5 +252,80 @@ describe('kompas-metered-register', () => {
         </mock:shadow-root>
       </kompas-metered-register>
     `);
+  });
+
+  it('should render the "Daftar Akun" button when ctaUrl is empty', async () => {
+    const page = await newSpecPage({
+      components: [KompasMeteredRegister],
+      html: `<kompas-metered-register></kompas-metered-register>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <kompas-metered-register countdown-article="2" default-expand-banner="false">
+      <mock:shadow-root>
+        <div class="bottom-0 h-full sticky w-full">
+          <div class="bg-blue-100 bottom-0 px-4 py-4 w-full xl:px-0">
+            <div class="flex justify-center lg:max-w-7xl m-auto relative">
+              <div class="flex flex-col">
+                <div class="block gap-8 items-center justify-center lg:flex md:text-lg ml-auto self-center text-grey-600 text-left text-sm">
+                  <div class="font-lora mb-3 md:mb-0 md:mt-0 md:px-0 md:text-lg mt-1 pr-14 text-base">
+                    <b>
+                      Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.
+                    </b>
+                  </div>
+                  <div class="md:self-center">
+                    <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
+                      Daftar Akun
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute right-0 top-0.5">
+                <button class="bg-blue-200 p-2.5 rounded-md">
+                  <div class="false icon icon-blue-600"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mock:shadow-root>
+    </kompas-metered-register>`);
+  });
+
+  it('should render the custom button text when ctaUrl is not empty', async () => {
+    const page = await newSpecPage({
+      components: [KompasMeteredRegister],
+      html: `<kompas-metered-register cta-url="https://example.com" cta-text="Custom Text"></kompas-metered-register>`,
+    });
+    await page.waitForChanges();
+    expect(page.root).toEqualHtml(`
+    <kompas-metered-register countdown-article="2" default-expand-banner="false">
+      <mock:shadow-root>
+        <div class="bottom-0 h-full sticky w-full">
+          <div class="bg-blue-100 bottom-0 px-4 py-4 w-full xl:px-0">
+            <div class="flex justify-center lg:max-w-7xl m-auto relative">
+              <div class="flex flex-col">
+                <div class="block gap-8 items-center justify-center lg:flex md:text-lg ml-auto self-center text-grey-600 text-left text-sm">
+                  <div class="font-lora mb-3 md:mb-0 md:mt-0 md:px-0 md:text-lg mt-1 pr-14 text-base">
+                    <b>
+                      Dukung jurnalisme berkualitas dengan mendaftar akun Kompas.id.
+                    </b>
+                  </div>
+                  <div class="md:self-center">
+                    <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
+                      Gunakan Promo
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute right-0 top-0.5">
+                <button class="bg-blue-200 p-2.5 rounded-md">
+                  <div class="false icon icon-blue-600"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mock:shadow-root>
+    </kompas-metered-register>`);
   });
 });

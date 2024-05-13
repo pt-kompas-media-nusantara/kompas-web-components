@@ -162,7 +162,7 @@ export class KompasMeteredRegister {
               <p class="text-sm md:text-base" innerHTML={this.setTemplate('description', 'expand')}></p>
               <div class="md:self-start">{this.registerButtonTemplate()}</div>
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center md:max-w-[200px] md:max-h-[220px] md:my-auto">
               <img src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png" class="h-40 w-40 md:w-full md:h-full" />
             </div>
           </div>
@@ -185,9 +185,7 @@ export class KompasMeteredRegister {
           </button>
         ) : (
           // kalau cta_url ada isi
-        <a href={this.textTemplate.ctaUrl}>
-          <button class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.textTemplate.ctaText}</button>
-        </a>
+          <button onClick={this.redirectToCTAUrl} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.textTemplate.ctaText}</button>
         )}
       </div>
     );
@@ -200,6 +198,31 @@ export class KompasMeteredRegister {
       </Fragment>
     );
   };
+
+    /**
+   * mengarahkan ke page checkout promo
+   */
+  private redirectToCTAUrl = (): void => {
+    const params = new URLSearchParams(window.location.href);
+    const newUrl: any = new URL(this.textTemplate.ctaUrl);
+    const referrer = new URLSearchParams(this.textTemplate.ctaUrl).get('referrer');
+    this.pushToDataLayer('mrw_clicked');
+    if (!referrer) {
+      newUrl.searchParams.append('referrer=', params);
+      window.location.href = newUrl.toString();
+    } else {
+      // Get the current value of the referrer parameter
+      const currentReferrerValue = newUrl.searchParams.get('referrer');
+
+      // Construct the new value by appending the new referrer value with a comma to the old referrer value
+      const updatedReferrerValue = `${params},${currentReferrerValue}`;
+
+      // Update the referrer parameter with the new value
+      newUrl.searchParams.set('referrer', updatedReferrerValue);
+
+      window.location.href = newUrl.toString();
+    }
+  }
 
   /**
    * mengarahkan ke page checkout promo
