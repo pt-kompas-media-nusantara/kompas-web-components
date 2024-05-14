@@ -22,7 +22,7 @@ export class KompasGracePeriod {
   /**
    * state updateSubscription untuk memberikan link user akan dialihkan ke halaman berlangganan.
    */
-  @State() updateSubscription: string = 'https://www.kompas.id/berlangganan';
+  @State() updateSubscription: string = 'https://checkoutv2.kompas.id';
   /**
    * Props
    */
@@ -30,15 +30,19 @@ export class KompasGracePeriod {
    * prop totalGracePeriod untuk menghitung berapa hari grace period user.
    */
   @Prop() totalGracePeriod: number = 0;
-    /**
+  /**
    * prop isColoumn untuk merubah flex-column pada header account profile
    */
   @Prop() isColoumn: boolean = false;
-    /**
+  /**
    * prop isShowButton untuk nampilin button perbarui langganan
    */
   @Prop() isShowButton: boolean = false;
-  
+  /**
+   * prop subscriptionId untuk renewal subs.
+   */
+  @Prop() subscriptionId: string;
+
   /**
    * TEMPLATING
    */
@@ -66,7 +70,7 @@ export class KompasGracePeriod {
 
   private redirectToBerlangganan = (): void => {
     this.dataLayeronPerbaruiLanggananButton();
-    window.location.href = this.updateSubscription;
+    window.location.href = this.updateSubscription + `/kdp?productId=${this.subscriptionId}`;
   };
 
   private dataLayeronPerbaruiLanggananButton = (): void => {
@@ -88,11 +92,11 @@ export class KompasGracePeriod {
   };
 
   private gracePeriodTemplate = (): void => (
-    <div class={`${this.isColoumn ? 'rounded-lg' : 'md:flex-row lg:px-20'} flex flex-col w-full bg-orange-100 justify-end py-4 md:space-x-4 px-4 bottom-0`}>
+    <div class={`${this.isColoumn ? 'rounded-lg' : 'md:flex-row lg:px-8'} flex flex-col w-full justify-end py-4 md:space-x-4 px-4 bottom-0 max-w-7xl mx-auto`}>
       <div class="text-grey-600 text-sm md:text-base self-center text-left">{this.getCountdownGracePeriod()}</div>
       {!this.isShowButton ? (
         <div class="flex self-center w-full md:w-1/2 justify-end pt-4 md:pt-0">
-          <button onClick={this.redirectToBerlangganan} class="bg-green-500 p-2 px-5 rounded-md font-bold text-grey-100 text-sm md:text-base w-full">
+          <button onClick={this.redirectToBerlangganan} class="bg-green-500 p-2 px-5 rounded-md font-bold text-grey-100 text-sm md:text-base w-full md:w-auto ">
             Perbarui Langganan
           </button>
         </div>
@@ -105,6 +109,6 @@ export class KompasGracePeriod {
   }
 
   render() {
-    return <div class="sticky bottom-0 w-full h-full">{this.totalGracePeriod > 0 ? this.gracePeriodTemplate() : ''}</div>;
+    return <div class="sticky bottom-0 w-full h-full bg-orange-100">{this.totalGracePeriod > 0 ? this.gracePeriodTemplate() : ''}</div>;
   }
 }
