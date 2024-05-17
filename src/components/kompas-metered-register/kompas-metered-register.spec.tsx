@@ -91,12 +91,14 @@ describe('kompas-metered-register', () => {
                           </span>
                         </p>
                         <div class="md:self-start">
-                          <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
-                            Daftar Akun
-                          </button>
+                          <div>
+                            <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
+                              Gunakan Promo
+                            </button>
+                          </div>
                         </div>
                       </div>
-                      <div class="flex justify-center">
+                      <div class="flex justify-center md:max-h-[220px] md:max-w-[200px] md:my-auto">
                         <img class="h-40 md:h-full md:w-full w-40" src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png">
                       </div>
                     </div>
@@ -143,9 +145,11 @@ describe('kompas-metered-register', () => {
                       </span>
                     </div>
                     <div class="md:self-center">
-                      <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
-                        Daftar Akun
-                      </button>
+                      <div>
+                        <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
+                          Gunakan Promo
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -190,12 +194,14 @@ describe('kompas-metered-register', () => {
                           </span>
                         </p>
                         <div class="md:self-start">
-                          <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
-                            Daftar Akun
-                          </button>
+                          <div>
+                            <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
+                              Gunakan Promo
+                            </button>
+                          </div>
                         </div>
                       </div>
-                      <div class="flex justify-center">
+                      <div class="flex justify-center md:max-h-[220px] md:max-w-[200px] md:my-auto">
                         <img class="h-40 md:h-full md:w-full w-40" src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png">
                       </div>
                     </div>
@@ -235,9 +241,11 @@ describe('kompas-metered-register', () => {
                       </b>
                     </div>
                     <div class="md:self-center">
-                      <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
-                        Daftar Akun
-                      </button>
+                      <div>
+                        <button class="bg-green-500 font-bold md:text-base md:w-auto p-1.5 px-5 rounded-md text-grey-100 text-sm w-full">
+                          Gunakan Promo
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -291,14 +299,14 @@ describe('kompas-metered-register', () => {
     </kompas-metered-register>`);
   });
 
-  it('should render the custom button text when ctaUrl is not empty', async () => {
+  it('should render "Gunakan Promo" when ctaUrl is not empty', async () => {
     const page = await newSpecPage({
       components: [KompasMeteredRegister],
       html: `<kompas-metered-register cta-url="https://example.com" cta-text="Custom Text"></kompas-metered-register>`,
     });
     await page.waitForChanges();
     expect(page.root).toEqualHtml(`
-    <kompas-metered-register countdown-article="2" default-expand-banner="false">
+    <kompas-metered-register cta-text="Custom Text" cta-url="https://example.com" countdown-article="2" default-expand-banner="false">
       <mock:shadow-root>
         <div class="bottom-0 h-full sticky w-full">
           <div class="bg-blue-100 bottom-0 px-4 py-4 w-full xl:px-0">

@@ -185,7 +185,9 @@ export class KompasMeteredRegister {
           </button>
         ) : (
           // kalau cta_url ada isi
-          <button onClick={this.redirectToCTAUrl} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.textTemplate.ctaText}</button>
+          <button onClick={this.redirectToCTAUrl} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
+            {this.textTemplate.ctaText}
+          </button>
         )}
       </div>
     );

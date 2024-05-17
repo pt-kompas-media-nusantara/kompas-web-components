@@ -53,8 +53,8 @@ Dengan format dibawah ini:
 | Property                         | Attribute                        | Description                                                                                           | Type      | Default     |
 | -------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------- | --------- | ----------- |
 | `countdownArticle`               | `countdown-article`              | prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.                    | `number`  | `0`         |
-| `cta_url`               | `cta_url`              | prop cta_url untuk custom url di button.                    | `string`  | `undefined`         |
-| `cta_text`               | `cta_text`              | prop cta_text untuk custom text di button.                   | `string`  | `undefined`         |
+| `cta_text`                       | `cta_text`                       | Button text promo                                                                                     | `string`  | `undefined` |
+| `cta_url`                        | `cta_url`                        | Url promo                                                                                             | `string`  | `undefined` |
 | `defaultExpandBanner`            | `default-expand-banner`          | prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.  | `boolean` | `true`      |
 | `next_param`                     | `next_param`                     | Page Domain                                                                                           | `string`  | `undefined` |
 | `tracker_content_authors`        | `tracker_content_authors`        | Name of the authors (will only be sent if the user views article detail page)                         | `string`  | `undefined` |
