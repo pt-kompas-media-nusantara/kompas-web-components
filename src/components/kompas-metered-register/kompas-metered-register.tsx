@@ -132,14 +132,19 @@ export class KompasMeteredRegister {
    * menentukan template yang akan di render
    */
   private setTemplate(prop: string, mode: string = 'default'): string {
-    let template = '';
+    const templates = this.getTemplates(mode);
+    return templates?.[prop] || '';
+  }
 
+  /**
+   * get template yang akan di render
+   */
+  private getTemplates(mode: string): { [key: string]: string } {
     if (this.countdownArticle > 1) {
-      template = this.textTemplate[mode]?.[prop] || '';
+      return this.textTemplate[mode] || {};
     } else {
-      template = this.textTemplate[mode]?.lastArticle?.[prop] || '';
+      return this.textTemplate[mode]?.lastArticle || {};
     }
-    return template;
   }
 
   /**
@@ -201,47 +206,84 @@ export class KompasMeteredRegister {
     );
   };
 
+  /* create new URl for cta URL */
+  private buildNewUrl(ctaUrl: string, params: URLSearchParams): URL {
+    const newUrl = new URL(ctaUrl);
+    const referrer = newUrl.searchParams.get('referrer');
+  
+    if (!referrer) {
+      newUrl.searchParams.append('referrer', params.toString());
+    } else {
+      const updatedReferrerValue = `${params.toString()},${referrer}`;
+      newUrl.searchParams.set('referrer', updatedReferrerValue);
+    }
+  
+    return newUrl;
+  }
+
     /**
    * mengarahkan ke page checkout promo
    */
   private redirectToCTAUrl = (): void => {
-    const params = new URLSearchParams(window.location.href);
-    const newUrl: any = new URL(this.textTemplate.ctaUrl);
-    const referrer = new URLSearchParams(this.textTemplate.ctaUrl).get('referrer');
+    const params = this.getUrlSearchParams();
+    const newUrl = this.buildNewUrl(this.textTemplate.ctaUrl, params);
+  
+    this.logClickEvent();
+    this.navigateToUrl(newUrl.toString());
+  }
+
+  private getUrlSearchParams(): URLSearchParams {
+    return new URLSearchParams(window.location.search);
+  }
+  
+  private logClickEvent(): void {
     this.pushToDataLayer('mrw_clicked');
-    if (!referrer) {
-      newUrl.searchParams.append('referrer=', params);
-      window.location.href = newUrl.toString();
-    } else {
-      // Get the current value of the referrer parameter
-      const currentReferrerValue = newUrl.searchParams.get('referrer');
+  }
+  
+  private navigateToUrl(url: string): void {
+    window.location.href = url;
+  }
 
-      // Construct the new value by appending the new referrer value with a comma to the old referrer value
-      const updatedReferrerValue = `${params},${currentReferrerValue}`;
-
-      // Update the referrer parameter with the new value
-      newUrl.searchParams.set('referrer', updatedReferrerValue);
-
-      window.location.href = newUrl.toString();
-    }
+    /**
+   * create register URL
+   */
+  private createRegisterUrl(registerUrl: string, nextParam?: string): string {
+    const newUrl = new URL(decodeURIComponent(registerUrl));
+    if (nextParam) newUrl.searchParams.append('next', decodeURIComponent(nextParam));
+    return newUrl.toString();
   }
 
   /**
-   * mengarahkan ke page checkout promo
+   * mengarahkan ke halaman register
    */
   private redirectToRegister = (): void => {
     this.pushToDataLayer('mrw_clicked');
-    const newUrl: any = new URL(decodeURIComponent(this.registerUrl));
-    if (this.next_param) newUrl.searchParams.append('next', decodeURIComponent(this.next_param));
-    window.location.href = newUrl.toString();
+    const newUrl = this.createRegisterUrl(this.registerUrl, this.next_param);
+    window.location.href = newUrl;
   };
 
   /**
    * toggle isExpandBanner flag
    */
   private triggerExpandBanner = (): void => {
+    this.toggleExpandBanner();
+    this.bannerState();
+  };
+
+  /**
+   * toggle expand banner
+  */
+  private toggleExpandBanner = (): void => {
     this.isExpandBanner = !this.isExpandBanner;
-    !this.isExpandBanner && this.pushToDataLayer('mrw_closed');
+  };
+
+    /**
+   * banner state
+  */
+  private bannerState = (): void => {
+    if (!this.isExpandBanner) {
+      this.pushToDataLayer('mrw_closed');
+    }
   };
 
   /**

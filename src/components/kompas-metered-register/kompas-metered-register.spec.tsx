@@ -59,6 +59,63 @@ describe('kompas-metered-register', () => {
     `);
   });
 
+  let originalLocation: Location;
+  let page: any;
+  let component: any;
+
+  beforeAll(() => {
+    originalLocation = window.location;
+  });
+
+  beforeEach(async () => {
+    page = await newSpecPage({
+      components: [KompasMeteredRegister],
+      html: `<kompas-metered-register></kompas-metered-register>`,
+    });
+    component = page.rootInstance;
+
+    // Mock window.location
+    delete window.location;
+    (window as any).location = {
+      href: 'http://example.com?referrer=value',
+      assign: jest.fn(),
+    };
+    // Mock this.textTemplate
+    component.textTemplate = {
+      ctaUrl: 'http://ctaurl.com',
+    };
+    // Mock properties
+    component.registerUrl = encodeURIComponent('http://registerurl.com');
+    component.next_param = encodeURIComponent('http://nextparam.com');
+    component.textTemplate = {
+      default: {
+        prop1: 'default value',
+        lastArticle: {
+          prop1: 'last article value'
+        }
+      },
+      custom: {
+        prop1: 'custom value',
+        lastArticle: {
+          prop1: 'custom last article value'
+        }
+      }
+    };
+
+    Object.defineProperty(window, 'location', {
+      value: {
+        href: 'https://current-url.com?param=value',
+        search: '?param=value'
+      },
+      writable: true
+    });
+  });
+
+  afterAll(() => {
+    window.location = originalLocation;
+  });
+  
+
   // countdown-article = 1
   it('should renders content for last article quota', async () => {
     mockFecthWithSuccessfulResponse();
@@ -335,5 +392,124 @@ describe('kompas-metered-register', () => {
         </div>
       </mock:shadow-root>
     </kompas-metered-register>`);
+  });
+  it('should build new URL correctly when no referrer is present', () => {
+    const params = new URLSearchParams(window.location.href);
+    const result = component.buildNewUrl('http://ctaurl.com', params);
+
+    expect(result.toString()).toBe('http://ctaurl.com/?referrer=http%3A%2F%2Fexample.com%3Ftest%3Dvalue');
+  });
+
+  it('should build new URL correctly when referrer is already present', () => {
+    const params = new URLSearchParams(window.location.href);
+    const result = component.buildNewUrl('http://ctaurl.com?referrer=previousReferrer', params);
+
+    expect(result.toString()).toBe('http://ctaurl.com/?referrer=http%3A%2F%2Fexample.com%3Ftest%3Dvalue,previousReferrer');
+  });
+
+  it('should call pushToDataLayer and update window.location.href', () => {
+    const pushToDataLayerSpy = jest.spyOn(component, 'pushToDataLayer');
+    component.redirectToCTAUrl();
+
+    expect(pushToDataLayerSpy).toHaveBeenCalledWith('mrw_clicked');
+    expect(window.location.href).toBe('http://ctaurl.com/?referrer=http%3A%2F%2Fexample.com%3Ftest%3Dvalue');
+  });
+  it('should create a new URL correctly when next_param is provided', () => {
+    const result = component.createRegisterUrl(component.registerUrl, component.next_param);
+    expect(result).toBe('http://registerurl.com/?next=http%3A%2F%2Fnextparam.com');
+  });
+
+  it('should create a new URL correctly when next_param is not provided', () => {
+    const result = component.createRegisterUrl(component.registerUrl);
+    expect(result).toBe('http://registerurl.com/');
+  });
+
+  it('should call pushToDataLayer and update window.location.href', () => {
+    const pushToDataLayerSpy = jest.spyOn(component, 'pushToDataLayer');
+    component.redirectToRegister();
+
+    expect(pushToDataLayerSpy).toHaveBeenCalledWith('mrw_clicked');
+    expect(window.location.href).toBe('http://registerurl.com/?next=http%3A%2F%2Fnextparam.com');
+  });
+
+  describe('triggerExpandBanner', () => {
+    it('should toggle isExpandBanner', () => {
+      const initialState = component.isExpandBanner;
+      component.triggerExpandBanner();
+      expect(component.isExpandBanner).toBe(!initialState);
+    });
+
+    it('should call bannerState', () => {
+      const bannerStateSpy = jest.spyOn(component as any, 'bannerState');
+      component.triggerExpandBanner();
+      expect(bannerStateSpy).toHaveBeenCalled();
+    });
+  });
+
+  describe('toggleExpandBanner', () => {
+    it('should toggle isExpandBanner', () => {
+      const initialState = component.isExpandBanner;
+      component.toggleExpandBanner();
+      expect(component.isExpandBanner).toBe(!initialState);
+    });
+  });
+
+  describe('bannerState', () => {
+    it('should push "mrw_closed" to data layer when isExpandBanner is false', () => {
+      component.isExpandBanner = false;
+      const pushToDataLayerSpy = jest.spyOn(component as any, 'pushToDataLayer');
+      component.bannerState();
+      expect(pushToDataLayerSpy).toHaveBeenCalledWith('mrw_closed');
+    });
+
+    it('should not push "mrw_closed" to data layer when isExpandBanner is true', () => {
+      component.isExpandBanner = true;
+      const pushToDataLayerSpy = jest.spyOn(component as any, 'pushToDataLayer');
+      component.bannerState();
+      expect(pushToDataLayerSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('redirectToCTAUrl', () => {
+    it('should build a new URL with current search params', () => {
+      const buildNewUrlSpy = jest.spyOn(component as any, 'buildNewUrl').mockReturnValue(new URL('https://example.com?param=value'));
+      component.redirectToCTAUrl();
+      expect(buildNewUrlSpy).toHaveBeenCalledWith('https://example.com', new URLSearchParams('?param=value'));
+    });
+
+    it('should log click event', () => {
+      const logClickEventSpy = jest.spyOn(component as any, 'logClickEvent');
+      component.redirectToCTAUrl();
+      expect(logClickEventSpy).toHaveBeenCalled();
+    });
+
+    it('should navigate to the new URL', () => {
+      const navigateToUrlSpy = jest.spyOn(component as any, 'navigateToUrl');
+      component.redirectToCTAUrl();
+      expect(navigateToUrlSpy).toHaveBeenCalledWith('https://example.com?param=value');
+    });
+  });
+
+  describe('getUrlSearchParams', () => {
+    it('should return URL search params from the current window location', () => {
+      const params = component.getUrlSearchParams();
+      expect(params.toString()).toBe('param=value');
+    });
+  });
+
+  describe('logClickEvent', () => {
+    it('should push "mrw_clicked" to data layer', () => {
+      const pushToDataLayerSpy = jest.spyOn(component as any, 'pushToDataLayer');
+      component.logClickEvent();
+      expect(pushToDataLayerSpy).toHaveBeenCalledWith('mrw_clicked');
+    });
+  });
+
+  describe('navigateToUrl', () => {
+    it('should set window.location.href to the new URL', () => {
+      const newUrl = 'https://example.com?param=value';
+      component.navigateToUrl(newUrl);
+      expect(window.location.href).toBe(newUrl);
+    });
   });
 });
