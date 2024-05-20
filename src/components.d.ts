@@ -130,6 +130,10 @@ export namespace Components {
          */
         "isShowButton": boolean;
         /**
+          * prop subscriptionId untuk renewal subs.
+         */
+        "subscriptionId": string;
+        /**
           * prop totalGracePeriod untuk menghitung berapa hari grace period user.
          */
         "totalGracePeriod": number;
@@ -657,6 +661,10 @@ declare namespace LocalJSX {
           * prop isShowButton untuk nampilin button perbarui langganan
          */
         "isShowButton"?: boolean;
+        /**
+          * prop subscriptionId untuk renewal subs.
+         */
+        "subscriptionId"?: string;
         /**
           * prop totalGracePeriod untuk menghitung berapa hari grace period user.
          */
