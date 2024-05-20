@@ -150,14 +150,12 @@ Kompas Paywall ini terdiri dari beberapa sub-komponen sebagai berikut :
 
 - [kompas-paywall-body](../kompas-paywall-body)
 - [kompas-paywall-information-header](../kompas-paywall-information-header)
-- [kompas-paywall-banner-registration](../kompas-paywall-banner-registration)
 
 ### Graph
 ```mermaid
 graph TD;
   kompas-paywall --> kompas-paywall-body
   kompas-paywall --> kompas-paywall-information-header
-  kompas-paywall --> kompas-paywall-banner-registration
   style kompas-paywall fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
