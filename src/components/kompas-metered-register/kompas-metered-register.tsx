@@ -163,7 +163,7 @@ export class KompasMeteredRegister {
               <div class="md:self-start">{this.registerButtonTemplate()}</div>
             </div>
             <div class="flex justify-center md:max-w-[200px] md:max-h-[220px] md:my-auto">
-              <img src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png" class="h-40 w-40 md:w-full md:h-full" />
+              <img src="https://cdn-www.kompas.id/paywall-asset/paywall_ilustrasi3-03_1.png" class="h-40 w-40 md:w-full md:h-full" />
             </div>
           </div>
         </Fragment>
@@ -268,7 +268,7 @@ export class KompasMeteredRegister {
 
   async componentWillLoad() {
     // parse content props
-    const req = await fetch(`https://d3w4qaq4xm1ncv.cloudfront.net/assets/register_wall.json`);
+    const req = await fetch(`https://cdn-www.kompas.id/assets/register_wall.json`);
 
     if (req.status !== 200) {
       throw new Error(`${req.status} Ada galat saat memproses permintaan.`);

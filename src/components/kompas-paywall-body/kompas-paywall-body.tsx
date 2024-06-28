@@ -671,7 +671,7 @@ export class KompasPaywallBody {
                 <p class={`${this.isDark ? 'text-dark-6' : 'text-grey-500'}`}>Subscribe with</p>
                 <img
                   class="pl-2 object-scale-down w-20 pt-0.5"
-                  src={this.isDark ? 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google-white.png' : 'https://kompasid-production-www.s3.ap-southeast-1.amazonaws.com/paywall-asset/google.png'}
+                  src={this.isDark ? 'https://cdn-www.kompas.id/paywall-asset/google-white.png' : 'https://cdn-www.kompas.id/paywall-asset/google.png'}
                 ></img>
               </button>
             )}

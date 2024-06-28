@@ -128,7 +128,7 @@ export class KompasHeaderAccount {
 
       return (
         <div>
-          <img class="header-account--membership-icon h-2.5 w-2.5" src="https://d3w4qaq4xm1ncv.cloudfront.net/global-header/crown-royal-blue-60.svg" alt="membership-crown-icon"/>
+          <img class="header-account--membership-icon h-2.5 w-2.5" src="https://cdn-www.kompas.id/global-header/crown-royal-blue-60.svg" alt="membership-crown-icon"/>
         </div>
       )
     }

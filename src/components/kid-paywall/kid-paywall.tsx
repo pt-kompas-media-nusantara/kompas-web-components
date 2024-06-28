@@ -305,7 +305,7 @@ export class KidPaywall {
   async componentWillLoad() {
     try{
       const req = await fetch(
-          'https://kompasid-production-content.s3.ap-southeast-1.amazonaws.com/paywall/paywall.json',
+          'https://cdn-www.kompas.id/web-component/paywall.json',
           {
             method: 'GET'
           }

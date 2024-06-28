@@ -97,7 +97,7 @@ describe('kompas-metered-register', () => {
                         </div>
                       </div>
                       <div class="flex justify-center">
-                        <img class="h-40 md:h-full md:w-full w-40" src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png">
+                        <img class="h-40 md:h-full md:w-full w-40" src="https://cdn-www.kompas.id/paywall-asset/paywall_ilustrasi3-03_1.png">
                       </div>
                     </div>
                   </div>
@@ -196,7 +196,7 @@ describe('kompas-metered-register', () => {
                         </div>
                       </div>
                       <div class="flex justify-center">
-                        <img class="h-40 md:h-full md:w-full w-40" src="https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/paywall_ilustrasi3-03_1.png">
+                        <img class="h-40 md:h-full md:w-full w-40" src="https://cdn-www.kompas.id/paywall-asset/paywall_ilustrasi3-03_1.png">
                       </div>
                     </div>
                   </div>

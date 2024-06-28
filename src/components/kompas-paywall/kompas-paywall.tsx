@@ -69,7 +69,7 @@ export class KompasPaywall {
 
   async componentWillRender() {
     try {
-      // const result = await fetch('https://kompasid-production-content.s3.ap-southeast-1.amazonaws.com/paywall/paywall.json', {
+      // const result = await fetch('https://cdn-www.kompas.id/web-component/paywall.json', {
       //   method: 'GET',
       //   headers: {
       //     Accept: 'application/json',

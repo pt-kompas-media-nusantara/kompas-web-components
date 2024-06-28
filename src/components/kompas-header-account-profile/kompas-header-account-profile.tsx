@@ -96,7 +96,7 @@ export class KompasHeaderAccountProfile {
 
         return (
           <div>
-            <img class="header-account--membership-icon" src="https://d3w4qaq4xm1ncv.cloudfront.net/global-header/crown-blue-10.svg" alt="membership-crown-icon" />
+            <img class="header-account--membership-icon" src="https://cdn-www.kompas.id/global-header/crown-blue-10.svg" alt="membership-crown-icon" />
           </div>
         );
       };
