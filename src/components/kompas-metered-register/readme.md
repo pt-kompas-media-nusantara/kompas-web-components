@@ -22,7 +22,7 @@ Anda perlu meletakkan _tag_ komponen `<kompas-metered-register />` pada halaman 
 
 ### Catatan
 
-Text pada komponen ini dapat di update dengan mengubah value dari url https://d3w4qaq4xm1ncv.cloudfront.net/assets/register_wall.json
+Text pada komponen ini dapat di update dengan mengubah value dari url https://cdn-www.kompas.id/assets/register_wall.json
 
 Dengan format dibawah ini:
 

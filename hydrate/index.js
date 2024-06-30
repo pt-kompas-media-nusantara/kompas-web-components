@@ -5688,7 +5688,7 @@ class KidPaywall {
      */
     async componentWillLoad() {
         try {
-            const req = await fetch("https://kompasid-production-content.s3.ap-southeast-1.amazonaws.com/paywall/paywall.json", {
+            const req = await fetch("https://cdn-www.kompas.id/web-component/paywall.json", {
                 method: "GET"
             });
             /**
@@ -7327,7 +7327,7 @@ class KompasHeaderAccount {
             var _a;
             if (!((_a = this.formattedUserData) === null || _a === void 0 ? void 0 : _a.isMembership))
                 return;
-            return (hAsync("div", null, hAsync("img", { class: "header-account--membership-icon h-3 w-3", src: "https://d3w4qaq4xm1ncv.cloudfront.net/global-header/crown-royal-blue-60.svg", alt: "membership-crown-icon" })));
+            return (hAsync("div", null, hAsync("img", { class: "header-account--membership-icon h-3 w-3", src: "https://cdn-www.kompas.id/global-header/crown-royal-blue-60.svg", alt: "membership-crown-icon" })));
         };
         return (hAsync("a", { onClick: () => toggleDropdown(), class: "cursor-pointer" }, hAsync("div", { class: "flex flex-row items-center self-center" }, !this.getInitialUserName() ?
             hAsync("div", { class: "bg-grey-300 rounded-full h-6 w-6 animate-pulse" })
@@ -7524,7 +7524,7 @@ class KompasHeaderAccountProfile {
                 var _a;
                 if (!((_a = this.userData) === null || _a === void 0 ? void 0 : _a.isMembership))
                     return;
-                return (hAsync("div", null, hAsync("img", { class: "header-account--membership-icon", src: "https://d3w4qaq4xm1ncv.cloudfront.net/global-header/crown-blue-10.svg", alt: "membership-crown-icon" })));
+                return (hAsync("div", null, hAsync("img", { class: "header-account--membership-icon", src: "https://cdn-www.kompas.id/global-header/crown-blue-10.svg", alt: "membership-crown-icon" })));
             };
             return (hAsync("div", { class: "flex flex-col items-center leading-none" }, hAsync("div", { class: "flex lex-row items-center gap-4" }, hAsync("div", { class: "flex bg-brand-1 flex-shrink-0 p-5 rounded-full h-16 w-16 items-center justify-center relative" }, hAsync("span", { class: "capitalize text-2xl text-grey-100 font-bold" }, this.userInitialName), membershipIcon()), hAsync("div", { class: "flex flex-col text-left" }, hAsync("p", { class: "capitalize font-bold text-base pb-1 whitespace-nowrap text-blue-600" }, (_a = this.userData) === null || _a === void 0 ? void 0 : _a.userName), hAsync("p", { class: "capitalize pb-1 text-sm whitespace-nowrap" }, (_b = this.userData) === null || _b === void 0 ? void 0 : _b.activeInfo), expiredInfo())), subscribeButton()));
         };
@@ -7578,7 +7578,7 @@ class KompasPaywall {
     }
     async componentWillRender() {
         try {
-            // const result = await fetch('https://kompasid-production-content.s3.ap-southeast-1.amazonaws.com/paywall/paywall.json', {
+            // const result = await fetch('https://cdn-www.kompas.id/web-component/paywall.json', {
             //   method: 'GET',
             //   headers: {
             //     Accept: 'application/json',
@@ -7632,36 +7632,36 @@ class KompasPaywall {
                 },
                 payment: {
                     desktop: [
-                        { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-                        { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-                        { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
-                        { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-                        { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-                        { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-                        { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" },
-                        { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-                        { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-                        { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-                        { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-                        { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-                        { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" }
+                        { name: "gopay", link: "https://cdn-www.kompas.id/paywall-asset/gopay.svg" },
+                        { name: "ovo", link: "https://cdn-www.kompas.id/paywall-asset/ovo.svg" },
+                        { name: "mastercard", link: "https://cdn-www.kompas.id/paywall-asset/mastercard.svg" },
+                        { name: "bri", link: "https://cdn-www.kompas.id/paywall-asset/bri.svg" },
+                        { name: "bcaklikpay", link: "https://cdn-www.kompas.id/paywall-asset/bca-klik-pay.svg" },
+                        { name: "indomaret", link: "https://cdn-www.kompas.id/paywall-asset/indomaret.svg" },
+                        { name: "jcb", link: "https://cdn-www.kompas.id/paywall-asset/jcb.svg" },
+                        { name: "dana", link: "https://cdn-www.kompas.id/paywall-asset/dana.svg" },
+                        { name: "visa", link: "https://cdn-www.kompas.id/paywall-asset/visa.svg" },
+                        { name: "mandiri", link: "https://cdn-www.kompas.id/paywall-asset/mandiri.svg" },
+                        { name: "bca", link: "https://cdn-www.kompas.id/paywall-asset/bca.svg" },
+                        { name: "bni", link: "https://cdn-www.kompas.id/paywall-asset/bni.svg" },
+                        { name: "akulaku", link: "https://cdn-www.kompas.id/paywall-asset/akulaku.svg" }
                     ],
                     mobile: [
-                        { name: "gopay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/gopay.svg" },
-                        { name: "ovo", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/ovo.svg" },
-                        { name: "visa", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/visa.svg" },
-                        { name: "mastercard", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mastercard.svg" },
+                        { name: "gopay", link: "https://cdn-www.kompas.id/paywall-asset/gopay.svg" },
+                        { name: "ovo", link: "https://cdn-www.kompas.id/paywall-asset/ovo.svg" },
+                        { name: "visa", link: "https://cdn-www.kompas.id/paywall-asset/visa.svg" },
+                        { name: "mastercard", link: "https://cdn-www.kompas.id/paywall-asset/mastercard.svg" },
                     ],
                     ekstension: [
-                        { name: "dana", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/dana.svg" },
-                        { name: "mandiri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/mandiri.svg" },
-                        { name: "bri", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bri.svg" },
-                        { name: "bcaklikpay", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca-klik-pay.svg" },
-                        { name: "akulaku", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/akulaku.svg" },
-                        { name: "bni", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bni.svg" },
-                        { name: "indomaret", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/indomaret.svg" },
-                        { name: "bca", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/bca.svg" },
-                        { name: "jcb", link: "https://d3w4qaq4xm1ncv.cloudfront.net/paywall-asset/jcb.svg" }
+                        { name: "dana", link: "https://cdn-www.kompas.id/paywall-asset/dana.svg" },
+                        { name: "mandiri", link: "https://cdn-www.kompas.id/paywall-asset/mandiri.svg" },
+                        { name: "bri", link: "https://cdn-www.kompas.id/paywall-asset/bri.svg" },
+                        { name: "bcaklikpay", link: "https://cdn-www.kompas.id/paywall-asset/bca-klik-pay.svg" },
+                        { name: "akulaku", link: "https://cdn-www.kompas.id/paywall-asset/akulaku.svg" },
+                        { name: "bni", link: "https://cdn-www.kompas.id/paywall-asset/bni.svg" },
+                        { name: "indomaret", link: "https://cdn-www.kompas.id/paywall-asset/indomaret.svg" },
+                        { name: "bca", link: "https://cdn-www.kompas.id/paywall-asset/bca.svg" },
+                        { name: "jcb", link: "https://cdn-www.kompas.id/paywall-asset/jcb.svg" }
                     ]
                 }
             };
