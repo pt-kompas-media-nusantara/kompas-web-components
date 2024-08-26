@@ -72,7 +72,7 @@ export class KompasPaywallBody {
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
   @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.id'
   @State() kompasLoginHost: string = 'https://account.kompas.id/login'
-  @State() kompasApiSubs: string = 'https://api.kompas.cloud/subscription/api/v1'
+  @State() kompasApiSubs: string = 'https://api.kompas.id/subscription/api/v1'
   @State() selfHost: string = 'https://epaper.kompas.id'
   @State() swgPublisherName: string = 'Harian Kompas'
   @State() swgPublisherId: string = 'kompas.id'
