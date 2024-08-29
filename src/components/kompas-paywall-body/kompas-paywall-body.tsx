@@ -3,6 +3,8 @@ import check from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/check.
 import arrowLeft from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/arrow-left.svg'
 import { Product, Packages, PaymentImage, PaywallProduct } from '../kompas-paywall/types'
 import { deviceType } from '../../utils/deviceType'
+import { cryptos } from '../../utils/crypt'
+
 
 @Component({
   tag: 'kompas-paywall-body',
@@ -251,38 +253,7 @@ export class KompasPaywallBody {
   get isDark() {
     return this.theme === 'dark'
   }
-  private getRegisterToken = async (path: string, payload: any): Promise<string> => {
-    return await fetch(`${this.kompasApigenHost}/v1/user/register/token/${path}`, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
-      .then(response => response.json())
-      .then((data: any) => {
-        return data.result.token
-      })
-      .catch(error => {
-        throw error
-      })
-  }
-  private getUserToken = async (path: string, payload: any): Promise<string> => {
-    return await fetch(`${this.kompasApigenHost}/v1/user/token/${path}`, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data: any) => {
-        return data.result.token
-      })
-      .catch(error => {
-        throw error
-      })
-  }
+  
   private getSubscriptionToken = async (path: string, payload: any): Promise<string> => {
     return await fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
       method: 'POST',
@@ -309,14 +280,16 @@ export class KompasPaywallBody {
         }
       })
   }
-  private createSwG = async (payload: any, token: string) => {
-    await fetch(`${this.kompasApiSubs}/survey/subscription/membership/swg`, {
+  private createSwG = async (payload: any) => {
+    const crypto = await cryptos();
+    await fetch(`${this.kompasApiSubs}/subscription/membership/swg`, {
       method: 'POST',
       body: payload,
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
+      headers:{ 
+      'content-type': 'application/json',
+      'x-signature': crypto.xSignature, 
+      'datetime' : crypto.datetime,
+    },
     })
       .then((response) => response.json())
       .catch(error => {
@@ -347,34 +320,19 @@ export class KompasPaywallBody {
           subscriptions.setOnPaymentResponse(async (paymentResponse: any) => {
             const response = await paymentResponse
             const raw = JSON.parse(response.purchaseData.raw)
-            const { productId, purchaseToken, packageName } = raw
+            const { productId, purchaseToken } = raw
+            const swgMembershipChannelId =''
             const email = response.userData.data.email
 
-            const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
-            const userToken = await this.getUserToken('google', payload)
-            if (userToken) {
-              // login and update membership
-              const accessToken = await this.getSubscriptionToken('google', { token: userToken })
-              if (accessToken) {
-                const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
-                await this.createSwG(payload, accessToken)
-              }
-            } else {
-              // register and login the unknown user
-              const payload = { subscription_token: purchaseToken, products: productId, detail: 'test' }
-              const token = await this.getRegisterToken('google', payload)
-              if (token) {
-                const accessToken = await this.getSubscriptionToken('google', { token })
-                const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken }
-                await this.createSwG(payload, accessToken)
-              }
-            }
+            const payload = {email, subscription_token: purchaseToken, products: productId, detail: 'test',membershipChannelId: swgMembershipChannelId  }
+            await this.createSwG(payload)
             response.complete().then(() => {
               window.location.href = this.loginUrl
             })
           })
         })
-      })
+      }
+    )
     })
   }
   private getRupiahFormat = (value: number): string => {
