@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@stencil/core": "2.20.0",
-    "crypto-js": "^4.2.0",
     "install": "^0.13.0",
     "react-gtm-module": "^2.0.11"
   },
