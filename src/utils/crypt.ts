@@ -9,12 +9,8 @@ async function cryptos() {
   try {
     xSignature = await generateHmacSHA256(signaturePayload, swgUuid);
   } catch (error) {
-    console.error('Error generating HMAC-SHA256 Signature:', error);
     throw error; // Rethrow the error if needed
   }
-
-  console.log("xSignature", xSignature);
-
   const crypt = {
     xSignature,
     datetime
