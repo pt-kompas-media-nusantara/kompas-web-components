@@ -1,7 +1,7 @@
 
 async function cryptos() {
-  const swgUuid = "da0eee17-c670-19bd-944d-4d7263ea08e6";
-  const swgApiKey = "fTrcWPuDNd//ObnIeGh59w==";
+  const swgUuid = "da0eee17-c670-49bd-944d-4d7263ea08e6";
+  const swgApiKey = "5256aed7.6a5b.4f33.adf6.a93ab5093ba2";
   const datetime = Math.floor(new Date().getTime() / 1000).toString();
   const signaturePayload = `${swgApiKey}${datetime}`;
 

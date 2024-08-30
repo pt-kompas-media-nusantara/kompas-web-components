@@ -74,7 +74,7 @@ export class KompasPaywallBody {
   @State() kompasApigenHost: string = 'https://apigen.kompas.id'
   @State() kompasApiWcmHost: string = 'https://apiwcm.kompas.id'
   @State() kompasLoginHost: string = 'https://account.kompas.id/login'
-  @State() kompasApiSubs: string = 'https://api.kompas.id/subscription/api/v1'
+  @State() kompasApiSubs: string = 'https://apisubs.kompas.id'
   @State() selfHost: string = 'https://epaper.kompas.id'
   @State() swgPublisherName: string = 'Harian Kompas'
   @State() swgPublisherId: string = 'kompas.id'
@@ -282,7 +282,7 @@ export class KompasPaywallBody {
   }
   private createSwG = async (payload: any) => {
     const crypto = await cryptos();
-    await fetch(`${this.kompasApiSubs}/subscription/membership/swg`, {
+    await fetch(`${this.kompasApiSubs}/membership/swg`, {
       method: 'POST',
       body: payload,
       headers:{ 
@@ -321,7 +321,7 @@ export class KompasPaywallBody {
             const response = await paymentResponse
             const raw = JSON.parse(response.purchaseData.raw)
             const { productId, purchaseToken } = raw
-            const swgMembershipChannelId =''
+            const swgMembershipChannelId ='2'
             const email = response.userData.data.email
 
             const payload = {email, subscription_token: purchaseToken, products: productId, detail: 'test',membershipChannelId: swgMembershipChannelId  }
