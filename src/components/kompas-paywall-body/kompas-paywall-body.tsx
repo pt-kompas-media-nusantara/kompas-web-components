@@ -320,11 +320,10 @@ export class KompasPaywallBody {
           subscriptions.setOnPaymentResponse(async (paymentResponse: any) => {
             const response = await paymentResponse
             const raw = JSON.parse(response.purchaseData.raw)
-            const { productId, purchaseToken } = raw
-            const swgMembershipChannelId ='2'
+            const { productId, purchaseToken,packageName } = raw
+            const swgMembershipChannelId = 2
             const email = response.userData.data.email
-
-            const payload = {email, subscription_token: purchaseToken, products: productId, detail: 'test',membershipChannelId: swgMembershipChannelId  }
+            const payload = { email, package_name: packageName, product_id: productId, purchase_token: purchaseToken, membershipChannelId: swgMembershipChannelId }
             await this.createSwG(payload)
             response.complete().then(() => {
               window.location.href = this.loginUrl
