@@ -321,7 +321,7 @@ export class KompasPaywallBody {
             const response = await paymentResponse
             const raw = JSON.parse(response.purchaseData.raw)
             const { productId, purchaseToken } = raw
-            const swgMembershipChannelId =''
+            const swgMembershipChannelId ='2'
             const email = response.userData.data.email
 
             const payload = {email, subscription_token: purchaseToken, products: productId, detail: 'test',membershipChannelId: swgMembershipChannelId  }
