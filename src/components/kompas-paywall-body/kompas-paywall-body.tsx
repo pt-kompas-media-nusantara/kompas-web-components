@@ -284,7 +284,7 @@ export class KompasPaywallBody {
     const crypto = await cryptos();
     await fetch(`${this.kompasApiSubs}/membership/swg`, {
       method: 'POST',
-      body: payload,
+      body: JSON.stringify(payload),
       headers:{ 
       'content-type': 'application/json',
       'x-signature': crypto.xSignature, 
