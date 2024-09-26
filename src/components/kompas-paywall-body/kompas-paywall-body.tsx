@@ -155,9 +155,11 @@ export class KompasPaywallBody {
 
   private headerSection = (type: 'epaper' | 'reguler'): void => {
     const headerSectionText = type === 'epaper'? 'Akses ePaper Ini dengan Berlangganan' : 'Lanjut Baca Artikel Ini dengan Berlangganan'
+    const isPrevHistoryExist = window.history.length > 1;
+
     return (
       <div class="flex w-full items-center justify-center">
-        {type === 'epaper' ? <button onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} /> : ''}
+        {type === 'epaper' && isPrevHistoryExist ? <button title="btn-back" onClick={() => this.redirectToPrevUrl()} class="hidden lg:flex icon-lg icon-blue-600 pl-4 " innerHTML={arrowLeft} /> : ''}
         <h4 class={`text-base flex self-center md:block md:text-xl ${this.isDark ? 'text-white' : 'text-grey-600'} text-center font-lora font-bold tracking-wide md:tracking-normal w-4/5 md:w-full`}>{headerSectionText}</h4>
         {type === 'epaper' ? <div class="w-10 hidden lg:flex" /> : ''}
       </div>
@@ -253,7 +255,7 @@ export class KompasPaywallBody {
   get isDark() {
     return this.theme === 'dark'
   }
-  
+
   private getSubscriptionToken = async (path: string, payload: any): Promise<string> => {
     return await fetch(`${this.kompasAkunHost}/api/subscription/login/${path}`, {
       method: 'POST',
@@ -285,9 +287,9 @@ export class KompasPaywallBody {
     await fetch(`${this.kompasApiSubs}/membership/swg`, {
       method: 'POST',
       body: JSON.stringify(payload),
-      headers:{ 
+      headers:{
       'content-type': 'application/json',
-      'x-signature': crypto.xSignature, 
+      'x-signature': crypto.xSignature,
       'datetime' : crypto.datetime,
     },
     })
