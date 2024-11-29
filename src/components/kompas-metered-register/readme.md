@@ -7,7 +7,26 @@ Anda perlu meletakkan _tag_ komponen `<kompas-metered-register />` pada halaman 
 ### Elemen
 
 ```javascript
-<kompas-metered-register countdown-article="1" />
+<kompas-metered-register
+    countdown-article="2"
+    tracker_page_title="Example Page Title"
+    tracker_page_type="Photo"
+    tracker_content_type="Free"
+    tracker_content_id="example-content-id"
+    tracker_content_title="Example Content Title"
+    tracker_content_authors="Author 1|Author 2"
+    tracker_content_editors="Editor 1|Editor 2"
+    tracker_content_tags="Tag1|Tag2|Tag3"
+    tracker_content_published_date="2023-10-12"
+    tracker_content_categories="Category 1|Category 2"
+    tracker_user_type="G"
+    tracker_subscription_status="status"
+    tracker_metered_wall_type="MRW"
+    tracker_metered_wall_balance="3"
+    tracker_page_domain="Kompas.com"
+    next_param="https://www.kompas.id/baca/opini/2023/12/05/masa-depan-wolbachia-sebagai-alternatif-pengendalian-dbd?open_from=Section_Opini"
+    source="kompascom" // kompascom | default
+></kompas-metered-register>
 ```
 
 ### Detail Props
@@ -20,9 +39,13 @@ Anda perlu meletakkan _tag_ komponen `<kompas-metered-register />` pada halaman 
   1 => akan menampilkan text artikel terakhir
   lebih dari 1 => akan menampilkan normal text
 
+### 2. source
+
+- Value didapatkan dari query URL `source=` **( kompascom | default )**
+
 ### Catatan
 
-Text pada komponen ini dapat di update dengan mengubah value dari url https://cdn-www.kompas.id/assets/register_wall.json
+Text pada komponen ini dapat di update dengan mengubah value dari url https://cdn-www.kompas.id/assets/register_wall_new.json
 
 Dengan format dibawah ini:
 
@@ -81,7 +104,7 @@ Dengan format dibawah ini:
 | `cta_url`                        | `cta_url`                        | Url promo                                                                                             | `string`  | `undefined` |
 | `defaultExpandBanner`            | `default-expand-banner`          | prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.  | `boolean` | `true`      |
 | `next_param`                     | `next_param`                     | Page Domain                                                                                           | `string`  | `undefined` |
-| `source`                         | `source`                         | Source Param                                                                                          | `string`  | `'default'` |
+| `source`                         | `source`                         | Source Param                                                                                          | `string`  | `'default, kompas com'` |
 | `tracker_content_authors`        | `tracker_content_authors`        | Name of the authors (will only be sent if the user views article detail page)                         | `string`  | `undefined` |
 | `tracker_content_categories`     | `tracker_content_categories`     | The main category the content belongs to                                                              | `string`  | `undefined` |
 | `tracker_content_editors`        | `tracker_content_editors`        | Name of the editors (will only be sent if the user views article detail page)                         | `string`  | `undefined` |
