@@ -1,6 +1,6 @@
 import { Component, h, State, Prop, Fragment, Host } from '@stencil/core';
 import chevronUp from '../../../assets/fontawesome-free-5.15.3-web/svgs/solid/chevron-up.svg';
-import { meteredRegisterContent } from './types';
+import { meteredRegisterContent, meteredRegisterResponse } from './types';
 
 @Component({
   tag: 'kompas-metered-register',
@@ -129,9 +129,14 @@ export class KompasMeteredRegister {
   @Prop() cta_text: string;
 
   /**
+   * Source Param
+   */
+  @Prop() source = 'default'
+
+  /**
    * menentukan template yang akan di render
    */
-  private setTemplate(prop: string, mode: string = 'default'): string {
+  private setTemplate(prop: string, mode: string = 'collapse'): string {
     let template = '';
 
     if (this.countdownArticle > 1) {
@@ -175,17 +180,18 @@ export class KompasMeteredRegister {
    * template button register button atau checkout promo
    */
   private registerButtonTemplate = (): void => {
+    const { ctaText, ctaUrl} = this.textTemplate.expand
     return (
       // kondisi cta_url
       <div>
-        {!this.textTemplate.ctaUrl ? (
+        {!ctaUrl ? (
           // kalau cta_url kosong
           <button onClick={this.redirectToRegister} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">
             Daftar Akun
           </button>
         ) : (
           // kalau cta_url ada isi
-          <button onClick={this.redirectToCTAUrl} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{this.textTemplate.ctaText}</button>
+          <button onClick={this.redirectToCTAUrl} class="bg-green-500 p-1.5 w-full md:w-auto rounded-md font-bold text-grey-100 px-5 text-sm md:text-base">{ctaText}</button>
         )}
       </div>
     );
@@ -204,8 +210,8 @@ export class KompasMeteredRegister {
    */
   private redirectToCTAUrl = (): void => {
     const params = new URLSearchParams(window.location.href);
-    const newUrl: any = new URL(this.textTemplate.ctaUrl);
-    const referrer = new URLSearchParams(this.textTemplate.ctaUrl).get('referrer');
+    const newUrl: any = new URL(this.textTemplate.expand.ctaUrl);
+    const referrer = new URLSearchParams(this.textTemplate.expand.ctaUrl).get('referrer');
     this.pushToDataLayer('mrw_clicked');
     if (!referrer) {
       newUrl.searchParams.append('referrer=', params);
@@ -215,7 +221,7 @@ export class KompasMeteredRegister {
       const currentReferrerValue = newUrl.searchParams.get('referrer');
 
       // Construct the new value by appending the new referrer value with a comma to the old referrer value
-      const updatedReferrerValue = `${params},${currentReferrerValue}`;
+      const updatedReferrerValue = `${params.toString()},${currentReferrerValue}`;
 
       // Update the referrer parameter with the new value
       newUrl.searchParams.set('referrer', updatedReferrerValue);
@@ -267,8 +273,9 @@ export class KompasMeteredRegister {
   };
 
   async componentWillLoad() {
+    const { source } = this // kompas_com || default
     // parse content props
-    const req = await fetch(`https://cdn-www.kompas.id/assets/register_wall.json`);
+    const req = await fetch(`https://cdn-www.kompas.id/assets/register_wall_new.json`);
 
     if (req.status !== 200) {
       throw new Error(`${req.status} Ada galat saat memproses permintaan.`);
@@ -277,7 +284,10 @@ export class KompasMeteredRegister {
     /**
      * fetch() mendapatkan respons 200
      */
-    this.textTemplate = await req.json();
+    const res: meteredRegisterResponse = await req.json();
+    const validSource = source in res ? source : 'default'
+
+    this.textTemplate = res[validSource as keyof typeof res]
     const getCountdown = this.countdownArticle;
     if (!getCountdown) {
       this.isShowBanner = false;
@@ -295,7 +305,7 @@ export class KompasMeteredRegister {
     return (
       <Host>
         {this.isShowBanner ? (
-          <div class="sticky bottom-0 w-full h-full">
+          <div class="sticky bottom-0 w-full h-full z-20">
             <div class={`w-full bg-blue-100 px-4 xl:px-0 bottom-0 py-4`}>
               <div class="flex lg:max-w-7xl m-auto justify-center relative">
                 <div class="flex flex-col">{this.bannerTemplate()}</div>

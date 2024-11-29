@@ -253,6 +253,10 @@ export namespace Components {
          */
         "next_param": string;
         /**
+          * Source Param
+         */
+        "source": string;
+        /**
           * Name of the authors (will only be sent if the user views article detail page)
          */
         "tracker_content_authors": string;
@@ -784,6 +788,10 @@ declare namespace LocalJSX {
           * Page Domain
          */
         "next_param"?: string;
+        /**
+          * Source Param
+         */
+        "source"?: string;
         /**
           * Name of the authors (will only be sent if the user views article detail page)
          */
