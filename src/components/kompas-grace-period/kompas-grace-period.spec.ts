@@ -30,7 +30,7 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period>
         <mock:shadow-root>
-          <div class="bottom-0 h-full sticky w-full"></div>
+          <div class="bg-orange-100 bottom-0 h-full sticky w-full"></div>
         </mock:shadow-root>
       </kompas-grace-period>
     `)
@@ -46,8 +46,8 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period total-grace-period="1">
       <mock:shadow-root>
-      <div class="bottom-0 h-full sticky w-full">
-      <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
+      <div class="bg-orange-100 bottom-0 h-full sticky w-full">
+      <div class="bottom-0 flex flex-col justify-end lg:px-8 max-w-7xl md:flex-row md:space-x-4 mx-auto px-4 py-4 w-full">
          <div class="md:text-base self-center text-grey-600 text-left text-sm">
             <p>
                Masa tenggang langganan Anda tersisa
@@ -58,7 +58,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -75,8 +75,8 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period total-grace-period="2">
       <mock:shadow-root>
-      <div class="bottom-0 h-full sticky w-full">
-      <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
+      <div class="bg-orange-100 bottom-0 h-full sticky w-full">
+      <div class="bottom-0 flex flex-col justify-end lg:px-8 max-w-7xl md:flex-row md:space-x-4 mx-auto px-4 py-4 w-full">
          <div class="md:text-base self-center text-grey-600 text-left text-sm">
             <p>
                Masa tenggang langganan Anda tersisa
@@ -87,7 +87,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -104,8 +104,8 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period total-grace-period="3">
       <mock:shadow-root>
-      <div class="bottom-0 h-full sticky w-full">
-      <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
+      <div class="bg-orange-100 bottom-0 h-full sticky w-full">
+      <div class="bottom-0 flex flex-col justify-end lg:px-8 max-w-7xl md:flex-row md:space-x-4 mx-auto px-4 py-4 w-full">
          <div class="md:text-base self-center text-grey-600 text-left text-sm">
             <p>
                Masa tenggang langganan Anda tersisa
@@ -116,7 +116,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -133,8 +133,8 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period total-grace-period="4">
       <mock:shadow-root>
-      <div class="bottom-0 h-full sticky w-full">
-      <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
+      <div class="bg-orange-100 bottom-0 h-full sticky w-full">
+      <div class="bottom-0 flex flex-col justify-end lg:px-8 max-w-7xl md:flex-row md:space-x-4 mx-auto px-4 py-4 w-full">
          <div class="md:text-base self-center text-grey-600 text-left text-sm">
             <p>
                Masa tenggang langganan Anda tersisa
@@ -145,7 +145,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -162,8 +162,8 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period total-grace-period="5">
       <mock:shadow-root>
-      <div class="bottom-0 h-full sticky w-full">
-      <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
+      <div class="bg-orange-100 bottom-0 h-full sticky w-full">
+      <div class="bottom-0 flex flex-col justify-end lg:px-8 max-w-7xl md:flex-row md:space-x-4 mx-auto px-4 py-4 w-full">
          <div class="md:text-base self-center text-grey-600 text-left text-sm">
             <p>
                Masa tenggang langganan Anda tersisa
@@ -174,7 +174,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -191,8 +191,8 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period total-grace-period="6">
       <mock:shadow-root>
-      <div class="bottom-0 h-full sticky w-full">
-      <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
+      <div class="bg-orange-100 bottom-0 h-full sticky w-full">
+      <div class="bottom-0 flex flex-col justify-end lg:px-8 max-w-7xl md:flex-row md:space-x-4 mx-auto px-4 py-4 w-full">
          <div class="md:text-base self-center text-grey-600 text-left text-sm">
             <p>
                Masa tenggang langganan Anda tersisa
@@ -203,7 +203,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>
@@ -221,8 +221,8 @@ describe('KompasGracePeriod', () => {
       expect(root).toEqualHtml(`
       <kompas-grace-period total-grace-period="7">
       <mock:shadow-root>
-      <div class="bottom-0 h-full sticky w-full">
-      <div class="bg-orange-100 bottom-0 flex flex-col justify-end lg:px-20 md:flex-row md:space-x-4 px-4 py-4 w-full">
+      <div class="bg-orange-100 bottom-0 h-full sticky w-full">
+      <div class="bottom-0 flex flex-col justify-end lg:px-8 max-w-7xl md:flex-row md:space-x-4 mx-auto px-4 py-4 w-full">
          <div class="md:text-base self-center text-grey-600 text-left text-sm">
             <p>
             Anda dalam
@@ -233,7 +233,7 @@ describe('KompasGracePeriod', () => {
             </p>
          </div>
          <div class="flex justify-end md:pt-0 md:w-1/2 pt-4 self-center w-full">
-            <button class="bg-green-500 font-bold md:text-base p-2 px-5 rounded-md text-grey-100 text-sm w-full">
+            <button class="bg-green-500 font-bold md:text-base md:w-auto p-2 px-5 rounded-md text-grey-100 text-sm w-full">
             Perbarui Langganan
             </button>
          </div>

@@ -119,16 +119,6 @@ export class KompasMeteredRegister {
   @Prop() next_param: string;
 
   /**
-   * Url promo
-   */
-  @Prop() cta_url: string;
-
-  /**
-   * Button text promo
-   */
-  @Prop() cta_text: string;
-
-  /**
    * Source Param
    */
   @Prop() source = 'default'
@@ -180,7 +170,7 @@ export class KompasMeteredRegister {
    * template button register button atau checkout promo
    */
   private registerButtonTemplate = (): void => {
-    const { ctaText, ctaUrl} = this.textTemplate.expand
+    const { ctaText = '', ctaUrl = '' } = this.textTemplate?.expand || {};
     return (
       // kondisi cta_url
       <div>

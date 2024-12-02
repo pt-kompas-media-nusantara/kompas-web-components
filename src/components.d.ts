@@ -237,14 +237,6 @@ export namespace Components {
          */
         "countdownArticle": number;
         /**
-          * Button text promo
-         */
-        "cta_text": string;
-        /**
-          * Url promo
-         */
-        "cta_url": string;
-        /**
           * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
          */
         "defaultExpandBanner": boolean;
@@ -772,14 +764,6 @@ declare namespace LocalJSX {
           * prop countdownArticle untuk menghandle sudah berapa artikel gratis yang user baca.
          */
         "countdownArticle"?: number;
-        /**
-          * Button text promo
-         */
-        "cta_text"?: string;
-        /**
-          * Url promo
-         */
-        "cta_url"?: string;
         /**
           * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
          */
