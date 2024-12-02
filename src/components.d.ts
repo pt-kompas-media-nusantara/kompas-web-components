@@ -237,14 +237,6 @@ export namespace Components {
          */
         "countdownArticle": number;
         /**
-          * Button text promo
-         */
-        "cta_text": string;
-        /**
-          * Url promo
-         */
-        "cta_url": string;
-        /**
           * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
          */
         "defaultExpandBanner": boolean;
@@ -252,6 +244,10 @@ export namespace Components {
           * Page Domain
          */
         "next_param": string;
+        /**
+          * Source Param
+         */
+        "source": string;
         /**
           * Name of the authors (will only be sent if the user views article detail page)
          */
@@ -769,14 +765,6 @@ declare namespace LocalJSX {
          */
         "countdownArticle"?: number;
         /**
-          * Button text promo
-         */
-        "cta_text"?: string;
-        /**
-          * Url promo
-         */
-        "cta_url"?: string;
-        /**
           * prop defaultExpandBanner untuk menentukan keadaan awal komponen apakah dalam mode expand atau tidak.
          */
         "defaultExpandBanner"?: boolean;
@@ -784,6 +772,10 @@ declare namespace LocalJSX {
           * Page Domain
          */
         "next_param"?: string;
+        /**
+          * Source Param
+         */
+        "source"?: string;
         /**
           * Name of the authors (will only be sent if the user views article detail page)
          */

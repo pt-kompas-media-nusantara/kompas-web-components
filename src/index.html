@@ -164,8 +164,8 @@
     metered_wall_type="metered_wall_type"
     epaper_edition="epaper_edition"
   ></kid-metered-paywall> -->
-    <kompas-grace-period total-grace-period="7" subscription-id="9802032"></kompas-grace-period>
-    <!-- <kompas-metered-register
+    <!-- <kompas-grace-period total-grace-period="7" subscription-id="9802032"></kompas-grace-period> -->
+    <kompas-metered-register
       countdown-article="2"
       tracker_page_title="Example Page Title"
       tracker_page_type="Photo"
@@ -183,7 +183,7 @@
       tracker_metered_wall_balance="3"
       tracker_page_domain="Kompas.com"
       next_param="https://www.kompas.id/baca/opini/2023/12/05/masa-depan-wolbachia-sebagai-alternatif-pengendalian-dbd?open_from=Section_Opini"
-    ></kompas-metered-register>-->
+    ></kompas-metered-register>
     <div>
       <kompas-footer />
       <!-- <kompas-footer wording-message="wadidaw"/> -->
@@ -191,6 +191,12 @@
   </body>
 </html>
 <script>
+  const sourceParam = new URLSearchParams(window.location.search).get('source');
+  document.querySelector('kompas-metered-register').setAttribute(
+    'source',
+    sourceParam
+  );
+
   setTimeout(() => {
     document.querySelector('kompas-header-account').setAttribute(
       'user-data',
@@ -203,5 +209,6 @@
         updateMembership: 'Perbarui Langganan',
       }),
     );
+   
   }, 1000);
 </script>
